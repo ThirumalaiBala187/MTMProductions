@@ -12,8 +12,6 @@ import java.io.*;
 public class LoginServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
         BufferedReader reader = new BufferedReader(new InputStreamReader(request.getInputStream()));
         StringBuilder sb = new StringBuilder();
         String line;
@@ -32,6 +30,7 @@ public class LoginServlet extends HttpServlet {
             Cookie sessionCookie = new Cookie("JSESSIONID", sessionId);
             sessionCookie.setPath("/"); 
             sessionCookie.setMaxAge(60 * 60 * 24); 
+            response.setContentType("application/json");
             response.addCookie(sessionCookie);
             PrintWriter out = response.getWriter();
             out.print(jsonResponse.toString());
@@ -44,8 +43,6 @@ public class LoginServlet extends HttpServlet {
             out.flush();
         }
     }
-
- 
     private boolean validateUser(String email, String password) {
     	try(Connection cn=Database.getConnection()){
     		String sql="select user_id from users where username=? and password=?";
@@ -61,3 +58,7 @@ public class LoginServlet extends HttpServlet {
     		}
     }
 }
+
+}
+
+ 
