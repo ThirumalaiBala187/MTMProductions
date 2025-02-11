@@ -16,7 +16,7 @@ public class LoginServlet extends HttpServlet{
 protected void	doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
 	String email=request.getParameter("email");
 	String password=request.getParameter("password");
-	
+	System.out.print(false);
 	try(Connection cn=Database.getConnection()){
 		String sql="select user_id from users where username=? and password=?";
 		PreparedStatement st=cn.prepareStatement(sql);
