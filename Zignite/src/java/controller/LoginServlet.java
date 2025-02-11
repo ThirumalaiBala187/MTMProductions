@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
             response.addCookie(sessionCookie);
             PrintWriter out = response.getWriter();
             out.print(jsonResponse.toString());
-            out.flush();
+//            out.flush();
 //            response.sendRedirect("https://muthueshwaran-8389.zcodeusers.in/Zignite_Learnings/userHome/userHome.html#");
         } else {
             jsonResponse.put("success", false);
