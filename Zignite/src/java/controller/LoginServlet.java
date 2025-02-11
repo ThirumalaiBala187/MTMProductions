@@ -7,6 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+import assignment010.Connectionclass;
+
 import java.io.*;
 
 public class LoginServlet extends HttpServlet {
@@ -23,6 +26,10 @@ public class LoginServlet extends HttpServlet {
         JSONObject jsonRequest = new JSONObject(sb.toString());
         String email = jsonRequest.getString("email");
         String password = jsonRequest.getString("password");
+        String firstName = jsonRequest.getString("firstName");
+        String lastName = jsonRequest.getString("lastName");
+        String dob = jsonRequest.getString("dob");
+        
         boolean isValidUser = validateUser(email, password);
         JSONObject jsonResponse = new JSONObject();
         if (isValidUser) {
@@ -44,20 +51,20 @@ public class LoginServlet extends HttpServlet {
             out.flush();
         }
     }
-
- 
-    private boolean validateUser(String email, String password) {
-    	try(Connection cn=Database.getConnection()){
-    		String sql="select user_id from users where username=? and password=?";
-    		PreparedStatement st=cn.prepareStatement(sql);
-    		st.setString(1, email);
-    		st.setString(2, password);
-    		ResultSet rs=st.executeQuery();
-    		if(rs.next()) { 
-            return true;
-    		}
-    		else {
-    			return false;
-    		}
-    }
+    try {
+		String Query = "insert into Hotelbooking (cname,rno,check_in_date,check_out_date,total_price) values(?,?,?,?,?);";
+		PreparedStatement stmt = Connectionclass.getConnection().prepareStatement(Query);
+		
+		stmt.setString(1,c.c_name);
+		stmt.setInt(2, c.bid);
+		stmt.setString(3,c.check_in_date+"");
+		stmt.setString(4, c.check_out_date+"");
+		stmt.setInt(5, c.total_price);
+		
+		int resultSet = stmt.executeUpdate();
+		
+	} catch (SQLException e) {
+		System.out.println("mysql syntax error");
+		e.printStackTrace();
+	}
 }
