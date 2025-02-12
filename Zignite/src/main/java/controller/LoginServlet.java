@@ -28,6 +28,7 @@ public class LoginServlet extends HttpServlet {
             sb.append(line);
         }
         JSONObject jsonRequest = new JSONObject(sb.toString());
+        try {
         String email = jsonRequest.getString("email");
         String password = jsonRequest.getString("password");
         boolean isValidUser = validateUser(email, password);
@@ -55,6 +56,10 @@ public class LoginServlet extends HttpServlet {
             PrintWriter out = response.getWriter();
             out.print(jsonResponse.toString());
             out.flush();
+        }
+        }
+        catch(Exception e) {
+        	System.out.println(e.getMessage());
         }
     }
     private boolean validateUser(String email, String password) throws SQLException {
