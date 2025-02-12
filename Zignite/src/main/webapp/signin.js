@@ -14,7 +14,7 @@ function signIn(){
         password: password
     };
 
-    fetch('LoginServlet', {
+    fetch('controller/LoginServlet', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -34,7 +34,7 @@ function signIn(){
             window.location.href = "userHome.html";
         } else {
             alert("Invalid credentials. Please try again.");
-        }
+      }
     })
     .catch(error => {
         console.log('Error:', error);

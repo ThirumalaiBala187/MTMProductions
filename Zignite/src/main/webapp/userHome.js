@@ -1,25 +1,25 @@
 
 
 
-function getCookie(name){
-const value=`; ${document.cookie}`;
-const parts=value.split(`; ${name}=`);
-if(parts.length==2)return parts.pop().split(";").shift();
-return null;
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+        return parts.pop().split(';').shift();
+    }
+    return null;
 }
 
+
+const details = getCookie("DETAILS");
+if (details) {
+    const decodedDetails = atob(details);
+    const parsedDetails = JSON.parse(decodedDetails); 
+    console.log("User Details:", parsedDetails);
+}
 var session_id=getCookie('JSESSIONID');
-var details=getCookie('DETAILS');
 
-if(details){
-	try {
-	      details = JSON.parse(details);
-	      console.log("User Details:", details);
-	  } catch (error) {
-	      console.error("Error parsing DETAILS cookie:", error);
-	      details = null;
-	  }
-}
 
 var prog_cont=document.getElementsByClassName('card learning-progress')[0];
 
