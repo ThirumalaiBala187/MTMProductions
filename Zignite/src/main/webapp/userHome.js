@@ -10,26 +10,26 @@ function getCookie(name) {
     }
     return null;
 }
-
-
 const details = getCookie("DETAILS");
+var courses={};
 if (details) {
     const decodedDetails = atob(details);
     const parsedDetails = JSON.parse(decodedDetails); 
-    console.log("User Details:", parsedDetails);
+    parsedDetails.courses.forEach(a=>{
+		courses[a.course_name]=Math.round((a.levels_completed/7)*100);
+	});
 }
 var session_id=getCookie('JSESSIONID');
 
 
 var prog_cont=document.getElementsByClassName('card learning-progress')[0];
 
-
-var courses = {
-    "Machine Learning": 78,
-    "Data Structures": 85,
-    "Web Development": 90,
-    "Artificial Intelligence": 92
-};
+//var courses = {
+ //   "Machine Learning": 78,
+ //   "Data Structures": 85,
+ //   "Web Development": 90,
+ //   "Artificial Intelligence": 92
+//};
 
 
 for (let course_name in courses) {
