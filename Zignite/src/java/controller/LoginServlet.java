@@ -51,20 +51,4 @@ public class LoginServlet extends HttpServlet {
             out.flush();
         }
     }
-    try {
-		String Query = "insert into Hotelbooking (cname,rno,check_in_date,check_out_date,total_price) values(?,?,?,?,?);";
-		PreparedStatement stmt = Connectionclass.getConnection().prepareStatement(Query);
-		
-		stmt.setString(1,c.c_name);
-		stmt.setInt(2, c.bid);
-		stmt.setString(3,c.check_in_date+"");
-		stmt.setString(4, c.check_out_date+"");
-		stmt.setInt(5, c.total_price);
-		
-		int resultSet = stmt.executeUpdate();
-		
-	} catch (SQLException e) {
-		System.out.println("mysql syntax error");
-		e.printStackTrace();
-	}
 }
