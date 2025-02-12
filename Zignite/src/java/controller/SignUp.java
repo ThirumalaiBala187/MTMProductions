@@ -94,6 +94,6 @@ public class SignUp extends HttpServlet {
             PrintWriter out = response.getWriter();
             out.print(jsonResponse.toString());
         }
-		doGet(request, response);	
+		doGet(request, response);
 	}
 }
