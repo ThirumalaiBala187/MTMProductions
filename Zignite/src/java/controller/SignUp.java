@@ -46,6 +46,7 @@ public class SignUp extends HttpServlet {
         while ((line = reader.readLine()) != null) {
             sb.append(line);
         }               
+        
         JSONObject jsonRequest = new JSONObject(sb.toString());
         String email = jsonRequest.getString("email");
         String password = jsonRequest.getString("password");
@@ -53,6 +54,7 @@ public class SignUp extends HttpServlet {
         String lastName = jsonRequest.getString("lastName");
         String dob = jsonRequest.getString("dob");
         boolean check = false;
+        
         if (email.contains("@gmail.com") && firstName.length() > 0 && password.length() > 6) {
         	check = true;
         }

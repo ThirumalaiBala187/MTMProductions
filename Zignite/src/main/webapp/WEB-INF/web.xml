@@ -4,6 +4,7 @@
 	<servlet>
 		<description>
 		</description>
+<<<<<<< HEAD
 		<display-name>SignUp</display-name>
 		<servlet-name>SignUp</servlet-name>
 		<servlet-class>SignUp</servlet-class>
@@ -11,6 +12,15 @@
 	<servlet-mapping>
 		<servlet-name>SignUp</servlet-name>
 		<url-pattern>/SignUp</url-pattern>
+=======
+		<display-name>LogIn</display-name>
+		<servlet-name>LogIn</servlet-name>
+		<servlet-class>Signins.LogIn</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LogIn</servlet-name>
+		<url-pattern>/LogIn</url-pattern>
+>>>>>>> branch 'main' of https://github.com/ThirumalaiBala187/MTMProductions.git
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
