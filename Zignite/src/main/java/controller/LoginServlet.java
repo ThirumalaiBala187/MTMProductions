@@ -41,12 +41,15 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("details", details);
             String sessionId = session.getId();
             Cookie sessionCookie = new Cookie("JSESSIONID", sessionId);
-            Cookie sessionCookie1 = new Cookie("DETAILS",details.toString());
+            Cookie detailsCookie = new Cookie("DETAILS",details.toString());
             sessionCookie.setPath("/"); 
             sessionCookie.setMaxAge(60 * 60 * 24); 
+            detailsCookie.setPath("/");
+            detailsCookie.setMaxAge(60 * 60 * 24);
             response.setContentType("application/json");
             response.addCookie(sessionCookie);
-            response.addCookie(sessionCookie1);
+            response.addCookie(detailsCookie);
+            jsonResponse.put("success",true);
             PrintWriter out = response.getWriter();
             out.write(jsonResponse.toString());
 //            out.flush();
@@ -93,7 +96,7 @@ public class LoginServlet extends HttpServlet {
     			jsonArray.put(newObj);
     		}
     		JSONObject userDetails=new JSONObject();
-    		userDetails.put("Courses", jsonArray);
+    		userDetails.put("courses", jsonArray);
     		return userDetails;
     }
 }

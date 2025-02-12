@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="signup.css" type="text/css">
+    <link rel="icon" href="../Images/Logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Fjalla+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="whole">
+        <div class="leftImage">
+            <img src="../Images/SignInLearn.png" style="height: 99.6%; width:100%">
+        </div>
+        <div class="rightColumn">
+            
+            <div class="loginBox">Log In
+                <input type="email" class="detailsBox" placeholder="Email" id="email" value="">
+                <div class="detailsBox" style="padding-left: 10px" id="passwordBox">
+                <input type="password" class="inputBox" placeholder="Password" id="passwordInput" value="">
+                <span class="icon" onclick="togglePasswordIcon()" style="margin-right: 3px">👁️</span>
+                </div>
+                <button id="continueBtn" onclick="signIn()">Log In</button>
+                <p style="font-size: 20px">New user?&ensp;<a href="https://muthueshwaran-8389.zcodeusers.in/Zignite_Learnings/welcome/entrance.html">Sign Up</a></p>
+            </div>
+           
+        </div>
+    </div>
+    <script src="signin.js"></script>
+</body>
+</html>
