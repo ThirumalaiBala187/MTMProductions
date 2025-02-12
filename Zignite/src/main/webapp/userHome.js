@@ -8,13 +8,17 @@ if(parts.length==2)return parts.pop().split(";").shift();
 return null;
 }
 
-const session_id=getCookie('JSESSIONID');
-const details=getCookie('DETAILS');
+var session_id=getCookie('JSESSIONID');
+var details=getCookie('DETAILS');
 
 if(details){
-    details = JSON.parse(details);
-    details.courses;
-    console.log(details);
+	try {
+	      details = JSON.parse(details);
+	      console.log("User Details:", details);
+	  } catch (error) {
+	      console.error("Error parsing DETAILS cookie:", error);
+	      details = null;
+	  }
 }
 
 var prog_cont=document.getElementsByClassName('card learning-progress')[0];
