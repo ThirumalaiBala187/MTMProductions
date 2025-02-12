@@ -36,7 +36,6 @@ public class LoginServlet extends HttpServlet {
         if (isValidUser) {
         	
             HttpSession session = request.getSession(true); 
-            User user=new User(email);
             session.setAttribute("user", email);
             JSONObject details=userDetails(email);
             session.setAttribute("details", details);
