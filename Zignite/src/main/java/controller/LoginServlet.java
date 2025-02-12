@@ -46,6 +46,7 @@ public class LoginServlet extends HttpServlet {
             sessionCookie.setMaxAge(60 * 60 * 24); 
             detailsCookie.setPath("/");
             detailsCookie.setMaxAge(60 * 60 * 24);
+            //hi
             response.setContentType("application/json");
             response.addCookie(sessionCookie);
             response.addCookie(detailsCookie);
