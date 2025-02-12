@@ -57,7 +57,7 @@ public class LoginServlet extends HttpServlet {
             out.flush();
         }
     }
-    private boolean validateUser(String email, String password) {
+    private boolean validateUser(String email, String password) throws SQLException {
     	try(Connection cn=Database.getConnection()){
     		String sql="select User_Id,Role_Id from Users where Email=? and Password=?";
     		PreparedStatement st=cn.prepareStatement(sql);
@@ -72,7 +72,7 @@ public class LoginServlet extends HttpServlet {
     		}
     }
 }
-    private JSONObject userDetails(String email) {
+    private JSONObject userDetails(String email) throws SQLException {
     	try(Connection cn=Database.getConnection()){
     		JSONArray jsonArray=new JSONArray();
     		String sql="select c.Course_Name,usp.XP,usp.StreakCount,usp.Levels_Completed from Users us inner join User_Progress usp on us.User_Id=usp.User_Id inner join Course c on c.Course_Id=usp.Course_Id where us.Email=?";
