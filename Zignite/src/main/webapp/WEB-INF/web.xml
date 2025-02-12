@@ -8,9 +8,20 @@
 		<servlet-name>LogIn</servlet-name>
 		<servlet-class>Signins.LogIn</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>SignUp</display-name>
+		<servlet-name>SignUp</servlet-name>
+		<servlet-class>controller.SignUp</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>LogIn</servlet-name>
 		<url-pattern>/LogIn</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SignUp</servlet-name>
+		<url-pattern>/SignUp</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

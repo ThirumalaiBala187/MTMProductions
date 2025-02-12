@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -36,6 +36,7 @@ public class LoginServlet extends HttpServlet {
         if (isValidUser) {
         	
             HttpSession session = request.getSession(true); 
+            User user=new User(email);
             session.setAttribute("user", email);
             JSONObject details=userDetails(email);
             session.setAttribute("details", details);
