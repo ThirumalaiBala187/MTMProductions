@@ -46,9 +46,9 @@ public class LoginServlet extends HttpServlet {
             out.flush();
         }
     }
-    private boolean validateUser(String email, String password) {
+    private boolean validateUser(String email, String password){
     	try(Connection cn=Database.getConnection()){
-    		String sql="select user_id from users where username=? and password=?";
+    		String sql="select User_Id, from Users where Name=? and Password=?";
     		PreparedStatement st=cn.prepareStatement(sql);
     		st.setString(1, email);
     		st.setString(2, password);
