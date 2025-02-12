@@ -1,5 +1,5 @@
 
-import model.Database;
+import model.DAO.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
