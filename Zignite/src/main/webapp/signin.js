@@ -31,12 +31,22 @@ function signIn(){
 		})
     .then(data => {
         if (data.success) {
-            window.location.href = "https://muthueshwaran-8389.zcodeusers.in/Zignite_Learnings/userHome/userHome.html#";
+            window.location.href = "userHome.html";
         } else {
             alert("Invalid credentials. Please try again.");
         }
     })
     .catch(error => {
-        console.error('Error:', error);
+        console.log('Error:', error);
     });
 };
+
+function togglePasswordIcon(event){
+    if(passwordInput.type == "password"){
+        passwordInput.type = "text";
+    }
+    else{
+        passwordInput.type = "password";
+    }
+    event.stopPropogation();
+}

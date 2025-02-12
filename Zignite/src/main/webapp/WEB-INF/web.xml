@@ -4,9 +4,9 @@
 	<servlet>
 		<description>
 		</description>
-		<display-name>LogIn</display-name>
-		<servlet-name>LogIn</servlet-name>
-		<servlet-class>Signins.LogIn</servlet-class>
+		<display-name>LoginServlet</display-name>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>controller.LoginServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<description>
@@ -16,8 +16,8 @@
 		<servlet-class>controller.SignUp</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>LogIn</servlet-name>
-		<url-pattern>/LogIn</url-pattern>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/controller/LoginServlet</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>SignUp</servlet-name>
