@@ -21,9 +21,7 @@ import java.io.*;
 
 
 public class LoginServlet extends HttpServlet {
-	    private static final long serialVersionUID = 1L;
-
-		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	        BufferedReader reader = new BufferedReader(new InputStreamReader(request.getInputStream()));
 	        StringBuilder sb = new StringBuilder();
 	        String line;
@@ -59,7 +57,7 @@ public class LoginServlet extends HttpServlet {
 	                response.setContentType("application/json");
 	                response.addCookie(sessionCookie);
 	                response.addCookie(detailsCookie);
-	                
+	                System.out.println(encodedDetails);
 	                jsonResponse.put("success", true);
 	                PrintWriter out = response.getWriter();
 	                out.write(jsonResponse.toString());
@@ -109,10 +107,7 @@ public class LoginServlet extends HttpServlet {
 	            return userDetails;
 	        }
 	    }
-}
-
-    
+	}
 
 
 
- 
