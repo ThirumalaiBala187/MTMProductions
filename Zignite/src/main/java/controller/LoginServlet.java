@@ -21,7 +21,9 @@ import java.io.*;
 
 
 public class LoginServlet extends HttpServlet {
-	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    private static final long serialVersionUID = 1L;
+
+		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	        BufferedReader reader = new BufferedReader(new InputStreamReader(request.getInputStream()));
 	        StringBuilder sb = new StringBuilder();
 	        String line;
