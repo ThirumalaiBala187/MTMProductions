@@ -97,7 +97,7 @@ public class Signup extends HttpServlet {
 //		} catch (Exception e) {
 			//System.out.println(e.getMessage());
 //		}  
-	        
+	        //hi
 	}
 	private static void add_in_db(String email, String password, String firstName, String lastName, String dob) {
 		try {
