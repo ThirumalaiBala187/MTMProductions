@@ -9,6 +9,13 @@
 		<servlet-name>SignUp</servlet-name>
 		<servlet-class>SignUp</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>Signup</display-name>
+		<servlet-name>Signup</servlet-name>
+		<servlet-class>controller.Signup</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>SignUp</servlet-name>
 		<url-pattern>/SignUp</url-pattern>
@@ -30,4 +37,8 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
-</web-app>
+</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Signup</servlet-name>
+		<url-pattern>/Signup</url-pattern>
+	</servlet-mapping></web-app>

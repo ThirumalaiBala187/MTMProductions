@@ -23,7 +23,6 @@ public class SignUp extends HttpServlet {
      */
     public SignUp() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -96,4 +95,5 @@ public class SignUp extends HttpServlet {
         }
 		doGet(request, response);
 	}
+	
 }
