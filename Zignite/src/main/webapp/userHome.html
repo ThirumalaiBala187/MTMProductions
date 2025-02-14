@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZIGNITE</title>
+    <link rel="stylesheet" href="userHomestyle.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <span >
+                <img class="brand-name" src="ProjectLogo.png" alt="">
+            </span>
+
+        </div>
+        <nav class="header-nav">
+            <a href="#">Home</a>
+            <a href="#">Courses</a>
+            <a href="#">Tutorials</a>
+            <a href="#">Forums</a>
+            <a href="#">About</a>
+            <div class="streak">Streak: 5 Days</div>
+        </nav>
+    </header>
+
+    <div class="main-layout">
+        <div class="sidebar">
+            <h2>Contents:</h2>
+            <ul>
+                <li><a href="#">HTML Basics</a></li>
+                <li><a href="#">CSS Basics</a></li>
+                <li><a href="#">JavaScript Basics</a></li>
+            </ul>
+        </div>
+        <!-- <div style="width: 4vw"></div> -->
+        <main class="main-content">
+            <div class="grid-container">
+                <div class="card learning-progress">
+                    <div class="card-header">
+                        <h2 class="card-title">Learning Progress</h2>
+                    </div>
+                    <!-- <div class="progress-container">
+                        <div class="progress-header">
+                            <span class="progress-label">Machine Learning</span>
+                            <span class="progress-value">78%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill progress-fill-1"></div>
+                        </div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-header">
+                            <span class="progress-label">Data Structures</span>
+                            <span class="progress-value">65%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill progress-fill-2"></div>
+                        </div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-header">
+                            <span class="progress-label">System Design</span>
+                            <span class="progress-value">92%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill progress-fill-3"></div>
+                        </div>
+                    </div> -->
+                </div>
+
+                <div class="card analytics-card">
+                    <h2 class="card-title">Analytics</h2>
+                    <br>
+                    <div class="stat-container">
+                        <div class="stat-value"> 9</div>
+                        <div class="stat-label">Study Hours</div>
+                    </div>
+                    <div class="stat-container">
+                        <div class="stat-value">15</div>
+                        <div class="stat-label">Certificates</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-icon icon-1">🎯</div>
+                    <div class="course-content">
+                        <h3 class="course-title">Advanced AI</h3>
+                        <div class="course-progress">
+                            <div class="course-progress-fill"></div>
+                        </div>
+                        <div class="course-meta">
+                            <span class="modules-left">12 modules left</span>
+                            <button class="continue-btn">Continue</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-icon icon-2">🧠</div>
+                    <div class="course-content">
+                        <h3 class="course-title">Neural Networks</h3>
+                        <div class="course-progress">
+                            <div class="course-progress-fill"></div>
+                        </div>
+                        <div class="course-meta">
+                            <span class="modules-left">12 modules left</span>
+                            <button class="continue-btn">Continue</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-icon icon-3">📊</div>
+                    <div class="course-content">
+                        <h3 class="course-title">Data Analysis</h3>
+                        <div class="course-progress">
+                            <div class="course-progress-fill"></div>
+                        </div>
+                        <div class="course-meta">
+                            <span class="modules-left">12 modules left</span>
+                            <button class="continue-btn">Continue</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-icon icon-4">🔍</div>
+                    <div class="course-content">
+                        <h3 class="course-title">Deep Learning</h3>
+                        <div class="course-progress">
+                            <div class="course-progress-fill"></div>
+                        </div>
+                        <div class="course-meta">
+                            <span class="modules-left">12 modules left</span>
+                            <button class="continue-btn">Continue</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="ai-sidebar">
+            <div class="ai-container">
+                <div class="ai-header">
+                    <h2 class="card-title">AI Assistant</h2>
+                    <div class="logo">
+                    </div>
+                </div>
+                <div class="ai-messages">
+                    <div class="message bot-message">
+                        <div>Ready to help with your learning journey!</div>
+                    </div>
+                    <div class="message user-message">
+                        Help me with Machine Learning concepts
+                    </div>
+                    <div class="message bot-message">
+                        <div>Let's dive into Neural Networks next!</div>
+                    </div>
+                </div>
+                <div class="input-container">
+                    <input type="text" class="chat-input" placeholder="Ask anything...">
+                    <button class="send-button">Send</button>
+                </div>
+            </div>
+        </div>
+
+ <!-- /////////////CHATBOT -->
+  <div class="chatbot-button" id="chatbotButton">Chatbot</div>
+  <div class="chatbot-container" id="chatbotContainer">
+    <div class="chatbot-header">
+      <h3>Chatbot</h3>
+    </div>
+    <div class="chatbot-messages" id="chatbotMessages">
+      <p><strong>Bot:</strong> How can I help you?</p>
+    </div>
+    <div class="chatbot-input">
+      <input type="text" id="chatbotInput" placeholder="Ask me anything..." />
+      <button id="chatbotSendButton">Send</button>
+    </div>
+  </div>
+  
+  <script>
+
+    const chatbotButton = document.getElementById('chatbotButton');
+    const chatbotContainer = document.getElementById('chatbotContainer');
+  
+    chatbotButton.addEventListener('click', () => {
+      if (chatbotContainer.style.display === 'block') {
+        chatbotContainer.style.animation = 'fadeOut 0.5s ease-out';
+        setTimeout(() => {
+          chatbotContainer.style.display = 'none';
+        }, 500);
+      } else {
+        chatbotContainer.style.display = 'block';
+        chatbotContainer.style.animation = 'slideUp 0.5s ease-in-out';
+      }
+    });
+  
+
+    const chatbotSendButton = document.getElementById('chatbotSendButton');
+    chatbotSendButton.addEventListener('click', () => {
+      const input = document.getElementById('chatbotInput');
+      const message = input.value.trim();
+      if (message) {
+        const messagesContainer = document.getElementById('chatbotMessages');
+        const messageDiv = document.createElement('div');
+        messageDiv.innerHTML = `<p><strong>You:</strong> ${message}</p>`;
+        messagesContainer.appendChild(messageDiv);
+        input.value = '';
+      }
+    });
+  </script>
+    </div>
+    <script src="userHome.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.whole{
+    background-color: #EFFDFB;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+.content{
+    font-family: "Fjalla One", serif;
+    height:50%;
+    width:30%;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly; 
+    font-size: 30px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.detailsBox{
+    height: 60px;
+    width: 80%;
+    border-radius: 10px;
+    border: 2px solid darkgray;
+    font-size: 18px;
+    padding-left: 10px;
+    background-color: rgb(253, 253, 253);
+}
+
+.detailsBox:focus{
+    border: 2px solid black;
+    outline: none;
+    font-size: 18px;
+    padding: 0px 10px;
+}
+
+.detailsBox.active{
+    border: 2px solid black;
+}
+
+.inputBox{
+    height: 56px;
+    width: 90%;
+    border-radius: 10px;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: rgb(253, 253, 253);
+}
+
+.icon{
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+#continueBtn{
+    font-family: "Fjalla One", serif;
+    height: 60px;
+    width: 80%;
+    background-color: black;
+    border-radius: 30px;
+    font-size: 22px;
+    color: white;
+}
+.leftImage{
+    height: 100%;
+    width: 60%;
+    background-color: black;
+}
+.rightColumn{
+    height: 100%;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+}
+.loginBox{
+    height: 35%;
+    width:70%;
+    font-family: "Fjalla One", serif;
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;  
+}
