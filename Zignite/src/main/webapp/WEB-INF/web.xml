@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 	<display-name>Zignite</display-name>
+	<filter>
+		<description>
+		</description>
+		<display-name>AuthFilter</display-name>
+		<filter-name>AuthFilter</filter-name>
+		<filter-class>controller.AuthFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>AuthFilter</filter-name>
+		<url-pattern>/AuthFilter</url-pattern>
+	</filter-mapping>
 	<servlet>
 		<description>
 		</description>
@@ -15,6 +26,13 @@
 		<servlet-name>SignUp</servlet-name>
 		<servlet-class>controller.SignUp</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>LogoutServlet</display-name>
+		<servlet-name>LogoutServlet</servlet-name>
+		<servlet-class>controller.LogoutServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>LoginServlet</servlet-name>
 		<url-pattern>/controller/LoginServlet</url-pattern>
@@ -22,6 +40,10 @@
 	<servlet-mapping>
 		<servlet-name>SignUp</servlet-name>
 		<url-pattern>/SignUp</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LogoutServlet</servlet-name>
+		<url-pattern>/LogoutServlet</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
