@@ -4,7 +4,7 @@ function changeTab(selectedTab){
     });
     selectedTab.classList.add("active");
 }
-
+//Course 
 fetch("controller/CourseServlet")
   .then(response => response.json())
   .then(data => {
