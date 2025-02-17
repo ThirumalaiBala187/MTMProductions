@@ -1,6 +1,5 @@
 package controller;
 
-import java.awt.Checkbox;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,6 +7,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
-
 import model.DAO.Database;
 
 /**
@@ -51,6 +50,7 @@ public class Signup extends HttpServlet {
 //	        firstName: ufirstName,
 //	        lastName: ulastName,
 //	        dob: udob
+	
 //	    };
 
 	/**
@@ -87,6 +87,7 @@ public class Signup extends HttpServlet {
 	              PrintWriter out = response.getWriter();
 	              out.write(jsonResponse.toString());
 	              Signup.add_in_db(email,password,firstName,lastName,dob);
+	              Signup.course_Intialization(email);
 	          }
 	          else {
 	              jsonResponse.put("failed", false);
@@ -99,6 +100,49 @@ public class Signup extends HttpServlet {
 //		}  
 	      
 	}
+	private static void course_Intialization(String email) {
+		int user_id = 0;
+		try {
+			String query = "select User_Id,Email from Users;";
+			PreparedStatement stmt = (PreparedStatement) Database.getConnection().prepareStatement(query);
+			ResultSet result = ((java.sql.Statement) stmt).executeQuery(query);
+			while (result.next()) {
+				int id = result.getInt(1);
+				String email1 = result.getString(2);
+					if (email1 == email) {
+						user_id = id;
+					}
+					break;
+				}
+			}
+			catch (Exception e) {
+				System.out.println("mysql syntax error");
+				e.printStackTrace();
+			}
+		if (user_id != 0) {
+			try {
+				Connection con=Database.getConnection();
+				String query = "insert into User_Progress (Levels_Completed,StreakCount,XP,User_Id,Course_Id) values(0,0,0,1,1);";
+				PreparedStatement stmt = con.prepareStatement(query);
+				
+				stmt.setInt(1, 0);
+				stmt.setInt(2, 0);
+				stmt.setInt(3, 0);
+				stmt.setInt(4, user_id);
+				stmt.setInt(5, 1);
+				
+				int resultSet = stmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		else {
+			System.out.println("email is not exsist");
+		}
+		
+	}
+
 	private static void add_in_db(String email, String password, String firstName, String lastName, String dob) {
 		try {
 			Connection con=Database.getConnection();
@@ -118,16 +162,32 @@ public class Signup extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+	
+	
 
 	private boolean validation(String email, String password, String firstName) {
 		boolean check = false;
 			if (email.contains("@gmail.com") && password.length() > 8 && !firstName.isEmpty()) {
 				check = true;
-			}
+				try {
+					String query = "select Email from Users;";
+					PreparedStatement stmt = (PreparedStatement) Database.getConnection().prepareStatement(query);
+					ResultSet result = ((java.sql.Statement) stmt).executeQuery(query);
+					while (result.next()) {
+						String email1 = result.getString(1);
+						if (email == email1) {
+							check = false;
+							break;
+						}
+					}
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+		}	
 		return check;
 	}
 }
-	
 	
 	
 	

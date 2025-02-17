@@ -15,8 +15,6 @@
 	<servlet>
 		<description>
 		</description>
-<<<<<<< HEAD
-<<<<<<< HEAD
 		<display-name>SignUp</display-name>
 		<servlet-name>SignUp</servlet-name>
 		<servlet-class>SignUp</servlet-class>
@@ -31,11 +29,9 @@
 	<servlet-mapping>
 		<servlet-name>SignUp</servlet-name>
 		<url-pattern>/SignUp</url-pattern>
-=======
 		<display-name>LogIn</display-name>
 		<servlet-name>LogIn</servlet-name>
 		<servlet-class>Signins.LogIn</servlet-class>
-=======
 		<display-name>LoginServlet</display-name>
 		<servlet-name>LoginServlet</servlet-name>
 		<servlet-class>controller.LoginServlet</servlet-class>
