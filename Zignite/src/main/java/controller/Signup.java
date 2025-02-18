@@ -28,7 +28,7 @@ import model.DAO.Database;
 public class Signup extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /* 
+    /**
      * @see HttpServlet#HttpServlet()
      */
     public Signup() {
