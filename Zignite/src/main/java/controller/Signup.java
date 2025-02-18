@@ -163,7 +163,6 @@ public class Signup extends HttpServlet {
 	}
 	
 	
-
 	private boolean validation(String email, String password, String firstName) {
 		boolean check = false;
 			if (email.contains("@gmail.com") && password.length() > 8 && !firstName.isEmpty()) {
