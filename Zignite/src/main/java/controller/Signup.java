@@ -93,7 +93,7 @@ public class Signup extends HttpServlet {
 	              PrintWriter out = response.getWriter();
 	              out.print(jsonResponse.toString());
 	              out.flush();
-	          }
+	          }//hello
 //		} catch (Exception e) {
 			//System.out.println(e.getMessage());
 //		}  
