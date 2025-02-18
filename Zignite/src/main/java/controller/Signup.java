@@ -110,8 +110,8 @@ public class Signup extends HttpServlet {
 				String email1 = result.getString(2);
 					if (email1 == email) {
 						user_id = id;
+						break;
 					}
-					break;
 				}
 			}
 			catch (Exception e) {
