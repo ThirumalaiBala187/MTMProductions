@@ -36,9 +36,10 @@ function signIn(){
             alert("Invalid credentials. Please try again.");
       }
     })
-    .catch(error => {
-        console.log('Error:', error);
-    });
+	.catch(error => {
+	    console.log('Error:', error);
+	    alert("An error occurred while logging in. Please try again later.");
+	});
 };
 
 function togglePasswordIcon(event){
@@ -48,5 +49,5 @@ function togglePasswordIcon(event){
     else{
         passwordInput.type = "password";
     }
-    event.stopPropogation();
+    event.stopPropagation();
 }

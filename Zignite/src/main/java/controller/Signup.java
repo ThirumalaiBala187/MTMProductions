@@ -1,6 +1,6 @@
 package controller;
 
-import java.io.BufferedReader;
+import java.io.BufferedReader;	
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -28,7 +28,7 @@ import model.DAO.Database;
 public class Signup extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
+    /* 
      * @see HttpServlet#HttpServlet()
      */
     public Signup() {
@@ -50,7 +50,6 @@ public class Signup extends HttpServlet {
 //	        firstName: ufirstName,
 //	        lastName: ulastName,
 //	        dob: udob
-	
 //	    };
 
 	/**
