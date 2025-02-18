@@ -45,9 +45,11 @@ public class LoginServlet extends HttpServlet {
             }
 
             String role = validateUser(email, password);
-            boolean isValidUser = role != null;
+                       boolean isValidUser = role != null;
 
             if (isValidUser) {
+            	 String uSname=userName(email, password);
+
                 HttpSession session = request.getSession(true);
                 session.setAttribute("user", email);
                 session.setAttribute("role", role);
@@ -55,18 +57,23 @@ public class LoginServlet extends HttpServlet {
                 JSONObject details = userDetails(email);
                 session.setAttribute("details", details);
 
-                // Create session cookies
+        
                 Cookie sessionCookie = new Cookie("JSESSIONID", session.getId());
                 Cookie detailsCookie = new Cookie("DETAILS",
                         Base64.getEncoder().encodeToString(details.toString().getBytes(StandardCharsets.UTF_8)));
+                System.out.println(uSname);
+                Cookie name=new Cookie("name",uSname);
 
                 sessionCookie.setPath("/");
                 sessionCookie.setMaxAge(60 * 60 * 24);
+                name.setPath("/");
+                name.setMaxAge(60 * 60 * 24);
                 detailsCookie.setPath("/");
                 detailsCookie.setMaxAge(60 * 60 * 24);
 
                 response.addCookie(sessionCookie);
                 response.addCookie(detailsCookie);
+                response.addCookie(name);
 
                 jsonResponse.put("success", true);
                 jsonResponse.put("role", role);
@@ -102,23 +109,32 @@ public class LoginServlet extends HttpServlet {
             }
         }
     }
+    private String userName(String email, String password) throws SQLException {
+        try (Connection cn = Database.getConnection()) {
+            String sql = "SELECT Name FROM Users WHERE Email = ? AND Password = ?";
+            try (PreparedStatement st = cn.prepareStatement(sql)) {
+                st.setString(1, email);
+                st.setString(2, password);
+                try (ResultSet rs = st.executeQuery()) {
+                    return rs.next() ? rs.getString("Name") : null;
+                }
+            }
+        }
+    }
 
     private JSONObject userDetails(String email) throws SQLException {
         JSONObject userDetails = new JSONObject();
         JSONArray coursesArray = new JSONArray();
 
         try (Connection cn = Database.getConnection()) {
-            String sql = "SELECT c.Course_Name, usp.XP, usp.StreakCount, usp.Levels_Completed " +
-                    "FROM Users us " +
-                    "INNER JOIN User_Progress usp ON us.User_Id = usp.User_Id " +
-                    "INNER JOIN Course c ON c.Course_Id = usp.Course_Id " +
-                    "WHERE us.Email = ?";
+            String sql = "SELECT c.Course_Name,cl.LevelName, usp.XP, usp.StreakCount, usp.Levels_Completed FROM Users us INNER JOIN User_Progress usp ON us.User_Id = usp.User_Id INNER JOIN Course c ON c.Course_Id = usp.Course_Id Inner Join Course_Levels cl on c.Course_Id=cl.Course_Id and usp.Levels_Completed+1=cl.Level_Id WHERE us.Email =  ?";
             try (PreparedStatement st = cn.prepareStatement(sql)) {
                 st.setString(1, email);
                 try (ResultSet rs = st.executeQuery()) {
                     while (rs.next()) {
                         JSONObject courseObj = new JSONObject();
                         courseObj.put("course_name", rs.getString("Course_Name"));
+                        courseObj.put("level_name", rs.getString("LevelName"));
                         courseObj.put("xp", rs.getInt("XP"));
                         courseObj.put("streakcount", rs.getInt("StreakCount"));
                         courseObj.put("levels_completed", rs.getInt("Levels_Completed"));
@@ -132,5 +148,4 @@ public class LoginServlet extends HttpServlet {
         return userDetails;
     }
 }
-
 

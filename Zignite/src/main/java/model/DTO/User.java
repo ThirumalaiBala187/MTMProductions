@@ -30,13 +30,19 @@ public class User{
 
 	String userName;
 	String email;
-	int role_id;
+	public int role_id;
 	
-	public User(int userId, String userName, String email, int role_id) {
-		UserId = userId;
+	public int getRole_id() {
+		return role_id;
+	}
+
+	public void setRole_id(int role_id) {
+		this.role_id = role_id;
+	}
+
+	public User(int role_id,String userName ) {
 		this.userName = userName;
-		this.email = email;
-		this.role_id = 2;
+		this.role_id = role_id;
 	}
 	
 	

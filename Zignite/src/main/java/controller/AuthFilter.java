@@ -5,9 +5,13 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 public class AuthFilter implements Filter {
-    
-    public void init(FilterConfig filterConfig) throws ServletException {
 
+    private static final String[] EXCLUDED_PATHS = {
+        "index.html", "/LoginServlet", "signup.html", "/LogoutServlet",
+        ".css", ".js", ".png", ".jpg", ".jpeg", ".gif","/SignupServlet","allCourses.html"
+    };
+
+    public void init(FilterConfig filterConfig) throws ServletException {
     }
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -18,43 +22,39 @@ public class AuthFilter implements Filter {
         HttpSession session = req.getSession(false);
         String requestURI = req.getRequestURI();
 
-        if (requestURI.endsWith("index.html") || 
-            requestURI.contains("/LoginServlet") || 
-            requestURI.contains("/SignUp") || 
-            requestURI.contains("/LogoutServlet") || 
-            requestURI.endsWith(".css") || 
-            requestURI.endsWith(".js") || 
-            requestURI.endsWith(".png") || 
-            requestURI.endsWith(".jpg") || 
-            requestURI.endsWith(".jpeg") || 
-            requestURI.endsWith(".gif")) {
-            chain.doFilter(request, response);
-            return;
+
+        for (String path : EXCLUDED_PATHS) {
+            if (requestURI.contains(path)) {
+                chain.doFilter(request, response);
+                return;
+            }
         }
+
+//        System.out.println(session);
+//
+//        if (session == null || session.getAttribute("user") == null) {
+//            System.out.println("Redirecting to index.html...");
+//            res.sendRedirect("index.html");
+//            return;
+//        }
 
  
-        if (session == null || session.getAttribute("user") == null) {
-            System.out.println("Redirecting to index.html...");
-            res.sendRedirect("index.html");
+        /*
+        String role = (String) session.getAttribute("role");
+        if (requestURI.contains("/Admin") && !"Admin".equals(role)) {
+            res.getWriter().write("Access Denied: Admins only");
             return;
         }
-
-  
-//        String role = (String) session.getAttribute("role");
-//        if (requestURI.contains("/Admin") && !"Admin".equals(role)) {
-//            res.getWriter().write("Access Denied: Admins only");
-//            return;
-//        }
-//        if (requestURI.contains("/Customer") && !"Customer".equals(role) && !"Admin".equals(role)) {
-//            res.getWriter().write("Access Denied: Users only");
-//            return;
-//        }
+        if (requestURI.contains("/Customer") && !"Customer".equals(role) && !"Admin".equals(role)) {
+            res.getWriter().write("Access Denied: Users only");
+            return;
+        }
+        */
 
         chain.doFilter(request, response);
     }
 
     public void destroy() {
-       
     }
 }
 
