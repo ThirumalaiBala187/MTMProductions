@@ -53,13 +53,18 @@ fetch("controller/CourseServlet")
 		let innerDiv4 = document.createElement("div");
 		innerDiv4.classList.add("preview");
 		
-		let inner4 = document.createElement("div");
-        inner4.classList.add("money");
-        inner4.innerText = "🤖";
-        innerDiv4.appendChild(inner4);
+		//let inner4 = document.createElement("div");
+        //inner4.classList.add("money");
+        //inner4.innerText = "🤖";
+        //innerDiv4.appendChild(inner4);
 
         let inner5 = document.createElement("div");
         inner5.classList.add("pre");
+		if(course.name=="Introduction To Python"){
+			inner5.addEventListener('click',()=>{
+				window.location.href="levels.html"
+			})
+		}
         inner5.innerText = "Preview"
         innerDiv4.appendChild(inner5);
 		courseInfo.appendChild(innerDiv4);

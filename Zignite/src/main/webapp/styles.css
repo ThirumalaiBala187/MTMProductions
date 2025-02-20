@@ -1,0 +1,224 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding:0;
+    overflow-x: hidden;
+    scrollbar-width: 10px;
+}
+::-webkit-scrollbar{
+    width: 5px;
+    background-color: rgb(107, 106, 106);
+}
+a{
+    display: inline-block;
+    text-decoration: none;
+    transition: transform 0.25s ease-in;
+}
+a:hover{
+    transform: scale(1.02);
+    filter: brightness(85%);
+}
+.whole{
+    width:100vw;
+    height:100vh;
+}
+.header{
+    width:100%;
+    height:10%;
+    display: flex;
+    justify-content: space-between;
+}
+.logoImage{
+    margin-left: 5%;
+    margin-top: 10px;
+    height:90%;
+    width: 20%;
+}
+.headerInner{
+    height: 100%;
+    width:40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.icons{
+    height:30px;
+    width: 25px;
+    filter: invert(100%) brightness(30%);
+    transition: transform 0.25s ease-in;
+}
+.icons:hover{
+    transform: scale(1.1);
+    filter: invert(100%) brightness(10%);
+}
+
+.signIn{
+    height: 40%;
+    width: 20%;
+    background: linear-gradient(to right, #1ee9d1, #14B8A6);
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Fjalla One", serif;
+    font-size: 20px;
+    color: rgb(56, 55, 55);
+    border: 2px solid rgb(175, 174, 174);
+    flex-shrink: 0;
+    min-width: 150px;
+    min-height: 55px;
+}
+
+.content1{
+    font-family: "Barlow Condensed", serif;
+    height: 160%;
+    width: 100%;
+    padding: 0% 10% 0% 10%;
+    background-color: #EFFDFB;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: rgb(128, 122, 122);
+    font-size : 36px;
+    line-height: 60px;
+    justify-content: space-evenly;
+}
+.title{
+    font-family: "Fjalla One", serif;
+    font-size: 80px;
+    line-height: 120px;
+    color: black;
+    text-align: center;
+}
+.options{
+    height: 5%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0% 1%;
+}
+
+.optionsInner{
+    height: 70px;
+    width: 190px;
+    background: linear-gradient(to right, #1ee9d1, #14B8A6);
+    border: 2px solid #14B8A6;
+    border-radius: 10px;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    line-height: 66px;
+}
+.features{
+    height: 25%;
+    width: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.featuresInner{
+    height: 45%;
+    width: 45%;
+    background-color: #FFFFFF;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: black;
+    font-size: 28px;
+    padding-left: 2.5%;
+    font-weight: 550;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+.para{
+    font-weight: normal;
+    font-size: 20px;
+    color: black;
+    font-family: sans-serif;
+    line-height: 30px;
+}
+.content2{
+    font-family: "Fjalla One", serif;
+    height: 60%;
+    width: 100%;
+    background-color: white;
+    font-size: 50px;
+    font-weight: 550;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.content2Inner{
+    height: 50%;
+    width: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.content2InnerFeatures{
+    font-family: "Barlow Condensed", serif;
+    font-size: 28px;
+    font-weight: 550;
+    height: 80%;
+    width: 30%;
+    padding:2%;
+    text-align:center;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #EFFDFB;
+}
+.content3{
+    font-family: "Fjalla One", serif;
+    height: 35%;
+    width: 100%;
+    background: linear-gradient(to right, #13B8A8, #07B6D2);
+    font-size: 50px;
+    font-weight: 550;
+    padding: 2% 20% 2% 20%;
+    display: flex;
+    flex-wrap:wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.content3Inner{
+    height:40%;
+    width:35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    font-family: "Barlow Condensed", serif;
+    font-size: 50px;
+    font-weight: 550;
+    color:white;
+}
+.content4{
+    height:60%;
+    width:100%;
+    background-color: #1F2937;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.content4Inner{
+    height: 45%;
+    width:40%;
+    padding: 3% 0% 0% 3%;
+    line-height: 40px;
+}
+.footer{
+    font-weight: normal;
+    font-size: 20px;
+    color: rgb(223, 221, 221);
+    font-family: sans-serif;
+    line-height: 45px;
+}

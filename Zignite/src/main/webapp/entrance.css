@@ -1,0 +1,151 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #EFFDFB;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#progress{
+    height: 10px;
+    width: 50%;
+    background-color: #ddd;
+    position: fixed;
+    border-radius: 10px;
+    top: 50px;
+}
+
+#videoBox{
+    margin-top: 150px;
+    height:70vh;
+    width: 50vw;
+    border: 3px solid #0e8b7e;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#progressBar{
+    height: 100%;
+    width: 10%;
+    border-radius: 10px;
+    background-color: #14B8A6;
+    transition: width 0.5s ease-in;
+}
+#questionBox{
+    font-family: "Fjalla One", serif;
+    display: none;
+    margin-top: 150px;
+    height:70vh;
+    width:50vw;
+    padding: 60px;
+    text-align: center;
+    border: 3px solid #0e8b7e;
+    border-radius: 10px;
+    font-size: 40px;
+    font-weight: 550px;
+
+}
+#videoContinueBtn, #continueBtn{
+    font-family: "Fjalla One", serif;
+    height: 70px;
+    width: 300px;
+    background-color: black;
+    border-radius: 20px;
+    font-size: 30px;
+    color: white;
+}
+.options{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 75px;
+    margin: 45px 0px;
+    font-family: "Barlow Condensed", serif;
+    font-weight: 500;
+    padding: 15px;
+    border: 2px solid #0e8b7e;
+    border-radius: 10px;
+    cursor: pointer;
+    transition : 0.3s ;
+    text-align: left;
+    font-size: 26px;
+}
+.options:hover{
+    background-color: #26f5dd;
+}
+.options .selected{
+    background: linear-gradient(to right, #1ee9d1, #14B8A6); 
+}
+
+
+#alertOverlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+#alertBox{
+    font-family: "Fjalla One", serif;
+    letter-spacing: 1px;
+    background: white;
+    padding: 20px;
+    width: 500px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    position: relative;
+    animation: fadeIn 0.3s ease-in;
+    font-size: 20px;
+}
+
+#alertTitle{
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+#alertClose{
+    font-family: "Fjalla One", serif;
+    background: #06c9b2;
+    color: white;
+    cursor: pointer;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-top: 25px;
+    font-size: 20px;
+    width: 125px;
+    font-weight: bold;
+}
+
+#alertClose:hover {
+     background: linear-gradient(to right, #14B8A6, #0e8b7e);
+}
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+}

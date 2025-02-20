@@ -134,6 +134,7 @@ public class LoginServlet extends HttpServlet {
                     while (rs.next()) {
                         JSONObject courseObj = new JSONObject();
                         courseObj.put("course_name", rs.getString("Course_Name"));
+                        System.out.println( rs.getString("Course_Name"));
                         courseObj.put("level_name", rs.getString("LevelName"));
                         courseObj.put("xp", rs.getInt("XP"));
                         courseObj.put("streakcount", rs.getInt("StreakCount"));

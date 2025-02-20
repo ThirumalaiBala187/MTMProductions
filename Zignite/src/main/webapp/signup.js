@@ -28,7 +28,7 @@ async function signUp() {
     var ufirstName = document.getElementById("firstName").value;
     var ulastName = document.getElementById("lastName").value;
     var udob = document.getElementById("dob").value;
-    console.log("user input:", uemail, ufirstName, ulastName, udob, upassword);
+  //  console.log("user input:", uemail, ufirstName, ulastName, udob, upassword);
 
     var userData = {
         email: uemail,
@@ -37,7 +37,6 @@ async function signUp() {
         lastName: ulastName,
         dob: udob
     };
-
     try {
         const response = await fetch("controller/SignupServlet", {
             method: "POST",
