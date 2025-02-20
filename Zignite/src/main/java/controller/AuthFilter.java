@@ -7,7 +7,7 @@ import javax.servlet.http.*;
 public class AuthFilter implements Filter {
 
     private static final String[] EXCLUDED_PATHS = {
-        "index.html", "/LoginServlet", "signup.html", "/LogoutServlet",
+        "signin.html", "/LoginServlet", "signup.html", "/LogoutServlet",
         ".css", ".js", ".png", ".jpg", ".jpeg", ".gif","/SignupServlet","allCourses.html"
     };
 
@@ -32,11 +32,11 @@ public class AuthFilter implements Filter {
 
 //        System.out.println(session);
 //
-//        if (session == null || session.getAttribute("user") == null) {
-//            System.out.println("Redirecting to index.html...");
-//            res.sendRedirect("index.html");
-//            return;
-//        }
+        if (session == null || session.getAttribute("user") == null) {
+            System.out.println("Redirecting to index.html...");
+            res.sendRedirect("signin.html");
+            return;
+        }
 
  
         /*
