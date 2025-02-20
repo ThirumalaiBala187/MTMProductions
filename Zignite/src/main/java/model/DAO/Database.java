@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class Database{
 	private static final String URL="jdbc:mysql://localhost:3306/Zignite_Learning_Platform";
 	private static final String USER="root";
-	private static final String PASSWORD="bala@2627";
+	private static final String PASSWORD="261226A";
 	private static Connection connection = null;
     static {
         try {
