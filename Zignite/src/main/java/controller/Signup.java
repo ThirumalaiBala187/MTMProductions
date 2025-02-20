@@ -71,7 +71,7 @@ public class Signup extends HttpServlet {
 	          String dob = jsonRequest.getString("dob");
 	          boolean Validation = validation(email, password,firstName);
 	          JSONObject jsonResponse = new JSONObject();
-	          
+	          // 
 	          if (Validation) {
 	        	  HttpSession session = request.getSession(true);
 	        	  String sessionId = session.getId();
