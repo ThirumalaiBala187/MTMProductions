@@ -1,4 +1,4 @@
-function signIn(){
+		function signIn(){
  //event.preventDefault();
 
     const email = document.getElementById('email').value;

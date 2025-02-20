@@ -8,7 +8,7 @@ public class AuthFilter implements Filter {
 
     private static final String[] EXCLUDED_PATHS = {
         "signin.html", "/LoginServlet", "signup.html", "/LogoutServlet",
-        ".css", ".js", ".png", ".jpg", ".jpeg", ".gif","/SignupServlet","allCourses.html"
+        ".css", ".js", ".png", ".jpg", ".jpeg", ".gif","/SignupServlet"
     };
 
     public void init(FilterConfig filterConfig) throws ServletException {

@@ -1,6 +1,9 @@
 
 
-
+const details = getCookie("DETAILS");
+console.log(details)
+var courses={};
+var courseCards={};
 
 function getCookie(name) {
     const value = `; ${document.cookie}`;
@@ -10,9 +13,7 @@ function getCookie(name) {
     }
     return null;
 }
-const details = getCookie("DETAILS");
-var courses={};
-var courseCards={};
+
 if (details) {
     const decodedDetails = atob(details);
     const parsedDetails = JSON.parse(decodedDetails); 
@@ -54,12 +55,15 @@ for (let course_name in courses) {
     `;
     prog_cont.appendChild(new_learn_prog);
 }
+
 var course_grid=document.getElementsByClassName('courses-grid')[0];
 var courses_ongoing=document.getElementsByClassName('stat-value')[0];
 var certificates=document.getElementsByClassName('stat-value')[1];
 let cert_count=0;
 let course_count=0;
+
 for(let course_name in courseCards){
+	console.log(course_name)
 	let course_percent = courseCards[course_name][1]; 
 	let level_name= courseCards[course_name][0];
 	let levelCount=courseCards[course_name][2];
@@ -89,6 +93,7 @@ for(let course_name in courseCards){
 courses_ongoing.innerText=course_count;
 certificates.innerText=cert_count;
 
+var username=(atob(getCookie("name")))
 document.getElementsByClassName("burger")[0].innerHTML = `
    <svg
      viewBox="0 0 24 24"
@@ -101,9 +106,9 @@ document.getElementsByClassName("burger")[0].innerHTML = `
        d="M12 2c2.757 0 5 2.243 5 5.001 0 2.756-2.243 5-5 5s-5-2.244-5-5c0-2.758 2.243-5.001 5-5.001zm0-2c-3.866 0-7 3.134-7 7.001 0 3.865 3.134 7 7 7s7-3.135 7-7c0-3.867-3.134-7.001-7-7.001zm6.369 13.353c-.497.498-1.057.931-1.658 1.302 2.872 1.874 4.378 5.083 4.972 7.346h-19.387c.572-2.29 2.058-5.503 4.973-7.358-.603-.374-1.162-.811-1.658-1.312-4.258 3.072-5.611 8.506-5.611 10.669h24c0-2.142-1.44-7.557-5.631-10.647z"
      ></path>
    </svg>
-   <span>  ${getCookie("name") || "Guest"}</span>
+   <span> ${username.slice(0,1).toLocaleUpperCase()+username.slice(1,3) || "Guest"}</span>
 `;
-console.log(getCookie("name"));
+
 
 function logout() {
        fetch('controller/LogoutServlet') 
@@ -116,6 +121,8 @@ function logout() {
                console.error('Error logging out:', error);
            });
    }
+   
+   document.getElementsByClassName("username")[0].innerText=username;
 ////
 const api_key="AIzaSyDXchtjhYmS5zHfhVrWAEMlGDwJQqZJkI4";
 const endpoint="";

@@ -62,7 +62,7 @@ public class LoginServlet extends HttpServlet {
                 Cookie detailsCookie = new Cookie("DETAILS",
                         Base64.getEncoder().encodeToString(details.toString().getBytes(StandardCharsets.UTF_8)));
                 System.out.println(uSname);
-                Cookie name=new Cookie("name",uSname);
+                Cookie name=new Cookie("name",Base64.getEncoder().encodeToString(uSname.toString().getBytes(StandardCharsets.UTF_8)));
 
                 sessionCookie.setPath("/");
                 sessionCookie.setMaxAge(60 * 60 * 24);

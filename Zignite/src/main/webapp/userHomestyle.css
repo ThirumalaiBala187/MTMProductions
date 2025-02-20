@@ -502,7 +502,7 @@
   --burger-bg: #00bf63;
   --burger-color: #333;
   --burger-line-border-radius: 0.1875em;
-  --burger-diameter: 3.125em;
+  --burger-diameter:4.5em;
   --burger-btn-border-radius: calc(var(--burger-diameter) / 2);
   --burger-line-transition: 0.3s;
   --burger-transition: all 0.1s ease-in-out;
