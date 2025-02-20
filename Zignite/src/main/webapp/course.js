@@ -65,6 +65,7 @@ fetch("controller/CourseServlet")
 				window.location.href="levels.html"
 			})
 		}
+		//hi
         inner5.innerText = "Preview"
         innerDiv4.appendChild(inner5);
 		courseInfo.appendChild(innerDiv4);
