@@ -5,6 +5,9 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
 
+body{
+	overflow-x:hidden;
+}
 .container{
     height: 100vh;
     width: 100vw;
@@ -221,6 +224,7 @@
     color: white;
     font-weight: 800;
     box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.39);
+     text-decoration: none;
 }
 
 .cimg{

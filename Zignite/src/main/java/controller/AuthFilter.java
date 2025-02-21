@@ -33,6 +33,7 @@ public class AuthFilter implements Filter {
 //        System.out.println(session);
 //
         if (session == null || session.getAttribute("user") == null) {
+        	res.setStatus(HttpServletResponse.SC_FORBIDDEN);
             System.out.println("Redirecting to index.html...");
             res.sendRedirect("signin.html");
             return;
