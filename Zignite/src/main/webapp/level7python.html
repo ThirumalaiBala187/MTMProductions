@@ -215,6 +215,47 @@
   transition: transform 0.3s, background 0.3s;
 }
 
+.alert-box {
+     position: fixed;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     background: white;
+     padding: 20px;
+     border-radius: 10px;
+     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+     text-align: center;
+     z-index: 1000;
+     width: 500px;
+     height: 125px;
+     color:black;
+ }
+ .alert-overlay {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: rgba(0, 0, 0, 0.5);
+     z-index: 999;
+     color:black;
+ }
+ .alert-btn {
+     margin: 10px;
+     padding: 10px 20px;
+     border: none;
+     cursor: pointer;
+     border-radius: 5px;
+ }
+ .yes-btn {
+     background: green;
+     color: white;
+ }
+ .no-btn {
+     background: red;
+     color: white;
+ }	
+
 .submit-btn:hover {
   transform: scale(1.05);
   background: #cc133c;
@@ -333,6 +374,7 @@
 <div class="container">
   <div class="header">
     <h1 class="title">PYTHON CYBER QUIZ</h1>
+    <img src="Xmark.jpeg" style="height:45px; width:45px;margin:40px;border-radius:10px" onclick="exit()">
     <div class="score-display">Score: <span id="score">0</span>/7</div>
   </div>
 
@@ -509,3 +551,63 @@ document.getElementById('quiz-form').addEventListener('submit', function(e) {
     feedback.textContent = "Perfect score! You're a"
 
   }})
+  
+  function exit(){
+	let overlay = document.createElement("div");
+    overlay.className = "alert-overlay";
+    document.body.appendChild(overlay);
+
+    let alertBox = document.createElement("div");
+    alertBox.className = "alert-box";
+    alertBox.innerHTML = "<p style='margin-bottom: 10px'>Are you sure you want to Exit the quiz?</p>";
+
+    let yesBtn = document.createElement("button");
+    yesBtn.className = "alert-btn yes-btn";
+    yesBtn.innerText = "Yes";
+    yesBtn.onclick = function () {
+		window.location.href="levels.html";
+        document.body.removeChild(alertBox);
+        document.body.removeChild(overlay);
+    };
+
+    let noBtn = document.createElement("button");
+    noBtn.className = "alert-btn no-btn";
+    noBtn.innerText = "No";
+    noBtn.onclick = function () {
+        document.body.removeChild(alertBox);
+        document.body.removeChild(overlay);
+    };
+
+    alertBox.appendChild(yesBtn);
+    alertBox.appendChild(noBtn);
+
+    document.body.appendChild(alertBox);
+	
+}
+  </script>
+  </body>
+  </html>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
