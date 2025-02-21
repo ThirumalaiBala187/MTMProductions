@@ -126,6 +126,10 @@ document.addEventListener("DOMContentLoaded", function () {
     updateSections();
 });
 
-function completeLevel(){
-    alert("You have Successfully completed this level.")
+var levelCount = localStorage.getItem("levelCount") ? parseInt(localStorage.getItem("levelCount")) : 1;
+
+function completeLevel() {
+    levelCount += 1;
+    localStorage.setItem("levelCount", levelCount);
+    window.location.href = `Level${levelCount}.html`;
 }
