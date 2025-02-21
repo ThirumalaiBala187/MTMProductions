@@ -50,7 +50,9 @@ public class LoginServlet extends HttpServlet {
 
             if (isValidUser) {
                 String userName = getUserName(email);
-
+                if (request.getSession(false) != null) {
+                    request.getSession().invalidate();
+                }
                 HttpSession session = request.getSession(true);
                 session.setAttribute("user", email);
                 session.setAttribute("role", role);
