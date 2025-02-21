@@ -94,6 +94,7 @@ courses_ongoing.innerText=course_count;
 certificates.innerText=cert_count;
 
 var username=(atob(getCookie("name")))
+console.log(username)
 document.getElementsByClassName("burger")[0].innerHTML = `
    <svg
      viewBox="0 0 24 24"

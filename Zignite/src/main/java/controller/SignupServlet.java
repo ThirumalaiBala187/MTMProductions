@@ -72,12 +72,12 @@ public class SignupServlet extends HttpServlet {
 //              session.setAttribute("details", details);
               String userName;
 			
-				userName = getUserName(email);
+//				userName = getUserName(email);
 			              
 //              Cookie detailsCookie = new Cookie("DETAILS",
 //                      Base64.getEncoder().encodeToString(details.toString().getBytes(StandardCharsets.UTF_8)));
               Cookie nameCookie = new Cookie("name",
-                      Base64.getEncoder().encodeToString(userName.getBytes(StandardCharsets.UTF_8)));
+                      Base64.getEncoder().encodeToString((firstName+" "+lastName).getBytes(StandardCharsets.UTF_8)));
               sessionCookie.setPath("/");
               sessionCookie.setMaxAge(60 * 60 * 24);
               nameCookie.setPath("/");
