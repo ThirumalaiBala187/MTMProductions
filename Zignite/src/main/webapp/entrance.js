@@ -25,15 +25,15 @@ const questions = [
     {
         text: "Are you comfortable with mathematics?",
         options: [
-            "🧮 Yes, I enjoy math",
-            "😅 I struggle with math",
+            "😅 Yes, I enjoy math",
+            "🧮 I struggle with math",
             "🤷 I’m okay with basic math"
         ]
     },
     {
         text: "What’s your end goal?",
         options: [
-            "🚀 Become a software developer",
+            "🧑🏻‍💻 Become a software developer",
             "🏢 Work in AI research & development",
             "📈 Build a successful business"
         ]
@@ -43,7 +43,7 @@ const questions = [
         options: [
             "⏳ Less than 2 hours per week",
             "⌛ 2-5 hours per week",
-            "🔥 More than 5 hours per week"
+            "⏳ More than 5 hours per week"
         ]
     }
 ];
@@ -119,3 +119,4 @@ function closeAlert(){
         window.location.href = alertRedirect;
     }
 }
+

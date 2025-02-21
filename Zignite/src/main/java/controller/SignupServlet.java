@@ -56,6 +56,7 @@ public class SignupServlet extends HttpServlet {
           JSONObject jsonResponse = new JSONObject();
 
           if (validation) {
+        	  try {
         	  HttpSession session = request.getSession(true);
         	  String sessionId = session.getId();
         	  session.setAttribute("user", email);
@@ -67,23 +68,27 @@ public class SignupServlet extends HttpServlet {
               sessionCookie1.setPath("/"); 
               sessionCookie1.setMaxAge(60 * 60 * 24); 
               ////////////
+//              JSONObject details = getUserDetails(email);
+//              session.setAttribute("details", details);
+              String userName;
+			
+				userName = getUserName(email);
+			              
 //              Cookie detailsCookie = new Cookie("DETAILS",
 //                      Base64.getEncoder().encodeToString(details.toString().getBytes(StandardCharsets.UTF_8)));
-//              Cookie nameCookie = new Cookie("name",
-//                      Base64.getEncoder().encodeToString(userName.getBytes(StandardCharsets.UTF_8)));
-//
-//              sessionCookie.setPath("/");
-//              sessionCookie.setMaxAge(60 * 60 * 24);
-//              nameCookie.setPath("/");
-//              nameCookie.setMaxAge(60 * 60 * 24);
+              Cookie nameCookie = new Cookie("name",
+                      Base64.getEncoder().encodeToString(userName.getBytes(StandardCharsets.UTF_8)));
+              sessionCookie.setPath("/");
+              sessionCookie.setMaxAge(60 * 60 * 24);
+              nameCookie.setPath("/");
+              nameCookie.setMaxAge(60 * 60 * 24);
 //              detailsCookie.setPath("/");
 //              detailsCookie.setMaxAge(60 * 60 * 24);
 //              
 //              response.addCookie(detailsCookie);
-//              response.addCookie(nameCookie);
-//              
-//              JSONObject details = getUserDetails(email);
-//              session.setAttribute("details", details);
+              response.addCookie(nameCookie);
+              
+        
               ///////////
               response.setContentType("application/json");
               response.addCookie(sessionCookie);
@@ -94,13 +99,21 @@ public class SignupServlet extends HttpServlet {
 
               addUserToDB(email, password, firstName, lastName, dob);
               initializeUserCourse(email);
-          } else {
+        	  }
+             catch(Exception e) {
+            	  System.out.println(e.getMessage());
+              }
+          }
+        	  else {
               jsonResponse.put("failed", false);
               PrintWriter out = response.getWriter();
               out.print(jsonResponse.toString());
               out.flush();
           }
-	}
+       
+          }
+        
+	
 
 	private static void initializeUserCourse(String email) {
 		int user_id = 0;
@@ -225,6 +238,21 @@ public class SignupServlet extends HttpServlet {
         userDetails.put("courses", coursesArray);
         return userDetails;
     }
+    private String getUserName(String email) throws SQLException {
+        try (Connection cn = Database.getConnection()) {
+            String sql = "SELECT Name FROM Users WHERE Email = ?";
+            try (PreparedStatement st = cn.prepareStatement(sql)) {
+                st.setString(1, email);
+                try (ResultSet rs = st.executeQuery()) {
+                    if (rs.next()) {
+                        return rs.getString("Name");
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
 }
 
 	

@@ -38,7 +38,7 @@
     })
 	.catch(error => {
 	    console.log('Error:', error);
-	    alert("An error occurred while logging in. Please try again later.");
+	    alert("No User Found");
 	});
 };
 
