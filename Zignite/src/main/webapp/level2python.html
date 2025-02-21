@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Course</title>
+    <link rel="stylesheet" href="level1python.css">
+</head>
+<body>
+    <header>
+        <img src="ProjectLogo.png"onclick="window.location.href='http://localhost:8080/Zignite/userHome.html'" class="logoImg">
+        <div class="progress_description">
+            <h1 style="font-size: 36px;color: #037a6e;">Loops & Control Statements</h1>
+            <div class="desc">📚&ensp;Lesson <span id="lessonNumber">2</span>/6</div>
+            <div class="desc" id="com">🎯&ensp;<span id="completion">0%</span>&nbsp; Complete</div>
+        </div>
+    </header>
+   
+    <div class="container">
+        <div class="course_content">
+            <div class="progressContainer">
+                <img src="previous.png" class="icons" onclick="prev()">
+                <div id="progress">
+                    <div id="progressBar"></div>
+                </div>
+                                  <img src="crossmark.png" onclick="window.location.href='http://localhost:8080/Zignite/levels.html'" class="icons" style="width: 20px">
+
+            </div>
+
+            <div class="sectionsBox">
+                <div class="section" id="section1">
+                    <div id="header">1. Conditional Statements</div>
+                    <div class="image"><img src="https://files.realpython.com/media/Conditional-Statements-in-Python_Watermarked.b6b7d30ff62b.jpg" alt="Conditional Statements images" id="image1"  style="border-radius: 10px; border: 2px solid green;"></div>
+                    <div id="content">1️⃣ if, elif, and else are used for decision-making.<br>2️⃣ The if block runs if the condition is True; elif checks more conditions, and else runs when all conditions fail.<br>3️⃣ Indentation is crucial in Python’s conditional statements.</div>
+                    <div class="continue" onclick="next()">Continue Learning</div>
+                </div>
+                <div class="section" id="section2">
+                    <div id="header">2. Logical Operators</div>
+                    <div class="image"><img src="https://www.scaler.com/topics/images/logical-operators-in-python-thumbnail.webp" alt="Logical Statements image" id="image2" style="border-radius: 10px; border: 2px solid black;width: 450px;"></div>
+                    <div id="content">1️⃣ Logical operators (and, or, not) combine multiple conditions.<br>2️⃣ 'and' returns True if both conditions are True, 'or' returns True if at least one is True.<br>3️⃣ 'not' reverses the boolean value of a condition.</div>
+                    <div class="continue" onclick="next()">Continue Learning</div>
+                </div>
+                <div class="section" id="section3">
+                    <div id="header">3. Loops in python</div>
+                    <div class="image"><img src="https://cdn.nerdyelectronics.com/wp-content/uploads/2024/10/loops_in_python-930x620.jpg" alt="Variable in python" id="image3"  style="border-radius: 10px; width: 500px; border: 2px solid black;"></div>
+                    <div id="content">1️⃣ for loops iterate over sequences like lists and ranges.<br>2️⃣ while loops run as long as the condition remains True.<br>3️⃣ Loops help automate repetitive tasks efficiently.</div>
+                    <div class="continue" onclick="next()">Continue Learning</div>
+                </div>
+                <div class="section" id="section4">
+                    <div id="header">4. Loop Control</div>
+                    <div class="image"><img src="https://techvidvan.com/tutorials/wp-content/uploads/sites/2/2020/01/loop-control-statement-in-python.jpg" alt="Print and User input in python" id="image3"  style="border-radius: 10px; border: 2px solid black;"></div>
+                    <div id="content">1️⃣ break exits a loop immediately.<br>2️⃣ continue skips the current iteration and moves to the next.<br>3️⃣ pass is a placeholder that does nothing, used to avoid syntax errors.</div>
+                    <div class="continue" onclick="next()">Continue Learning</div>
+                </div>
+                <div class="section" id="section5">
+                    <div id="header">5. Nested Loops</div>
+                    <div class="image"><img src="https://cdn.educba.com/academy/wp-content/uploads/2019/09/Python-Nested-Loops.png" alt="Operators in Python" id="image3" style="border-radius: 10px; border: 2px solid black;"></div>
+                    <div id="content">1️⃣ Loops can be nested inside other loops.<br>2️⃣ A break inside a nested loop only exits the inner loop.<br>3️⃣ Using multiple control statements carefully prevents unexpected behavio</div>
+                    <div class="continue" onclick="completeLevel()">Finish Level</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bot">
+            <div class="header">
+                <h1>Vid.AI</h1>
+            </div>
+            <div class="chatMessages" id="chatMessages"></div>
+            <div class="chatInputBox">
+                <input type="text" id="userInput" placeholder="Type your message...">
+                <button id="sendBtn">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="level1python.js"></script>
+</body>
+</html>
+
+
+
+
+

@@ -78,7 +78,7 @@ for(let course_name in courseCards){
 					        </div>
 	                    <div class="course-meta">
 	                            <span class="modules-left">${levelCount} modules left</span>
-	                            <button class="continue-btn">Continue</button>
+	                            <button class="continue-btn" onclick="window.location.href='http://localhost:8080/Zignite/levels.html'">Continue</button>
 	                        </div>
 	                    </div>`;
 						if(course_percent==100){

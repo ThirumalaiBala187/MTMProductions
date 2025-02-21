@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Course</title>
+    <link rel="stylesheet" href="level1python.css">
+</head>
+<body>
+    <header>
+        <img src="ProjectLogo.png" onclick="window.location.href='http://localhost:8080/Zignite/userHome.html'"class="logoImg">
+        <div class="progress_description">
+            <h1 style="font-size: 36px;color: #037a6e;">File handling and modules</h1>
+            <div class="desc">📚&ensp;Lesson <span id="lessonNumber">5</span>/6</div>
+            <div class="desc" id="com">🎯&ensp;<span id="completion">0%</span>&nbsp; Complete</div>
+        </div>
+    </header>
+
+   <div class="container">
+        <div class="course_content">
+            <div class="progressContainer">
+                <img src="previous.png" class="icons" onclick="prev()">
+                <div id="progress">
+                    <div id="progressBar"></div>
+                </div>
+                <img src="crossmark.png" onclick="window.location.href='http://localhost:8080/Zignite/levels.html'"class="icons" style="width: 20px;">
+            </div>
+
+            <div class="sectionsBox">
+                <div class="section" id="section1">
+                    <div id="header">1. Reading and Writing Files</div>
+                    <div class="image"><img src="https://files.realpython.com/media/Reading-and-Writing-Files-in-Python_Watermarked.0d394921fd90.jpg" alt="Reading and writing files in python" id="image1"  style="border-radius: 10px; border: 2px solid black;"></div>
+                    <div id="content">1️⃣ Use open() to read ('r') or write ('w', 'a') files.<br>2️⃣ read(), readline(), and readlines() help retrieve file content.<br>3️⃣ Always close files with close() or use 'with' for automatic handling.</div>
+                    <div class="continue" onclick="next()">Continue Learning</div>
+                </div>
+                <div class="section" id="section2">
+                    <div id="header">2. Using Modules</div>
+                    <div class="image"><img src="https://miro.medium.com/v2/resize:fit:1400/1*nK2gnkXvY0vjn-2t5FyJPw.jpeg" alt="Modules" id="image2" style="border-radius: 10px; border: 2px solid black;width: 450px;"></div>
+                    <div id="content">1️⃣ Import built-in modules like math, random, or datetime.<br>2️⃣ Use import module or from module import function for selective imports.<br>3️⃣ Helps organize and reuse code efficiently.</div>
+                    <div class="continue" onclick="next()">Continue Learning</div>
+                </div>
+                <div class="section" id="section3">
+                    <div id="header">3. Creating Custom Modules</div>
+                    <div class="image"><img src="https://s3.stackabuse.com/media/articles/372945e6fe29acd8afc0a3fe519b3d09.png" alt="Custom modules" id="image3"  style="border-radius: 10px; width: 500px; border: 2px solid black;"></div>
+                    <div id="content">1️⃣ A module is simply a .py file containing functions and variables.<br>2️⃣ Import it using import module_name in another script.<br>3️⃣ Useful for organizing large programs into reusable parts.</div>
+                    <div class="continue" onclick="next()">Continue Learning</div>
+                </div>
+                <div class="section" id="section4">
+                    <div id="header">4. The OS Module</div>
+                    <div class="image"><img src="https://www.boardinfinity.com/blog/content/images/2023/01/Python-OS-Module.png" alt="Print and User input in python" id="image3"  style="border-radius: 10px; border: 2px solid black;"></div>
+                    <div id="content">1️⃣ Provides functions to interact with the operating system.<br>2️⃣ os.listdir() lists files, os.remove() deletes files, and os.mkdir() creates directories.<br>3️⃣ Essential for handling system-level tasks.</div>
+                    <div class="continue" onclick="next()">Continue Learning</div>
+                </div>
+                <div class="section" id="section5">
+                    <div id="header">5. The JSON Module</div>
+                    <div class="image"><img src="https://cdn.educba.com/academy/wp-content/uploads/2020/01/JSON-in-Python.jpg" alt="Operators in Python" id="image3" style="border-radius: 10px; border: 2px solid black;"></div>
+                    <div id="content">1️⃣ Used for working with JSON data in Python.<br>2️⃣ json.load() reads JSON from a file, while json.dump() writes to a file.<br>3️⃣ Essential for handling structured data and APIs.</div>
+                    <div class="continue" onclick="completeLevel()">Finish Level</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bot">
+            <div class="header">
+                <h1>Vid.AI</h1>
+            </div>
+            <div class="chatMessages" id="chatMessages"></div>
+            <div class="chatInputBox">
+                <input type="text" id="userInput" placeholder="Type your message...">
+                <button id="sendBtn">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="level1python.js"></script>
+</body>
+</html>

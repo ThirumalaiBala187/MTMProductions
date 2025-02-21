@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Course</title>
+    <link rel="stylesheet" href="level1python.css">
+</head>
+<body>
+    <header>
+        <img src="ProjectLogo.png" onclick="window.location.href='http://localhost:8080/Zignite/userHome.html'"class="logoImg">
+        <div class="progress_description">
+            <h1 style="font-size: 36px;color: #037a6e;">Functions & Error Handling</h1>
+            <div class="desc">📚&ensp;Lesson <span id="lessonNumber">3</span>/6</div>
+            <div class="desc" id="com">🎯&ensp;<span id="completion">0%</span>&nbsp; Complete</div>
+        </div>
+    </header>
+
+   <div class="container">
+        <div class="course_content">
+            <div class="progressContainer">
+                <img src="previous.png" class="icons" onclick="prev()">
+                <div id="progress">
+                    <div id="progressBar"></div>
+                </div>
+                                 <img src="crossmark.png" onclick="window.location.href='http://localhost:8080/Zignite/levels.html'" class="icons" style="width: 20px">
+            </div>
+
+            <div class="sectionsBox">
+                <div class="section" id="section1">
+                    <div id="header">1. Defining Functions</div>
+                    <div class="image"><img src="https://files.codingninjas.in/article_images/custom-upload-1725510699-f7baa816.webp" alt="Conditional Statements images" id="image1"  style="border-radius: 10px; border: 2px solid black;"></div>
+                    <div id="content">1️⃣ Functions are defined using 'def' and return values with 'return'.<br>2️⃣ They help organize code and avoid repetition.<br>3️⃣ A function runs only when called.</div>
+                    <div class="continue" onclick="next()">Continue Learning</div>
+                </div>
+                <div class="section" id="section2">
+                    <div id="header">2. Parameters and arguments</div>
+                    <div class="image"><img src="https://pyseek.com/wp-content/uploads/2024/01/Parameters-vs-Arguments-in-Python.webp" alt="Logical Statements image" id="image2" style="border-radius: 10px; border: 2px solid black;width: 450px;"></div>
+                    <div id="content">1️⃣ Parameters are placeholders in function definitions.<br>2️⃣ Arguments are actual values passed when calling a function.<br>3️⃣ Functions can accept multiple arguments.</div>
+                    <div class="continue" onclick="next()">Continue Learning</div>
+                </div>
+                <div class="section" id="section3">
+                    <div id="header">3. Types of arguments</div>
+                    <div class="image"><img src="https://programmingnode.com/programmingnode/uploads/blog/images/argument_type.png" alt="Variable in python" id="image3"  style="border-radius: 10px; width: 500px; border: 2px solid black;"></div>
+                    <div id="content">11️⃣ Default arguments provide a predefined value if not given.<br>2️⃣ Keyword arguments allow specifying values by parameter name.<br>3️⃣ Both improve function flexibility and readability.</div>
+                    <div class="continue" onclick="next()">Continue Learning</div>
+                </div>
+                <div class="section" id="section4">
+                    <div id="header">4. Try-Except</div>
+                    <div class="image"><img src="https://www.boardinfinity.com/blog/content/images/2023/01/Try-except.png" alt="Print and User input in python" id="image3"  style="border-radius: 10px; border: 2px solid black;"></div>
+                    <div id="content">1️⃣ try-except handles errors to prevent program crashes.<br>2️⃣ Code in try runs first; if an error occurs, except handles it.<br>3️⃣ Useful for handling unexpected inputs or failures.</div>
+                    <div class="continue" onclick="next()">Continue Learning</div>
+                </div>
+                <div class="section" id="section5">
+                    <div id="header">5. Lambda Functions</div>
+                    <div class="image"><img src="https://miro.medium.com/v2/resize:fit:960/1*UcWzl_DI5cXBfm1jl-1vUw.png" alt="Operators in Python" id="image3" style="border-radius: 10px; border: 2px solid black;"></div>
+                    <div id="content">1️⃣ Lambda functions are anonymous one-liners using 'lambda'.<br>2️⃣ They take any number of arguments but have only one expression.<br>3️⃣ Useful for short, simple operations without defining full functions.</div>
+                    <div class="continue" onclick="completeLevel()">Finish Level</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bot">
+            <div class="header">
+                <h1>Vid.AI</h1>
+            </div>
+            <div class="chatMessages" id="chatMessages"></div>
+            <div class="chatInputBox">
+                <input type="text" id="userInput" placeholder="Type your message...">
+                <button id="sendBtn">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="level1python.js"></script>
+</body>
+</html>

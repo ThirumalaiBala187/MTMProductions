@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Course</title>
+    <link rel="stylesheet" href="level1python.css">
+</head>
+<body>
+    <header>
+        <img src="ProjectLogo.png"onclick="window.location.href='http://localhost:8080/Zignite/userHome.html'" class="logoImg">
+        <div class="progress_description">
+            <h1 style="font-size: 36px;color: #037a6e;">Functions & Error Handling</h1>
+            <div class="desc">📚&ensp;Lesson <span id="lessonNumber">4</span>/6</div>
+            <div class="desc" id="com">🎯&ensp;<span id="completion">0%</span>&nbsp; Complete</div>
+        </div>
+    </header>
+
+   <div class="container">
+        <div class="course_content">
+            <div class="progressContainer">
+                <img src="previous.png" class="icons" onclick="prev()">
+                <div id="progress">
+                    <div id="progressBar"></div>
+                </div>
+                                  <img src="crossmark.png" onclick="window.location.href='http://localhost:8080/Zignite/levels.html'" class="icons" style="width: 20px">
+
+            </div>
+
+            <div class="sectionsBox">
+                <div class="section" id="section1">
+                    <div id="header">1. Lists in Python</div>
+                    <div class="image"><img src="https://techvidvan.com/tutorials/wp-content/uploads/2019/12/python-lists.jpg" alt="Conditional Statements images" id="image1"  style="border-radius: 10px; border: 2px solid black;"></div>
+                    <div id="content">1️⃣ Lists store multiple items in a single variable.<br>2️⃣ Elements are accessed using indexing and modified by assigning new values.<br>3️⃣ Loops help iterate over lists efficiently.</div>
+                    <div class="continue" onclick="next()">Continue Learning</div>
+                </div>
+                <div class="section" id="section2">
+                    <div id="header">2. Tuples in Python</div>
+                    <div class="image"><img src="https://www.codingal.com/resources/wp-content/uploads/2023/01/Tuples-in-Python.png" alt="Logical Statements image" id="image2" style="border-radius: 10px; border: 2px solid black;width: 450px;"></div>
+                    <div id="content">1️⃣ Tuples are immutable sequences, meaning values cannot be changed.<br>2️⃣ Defined using parentheses (), they store multiple items.<br>3️⃣ Faster and memory-efficient compared to lists.</div>
+                    <div class="continue" onclick="next()">Continue Learning</div>
+                </div>
+                <div class="section" id="section3">
+                    <div id="header">3. Dictionaries : Key-value pairs</div>
+                    <div class="image"><img src="https://jeevangupta.com/wp-content/uploads/2021/10/Dictionary-in-Python-1024x742.png" alt="Variable in python" id="image3"  style="border-radius: 10px; width: 500px; border: 2px solid black;"></div>
+                    <div id="content">1️⃣Dictionaries store data in key-value pairs.<br>2️⃣ Keys must be unique and immutable, while values can be of any type.<br>3️⃣ Used for fast lookups and organizing data.</div>
+                    <div class="continue" onclick="next()">Continue Learning</div>
+                </div>
+                <div class="section" id="section4">
+                    <div id="header">4. List and Dictionary comprehensions</div>
+                    <div class="image"><img src="https://miro.medium.com/v2/resize:fit:1146/1*5-jD8EV984b0eGUC0gmkfg.png" alt="Print and User input in python" id="image3"  style="border-radius: 10px; border: 2px solid black;"></div>
+                    <div id="content">1️⃣ List and dictionary comprehensions create new lists or dictionaries concisely.<br>2️⃣ Use compact syntax inside [] for lists and {} for dictionaries.<br>3️⃣ They improve readability and performance.</div>
+                    <div class="continue" onclick="next()">Continue Learning</div>
+                </div>
+                <div class="section" id="section5">
+                    <div id="header">5. Sets in Python</div>
+                    <div class="image"><img src="https://cdn.educba.com/academy/wp-content/uploads/2019/11/Python-Sets.jpg" alt="Operators in Python" id="image3" style="border-radius: 10px; border: 2px solid black;"></div>
+                    <div id="content">1️⃣ Sets store unique, unordered elements.<br>2️⃣ They are defined using curly braces {} or set().<br>3️⃣ Useful for removing duplicates and performing set operations.</div>
+                    <div class="continue" onclick="completeLevel()">Finish Level</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bot">
+            <div class="header">
+                <h1>Vid.AI</h1>
+            </div>
+            <div class="chatMessages" id="chatMessages"></div>
+            <div class="chatInputBox">
+                <input type="text" id="userInput" placeholder="Type your message...">
+                <button id="sendBtn">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="level1python.js"></script>
+</body>
+</html>

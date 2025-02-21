@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Course</title>
+    <link rel="stylesheet" href="level1python.css">
+</head>
+<body>
+    <header>
+        <img src="ProjectLogo.png" class="logoImg">
+        <div class="progress_description">
+            <h1 style="font-size: 36px;color: #037a6e;">OOP Basics</h1>
+            <div class="desc">📚&ensp;Lesson <span id="lessonNumber">6</span>/6</div>
+            <div class="desc" id="com">🎯&ensp;<span id="completion">0%</span>&nbsp; Completed</div>
+        </div>
+    </header>
+
+   <div class="container">
+        <div class="course_content">
+            <div class="progressContainer">
+                <img src="previous.png" class="icons" onclick="prev()">
+                <div id="progress">
+                    <div id="progressBar"></div>
+                </div>
+                <img src="crossmark.png" class="icons" style="width: 20px;">
+            </div>
+
+            <div class="sectionsBox">
+                <div class="section" id="section1">
+                    <div id="header">1. Classes & Objects</div>
+                    <div class="image"><img src="https://intellipaat.com/mediaFiles/2019/03/python10.png" alt="Reading and writing files in python" id="image1"  style="border-radius: 10px; border: 2px solid black;"></div>
+                    <div id="content">1️⃣ A class is a blueprint for creating objects.<br>2️⃣ Objects are instances of classes with their own data and behavior.<br>3️⃣ The __init__ method initializes object attributes.</div>
+                    <div class="continue" onclick="next()">Continue Learning</div>
+                </div>
+                <div class="section" id="section2">
+                    <div id="header">2. Methods & Attributes</div>
+                    <div class="image"><img src="https://i.ytimg.com/vi/MEfV5LjNMdI/maxresdefault.jpg" alt="Modules" id="image2" style="border-radius: 10px; border: 2px solid black;width: 450px;"></div>
+                    <div id="content">1️⃣ Methods are functions inside a class that define object behavior.<br>2️⃣ Attributes store object-specific data.<br>3️⃣ self is used to access attributes within methods.</div>
+                    <div class="continue" onclick="next()">Continue Learning</div>
+                </div>
+                <div class="section" id="section3">
+                    <div id="header">3. Inheritance & Polymorphism</div>
+                    <div class="image"><img src="https://i.ytimg.com/vi/zw_sWeCIBWg/maxresdefault.jpg" alt="Custom modules" id="image3"  style="border-radius: 10px; width: 500px; border: 2px solid black;"></div>
+                    <div id="content">1️⃣ Inheritance allows a class to derive properties from another.<br>2️⃣ Polymorphism enables different classes to share the same method names.<br>3️⃣ Helps in code reuse and flexibility.</div>
+                    <div class="continue" onclick="next()">Continue Learning</div>
+                </div>
+                <div class="section" id="section4">
+                    <div id="header">4. Encapsulation</div>
+                    <div class="image"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnOntCnsmMJQJ8amUtIlDXHlZ8D0nXuvZPlFXgQTMItIBQs8KpI0frit_tEILXY51ypjk&usqp=CAU" alt="Print and User input in python" id="image3"  style="border-radius: 10px; border: 2px solid black;"></div>
+                    <div id="content">1️⃣ Restricts direct access to object data using private (_ or __) attributes.<br>2️⃣ Provides getter and setter methods to control data access.<br>3️⃣ Ensures data security and hides implementation details.</div>
+                    <div class="continue" onclick="next()">Continue Learning</div>
+                </div>
+                <div class="section" id="section5">
+                    <div id="header">5. Abstraction</div>
+                    <div class="image"><img src="https://images.theengineeringprojects.com/image/webp/2023/05/data-abstraction-in-oop.jpg.webp?ssl=1" alt="Operators in Python" id="image3" style="border-radius: 10px; border: 2px solid black; width: 550px;"></div>
+                    <div id="content">1️⃣ Hides complex implementation and exposes only necessary details.<br>2️⃣ Achieved using abstract classes and methods.<br>3️⃣ Helps simplify interactions with complex systems.</div>
+                    <div class="continue" onclick="completeLevel()">Finish Level</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bot">
+            <div class="header">
+                <h1>Vid.AI</h1>
+            </div>
+            <div class="chatMessages" id="chatMessages"></div>
+            <div class="chatInputBox">
+                <input type="text" id="userInput" placeholder="Type your message...">
+                <button id="sendBtn">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="level1python.js"></script>
+</body>
+</html>
