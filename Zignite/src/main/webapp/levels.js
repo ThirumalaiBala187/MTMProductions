@@ -47,7 +47,7 @@ document.querySelectorAll('.courselevel').forEach(card => {
       const parsedDetails = JSON.parse(decodedDetails); 
   	parsedDetails.courses.forEach(a=>{
   		console.log(a.level_name);
-  		courseCards[a.course_name]=[a.level_name,Math.round((a.levels_completed/7)*100),a.levels_completed,a.xp,a.streak_count];
+  		courseCards[a.course_name]=[a.level_name,Math.round((a.levels_completed/7)*100),a.levels_completed,a.xp,a.streakcount];
   	});
   }
   
