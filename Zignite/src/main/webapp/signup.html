@@ -15,14 +15,15 @@
         </div>
         <div class="content" style="padding: 2%; height: 80%">
             <p>Your interactive Learning path is ready. Create a free account to start getting smarter.</p>
-            <input type="email" class="detailsBox" placeholder="Email" id="email" value="">
+            <input type="email" class="detailsBox" placeholder="Email" id="email" value="" required>
             <div class="detailsBox" style="padding-left: 0px" id="passwordBox">
-                <input type="password" class="inputBox" placeholder="Password" id="passwordInput" value="">
-                <span class="icon" onclick="togglePasswordIcon()" style="margin-right: 3px">👁️</span>
+                <input type="password" class="inputBox" placeholder="Password" id="passwordInput" value="" required>
+                <span class="icon" onclick="togglePasswordIcon()" style="margin-right: 3px" id="eyeToggle">🔒</span>
             </div>
-            <input type="text" class="detailsBox" placeholder="First Name" id="firstName" value="">
+            <input type="text" class="detailsBox" placeholder="First Name" id="firstName" value="" required>
             <input type="text" class="detailsBox" placeholder="Last Name" id="lastName" value="">
-            <input type="date" class="detailsBox" placeholder="Date of Birth" id="dob" value="">
+            <input type="date" id="dob" onfocus="this.type='date'" onblur="if(!this.value)this.type='text'" placeholder="Date of Birth" class="detailsBox">
+
             <button id="continueBtn" onclick="signUp()">Sign Up</button>
             <p style="font-size: 20px">Existing user?&ensp;<a href="http://localhost:8080/Zignite/signin.html">Sign in</a></p>
         </div>
@@ -31,3 +32,12 @@
 </body>
 <!-- Injected Content for development purpose from ZohoCode -->
                             <script type='text/javascript' src='//js.zohostatic.in/codenginx/js/subdomain.js'></script></html>
+
+
+
+
+
+
+
+
+

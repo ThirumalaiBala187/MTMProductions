@@ -91,7 +91,7 @@ function nextQuestion(){
         loadQuestions();
     }
     else{
-        showAlert("Success !", "Your personalized learning path is ready !", "signup.html");
+        showAlert("Success !", "Your personalized learning path is ready !", "allCourses.html");
     }
 }
 
