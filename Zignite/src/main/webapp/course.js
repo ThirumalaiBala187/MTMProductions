@@ -9,7 +9,7 @@ fetch("controller/CourseServlet")
   .then(response => response.json())
   .then(data => {
     let container = document.getElementById("container");
-
+let courseCount=1;
     data.forEach(course => {
         let courseInfo = document.createElement("div");
         courseInfo.classList.add("cinfo");
@@ -62,10 +62,20 @@ fetch("controller/CourseServlet")
         inner5.classList.add("pre");
 		if(course.name=="Introduction To Python"){
 			inner5.addEventListener('click',()=>{
-				window.location.href="levels.html"
+				
+				fetch(`/controller/courseProgress?value=${encodeURIComponent(courseCount)}`, {
+				    method: "POST",
+				    headers: {
+				        "Content-Type": "application/json"
+				    }
+				})
+				.then(response => response.json()) 
+				.then(data =>{ console.log(data)
+				window.location.href="levels.html"}) 
+				.catch(error => console.error("Error:", error));
 			})
 		}
-		//hi
+		courseCount++;
         inner5.innerText = "Preview"
         innerDiv4.appendChild(inner5);
 		courseInfo.appendChild(innerDiv4);
@@ -74,3 +84,11 @@ fetch("controller/CourseServlet")
 	});
 	})
 .catch(error => console.error("Error fetching data:", error));
+
+
+
+
+
+
+
+

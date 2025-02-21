@@ -133,15 +133,18 @@ public class SignupServlet extends HttpServlet {
 		System.out.println(user_id);
 		if (user_id != 0) {
 			try {
+				for(int i=1;i<=2;i++) {
 				Connection con = Database.getConnection();
-				String query = "INSERT INTO User_Progress (Levels_Completed, StreakCount, XP, User_Id, Course_Id) VALUES (0, 0, 0, ?, 1)";
+				String query = "INSERT INTO User_Progress (Levels_Completed, StreakCount, XP, User_Id, Course_Id) VALUES (0, 0, 0, ?, ?)";
 				PreparedStatement stmt = con.prepareStatement(query);
 				stmt.setInt(1, user_id);
+				stmt.setInt(2, i);;
 				stmt.executeUpdate();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		} else {
+		}else {
 			System.out.println("Email does not exist");
 		}
 	}
