@@ -58,10 +58,9 @@ document.querySelectorAll('.courselevel').forEach(card => {
   	let levelCount=courseCards[course_name][2];
 	let xp=courseCards[course_name][3];
 	let streak=courseCards[course_name][4];
-  	var new_learn_prog = document.getElementsByClassName()[0];
-  	new_learn_prog.innerHTML =document.getElementByClassName("upro")[0];
-`	              
-	                  <div class="streak cpro">
+  	var new_learn_prog = document.getElementsByClassName("upro")[0];
+  	new_learn_prog.innerHTML =
+	                ` <div class="streak cpro">
 	                      <span class="bd">${streak} Day Streak 🔥</span><br>
 	                      <span class="bd1">Personal Best!</span>
 	                  </div>
