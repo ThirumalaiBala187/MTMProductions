@@ -130,6 +130,8 @@ var levelCount = localStorage.getItem("levelCount") ? parseInt(localStorage.getI
 
 function completeLevel() {
     levelCount += 1;
-    localStorage.setItem("levelCount", levelCount);
-    window.location.href = `level${levelCount}python.html`;
+	if(levelCount <= 7){
+	localStorage.setItem("levelCount", levelCount);
+	window.location.href = `level${levelCount}python.html`;		
+	}
 }
