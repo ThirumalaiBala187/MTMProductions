@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-body {
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    body {
   margin: 0;
   background: #0a0a0a;
   font-family: 'Courier New', monospace;
@@ -73,7 +74,7 @@ body {
 }
 
 /* Original CSS for radio buttons */
-.radio-wrapper {
+ .radio-wrapper {
   position: relative;
   height: 38px;
   width: 200px;
@@ -94,7 +95,7 @@ body {
   --primary: #ff184c;
   --shadow-primary: #fded00;
   --color: white;
-  --font-size: 9px;
+  --font-size: 13px;
   --shadow-primary-hue: 180;
   --shadow-secondary-hue: 60;
   --shadow-secondary: hsl(var(--shadow-secondary-hue), 90%, 60%);
@@ -128,7 +129,7 @@ body {
 
 .input:hover + .btn {
   --primary: #cc133c;
-  --font-size: 11px;
+  --font-size: 15px;
 }
 
 .btn:after, .btn:before {
@@ -322,7 +323,7 @@ body {
   .title {
     font-size: 1.5rem;
   }
-}
+} 
 </style>
 </head>
 <body>
@@ -333,7 +334,6 @@ body {
   </div>
 
   <form id="quiz-form">
-    <!-- Questions -->
     <div class="quiz-container">
       <div class="question">1. What is the output of: print(type(5))?</div>
       <div class="options-container">
@@ -363,9 +363,6 @@ body {
         </div>
       </div>
     </div>
-
-    <!-- Repeat for questions 2-7 with the same structure -->
-    <!-- Adding just one more as example, repeat for others -->
     <div class="quiz-container">
       <div class="question">2. Which of these is a valid Python variable name?</div>
       <div class="options-container">
@@ -395,7 +392,7 @@ body {
         </div>
       </div>
     </div>
-     <div class="quiz-container">
+    <div class="quiz-container">
       <div class="question">2. Which of these is a valid Python variable name?</div>
       <div class="options-container">
         <div class="radio-wrapper">
@@ -423,9 +420,8 @@ body {
           </div>
         </div>
       </div>
-    </div>
-
-   <div class="quiz-container">
+    </div>   
+     <div class="quiz-container">
       <div class="question">2. Which of these is a valid Python variable name?</div>
       <div class="options-container">
         <div class="radio-wrapper">
@@ -453,8 +449,7 @@ body {
           </div>
         </div>
       </div>
-    </div>
- <div class="quiz-container">
+    </div>    <div class="quiz-container">
       <div class="question">2. Which of these is a valid Python variable name?</div>
       <div class="options-container">
         <div class="radio-wrapper">
@@ -483,35 +478,8 @@ body {
         </div>
       </div>
     </div>
-     <div class="quiz-container">
-      <div class="question">2. Which of these is a valid Python variable name?</div>
-      <div class="options-container">
-        <div class="radio-wrapper">
-          <input class="input" name="q6" value="wrong" type="radio">
-          <div class="btn">
-            2variable
-            <span class="btn__glitch">2variable</span>
-            <label class="number">A</label>
-          </div>
-        </div>
-        <div class="radio-wrapper">
-          <input class="input" name="q6" value="correct" type="radio">
-          <div class="btn">
-            my_variable
-            <span class="btn__glitch">my_variable</span>
-            <label class="number">B</label>
-          </div>
-        </div>
-        <div class="radio-wrapper">
-          <input class="input" name="q6" value="wrong" type="radio">
-          <div class="btn">
-            my-variable
-            <span class="btn__glitch">my-variable</span>
-            <label class="number">C</label>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- Add questions 3-7 here with the same structure -->
+
     <button type="submit" class="submit-btn">SUBMIT QUIZ</button>
   </form>
 
@@ -535,6 +503,6 @@ document.getElementById('quiz-form').addEventListener('submit', function(e) {
   
   const feedback = document.getElementById('feedback');
   if (score === 7) {
-    feedback.textContent = "Perfect score! You're ahtml>
-    </script>
-    
+    feedback.textContent = "Perfect score! You're a"
+
+  }})
