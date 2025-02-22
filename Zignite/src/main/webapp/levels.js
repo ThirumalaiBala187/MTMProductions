@@ -47,21 +47,22 @@ document.querySelectorAll('.courselevel').forEach(card => {
       const parsedDetails = JSON.parse(decodedDetails); 
   	parsedDetails.courses.forEach(a=>{
   		console.log(a.level_name);
-  		courseCards[a.course_name]=[a.level_name,Math.round((a.levels_completed/7)*100),a.levels_completed,a.xp,a.streak_count];
+  		courseCards[a.course_name]=[a.level_name,Math.round((a.levels_completed/7)*100),a.levels_completed,a.xp,a.streakcount];
   	});
   }
+  
+  var levelCount=0;
   
   for(let course_name in courseCards){
   	console.log(course_name)
   	let course_percent = courseCards[course_name][1]; 
   	let level_name= courseCards[course_name][0];
-  	let levelCount=courseCards[course_name][2];
+  	levelCount=courseCards[course_name][2];
 	let xp=courseCards[course_name][3];
 	let streak=courseCards[course_name][4];
-  	var new_learn_prog = document.getElementsByClassName()[0];
-  	new_learn_prog.innerHTML =document.getElementByClassName("upro")[0];
-`	              
-	                  <div class="streak cpro">
+	console.log("Hi :", streak);
+  	var new_learn_prog = document.getElementsByClassName("upro")[0];
+  	new_learn_prog.innerHTML =` <div class="streak cpro">
 	                      <span class="bd">${streak} Day Streak 🔥</span><br>
 	                      <span class="bd1">Personal Best!</span>
 	                  </div>
@@ -72,15 +73,39 @@ document.querySelectorAll('.courselevel').forEach(card => {
 	                  <div class="achievement cpro">
 	                      <span class="bd">${levelCount} Completed 🏆</span><br>
 	                  </div>
-	                  <div class="progressrange">
-	                      <div class="fill"></div>
-	                      <div class="progress_marker">
-	                          <div class="pmarker completed"></div>
-	                          <div class="pmarker completed"></div>
-	                          <div class="pmarker completed"></div>
-	                          <div class="pmarker"></div>
-	                          <div class="pmarker"></div>
-	                          <div class="pmarker"></div>
-	                      </div>
-	                `
+					  <div id="progress">
+					      <div id="progressBar"></div>
+					  </div>`
   }
+  
+  document.addEventListener("DOMContentLoaded", function () {
+	
+
+      function updateLevels() {
+          for (let i = 1; i <= 7; i++) {
+			console.log(levelCount)
+              let levelId = `level${i}`;
+              let levelElement = document.getElementById(levelId);
+              let button = document.getElementById(`${levelId}-btn`);
+			  if(i == 1){
+				levelElement.classList.remove("blurred");
+              	button.innerText = i === 1 ? "Continue" : "Review";
+              	button.classList.remove("locked");
+              	button.removeAttribute("disabled");
+			  }
+			  else if(i < levelCount){
+				  levelElement.classList.remove("blurred");
+	              button.innerText = i === 1 ? "Continue" : "Review";
+	              button.classList.remove("locked");
+	              button.removeAttribute("disabled");
+			  } else {
+                  levelElement.classList.add("blurred");
+                  button.innerHTML = "🔒 Locked";
+                  button.classList.add("locked");
+                  button.setAttribute("disabled", "true");
+              }
+          }
+      }
+
+      updateLevels();
+  });
