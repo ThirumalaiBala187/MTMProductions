@@ -76,6 +76,7 @@ document.querySelectorAll('.courselevel').forEach(card => {
 					  <div id="progress">
 					      <div id="progressBar"></div>
 					  </div>`
+					  break;
   }
   
   document.addEventListener("DOMContentLoaded", function () {

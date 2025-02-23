@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Initialize positions
+
     updateSections();
 });
 
@@ -126,12 +126,68 @@ document.addEventListener("DOMContentLoaded", function () {
     updateSections();
 });
 
-var levelCount = localStorage.getItem("levelCount") ? parseInt(localStorage.getItem("levelCount")) : 1;
-
-function completeLevel() {
-    levelCount += 1;
-	if(levelCount <= 7){
-	localStorage.setItem("levelCount", levelCount);
-		window.location.href = `level${levelCount}python.html`;		
-	}
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+	console.log(100);
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+        return parts.pop().split(';').shift();
+    }
+    return null;
 }
+
+courseCards={};
+async function completeLevel(num) {
+    try {
+		console.log(1);
+	     	details=getCookie("DETAILS")
+			if (details) {
+				console.log(2);
+			     const decodedDetails = atob(details);
+			     const parsedDetails = JSON.parse(decodedDetails); 
+			 	parsedDetails.courses.forEach(a=>{
+					console.log(3);
+			 		console.log(a.level_name);
+			 		courseCards[a.course_name]=[a.level_name,Math.round((a.levels_completed/7)*100),a.levels_completed,a.xp,a.streakcount];
+			 	});
+			 }
+			 let courseName = "Introduction To Python";
+			 if (courseCards[courseName]) {
+				console.log(4);
+			     let [levelName, completionPercentage, levelsCompleted, xp, streakCount] = courseCards[courseName];
+				 console.log(5000+": "+levelsCompleted);
+				 if(levelsCompleted < num-1){
+					    
+				        const response = await fetch("controller/pythonLevels", {
+				            method: "POST",
+				            headers: {
+				                'Content-Type': 'application/json',
+				            },
+				            body: JSON.stringify({ level: num-1, courseId:1}) 
+				        });
+
+				        if (!response.ok) {
+				            throw new Error(`HTTP error! Status: ${response.status}`);
+				        }
+						console.log(5);
+				        const result = await response.text(); 
+				        console.log("Server response:", result);
+
+
+				        levelCount = num;
+				        if (levelCount <= 7) {
+				            window.location.href = `level${num}python.html`;
+				        }
+				 	
+				    } 
+				 }else {
+							     console.log("Course not found.");}
+			 } catch (error) {
+			 				 				console.log(error);
+			 				 		        console.error("Error sending level data:", error);
+			 				 		    }
+			 }
+	    
+
+
+

@@ -63,11 +63,13 @@ let courseCount=1;
 		if(course.name=="Introduction To Python"){
 			inner5.addEventListener('click',()=>{
 				
-				fetch(`/controller/courseProgress?value=${encodeURIComponent(courseCount)}`, {
+				fetch(`controller/courseProgress`, {
 				    method: "POST",
 				    headers: {
 				        "Content-Type": "application/json"
-				    }
+				    },
+					body: JSON.stringify({"courseId":1}) ,
+					credentials:"include"
 				})
 				.then(response => response.json()) 
 				.then(data =>{ console.log(data)
