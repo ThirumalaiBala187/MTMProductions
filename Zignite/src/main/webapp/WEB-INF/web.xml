@@ -22,6 +22,13 @@
 		<servlet-name>LoginServlet</servlet-name>
 		<servlet-class>controller.LoginServlet</servlet-class>
 	</servlet>
+		<servlet>
+		<description>
+		</description>
+		<display-name>courseProgress</display-name>
+		<servlet-name>courseProgress</servlet-name>
+		<servlet-class>controller.courseProgress</servlet-class>
+	</servlet>
 	<servlet>
 		<description>
 		</description>
@@ -43,6 +50,13 @@
 		<servlet-name>SignupServlet</servlet-name>
 		<servlet-class>controller.SignupServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>pythonLevels</display-name>
+		<servlet-name>pythonLevels</servlet-name>
+		<servlet-class>controller.pythonLevels</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>LoginServlet</servlet-name>
 		<url-pattern>/controller/LoginServlet</url-pattern>
@@ -59,6 +73,15 @@
 		<servlet-name>SignupServlet</servlet-name>
 		<url-pattern>/controller/SignupServlet</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>courseProgress</servlet-name>
+		<url-pattern>/controller/courseProgress</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>pythonLevels</servlet-name>
+		<url-pattern>/controller/pythonLevels</url-pattern>
+	</servlet-mapping>
+	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
