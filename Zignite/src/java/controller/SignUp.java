@@ -9,8 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-
-
 /**
  * Servlet implementation class SignUp
  */
@@ -86,7 +84,8 @@ public class SignUp extends HttpServlet {
         response.addCookie(sessionCookie);
         PrintWriter out = response.getWriter();
         out.print(jsonResponse.toString());
-//        response.sendRedirect("https://muthueshwaran-8389.zcodeusers.in/Zignite_Learnings/userHome/userHome.html#");    
+        response.sendRedirect("https://muthueshwaran-8389.zcodeusers.in/Zignite_Learnings/userHome/userHome.html#");    
+        
         }
         else {
             jsonResponse.put("success", false);
@@ -97,3 +96,5 @@ public class SignUp extends HttpServlet {
 	}
 	
 }
+
+?

@@ -57,10 +57,8 @@ public class CourseListener implements ServletContextListener, ServletContextAtt
      * @see ServletContextListener#contextInitialized(ServletContextEvent)
      */
     public void contextInitialized(ServletContextEvent event) {
-		
 		List<Courses> availableCourses = CourseDAO.getCourses();
 		event.getServletContext().setAttribute("Courses", availableCourses);
-		
 	}
 	
 }

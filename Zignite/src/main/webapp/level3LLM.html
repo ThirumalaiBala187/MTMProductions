@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Course</title>
+    <title>LLM Course</title>
     <link rel="stylesheet" href="level1python.css">
 </head>
 <body>
     <header>
         <img src="ProjectLogo.png"onclick="window.location.href='http://localhost:8080/Zignite/userHome.html'" class="logoImg">
         <div class="progress_description">
-            <h1 style="font-size: 36px;color: #037a6e;">Python Basics: Getting Started</h1>
-            <div class="desc">📚&ensp;Lesson <span id="lessonNumber">1</span>/6</div>
+            <h1 style="font-size: 36px;color: #037a6e;">How Do LLMs Understand Language?</h1>
+            <div class="desc">📚&ensp;Lesson <span id="lessonNumber">3</span>/6</div>
             <div class="desc" id="com">🎯&ensp;<span id="completion">0%</span>&nbsp; Complete</div>
         </div>
     </header>
@@ -28,38 +28,44 @@
 
             <div class="sectionsBox">
                 <div class="section" id="section1">
-                    <div id="header">1. Installing and setting up python</div>
+                    <div id="header">1. What Training Means</div>
                     <div class="image"><img src="https://media.licdn.com/dms/image/v2/D5612AQGZz67yPCmN_g/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1712140420743?e=2147483647&v=beta&t=IKhsfmSZqsDEXg-A0eBXdbwzpY5SFhDFZMkj1qvGyI8" alt="Installing python" id="image1" style="border-radius: 10px;"></div>
-                    <div id="content">1️⃣ Download Python from the official site: https://www.python.org/downloads/ <br> 2️⃣ Run the installer and check Add Python to path, then click Install <br> 3️⃣ Verify installation by opening Command Prompt and running: <b>python --version</b></div>
+                    <div id="content">Training an LLM involves feeding it massive datasets so it can learn grammar, vocabulary, <br> and contextual relationships in language.</div>
                     <div class="continue" onclick="next()">Continue Learning</div>
                 </div>
                 <div class="section" id="section2">
-                    <div id="header">2. Running python code (Idle , Terminal , VS code)</div>
+                    <div id="header">2.Pretraining vs. Fine-Tuning </div>
                     <div class="image"><img src="https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1683096240569-download%20%2857%29.png" alt="Running python file" id="image2" style="border-radius: 10px; border: 2px solid black;"></div>
-                    <div id="content">1️⃣ Using IDLE (Python’s Built-in Editor). Click File > New File, write your Python code, and save it as script.py <br> 2️⃣ Using Terminal / iTerm (Mac) / Command Prompt (Windows). Type python (or python3 if needed) to start interactive mode.\n use code python script.py <br> 3️⃣ Using VS Code. Open the .py file in VS Code."</div>
+                    <div id="content">Pretraining teaches LLMs general language knowledge, while fine-tuning adapts them to<br>specific tasks like customer support or legal advice.</div>
                     <div class="continue" onclick="next()">Continue Learning</div>
                 </div>
                 <div class="section" id="section3">
-                    <div id="header">3. Variables & (Data Types (int,float,str,bool))</div>
+                    <div id="header">3. Large Datasets</div>
                     <div class="image"><img src="https://www.sourcecodester.com/sites/default/files/Python%20Variables_0.jpg" alt="Variable in python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">1️⃣ A variable is a name that stores data.<br>2️⃣ It is assigned using the = operator.<br>3️⃣ Python is dynamically typed, meaning you don’t need to declare a variable’s type explicitly.</div>
+                    <div id="content">LLMs require billions of words from sources like books, articles, and online content to<br>understand different writing styles and contexts.</div>
                     <div class="continue" onclick="next()">Continue Learning</div>
                 </div>
                 <div class="section" id="section4">
-                    <div id="header">4. Print and user input (Print(), input())</div>
+                    <div id="header">4. Computing Power</div>
                     <div class="image"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCB1fiPnxYxVxXbh3It3jjCNUdX5ZK4EstpgSGDgEZ2bvc2ROhraq0Y2ZSKC9B_FO2zIPvBUIpjtigavr9t3mmPuMw3XQwM02seiT2QaC49PhJDL15vK3IA8Lg344-P-XTbBs1sfpg4T1DAjkakwW-EJ_RKOMBCoTCqTDgES57-vQtNngjWqqxFMCM/s711/16.PNG" alt="Print and User input in python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">1️⃣ A variable is a name that stores data.<br>2️⃣ It is assigned using the = operator.<br>3️⃣ Python is dynamically typed, meaning you don’t need to declare a variable’s type explicitly.</div>
+                    <div id="content">Training LLMs requires powerful GPUs and TPUs, as they perform billions of calculations to<br>analyze and generate human-like text.</div>
                     <div class="continue" onclick="next()">Continue Learning</div>
                 </div>
                 <div class="section" id="section5">
-                    <div id="header">5. Basic Operators (+,-,*,/,//,%,**)</div>
+                    <div id="header">5.  Training Challenges</div>
                     <div class="image"><img src="https://cdn.codechef.com/blogs/images/operators-in-python.png" alt="Operators in Python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">1️⃣ print() displays output and supports multiple values separated by commas.<br>2️⃣ input() takes user input as a string, even if numbers are entered.<br>3️⃣ input() always returns a string, so to perform calculations, convert it using int() for whole numbers or float() for decimals. Without conversion, mathematical operations will not work correctly.</div>
+                    <div id="content">Challenges include bias in training data, high costs, and the risk of generating<br>misinformation or offensive content.</div>
+                    <div class="continue" onclick="next()">Continue Learning</div>
+                </div>
+                <div class="section" id="section6">
+                    <div id="header">6. Training Costs</div>
+                    <div class="image"><img src="https://cdn.codechef.com/blogs/images/operators-in-python.png" alt="Operators in Python" id="image3" style="border-radius: 10px;"></div>
+                    <div id="content">Developing large LLMs can cost millions of dollars due to the need for high-performance<br>computing and extensive datasets.</div>
                     <div class="continue" onclick="completeLevel()">Finish Level</div>
                 </div>
             </div>
         </div>
-		
+
         <div class="bot">
             <div class="header">
                 <h1>Vid.AI</h1>
@@ -74,4 +80,11 @@
     <script src="level1python.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
 
