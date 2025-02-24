@@ -77,6 +77,23 @@ let courseCount=1;
 				.catch(error => console.error("Error:", error));
 			})
 		}
+		if(course.name=="Introduction To LLM"){
+			inner5.addEventListener('click',()=>{
+				
+				fetch(`controller/courseProgress`, {
+				    method: "POST",
+				    headers: {
+				        "Content-Type": "application/json"
+				    },
+					body: JSON.stringify({"courseId":1}) ,
+					credentials:"include"
+				})
+				.then(response => response.json()) 
+				.then(data =>{ console.log(data)
+				window.location.href="levels.html"}) 
+				.catch(error => console.error("Error:", error));
+			})
+		}
 		courseCount++;
         inner5.innerText = "Preview"
         innerDiv4.appendChild(inner5);
