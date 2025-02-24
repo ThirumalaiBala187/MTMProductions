@@ -123,35 +123,41 @@ public class pythonLevels extends HttpServlet {
 	}
 
 	private static JSONObject getUserDetails(String email) throws SQLException {
-        JSONObject userDetails = new JSONObject();
-        JSONArray coursesArray = new JSONArray();
+	    JSONObject userDetails = new JSONObject();
+	    JSONArray coursesArray = new JSONArray();
 
-        try (Connection cn = Database.getConnection()) {
-            String sql = "SELECT c.Course_Name, cl.LevelName, usp.XP, usp.StreakCount, usp.Levels_Completed " +
-                    "FROM Users us " +
-                    "INNER JOIN User_Progress usp ON us.User_Id = usp.User_Id " +
-                    "INNER JOIN Course c ON c.Course_Id = usp.Course_Id " +
-                    "INNER JOIN Course_Levels cl ON c.Course_Id = cl.Course_Id AND usp.Levels_Completed + 1 = cl.Level_Id " +
-                    "WHERE us.Email = ?";
-            try (PreparedStatement st = cn.prepareStatement(sql)) {
-                st.setString(1, email);
-                try (ResultSet rs = st.executeQuery()) {
-                    while (rs.next()) {
-                        JSONObject courseObj = new JSONObject();
-                        courseObj.put("course_name", rs.getString("Course_Name"));
-                        courseObj.put("level_name", rs.getString("LevelName"));
-                        courseObj.put("xp", rs.getInt("XP"));
-                        courseObj.put("streakcount", rs.getInt("StreakCount"));
-                        courseObj.put("levels_completed", rs.getInt("Levels_Completed"));
-                        coursesArray.put(courseObj);
-                    }
-                }
-            }
-        }
+	    try (Connection cn = Database.getConnection()) {
+	        String sql = "SELECT c.Course_Name, cl.LevelName, usp.XP, usp.Levels_Completed " +
+	                     "FROM Users us " +
+	                     "INNER JOIN User_Progress usp ON us.User_Id = usp.User_Id " +
+	                     "INNER JOIN Course c ON c.Course_Id = usp.Course_Id " +
+	                     "LEFT JOIN Course_Levels cl ON c.Course_Id = cl.Course_Id AND usp.Levels_Completed + 1 = cl.Level_Id " +
+	                     "WHERE us.Email = ?";
+	        
+	        try (PreparedStatement st = cn.prepareStatement(sql)) {
+	            st.setString(1, email);
+	            try (ResultSet rs = st.executeQuery()) {
+	                while (rs.next()) {
+	                    JSONObject courseObj = new JSONObject();
+	                    courseObj.put("course_name", rs.getString("Course_Name"));
+	                    courseObj.put("xp", rs.getInt("XP"));
+//	                    courseObj.put("streakcount", rs.getInt("StreakCount"));
+	                    courseObj.put("levels_completed", rs.getInt("Levels_Completed"));
+	                    
+	                    String levelName = rs.getString("LevelName");
+	                    if (levelName != null) {
+	                        courseObj.put("level_name", levelName);
+	                    }
+	                    
+	                    coursesArray.put(courseObj);
+	                }
+	            }
+	        }
+	    }
 
-        userDetails.put("courses", coursesArray);
-        return userDetails;
-    }
+	    userDetails.put("courses", coursesArray);
+	    return userDetails;
+	}
 
 
 }

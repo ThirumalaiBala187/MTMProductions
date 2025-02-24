@@ -1,4 +1,5 @@
 
+document.addEventListener("DOMContentLoaded", function() {
 
 const details = getCookie("DETAILS");
 console.log(details)
@@ -65,10 +66,11 @@ let course_count=0;
 for(let course_name in courseCards){
 	console.log(course_name)
 	let course_percent = courseCards[course_name][1]; 
-	let level_name= courseCards[course_name][0];
+	let level_name=(courseCards[course_name][0]== undefined)?"Finished":courseCards[course_name][0];
 	let levelCount=courseCards[course_name][2];
 	var new_learn_prog = document.createElement("div");
 	new_learn_prog.classList.add("course-card");
+	if(course_name=="Introduction To Python"){
 	new_learn_prog.innerHTML =`
 	                    <div class="course-icon icon-1">🎯</div>
 	                    <div class="course-content">
@@ -77,7 +79,7 @@ for(let course_name in courseCards){
 								<div class="course-progress-fill" style="width:${course_percent}%;"></div>
 					        </div>
 	                    <div class="course-meta">
-	                            <span class="modules-left">${levelCount} modules left</span>
+	                            <span class="modules-left">${7-levelCount} modules left</span>
 	                            <button class="continue-btn" onclick="window.location.href='http://localhost:8080/Zignite/levels.html'">Continue</button>
 	                        </div>
 	                    </div>`;
@@ -87,6 +89,27 @@ for(let course_name in courseCards){
 						else{
 							course_count++;	
 						}
+						}
+      if(course_name=="Introduction To LLM"){
+							new_learn_prog.innerHTML =`
+							                    <div class="course-icon icon-1">🎯</div>
+							                    <div class="course-content">
+							                        <h3 class="course-title">${course_name}: ${level_name}</h3>
+							                        <div class="course-progress">
+														<div class="course-progress-fill" style="width:${course_percent}%;"></div>
+											        </div>
+							                    <div class="course-meta">
+							                            <span class="modules-left">${7-levelCount} modules left</span>
+							                            <button class="continue-btn" onclick="window.location.href='http://localhost:8080/Zignite/LLMlevels.html'">Continue</button>
+							                        </div>
+							                    </div>`;
+												if(course_percent==100){
+													cert_count++;
+												}
+												else{
+													course_count++;	
+												}
+												}
 	course_grid.appendChild(new_learn_prog);
 }
 
@@ -109,7 +132,8 @@ document.getElementsByClassName("burger")[0].innerHTML = `
    </svg>
    <span> ${username.slice(0,1).toLocaleUpperCase()+username.slice(1,3) || "Guest"}</span>
 `;
-
+    console.log("DOM is fully loaded!");
+});
 
 function logout() {
        fetch('controller/LogoutServlet') 

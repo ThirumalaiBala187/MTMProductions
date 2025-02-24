@@ -1,4 +1,5 @@
 package controller;
+import controller.StreakService;
 
 import java.io.BufferedReader;	
 import java.io.IOException;
@@ -68,24 +69,26 @@ public class SignupServlet extends HttpServlet {
               sessionCookie1.setPath("/"); 
               sessionCookie1.setMaxAge(60 * 60 * 24); 
               ////////////
-//              JSONObject details = getUserDetails(email);
-//              session.setAttribute("details", details);
+              JSONObject details = getUserDetails(email);
+              session.setAttribute("details", details);
               String userName;
-			
+              int streak=StreakService.updateStreak(addUserToDB(email, password, firstName, lastName, dob));
 //				userName = getUserName(email);
 			              
-//              Cookie detailsCookie = new Cookie("DETAILS",
-//                      Base64.getEncoder().encodeToString(details.toString().getBytes(StandardCharsets.UTF_8)));
+              Cookie detailsCookie = new Cookie("DETAILS",
+                      Base64.getEncoder().encodeToString(details.toString().getBytes(StandardCharsets.UTF_8)));
               Cookie nameCookie = new Cookie("name",
                       Base64.getEncoder().encodeToString((firstName+" "+lastName).getBytes(StandardCharsets.UTF_8)));
-              sessionCookie.setPath("/");
-              sessionCookie.setMaxAge(60 * 60 * 24);
+              Cookie streakCookie = new Cookie("streak",
+                      Base64.getEncoder().encodeToString((String.valueOf(streak)).getBytes(StandardCharsets.UTF_8)));
               nameCookie.setPath("/");
               nameCookie.setMaxAge(60 * 60 * 24);
-//              detailsCookie.setPath("/");
-//              detailsCookie.setMaxAge(60 * 60 * 24);
+              streakCookie.setPath("/");
+              streakCookie.setMaxAge(60 * 60 * 24);
+              detailsCookie.setPath("/");
+              detailsCookie.setMaxAge(60 * 60 * 24);
 //              
-//              response.addCookie(detailsCookie);
+              response.addCookie(detailsCookie);
               response.addCookie(nameCookie);
               
         
@@ -93,11 +96,11 @@ public class SignupServlet extends HttpServlet {
               response.setContentType("application/json");
               response.addCookie(sessionCookie);
               response.addCookie(sessionCookie1);
+              response.addCookie(streakCookie);
               jsonResponse.put("success", true);
               PrintWriter out = response.getWriter();
               out.write(jsonResponse.toString());
-
-              addUserToDB(email, password, firstName, lastName, dob);
+            
               initializeUserCourse(email);
         	  }
              catch(Exception e) {
@@ -118,6 +121,7 @@ public class SignupServlet extends HttpServlet {
 	private static void initializeUserCourse(String email) {
 		int user_id = 0;
 		try {
+			System.out.println("namma1");
 			Connection con = Database.getConnection();
 			String query = "SELECT User_Id FROM Users WHERE Email = ?";
 			PreparedStatement stmt = con.prepareStatement(query);
@@ -135,10 +139,10 @@ public class SignupServlet extends HttpServlet {
 			try {
 				for(int i=1;i<=2;i++) {
 				Connection con = Database.getConnection();
-				String query = "INSERT INTO User_Progress (Levels_Completed, StreakCount, XP, User_Id, Course_Id) VALUES (0, 0, 0, ?, ?)";
+				String query = "INSERT INTO User_Progress (Levels_Completed, XP, User_Id, Course_Id) VALUES (0, 0, ?, ?)";
 				PreparedStatement stmt = con.prepareStatement(query);
 				stmt.setInt(1, user_id);
-				stmt.setInt(2, i);;
+				stmt.setInt(2, i);
 				stmt.executeUpdate();
 				}
 			} catch (SQLException e) {
@@ -149,9 +153,9 @@ public class SignupServlet extends HttpServlet {
 		}
 	}
 
-	private static void addUserToDB(String email, String password, String firstName, String lastName, String dob) {
+	private static int addUserToDB(String email, String password, String firstName, String lastName, String dob) {
 		try {
-			System.out.println("nammadhan");
+			System.out.println("nammadhan2");
 			Connection con = Database.getConnection();
 			String query = "INSERT INTO Users (Name, Email, Password, Date_Of_Birth, SignUpTime, Role_Id, Salt) VALUES (?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement stmt = con.prepareStatement(query);
@@ -165,19 +169,26 @@ public class SignupServlet extends HttpServlet {
 			stmt.setDate(5, Date.valueOf(LocalDate.now()));
 			stmt.setInt(6, 2);
 			stmt.setString(7, salt);
-
-			stmt.executeUpdate();
+           stmt.execute();
+			String query1 = "Select User_Id from Users where Email=?";
+			PreparedStatement stmt1 = con.prepareStatement(query1);
+			stmt1.setString(1,email);
+			ResultSet rs=stmt1.executeQuery();
+			if(rs.next()) {
+				return rs.getInt("User_Id");
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return 0;
 	}
 
 	private boolean validateUser(String email, String password, String firstName) {
-		System.out.println("nammadhan1");
-		boolean isValid = email.contains("@gmail.com") && password.length() > 8 && !firstName.isEmpty();
+		boolean isValid = password.length() > 8 && !firstName.isEmpty();
 		if (isValid) {
 			try {
-				System.out.println("nammadhan2");
+				System.out.println("nammadhan3");
 				Connection con = Database.getConnection();
 				String query = "SELECT Email FROM Users WHERE Email = ?";
 				PreparedStatement stmt = con.prepareStatement(query);
@@ -216,7 +227,7 @@ public class SignupServlet extends HttpServlet {
         JSONArray coursesArray = new JSONArray();
 
         try (Connection cn = Database.getConnection()) {
-            String sql = "SELECT c.Course_Name, cl.LevelName, usp.XP, usp.StreakCount, usp.Levels_Completed " +
+            String sql = "SELECT c.Course_Name, cl.LevelName, usp.XP, usp.Levels_Completed " +
                     "FROM Users us " +
                     "INNER JOIN User_Progress usp ON us.User_Id = usp.User_Id " +
                     "INNER JOIN Course c ON c.Course_Id = usp.Course_Id " +
@@ -230,7 +241,7 @@ public class SignupServlet extends HttpServlet {
                         courseObj.put("course_name", rs.getString("Course_Name"));
                         courseObj.put("level_name", rs.getString("LevelName"));
                         courseObj.put("xp", rs.getInt("XP"));
-                        courseObj.put("streakcount", rs.getInt("StreakCount"));
+//                        courseObj.put("streakcount", rs.getInt("StreakCount"));
                         courseObj.put("levels_completed", rs.getInt("Levels_Completed"));
                         coursesArray.put(courseObj);
                     }

@@ -81,7 +81,7 @@ try(		BufferedReader reader = new BufferedReader(new InputStreamReader(request.g
         JSONArray coursesArray = new JSONArray();
 
         try (Connection cn = Database.getConnection()) {
-            String sql = "SELECT c.Course_Name, cl.LevelName, usp.XP, usp.StreakCount, usp.Levels_Completed " +
+            String sql = "SELECT c.Course_Name, cl.LevelName, usp.XP, usp.Levels_Completed " +
                     "FROM Users us " +
                     "INNER JOIN User_Progress usp ON us.User_Id = usp.User_Id " +
                     "INNER JOIN Course c ON c.Course_Id = usp.Course_Id " +
@@ -95,7 +95,6 @@ try(		BufferedReader reader = new BufferedReader(new InputStreamReader(request.g
                         courseObj.put("course_name", rs.getString("Course_Name"));
                         courseObj.put("level_name", rs.getString("LevelName"));
                         courseObj.put("xp", rs.getInt("XP"));
-                        courseObj.put("streakcount", rs.getInt("StreakCount"));
                         courseObj.put("levels_completed", rs.getInt("Levels_Completed"));
                         coursesArray.put(courseObj);
                     }

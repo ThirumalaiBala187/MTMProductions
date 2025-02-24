@@ -1,12 +1,15 @@
 package controller;
 import model.DAO.Database;
+import controller.StreakService;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Base64;
+import java.util.List;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -49,22 +52,24 @@ public class LoginServlet extends HttpServlet {
             boolean isValidUser = role != null;
 
             if (isValidUser) {
-                String userName = getUserName(email);
+                List<Object> userName = getUserName(email);
                 if (request.getSession(false) != null) {
                     request.getSession().invalidate();
                 }
                 HttpSession session = request.getSession(true);
                 session.setAttribute("user", email);
                 session.setAttribute("role", role);
-
+                int streak=  StreakService.updateStreak((Integer) userName.get(1));
                 JSONObject details = getUserDetails(email);
                 session.setAttribute("details", details);
-
+ 
+                Cookie streakCookie = new Cookie("streak",
+                        Base64.getEncoder().encodeToString((String.valueOf(streak)).getBytes(StandardCharsets.UTF_8)));
                 Cookie sessionCookie = new Cookie("JSESSIONID", session.getId());
                 Cookie detailsCookie = new Cookie("DETAILS",
                         Base64.getEncoder().encodeToString(details.toString().getBytes(StandardCharsets.UTF_8)));
                 Cookie nameCookie = new Cookie("name",
-                        Base64.getEncoder().encodeToString(userName.getBytes(StandardCharsets.UTF_8)));
+                        Base64.getEncoder().encodeToString(String.valueOf(userName.get(0)).getBytes(StandardCharsets.UTF_8)));
 
                 sessionCookie.setPath("/");
                 sessionCookie.setMaxAge(60 * 60 * 24);
@@ -72,11 +77,15 @@ public class LoginServlet extends HttpServlet {
                 nameCookie.setMaxAge(60 * 60 * 24);
                 detailsCookie.setPath("/");
                 detailsCookie.setMaxAge(60 * 60 * 24);
+                streakCookie.setPath("/");
+                streakCookie.setMaxAge(60 * 60 * 24);
 
                 response.addCookie(sessionCookie);
                 response.addCookie(detailsCookie);
                 response.addCookie(nameCookie);
-
+                response.addCookie(streakCookie);
+                
+              
                 jsonResponse.put("success", true);
                 jsonResponse.put("role", role);
                 out.print(jsonResponse.toString());
@@ -124,28 +133,28 @@ public class LoginServlet extends HttpServlet {
     }
 
   
-    private String getUserName(String email) throws SQLException {
+    private List<Object> getUserName(String email) throws SQLException {
         try (Connection cn = Database.getConnection()) {
-            String sql = "SELECT Name FROM Users WHERE Email = ?";
+            String sql = "SELECT Name,User_Id FROM Users WHERE Email = ?";
             try (PreparedStatement st = cn.prepareStatement(sql)) {
                 st.setString(1, email);
                 try (ResultSet rs = st.executeQuery()) {
                     if (rs.next()) {
-                        return rs.getString("Name");
+                        return  Arrays.asList(rs.getString("Name"),rs.getInt("User_Id"));
                     }
                 }
             }
-        }
-        return null;
+        return null ;
+    }
     }
 
 
-    private JSONObject getUserDetails(String email) throws SQLException {
+    private JSONObject getUserDetails(String email) throws SQLException{
         JSONObject userDetails = new JSONObject();
         JSONArray coursesArray = new JSONArray();
 
         try (Connection cn = Database.getConnection()) {
-            String sql = "SELECT c.Course_Name, cl.LevelName, usp.XP, usp.StreakCount, usp.Levels_Completed " +
+            String sql = "SELECT c.Course_Name, cl.LevelName, usp.XP, usp.Levels_Completed " +
                     "FROM Users us " +
                     "INNER JOIN User_Progress usp ON us.User_Id = usp.User_Id " +
                     "INNER JOIN Course c ON c.Course_Id = usp.Course_Id " +
@@ -159,7 +168,7 @@ public class LoginServlet extends HttpServlet {
                         courseObj.put("course_name", rs.getString("Course_Name"));
                         courseObj.put("level_name", rs.getString("LevelName"));
                         courseObj.put("xp", rs.getInt("XP"));
-                        courseObj.put("streakcount", rs.getInt("StreakCount"));
+//                        courseObj.put("streakcount", rs.getInt("StreakCount"));
                         courseObj.put("levels_completed", rs.getInt("Levels_Completed"));
                         coursesArray.put(courseObj);
                     }

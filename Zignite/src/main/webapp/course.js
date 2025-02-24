@@ -11,6 +11,7 @@ fetch("controller/CourseServlet")
     let container = document.getElementById("container");
 let courseCount=1;
     data.forEach(course => {
+		console.log(course.name);
         let courseInfo = document.createElement("div");
         courseInfo.classList.add("cinfo");
 
@@ -77,7 +78,7 @@ let courseCount=1;
 				.catch(error => console.error("Error:", error));
 			})
 		}
-		if(course.name=="Introduction To LLM"){
+		if(course.name=="Introduction To Python"){
 			inner5.addEventListener('click',()=>{
 				
 				fetch(`controller/courseProgress`, {
@@ -94,6 +95,23 @@ let courseCount=1;
 				.catch(error => console.error("Error:", error));
 			})
 		}
+		if(course.name=="Introduction To LLM"){
+				inner5.addEventListener('click',()=>{
+					
+					fetch(`controller/courseProgress`, {
+					    method: "POST",
+					    headers: {
+					        "Content-Type": "application/json"
+					    },
+						body: JSON.stringify({"courseId":2}) ,
+						credentials:"include"
+					})
+					.then(response => response.json()) 
+					.then(data =>{ console.log(data)
+					window.location.href="LLMlevels.html"}) 
+					.catch(error => console.error("Error:", error));
+				})
+			}
 		courseCount++;
         inner5.innerText = "Preview"
         innerDiv4.appendChild(inner5);

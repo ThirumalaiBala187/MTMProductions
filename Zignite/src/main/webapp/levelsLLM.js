@@ -1,188 +1,126 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const sections = document.querySelectorAll(".section");
-    let currentIndex = 0;
+function changeTab(selectedTab){
+    document.querySelectorAll(".cnav").forEach(tab => {
+        tab.classList.remove("active");
+    });
+    selectedTab.classList.add("active");
+}
 
-    function updateSections() {
-        sections.forEach((section, index) => {
-            section.style.transform = `translateY(${(index - currentIndex) * 50}vh)`;
-        });
-    }
+document.querySelectorAll('.courselevel').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
 
-    document.querySelectorAll(".next-btn").forEach((button) => {
-        button.addEventListener("click", function () {
-            if (currentIndex < sections.length - 1) {
-                currentIndex++;
-                updateSections();
-            }
-        });
+      const xc = rect.width / 2;
+      const yc = rect.height / 2;
+
+      const dx = x - xc;
+      const dy = y - yc;
+
+      const rotationX = (dy / yc) * 20;
+      const rotationY = -(dx / xc) * 20;
+
+      card.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
     });
 
-    document.querySelectorAll(".prev-btn").forEach((button) => {
-        button.addEventListener("click", function () {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateSections();
-            }
-        });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'rotateX(0deg) rotateY(0deg)';
     });
-	
-    updateSections();
-});
+  });
+  
+  const details = getCookie("DETAILS");
+  console.log(details)
+  var courses={};
+  var courseCards={};
+
+  function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) {
+          return parts.pop().split(';').shift();
+      }
+      return null;
+  }
+let streak;
+  if (details) {
+	streak=atob(getCookie("streak"));
+      const decodedDetails = atob(details);
+      const parsedDetails = JSON.parse(decodedDetails); 
+  	parsedDetails.courses.forEach(a=>{
+  		console.log(a.level_name);
+  		courseCards[a.course_name]=[a.level_name,Math.round((a.levels_completed/7)*100),a.levels_completed,a.xp];
+  	});
+  }
+  
+  var levelCount=0;
+  
+  for(let course_name in courseCards){
+  	console.log(course_name)
+	if(course_name=="Introduction To LLM"){
+  	let course_percent = courseCards[course_name][1]; 
+  	let level_name= courseCards[course_name][0];
+  	levelCount=courseCards[course_name][2];
+	let xp=courseCards[course_name][3];
+
+  	var new_learn_prog = document.getElementsByClassName("upro")[0];
+  	new_learn_prog.innerHTML =` <div class="streak cpro">
+	                      <span class="bd">${streak} Day Streak 🔥</span><br>
+	                      <span class="bd1">Personal Best!</span>
+	                  </div>
+	                  <div class="xp cpro">
+	                      <span class="bd">${xp} XP ⚡</span><br>
+	                  </div>
+	                  <div class="achievement cpro">
+	                      <span class="bd">${levelCount} Completed 🏆</span><br>
+	                  </div>
+					  <div id="progress">
+					      <div id="progressBar" style="width:${course_percent}%"></div>
+					  </div>`
+					  break;
+  }
+  }
+  
+ 
 
 
+       function updateLevels() {
+  	if (details) {
+  	     const decodedDetails = atob(details);
+  	     const parsedDetails = JSON.parse(decodedDetails); 
+  	 	parsedDetails.courses.forEach(a=>{
+  	 		console.log(a.level_name);
+  	 		courseCards[a.course_name]=[a.level_name,Math.round((a.levels_completed/7)*100),a.levels_completed,a.xp,a.streakcount];
+  	 	});
+  	 }
+  	let courseName = "Introduction To LLM";
+  	let [levelName, completionPercentage, levelsCompleted, xp, streakCount] = courseCards[courseName];
+           for (let i = 1; i <= 7; i++) {
+  		
+  		console.log(levelCount)
+               let levelId = `level${i}`;
+               let levelElement = document.getElementById(levelId);
+               let button = document.getElementById(`${levelId}-btn`);
+  		  if(i == 1){
+  			levelElement.classList.remove("blurred");
+               	button.innerText = i === 1 ? "Continue" : "Review";
+               	button.classList.remove("locked");
+               	button.removeAttribute("disabled");
+  		  }
+  		  else if(i <= levelsCompleted+1){
+  			  levelElement.classList.remove("blurred");
+                button.innerText = i === 1 ? "Continue" : "Review";
+                button.classList.remove("locked");
+                button.removeAttribute("disabled");
+  		  } else {
+                   levelElement.classList.add("blurred");
+                   button.innerHTML = "🔒 Locked";
+                   button.classList.add("locked");
+                   button.setAttribute("disabled", "true");
+               }
+           }
+       }
 
-const API_KEY = 'AIzaSyBSXrz7hdoysQVAfy-Ee8VkIEdWxEsP2XoAIzaSyB3wN4V7OEF6ItvcxiFJYbHHHzaKW3bf_U';
-const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent';
-
-const chatMessages = document.getElementById('chatMessages');
-const userInput = document.getElementById('userInput');
-const sendButton = document.getElementById('sendBtn');
-
-async function generateResponse(prompt) {
-    const response = await fetch(`${API_URL}?key=${API_KEY}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt })
-    });
-    const data = await response.json();
-    return data.candidates[0].content.parts[0].text;
-}
-
-
-
-function addMessage(message, isUser) {
-    const messageElement = document.createElement('div');
-    messageElement.classList.add('message');
-    messageElement.classList.add(isUser ? 'userMessage' : 'botMessage');
-    const profileImage = document.createElement('img');
-    profileImage.classList.add('profileImage');
-    profileImage.src = isUser ? 'user.jpg' : 'bot.jpg';
-    const messageContent = document.createElement('div');
-    messageContent.classList.add('messageContent');
-    messageContent.textContent = message;
-    messageElement.appendChild(profileImage);
-    messageElement.appendChild(messageContent);
-    chatMessages.appendChild(messageElement);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
-async function handleUserInput() {
-    const userMessage = userInput.value.trim();
-    if (userMessage) {
-        addMessage(userMessage, true);
-        userInput.value = '';
-        sendButton.disabled = true;
-        userInput.disabled = true;
-        try {
-            const botMessage = await generateResponse(userMessage);
-            addMessage(botMessage, false);
-        }
-        catch (error) {
-            console.error('Error:', error);
-            addMessage('Sorry, I encountered an error. Please try again.', false);
-        }
-        finally {
-            sendButton.disabled = false;
-            userInput.disabled = false;
-            userInput.focus();
-        }
-    }
-}
-
-sendButton.addEventListener('click', handleUserInput);
-userInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        handleUserInput();
-    }
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    const sectionsWrapper = document.querySelector(".sectionsBox");
-    const sections = document.querySelectorAll(".section");
-    let currentIndex = 0;
-
-    function updateSections() {
-        sectionsWrapper.style.transform = `translateY(-${currentIndex * 165}%)`;
-        let progress = ((currentIndex + 1)/ 5) * 100;
-        document.getElementById("progressBar").style.width = progress + "%";
-    }
-
-    window.next = function () {
-        if (currentIndex < sections.length - 1) {
-            currentIndex++;
-            updateSections();
-        }
-    };
-
-    window.prev = function () {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updateSections();
-        }
-    };
-
-    updateSections();
-});
-
-function getCookie(name) {
-    const value = `; ${document.cookie}`;
-	console.log(100);
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) {
-        return parts.pop().split(';').shift();
-    }
-    return null;
-}
-
-courseCards={};
-async function completeLevel(num) {
-    try {
-		console.log(1);
-	     	details=getCookie("DETAILS")
-			if (details) {
-				console.log(2);
-			     const decodedDetails = atob(details);
-			     const parsedDetails = JSON.parse(decodedDetails); 
-			 	parsedDetails.courses.forEach(a=>{
-					console.log(3);
-			 		console.log(a.level_name);
-			 		courseCards[a.course_name]=[a.level_name,Math.round((a.levels_completed/7)*100),a.levels_completed,a.xp,a.streakcount];
-			 	});
-			 }
-			 let courseName = "Introduction To Python";
-			 if (courseCards[courseName]) {
-				console.log(4);
-			     let [levelName, completionPercentage, levelsCompleted, xp, streakCount] = courseCards[courseName];
-				 console.log(5000+": "+levelsCompleted);
-				 if(levelsCompleted < num-1){
-				        const response = await fetch("controller/pythonLevels", {
-				            method: "POST",
-				            headers: {
-				                'Content-Type': 'application/json',
-				            },
-				            body: JSON.stringify({ level: num-1, courseId:1}) 
-				        });
-
-				        if (!response.ok) {
-				            throw new Error(`HTTP error! Status: ${response.status}`);
-				        }
-						console.log(5);
-				        const result = await response.text(); 
-				        console.log("Server response:", result);
+       updateLevels();
 
 
-				        levelCount = num;
-				        if (levelCount <= 7) {
-				            window.location.href = `level${num}LLM.html`;
-				        }
-				 	
-				    } 
-				 }else {
-					console.log("Course not found.");}
-			 } catch (error) {
-			 		console.log(error);
-			 		console.error("Error sending level data:", error);
-			 	}
-			 }
-	    
+			  

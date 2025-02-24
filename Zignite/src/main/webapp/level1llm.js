@@ -25,9 +25,10 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
-	let finish=(localStorage.getItem("finishedPy")==null)?0:localStorage.getItem("finishedPy");
-		completion=document.getElementById("completion");
-		               completion.innerHTML=finish+"%";
+	let finish=(localStorage.getItem("finishedLLM")==null)?0:localStorage.getItem("finishedLLM");
+	completion=document.getElementById("completion");
+	               completion.innerHTML=finish+"%";
+
     updateSections();
 });
 
@@ -106,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateSections() {
         sectionsWrapper.style.transform = `translateY(-${currentIndex * 165}%)`;
-        let progress = ((currentIndex + 1)/ 5) * 100;
+        let progress = ((currentIndex + 1)/ 6) * 100;
         document.getElementById("progressBar").style.width = progress + "%";
     }
 
@@ -140,10 +141,9 @@ function getCookie(name) {
 courseCards={};
 async function completeLevel(num) {
     try {
-		console.log(1);
 	     	details=getCookie("DETAILS")
-			
 			if (details) {
+				
 				console.log(2);
 			     const decodedDetails = atob(details);
 			     const parsedDetails = JSON.parse(decodedDetails); 
@@ -153,28 +153,27 @@ async function completeLevel(num) {
 			 		courseCards[a.course_name]=[a.level_name,Math.round((a.levels_completed/7)*100),a.levels_completed,a.xp];
 			 	});
 			 }
-			 let courseName = "Introduction To Python";
 			 levelCount = num;
-			 if (levelCount <= 7) {
-				
-		  window.location.href = `level${num}python.html`;
-
-			 			 			        }
+			 			        if (levelCount <= 7) {
+			 			            window.location.href = `level${num}LLM.html`;
+			 			        }
+			 let courseName = "Introduction To LLM";
 			 if (courseCards[courseName]) {
 				console.log(4);
 			     let [levelName, completionPercentage, levelsCompleted, xp] = courseCards[courseName];
-				 localStorage.setItem("finishedPy", completionPercentage);
 				 console.log(5000+": "+levelsCompleted);
-				 levelCount = num;
-				
-									
+				 localStorage.setItem("finishedLLM", completionPercentage);
+
+			//	completion=document.getElementById("completion");
+			//	completion.innerText=completionPercentage+"%";
 				 if(levelsCompleted < num-1){
+					console.log("nammadjaan");
 				        const response = await fetch("controller/pythonLevels", {
 				            method: "POST",
 				            headers: {
 				                'Content-Type': 'application/json',
 				            },
-				            body: JSON.stringify({ level: num, courseId:1}) 
+				            body: JSON.stringify({ level: num, courseId:2}) 
 				        });
 				        if (!response.ok) {
 				            throw new Error(`HTTP error! Status: ${response.status}`);
@@ -184,7 +183,7 @@ async function completeLevel(num) {
 				        console.log("Server response:", result);
 
 
-				      
+				       
 				 	
 				    } 
 				 }else {
@@ -195,6 +194,4 @@ async function completeLevel(num) {
 			 				 		    }
 			 }
 	    
-
-
 

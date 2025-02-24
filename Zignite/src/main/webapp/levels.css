@@ -150,7 +150,7 @@ body{
 }
 #progressBar{
     height: 100%;
-    width: 10%;
+    width:10%;
     border-radius: 10px;
     background-color: #14B8A6;
     transition: width 0.5s ease-in;

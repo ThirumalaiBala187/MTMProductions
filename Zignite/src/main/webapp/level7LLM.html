@@ -925,45 +925,50 @@
             clearInterval(timerInterval);
         }
 
-
+        // Reset quiz
         function resetQuiz() {
-
+            // Reset variables
             currentQuestion = 1;
             score = 0;
             answeredQuestions = {};
             timeLeft = 600;
-
+            
+            // Reset UI
             document.querySelectorAll('.question-card').forEach(card => {
                 card.classList.remove('active');
             });
             document.getElementById('question-1').classList.add('active');
             
- 
+            // Reset options
             document.querySelectorAll('input[type="radio"]').forEach(radio => {
                 radio.checked = false;
                 radio.disabled = false;
                 radio.nextElementSibling.classList.remove('correct-answer', 'wrong-answer');
             });
             
-
+            // Reset explanations
             document.querySelectorAll('.explanation').forEach(exp => {
                 exp.classList.remove('show');
             });
             
-   
+            // Reset check buttons
             document.querySelectorAll('.check-button').forEach(btn => {
                 btn.disabled = false;
             });
-
+            
+            // Reset navigation
             document.querySelector('.quiz-navigation').style.display = 'flex';
             document.getElementById('prev-btn').disabled = true;
             document.getElementById('next-btn').disabled = true;
             document.getElementById('next-btn').textContent = 'Next';
- 
+            
+            // Hide score card
             document.getElementById('score-card').classList.remove('active');
-
+            
+            // Reset progress
             updateProgress();
-
+            
+            // Reset timer
             updateTimer();
             clearInterval(timerInterval);
             timerInterval = setInterval(function() {
@@ -977,7 +982,7 @@
             }, 1000);
         }
 
- 
+        // Initialize quiz when page loads
         window.onload = initQuiz;
     </script>
 </body>
