@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="levels.css">
+</head>
+<body>
+    <div class="container">
+   <div class="courseheader">
+            <img src="ProjectLogo.png" onclick="window.location.href='http://localhost:8080/Zignite/userHome.html'" style="height:100%;width: 300px">
+            <input type="text" name="search" placeholder="&#x1F50D;&ensp;Search for a course" class="searchinp">
+        </div>
+          <!--   <div class="navbar">
+            <div class="cnav active" onclick="changeTab(this)">All</div>
+            <div class="cnav" onclick="changeTab(this)">Trending</div>
+            <div class="cnav" onclick="changeTab(this)">New</div>
+            <div class="cnav" onclick="changeTab(this)">Popular</div>
+        </div>-->
+        <div class="coursecontainer">
+            <div class="progress">
+                <div class="upro">
+                 <!--  <div class="streak cpro">
+                        <span class="bd">15 Day Streak 🔥</span><br>
+                        <span class="bd1">Personal Best!</span>
+                    </div>
+                    <div class="xp cpro">
+                        <span class="bd">2,750 XP ⚡</span><br>
+                        <span class="bd1">Level 3 Master</span>
+                    </div>
+                    <div class="achievement cpro">
+                        <span class="bd">5 Achievements 🏆</span><br>
+                        <span class="bd1">2 New Available</span></div>
+                    </div>
+                    <div class="progressrange">
+                        <div class="fill"></div>
+                        <div class="progress_marker">
+                            <div class="pmarker completed"></div>
+                            <div class="pmarker completed"></div>
+                            <div class="pmarker completed"></div>
+                            <div class="pmarker"></div>
+                            <div class="pmarker"></div>
+                            <div class="pmarker"></div>
+                        </div>  --> 
+                    </div>
+                </div>
+                <div class="maincourselevels">
+                    <div id="level1" class="courselevel" onclick="window.location.href='http://localhost:8080/Zignite/level1LLM.html'">
+                        <div class="coursecontent">
+                            <div class="cimg"><span class="customimage">🌐</span></div>
+                            <div class="content">
+                                <span class="bdc">Introduction to LLM</span>
+                                <br><br><span class="grey">Master HTML, CSS, and basic JavaScript</span><br><span class="xp">1000 XP</span>
+                            </div>
+                        </div>
+                         <a id="level1-btn" href="http://localhost:8080/Zignite/level1python.html" class="coursestatus">continue</a>
+                        
+                    </div>
+                    <div id="level2" class="courselevel" onclick="window.location.href='http://localhost:8080/Zignite/level2LLM.html'">
+                        <div class="coursecontent">
+                            <div class="cimg"><span class="customimage">⚡</span></div>
+                            <div class="content">
+                                <span class="bdc"> How Do LLMs Understand Language?  </span>
+                                <br><br><span class="grey">Learn DOM manipulation and events</span><br><span class="xp">1500XP</span>
+                            </div>
+                        </div>
+                        <div class="coursestatus" id="level2-btn">Review</div>
+                    </div>
+                    <div id="level3" class="courselevel" onclick="window.location.href='http://localhost:8080/Zignite/level3LLM.html'">
+                        <div class="coursecontent">
+                            <div class="cimg"><span class="customimage">🚀</span></div>
+                            <div class="content">
+                                <span class="bdc">How Do We Train an LLM?</span>
+                                <br><br><span class="grey">Master HTML, CSS, and basic JavaScript</span><br><span class="xp">2000 XP</span>
+                            </div>
+                        </div>
+                        <div class="coursestatus" id="level3-btn">continue</div>
+                    </div>
+                    <div id="level4" class="courselevel"  onclick="window.location.href='http://localhost:8080/Zignite/level4LLM.html'">
+                        <div class="coursecontent">
+                            <div class="cimg"><span class="customimage">🔌</span></div>
+                            <div class="content">
+                                <span class="bdc"> How to Use LLMs in Real Life? </span>
+                                <br><br><span class="grey">Master HTML, CSS, and basic JavaScript</span><br><span class="xp">1000 XP</span>
+                            </div>
+                        </div>
+                        <div class="coursestatus" id="level4-btn">continue</div>
+                    </div>
+                    <div id="level5" class="courselevel" onclick="window.location.href='http://localhost:8080/Zignite/level5LLM.html'">
+                        <div class="coursecontent">
+                            <div class="cimg"><span class="customimage">⚛️</span></div>
+                            <div class="content">
+                                <span class="bdc"> What Are the Limitations of LLMs? </span>
+                                <br><br><span class="grey">Master HTML, CSS, and basic JavaScript</span><br><span class="xp">1000 XP</span>
+                            </div>
+                        </div>
+                        <div class="coursestatus" id="level5-btn">continue</div>
+                    </div>
+                    <div id="level6" class="courselevel" onclick="window.location.href='http://localhost:8080/Zignite/level6LLM.html'">
+                        <div class="coursecontent">
+                            <div class="cimg"><span class="customimage">⚛️</span></div>
+                            <div class="content">
+                                <span class="bdc"> What is the Future of LLMs?</span>
+                                <br><br><span class="grey">Master HTML, CSS, and basic JavaScript</span><br><span class="xp">1000 XP</span>
+                            </div>
+                        </div>
+                        <div class="coursestatus" id="level6-btn">continue</div>
+                    </div>
+                    <div id="level7" class="courselevel"onclick="window.location.href='http://localhost:8080/Zignite/level7python.html'">
+                        <div class="coursecontent">
+                            <div class="cimg"><span class="customimage">🤔</span></div>
+                            <div class="content">
+                                <span class="bdc"> QUIZ ! </span>
+                                <br><br><span class="grey">Master HTML, CSS, and basic JavaScript</span><br><span class="xp">1000 XP</span>
+                            </div>
+                        </div>
+           				<a href="http://localhost:8080/Zignite/quizPython.html" class="coursestatus" id="level7-btn">continue</a>
+
+                    </div>
+                </div>
+            </div>    
+        </div>
+    </div>
+    <script src="levels.js"></script>
+</body>
+</html>
