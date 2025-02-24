@@ -157,7 +157,6 @@ async function completeLevel(num) {
 			     let [levelName, completionPercentage, levelsCompleted, xp, streakCount] = courseCards[courseName];
 				 console.log(5000+": "+levelsCompleted);
 				 if(levelsCompleted < num-1){
-					    
 				        const response = await fetch("controller/pythonLevels", {
 				            method: "POST",
 				            headers: {
@@ -165,7 +164,6 @@ async function completeLevel(num) {
 				            },
 				            body: JSON.stringify({ level: num-1, courseId:1}) 
 				        });
-
 				        if (!response.ok) {
 				            throw new Error(`HTTP error! Status: ${response.status}`);
 				        }

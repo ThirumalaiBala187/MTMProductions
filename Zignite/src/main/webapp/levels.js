@@ -68,7 +68,6 @@ document.querySelectorAll('.courselevel').forEach(card => {
 	                  </div>
 	                  <div class="xp cpro">
 	                      <span class="bd">${xp} XP ⚡</span><br>
-	                      <span class="bd1">Level 3 Master</span>
 	                  </div>
 	                  <div class="achievement cpro">
 	                      <span class="bd">${levelCount} Completed 🏆</span><br>
@@ -83,7 +82,18 @@ document.querySelectorAll('.courselevel').forEach(card => {
 	
 
       function updateLevels() {
+		if (details) {
+		     const decodedDetails = atob(details);
+		     const parsedDetails = JSON.parse(decodedDetails); 
+		 	parsedDetails.courses.forEach(a=>{
+		 		console.log(a.level_name);
+		 		courseCards[a.course_name]=[a.level_name,Math.round((a.levels_completed/7)*100),a.levels_completed,a.xp,a.streakcount];
+		 	});
+		 }
+		let courseName = "Introduction To Python";
+		let [levelName, completionPercentage, levelsCompleted, xp, streakCount] = courseCards[courseName];
           for (let i = 1; i <= 7; i++) {
+			
 			console.log(levelCount)
               let levelId = `level${i}`;
               let levelElement = document.getElementById(levelId);
@@ -94,7 +104,7 @@ document.querySelectorAll('.courselevel').forEach(card => {
               	button.classList.remove("locked");
               	button.removeAttribute("disabled");
 			  }
-			  else if(i < levelCount){
+			  else if(i <= levelsCompleted+1){
 				  levelElement.classList.remove("blurred");
 	              button.innerText = i === 1 ? "Continue" : "Review";
 	              button.classList.remove("locked");

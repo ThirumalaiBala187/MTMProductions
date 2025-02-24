@@ -113,7 +113,7 @@ public class pythonLevels extends HttpServlet {
 	private void updateCoursedata(String email, int course_id) throws SQLException {
 		
 		   try (Connection cn = Database.getConnection()) {
-	            String sql = " UPDATE User_Progress  SET Levels_Completed = Levels_Completed + 1 where Course_Id=? and User_Id = (SELECT User_Id FROM Users WHERE Email = ?)";
+	            String sql = " UPDATE User_Progress SET Levels_Completed = Levels_Completed + 1,XP = XP + 100 WHERE Course_Id = ? AND User_Id = (SELECT User_Id FROM Users WHERE Email = ?)";
 	            try (PreparedStatement st = cn.prepareStatement(sql)) {
 	            	st.setInt(1, course_id);
 	                st.setString(2, email);
