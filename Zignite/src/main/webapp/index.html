@@ -3,142 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zignite Learning</title>
+    <title>ArivupathAI</title>
     <link rel="stylesheet" href="styles.css" type="text/css">
-    <link rel="icon" href="Logo.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Fjalla+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Fjalla+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/82e94ecea6.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="ProjectLogo(1).png" alt="ArivupathAI Logo">
+            <div class="logoText">ArivupathAI</div>
+        </div>
+        <div class="authButtons">
+            <a href="signin.html" class="btn loginBtn">Log In&emsp;<i class="fa-solid fa-right-to-bracket"></i></a>
+            <a href="signup.html"class="btn signupBtn">Sign Up&emsp;<i class="fa-solid fa-user-plus" style="color: #effdfb;"></i></a>
+        </div>
+    </nav>
+    
+    <div class="floatingShapes">
+        <div class="shape1"></div>
+        <div class="shape2"></div>
+        <div class="shape3"></div>
+        <div class="shape4"></div>
+    </div>
+    
     <div class="whole">
-        <div class="header">
-          <img src="ProjectLogo.png" class="logoImage">
-          <div class="headerInner">
-            <img src="Community.png" class="icons" style="height:35px; width:30px" >
-            <img src="DarkMode.png" class="icons">
-            <!-- <img src="Notification.png" class="icons"> -->
-            <a href="http://localhost:8080/Zignite/signin.html">
-                <div class="signIn" style="background: #F0F2F1;">Log In</div>  
-            </a>          
-            <a href="http://localhost:8080/Zignite/signup.html">
-                <div class="signIn" style="color: whitesmoke; border: none;">Sign Up</div>
-            </a>           
-        </div>
-        </div>
-        <div class="content1">
-        <!-- - -->
-            <p class="title">Elevate Your Learning Experience with AI Buddy - Smarter and More Engaging!</p>
-            <p>Master your Expertise with our interactive platform. Learn, grow, and achieve your goals alongside thousands of learners!</p>
-            <center>
-            <video height="400px" width="800px" autoplay muted loop style="margin-left: 300px">
+        <h1 class="wholeTitle">Elevate Your Learning Experience with <span>AI Buddy</span> - Smarter and More Engaging!</h1>
+        <p class="wholeSubtitle">Master your Expertise with our interactive platform. Learn, grow, and achieve your goals alongside thousands of learners!</p>
+        
+        <div class="learnImage">
+            <video height="350px" width="700px" autoplay muted loop>
                 <source src="learn-by-doing.mp4" type="video/mp4">
-            </video></center>
-            <div class="options">
-                <a href="http://localhost:8080/Zignite/signup.html">
-                <div class="optionsInner">
-                    Get Started &#x21E8
+            </video>
+        </div>
+        
+        <div class="features">
+            <div class="featureCard">
+                <div class="featureIcon">
+                    <i class="fa-solid fa-graduation-cap"></i>
                 </div>
-                </a>
-                <div class="optionsInner" style="background: none; color: #14B8A6">
-                    Watch Demo &ensp; &#x25B6
+                <h3 class="featureTitle">Personalized Learning</h3>
+                <p class="featureText">AI-driven content tailored to your unique learning style and pace.</p>
+            </div>
+            <div class="featureCard">
+                <div class="featureIcon"><i class="fas fa-chart-line"></i></div>
+                <h3 class="featureTitle">Track Progress</h3>
+                <p class="featureText">Visualize your journey with detailed analytics and insights.</p>
+            </div>
+            <div class="featureCard">
+                <div class="featureIcon"><i class="fas fa-users"></i></div>
+                <h3 class="featureTitle">Community Support</h3>
+                <p class="featureText">Connect with peers and experts to enhance your learning experience.</p>
+            </div>
+        </div>
+        
+        <div class="actionButtons">
+            <a href="signup.html"class="btn getStarted" >Get Started &nbsp;<i class="fa-solid fa-user-plus" style="color: #effdfb;"></i></a>
+            <button class="btn watchDemo" id="more">Learn More <i class="fa-solid fa-angles-right" style="color: #0F3443;" id="moreButton"></i></button>
+        </div>
+        
+        <div class="waveContainer">
+            <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100">
+                <path fill-opacity="1" d="M0,32L60,42.7C120,53,240,75,360,74.7C480,75,600,53,720,42.7C840,32,960,32,1080,37.3C1200,43,1320,53,1380,58.7L1440,64L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+            </svg>
+        </div>
+    </div>
+
+    <div class="advantages1" id="advantages1">
+        <p>Learning Features</p>
+        <div class="advantagesInner">
+            <div class="advCard">
+                <div class="featureIcon">
+                    <i class="fa-solid fa-people-arrows"></i>
                 </div>
+                <h3 class="featureTitle">Interactive Courses</h3>
+                <p class="featureText">Learn from structured courses by experts.</p>
             </div>
-            <div class="features">
-                <div class="featuresInner">
-                    <img src="InteractiveLearn.png">
-                    <p>Interactive Courses</p>
-                    <p class="para">Learn from structured courses  by experts.</p>
+            <div class="advCard">
+                <div class="featureIcon">
+                    <i class="fa-solid fa-robot"></i>
                 </div>
-                <div class="featuresInner">
-                    <img src="AIAssistant.png">
-                    <p>AI Assistant</p>
-                    <p class="para">24/7 AI support for your learning journey.</p>
+                <h3 class="featureTitle">AI Assistant</h3>
+                <p class="featureText">24/7 AI support for your interactive learning journey.</p>
+            </div>
+            <div class="advCard">
+                <div class="featureIcon">
+                    <i class="fa-solid fa-trophy"></i>
                 </div>
-                <div class="featuresInner">
-                    <img src="Achievements.png">
-                    <p>Achievements</p>
-                    <p class="para">Track your progress with certifications.</p>
+                <h3 class="featureTitle">Achievements</h3>
+                <p class="featureText">Track your progress with certifications and achievements.</p>
+            </div>
+            <div class="advCard">
+                <div class="featureIcon">
+                    <i class="fa-solid fa-gauge-high"></i>
                 </div>
-                <div class="featuresInner">
-                    <img src="FastLearning.png">
-                    <p>Fast Learning</p>
-                    <p class="para">Adaptive learning paths for quick mastery.</p>
-                </div>
-            </div>
-        </div>  
-        <div class="content2">
-            <p>Why Choose Zignite?</p>
-            <div class="content2Inner">
-                <div class="content2InnerFeatures">
-                    <img src="CommunityLearning.png">
-                    <p>Community Learning</p>
-                    <p class="para">Join a global community of Learners and Experts.</p>
-                </div>
-                <div class="content2InnerFeatures">
-                    <img src="ProgressTracking.png">
-                    <p>Progress Tracking</p>
-                    <p class="para">Visual analytics to monitor your Learning journey.</p>
-                </div>
-                <div class="content2InnerFeatures">
-                    <img src="ExpertSupport.png">
-                    <p>Expert Support</p>
-                    <p class="para">Get help from Industry Professionals and AI.</p>
-                </div>
-            </div>    
-        </div>    
-        <div class="content3">
-            <div class="content3Inner">
-                <p>Growing</p>
-                <p class="para" style="color: white;font-weight: bold">Learning Community</p>
-            </div>
-            <div class="content3Inner">
-                <p>10 +</p>
-                <p class="para" style="color: white;font-weight: bold">AI Powered Lessons</p>
-            </div>
-            <div class="content3Inner">
-                <p>95%</p>
-                <p class="para" style="color: white;font-weight: bold">Success Rate</p>
-            </div>
-            <div class="content3Inner">
-                <p>24/7</p>
-                <p class="para" style="color: white;font-weight: bold">Learning Support</p>
-            </div>
-        </div> 
-        <div class="content2" style="height:40%">
-            <p>Ready to Start Learning?</p>
-            <p class="para" style="color: rgb(128, 122, 122); font-size: 26px">Start your journey with a growing community of learners today !</p> 
-            <a href="http://localhost:8080/Zignite/signup.html">
-            <div class="optionsInner">
-                    Start Free Trial
-            </div>
-            </a>
-        </div> 
-        <div class="content4">
-            <div class="content4Inner">
-                <p class="footer" style="font-weight: bold; font-size: 30px">Zignite</p>
-                <p class="footer">Transforming education through AI</p>
-            </div>
-            <div class="content4Inner">
-                <p class="footer" style="font-weight: bold; font-size: 30px">Product</p>
-                <p class="footer">Features</p>
-                <p class="footer">Pricing</p>
-                <p class="footer">Enterprise</p>
-            </div>
-            <div class="content4Inner">
-                <p class="footer" style="font-weight: bold; font-size: 30px">Resources</p>
-                <p class="footer">Documentation</p>
-                <p class="footer">Community</p>
-                <p class="footer">Support</p>
-            </div>
-            <div class="content4Inner">
-                <p class="footer" style="font-weight: bold; font-size: 30px">Company</p>
-                <p class="footer">About Us</p>
-                <p class="footer">Careers</p>
-                <p class="footer">Contacts</p>
+                <h3 class="featureTitle">Fast Learning</h3>
+                <p class="featureText">Adaptive learning paths for quick mastery.</p>
             </div>
         </div>
     </div>
 
-  
+    <div class="advantages2" id="advantages2">
+        <p>Why Choose Arivu Path AI?</p>
+        <div class="advantages2Inner">
+            <div class="advantages2Content">
+                <h3 class="featureTitle" style="margin-bottom: 0px;"><i class="fa-solid fa-seedling" style="color: #06B6D4;"></i>&emsp;Growing</h3>
+                <p class="featureText">Learning Community</p>
+            </div>
+            <div class="advantages2Content">
+                <h3 class="featureTitle" style="margin-bottom: 0px;"><i class="fa-solid fa-people-group" style="color: #06B6D4;"></i>&emsp;2 Interactive</h3>
+                <p class="featureText">AI Powered Lessons</p>
+            </div>
+            <div class="advantages2Content">
+                <h3 class="featureTitle" style="margin-bottom: 0px;"><i class="fa-solid fa-thumbs-up" style="color: #06B6D4;"></i>&emsp;95%</h3>
+                <p class="featureText">Success Rate</p>
+            </div>
+            <div class="advantages2Content">
+                <h3 class="featureTitle" style="margin-bottom: 0px;"><i class="fa-solid fa-stopwatch" style="color: #06B6D4;"></i>&emsp;24/7</h3>
+                <p class="featureText">Expert Support</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="advantages2" id="advantages3" style="background-color: white;height: 50vh;">
+        <p>Ready to Start Learning?</p>
+        <p class="featureTitle" style="color: #666;">Start your journey with a growing community of learners today !</p>
+        <a href="signup.html" class="btn signupBtn">Get Started&emsp;<i class="fa-solid fa-user-plus" style="color: #effdfb;"></i></a>
+        <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" style="margin-bottom: -60px;">
+            <path fill-opacity="1" d="M0,32L60,42.7C120,53,240,75,360,74.7C480,75,600,53,720,42.7C840,32,960,32,1080,37.3C1200,43,1320,53,1380,58.7L1440,64L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+        </svg>
+    </div>
+    
+    <script src="index.js"></script>
 </body>
 </html>

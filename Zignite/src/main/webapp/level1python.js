@@ -183,9 +183,6 @@ async function completeLevel(num) {
 				        const result = await response.text(); 
 				        console.log("Server response:", result);
 
-
-				      
-				 	
 				    } 
 				 }else {
 							     console.log("Course not found.");}

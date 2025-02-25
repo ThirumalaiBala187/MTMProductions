@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -146,7 +146,6 @@
 
         .question-card {
             background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(8px);
             border: none;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 1.5rem;
@@ -383,11 +382,11 @@
             column-gap: var(--nav-button-distance);
         }
 
-        .popup-window ul button:hover {
+      .popup-window ul button:hover { 
             color: var(--nav-button-hover-text-color);
             background: #27D3D5;
         }
-
+ 
         .popup-window hr {
             margin: var(--underline-margin-y) 0;
             border: none;
@@ -511,85 +510,10 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo-container">
-            <div class="logo">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                    <path d="M2 17l10 5 10-5"></path>
-                    <path d="M2 12l10 5 10-5"></path>
-                </svg>
-            </div>
-            <div class="brand-name">LearnPlatform</div>
-        </div>
-        <div class="header-nav">
-            <a href="#">Dashboard</a>
-            <a href="#">Courses</a>
-            <a href="#">Library</a>
-            <div class="streak">🔥 5 day streak</div>
-            <div class="popup">
-                <input type="checkbox" id="burger-toggle">
-                <label for="burger-toggle" class="burger">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <path d="M12 8v8"></path>
-                        <path d="M8 12h8"></path>
-                    </svg>
-                </label>
-                <nav class="popup-window">
-                    <ul>
-                        <li>
-                            <button>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                    <circle cx="12" cy="7" r="4"></circle>
-                                </svg>
-                                Profile
-                            </button>
-                        </li>
-                        <li>
-                            <button>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-                                </svg>
-                                Bookmarks
-                            </button>
-                        </li>
-                    </ul>
-                    <hr>
-                    <ul>
-                        <li>
-                            <button>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="3"></circle>
-                                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                                </svg>
-                                Settings
-                            </button>
-                        </li>
-                    </ul>
-                    <hr>
-                    <ul>
-                        <li>
-                            <button>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                                    <polyline points="16 17 21 12 16 7"></polyline>
-                                    <line x1="21" y1="12" x2="9" y2="12"></line>
-                                </svg>
-                                Sign out
-                            </button>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
-
     <div class="main-layout">
         <div class="main-content">
             <div class="quiz-header">
-                <div class="quiz-title">JavaScript Fundamentals Quiz</div>
+                <div class="quiz-title">LLM Fundamentals Quiz</div>
                 <div class="quiz-progress">
                     <div class="quiz-progress-fill" style="width: 0%"></div>
                 </div>
@@ -608,144 +532,151 @@
             <!-- Question 1 -->
             <div class="question-card active" id="question-1">
                 <div class="question-number">Question 1</div>
-                <div class="question-text">What is JavaScript primarily used for?</div>
+                <div class="question-text">What is the primary function of a Large Language Model (LLM)?</div>
+            
+
+
                 <ul class="options-list">
                     <li class="option">
                         <input type="radio" name="q1" id="q1-option1" value="0">
-                        <label for="q1-option1">Server-side programming only</label>
+                        <label for="q1-option1">  Store large amounts of structured data</label>
                     </li>
                     <li class="option">
                         <input type="radio" name="q1" id="q1-option2" value="1">
-                        <label for="q1-option2">Making web pages interactive</label>
+                        <label for="q1-option2">Generate and understand human-like text</label>
                     </li>
                     <li class="option">
                         <input type="radio" name="q1" id="q1-option3" value="0">
-                        <label for="q1-option3">Database management only</label>
+                        <label for="q1-option3"> Perform complex mathematical calculations faster than a CPU</label>
                     </li>
                     <li class="option">
                         <input type="radio" name="q1" id="q1-option4" value="0">
-                        <label for="q1-option4">Creating desktop applications only</label>
+                        <label for="q1-option4">Execute low-level programming instructions</label>
                     </li>
                 </ul>
                 <button class="check-button" onclick="checkAnswer(1)">Check Answer</button>
                 <div class="explanation">
-                    <p><strong>Correct!</strong> JavaScript is primarily used to make web pages interactive. While it can also be used for server-side programming (Node.js), database interactions, and even desktop applications (Electron), its primary purpose is adding interactivity to websites.</p>
+                    <p><strong>Reason:</strong> LLMs, such as GPT and BERT, are designed to understand, generate, and process natural language by predicting the next word in a sequence based on training data.
+</p>
                 </div>
             </div>
-
-            <!-- Question 2 -->
             <div class="question-card" id="question-2">
                 <div class="question-number">Question 2</div>
-                <div class="question-text">Which of the following is a valid way to declare a variable in JavaScript?</div>
+                <div class="question-text">What does "LLM" stand for in artificial intelligence?</div>
+              
                 <ul class="options-list">
                     <li class="option">
                         <input type="radio" name="q2" id="q2-option1" value="0">
-                        <label for="q2-option1">variable myVar = 5;</label>
+                        <label for="q2-option1">Large Logic Model</label>
                     </li>
                     <li class="option">
-                        <input type="radio" name="q2" id="q2-option2" value="0">
-                        <label for="q2-option2">define myVar = 5;</label>
+                        <input type="radio" name="q2" id="q2-option2" value="1">
+                        <label for="q2-option2">Large Language Model</label>
                     </li>
                     <li class="option">
-                        <input type="radio" name="q2" id="q2-option3" value="1">
-                        <label for="q2-option3">let myVar = 5;</label>
+                        <input type="radio" name="q2" id="q2-option3" value="0">
+                        <label for="q2-option3">Long Learning Machine</label>
                     </li>
                     <li class="option">
                         <input type="radio" name="q2" id="q2-option4" value="0">
-                        <label for="q2-option4">int myVar = 5;</label>
+                        <label for="q2-option4">Linguistic Learning Mechanism
+
+</label>
                     </li>
                 </ul>
                 <button class="check-button" onclick="checkAnswer(2)">Check Answer</button>
                 <div class="explanation">
-                    <p><strong>Correct!</strong> In JavaScript, you can declare variables using <code>let</code>, <code>const</code>, or <code>var</code> keywords. The <code>let</code> keyword was introduced in ES6 and is now the recommended way to declare variables that will change.</p>
+                    <p><strong>Reason:</strong> LLM stands for Large Language Model, which refers to AI models trained on massive amounts of text data to understand and generate human-like text.
+</p>
                 </div>
             </div>
 
-            <!-- Question 3 -->
             <div class="question-card" id="question-3">
                 <div class="question-number">Question 3</div>
-                <div class="question-text">What will the following code output? <code>console.log(2 + "2");</code></div>
-                <ul class="options-list">
+                <div class="question-text">Which company developed the GPT (Generative Pre-trained Transformer) series of models?</div>
+
+          <ul class="options-list">
                     <li class="option">
                         <input type="radio" name="q3" id="q3-option1" value="0">
-                        <label for="q3-option1">4</label>
+                        <label for="q3-option1">Google</label>
                     </li>
                     <li class="option">
                         <input type="radio" name="q3" id="q3-option2" value="1">
-                        <label for="q3-option2">22</label>
+                        <label for="q3-option2">OpenAI</label>
                     </li>
                     <li class="option">
                         <input type="radio" name="q3" id="q3-option3" value="0">
-                        <label for="q3-option3">Error</label>
+                        <label for="q3-option3">Microsoft</label>
                     </li>
                     <li class="option">
                         <input type="radio" name="q3" id="q3-option4" value="0">
-                        <label for="q3-option4">undefined</label>
+                        <label for="q3-option4">Amazon</label>
                     </li>
                 </ul>
                 <button class="check-button" onclick="checkAnswer(3)">Check Answer</button>
                 <div class="explanation">
-                    <p><strong>Correct!</strong> In JavaScript, when you use the + operator with a string and a number, JavaScript converts the number to a string and performs string concatenation. So 2 + "2" becomes "2" + "2" which equals "22".</p>
+                    <p><strong>Reason:</strong> OpenAI developed the GPT series, including GPT-3, GPT-4, and ChatGPT, which are some of the most well-known LLMs today.
+</p>
                 </div>
             </div>
-
-            <!-- Question 4 -->
             <div class="question-card" id="question-4">
                 <div class="question-number">Question 4</div>
-                <div class="question-text">Which of the following is NOT a JavaScript data type?</div>
+                <div class="question-text">What is the main purpose of a Large Language Model?</div>
                 <ul class="options-list">
                     <li class="option">
                         <input type="radio" name="q4" id="q4-option1" value="0">
-                        <label for="q4-option1">Boolean</label>
+                        <label for="q4-option1">To edit videos</label>
                     </li>
                     <li class="option">
-                        <input type="radio" name="q4" id="q4-option2" value<input type="radio" name="q4" id="q4-option2" value="0">
-                        <label for="q4-option2">String</label>
+                        <input type="radio" name="q4" id="q4-option2" value="0">
+                        <label for="q4-option2">To analyze medical images</label>
                     </li>
                     <li class="option">
-                        <input type="radio" name="q4" id="q4-option3" value="0">
-                        <label for="q4-option3">Undefined</label>
+                        <input type="radio" name="q4" id="q4-option3" value="1">
+                        <label for="q4-option3">To understand and generate human language</label>
                     </li>
                     <li class="option">
-                        <input type="radio" name="q4" id="q4-option4" value="1">
-                        <label for="q4-option4">Character</label>
+                        <input type="radio" name="q4" id="q4-option4" value="0">
+                        <label for="q4-option4"> To design computer hardware</label>
                     </li>
                 </ul>
                 <button class="check-button" onclick="checkAnswer(4)">Check Answer</button>
                 <div class="explanation">
-                    <p><strong>Correct!</strong> JavaScript does not have a specific "Character" data type. In JavaScript, individual characters are represented as strings with a length of 1. The standard data types in JavaScript include String, Number, Boolean, Object, Undefined, Null, Symbol, and BigInt.</p>
+                    <p><strong>Reason:</strong> LLMs are designed to process, understand, and generate text, making them useful for chatbots, translations, content creation, and more.
+</p>
                 </div>
             </div>
 
-            <!-- Question 5 -->
             <div class="question-card" id="question-5">
                 <div class="question-number">Question 5</div>
-                <div class="question-text">Which method is used to add elements to the end of an array in JavaScript?</div>
+                <div class="question-text">Which of the following best describes how LLMs learn?
+</div>
+
                 <ul class="options-list">
                     <li class="option">
                         <input type="radio" name="q5" id="q5-option1" value="0">
-                        <label for="q5-option1">append()</label>
+                        <label for="q5-option1"> By memorizing text word for word</label>
                     </li>
                     <li class="option">
-                        <input type="radio" name="q5" id="q5-option2" value="0">
-                        <label for="q5-option2">add()</label>
+                        <input type="radio" name="q5" id="q5-option2" value="01">
+                        <label for="q5-option2">  By predicting the next word in a sentence based on training data</label>
                     </li>
                     <li class="option">
-                        <input type="radio" name="q5" id="q5-option3" value="1">
-                        <label for="q5-option3">push()</label>
+                        <input type="radio" name="q5" id="q5-option3" value="0">
+                        <label for="q5-option3">By copying responses from the internet</label>
                     </li>
                     <li class="option">
                         <input type="radio" name="q5" id="q5-option4" value="0">
-                        <label for="q5-option4">insert()</label>
+                        <label for="q5-option4"> By using only rule-based grammar structures</label>
                     </li>
                 </ul>
                 <button class="check-button" onclick="checkAnswer(5)">Check Answer</button>
                 <div class="explanation">
-                    <p><strong>Correct!</strong> The <code>push()</code> method adds one or more elements to the end of an array and returns the new length of the array. For example: <code>let arr = [1, 2]; arr.push(3);</code> results in <code>arr</code> being <code>[1, 2, 3]</code>.</p>
+                    <p><strong>Reason:</strong>  LLMs learn by predicting words in a sequence based on patterns in their training data, rather than memorizing or copying text directly.
+</p>
                 </div>
             </div>
 
-            <!-- Score Card -->
             <div class="score-card" id="score-card">
                 <div class="score-title">Quiz Completed!</div>
                 <div class="score-value">0/5</div>
@@ -766,11 +697,10 @@
         let score = 0;
         let answeredQuestions = {};
         let timerInterval;
-        let timeLeft = 600; // 10 minutes in seconds
+        let timeLeft = 60; 
 
-        // Initialize quiz
+
         function initQuiz() {
-            // Set up timer
             updateTimer();
             timerInterval = setInterval(function() {
                 timeLeft--;
@@ -781,45 +711,42 @@
                     showScore();
                 }
             }, 1000);
-
-            // Set up progress bar
             updateProgress();
             
-            // Disable next button if no answer selected
+
             document.querySelectorAll('input[type="radio"]').forEach(radio => {
                 radio.addEventListener('change', function() {
-                    // Store the answer
                     const questionNumber = this.name.substring(1);
                     answeredQuestions[questionNumber] = true;
-                    
-                    // Enable the next button
+
                     document.getElementById('next-btn').disabled = false;
                 });
             });
         }
 
-        // Update timer display
         function updateTimer() {
             const minutes = Math.floor(timeLeft / 60);
             const seconds = timeLeft % 60;
             document.getElementById('timer').textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
         }
 
-        // Update progress bar
+
         function updateProgress() {
             const progress = ((currentQuestion - 1) / totalQuestions) * 100;
             document.querySelector('.quiz-progress-fill').style.width = `${progress}%`;
             document.getElementById('question-counter').textContent = `Question ${currentQuestion} of ${totalQuestions}`;
+            if(currentQuestion==totalQuestions){
+            	document.querySelector('.quiz-progress-fill').style.width = `${100}%`;
+                document.getElementById('question-counter').textContent = `Question ${currentQuestion} of ${totalQuestions}`;
+            }
         }
 
-        // Navigate to next question
         function nextQuestion() {
             if (currentQuestion < totalQuestions) {
                 document.getElementById(`question-${currentQuestion}`).classList.remove('active');
                 currentQuestion++;
                 document.getElementById(`question-${currentQuestion}`).classList.add('active');
-                
-                // Update navigation buttons
+
                 document.getElementById('prev-btn').disabled = false;
                 document.getElementById('next-btn').disabled = !answeredQuestions[currentQuestion];
                 
@@ -833,14 +760,13 @@
             }
         }
 
-        // Navigate to previous question
+
         function prevQuestion() {
             if (currentQuestion > 1) {
                 document.getElementById(`question-${currentQuestion}`).classList.remove('active');
                 currentQuestion--;
                 document.getElementById(`question-${currentQuestion}`).classList.add('active');
-                
-                // Update navigation buttons
+
                 document.getElementById('prev-btn').disabled = currentQuestion === 1;
                 document.getElementById('next-btn').textContent = 'Next';
                 document.getElementById('next-btn').disabled = false;
@@ -849,7 +775,6 @@
             }
         }
 
-        // Check answer
         function checkAnswer(questionNumber) {
             const selectedOption = document.querySelector(`input[name="q${questionNumber}"]:checked`);
             
@@ -861,7 +786,7 @@
             const questionCard = document.getElementById(`question-${questionNumber}`);
             const explanation = questionCard.querySelector('.explanation');
             
-            // Show correct/wrong styling
+
             document.querySelectorAll(`input[name="q${questionNumber}"]`).forEach(option => {
                 const label = option.nextElementSibling;
                 
@@ -874,101 +799,81 @@
                 option.disabled = true;
             });
             
-            // Update score
+
             if (selectedOption.value === "1") {
                 score++;
             }
-            
-            // Show explanation
             explanation.classList.add('show');
-            
-            // Store that this question has been answered
             answeredQuestions[questionNumber] = true;
-            
-            // Enable next button
             document.getElementById('next-btn').disabled = false;
-            
-            // Disable check button
             questionCard.querySelector('.check-button').disabled = true;
         }
 
-        // Show final score
         function showScore() {
-            // Hide all question cards
+
             document.querySelectorAll('.question-card').forEach(card => {
                 card.classList.remove('active');
             });
-            
-            // Show score card
+
             const scoreCard = document.getElementById('score-card');
             scoreCard.classList.add('active');
             
-            // Update score value
+
             scoreCard.querySelector('.score-value').textContent = `${score}/${totalQuestions}`;
             
-            // Update score message
             const scoreMessage = scoreCard.querySelector('.score-message');
             if (score === totalQuestions) {
-                scoreMessage.textContent = 'Perfect score! You\'re a JavaScript master!';
+                scoreMessage.textContent = 'Perfect score! You\'re a LLM master!';
             } else if (score >= totalQuestions * 0.7) {
-                scoreMessage.textContent = 'Great job! You have a solid understanding of JavaScript basics.';
+                scoreMessage.textContent = 'Great job! You have a solid understanding of LLM basics.';
             } else if (score >= totalQuestions * 0.5) {
-                scoreMessage.textContent = 'Good effort! Keep practicing to improve your JavaScript skills.';
+                scoreMessage.textContent = 'Good effort! Keep practicing to improve your LLM skills.';
             } else {
-                scoreMessage.textContent = 'Keep learning! JavaScript takes practice, don\'t give up!';
+                scoreMessage.textContent = 'Keep learning! LLM takes practice, don\'t give up!';
             }
-            
-            // Hide navigation buttons
             document.querySelector('.quiz-navigation').style.display = 'none';
-            
-            // Stop timer
-            clearInterval(timerInterval);
+                        clearInterval(timerInterval);
         }
 
-        // Reset quiz
+
         function resetQuiz() {
-            // Reset variables
+
             currentQuestion = 1;
             score = 0;
             answeredQuestions = {};
-            timeLeft = 600;
-            
-            // Reset UI
+            timeLeft = 60;
+
             document.querySelectorAll('.question-card').forEach(card => {
                 card.classList.remove('active');
             });
             document.getElementById('question-1').classList.add('active');
             
-            // Reset options
+ 
             document.querySelectorAll('input[type="radio"]').forEach(radio => {
                 radio.checked = false;
                 radio.disabled = false;
                 radio.nextElementSibling.classList.remove('correct-answer', 'wrong-answer');
             });
             
-            // Reset explanations
+
             document.querySelectorAll('.explanation').forEach(exp => {
                 exp.classList.remove('show');
             });
             
-            // Reset check buttons
+   
             document.querySelectorAll('.check-button').forEach(btn => {
                 btn.disabled = false;
             });
-            
-            // Reset navigation
+
             document.querySelector('.quiz-navigation').style.display = 'flex';
             document.getElementById('prev-btn').disabled = true;
             document.getElementById('next-btn').disabled = true;
             document.getElementById('next-btn').textContent = 'Next';
-            
-            // Hide score card
+ 
             document.getElementById('score-card').classList.remove('active');
-            
-            // Reset progress
+
             updateProgress();
-            
-            // Reset timer
+
             updateTimer();
             clearInterval(timerInterval);
             timerInterval = setInterval(function() {
@@ -981,8 +886,6 @@
                 }
             }, 1000);
         }
-
-        // Initialize quiz when page loads
         window.onload = initQuiz;
     </script>
 </body>

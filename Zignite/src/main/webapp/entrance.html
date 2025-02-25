@@ -1,73 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
-    <link rel="icon" href="Logo.png" type="image/png">
+    <title>Interactive Survey</title>
     <link rel="stylesheet" href="entrance.css" type="text/css">
     <link rel="stylesheet" href="bot.css" type="text/css">
-    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Fjalla+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Fjalla+One&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <div id="progress">
-        <div id="progressBar"></div>
-    </div>    
-    <div id="videoBox">
-        <div class="assistant-container">
-        <div class="speech-bubble">
-            <p class="message">Hey there! Welcome to Arivu PathAI. Please Enter your details ! 🚀</p>
-        </div>
-        <div class="bot-container">
-            <div class="messages">✨ Let's learn together! ✨</div>
-            <div class="particles"></div>
-            <svg class="bot" viewBox="0 0 200 200" fill="none">
-                <!-- Antenna -->
-                <g class="antenna">
-                    <line x1="100" y1="30" x2="100" y2="10" stroke="#60A5FA" stroke-width="4"/>
-                    <circle cx="100" cy="5" r="5" fill="#60A5FA"/>
-                </g>
-                
-                <!-- Bot Head -->
-                <circle cx="100" cy="100" r="70" fill="#60A5FA"/>
-                
-                <!-- Eyes -->
-                <g class="eyes">
-                    <circle cx="75" cy="90" r="10" fill="white"/>
-                    <circle cx="125" cy="90" r="10" fill="white"/>
-                    <circle cx="75" cy="90" r="5" fill="#333"/>
-                    <circle cx="125" cy="90" r="5" fill="#333"/>
-                </g>
-                
-                <!-- Smile -->
-                <path d="M70 115 Q100 140 130 115" stroke="white" stroke-width="5" stroke-linecap="round"/>
-                
-                <!-- Arms -->
-                <g class="arms">
-                    <path class="left-arm" d="M30 120 Q20 140 30 160" stroke="#60A5FA" stroke-width="8" stroke-linecap="round"/>
-                    <path class="right-arm" d="M170 120 Q180 140 170 160" stroke="#60A5FA" stroke-width="8" stroke-linecap="round"/>
-                </g>
-            </svg>
-        </div>
+    <div class="background">
+        <div class="shape shape1"></div>
+        <div class="shape shape2"></div>
+        <div class="shape shape3"></div>
+        <div class="shape shape4"></div>
+        <div class="shape shape5"></div>
     </div>
-        <button id="videoContinueBtn" onclick="showQuestions()">Continue</button>
-    </div>
-    <div id="questionBox">
-        <p id="questionText">What excites you the most?</p>
-        <div id="optionsContainer"></div>
-        <button id="continueBtn" onclick="nextQuestion()">Continue</button>
-    </div>
-    <div id="alertOverlay">
-        <div id="alertBox">
-            <p id="alertTitle"></p>
-            <p id="alertMessage"></p>
-            <button id="alertClose" onclick="closeAlert()">OK</button>
-        </div>
-    </div>
-<script src="entrance.js"></script>
-<script src="bot.js"></script>
 
+    <div class="container">
+        <div class="progressbar">
+            <div class="progress" id="progress"></div>
+        </div>
+
+        <div class="containerInner1" id="botContainer">
+            <div class="assistantContainer">
+                <div class="speechBubble">
+                    <p class="message">Hey there ! Welcome to Arivu PathAI ! Come Let's evaluate your skills ! 🚀</p>
+                </div>
+                <div class="bot-container">
+                    <div class="messages">✨ Let's learn together! ✨</div>
+                    <div class="particles"></div>
+                    <svg class="bot" viewBox="0 0 200 200" fill="none">
+                        <g class="antenna">
+                            <line x1="100" y1="30" x2="100" y2="10" stroke="#60A5FA" stroke-width="4" />
+                            <circle cx="100" cy="5" r="5" fill="#60A5FA" />
+                        </g>
+                        <circle cx="100" cy="100" r="70" fill="#60A5FA" />
+                        <g class="eyes">
+                            <circle cx="75" cy="90" r="10" fill="white" />
+                            <circle cx="125" cy="90" r="10" fill="white" />
+                            <circle cx="75" cy="90" r="5" fill="#333" />
+                            <circle cx="125" cy="90" r="5" fill="#333" />
+                        </g>
+                        <path d="M70 115 Q100 140 130 115" stroke="white" stroke-width="5" stroke-linecap="round" />
+                        <g class="arms">
+                            <path class="left-arm" d="M30 120 Q20 140 30 160" stroke="#60A5FA" stroke-width="8"
+                                stroke-linecap="round" />
+                            <path class="right-arm" d="M170 120 Q180 140 170 160" stroke="#60A5FA" stroke-width="8"
+                                stroke-linecap="round" />
+                        </g>
+                    </svg>
+                </div>
+                <button id="continueBtn" onclick="showQuestions()">Continue</button>
+            </div>
+        </div>
+
+        <div class="containerInner2" id="questionsContainer">
+            <h1 id="questionText">What excites you the most?</h1>
+            <div class="options">
+                <div class="option option1">
+                    <div class="icon" id="icon1">💻</div>
+                    <span>Building software & backend systems</span>
+                </div>
+
+                <div class="option option2">
+                    <div class="icon" id="icon2">🤖</div>
+                    <span>Understanding AI & machine learning</span>
+                </div>
+
+                <div class="option option3">
+                    <div class="icon" id="icon3">📈</div>
+                    <span>Learning how to invest & grow money</span>
+                </div>
+            </div>
+            <button id="continueQuestions" onclick="nextQuestion()">Continue</button>
+        </div>
+        <div id="alertOverlay">
+            <div id="alertBox">
+                <p id="alertTitle"></p>
+                <p id="alertMessage"></p>
+                <button id="alertClose" onclick="closeAlert()">Start !</button>
+            </div>
+        </div>
+    </div>
+    <script src="bot.js"></script>
+    <script src="entrance.js"></script>
 </body>
-</html>
 
+</html>
