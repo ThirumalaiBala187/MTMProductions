@@ -3,124 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Python Course Levels</title>
     <link rel="stylesheet" href="levels.css">
 </head>
 <body>
     <div class="container">
-   <div class="courseheader">
-            <img src="ProjectLogo.png" onclick="window.location.href='http://localhost:8080/Zignite/userHome.html'" style="height:100%;width: 300px">
-            <input type="text" name="search" placeholder="&#x1F50D;&ensp;Search for a course" class="searchinp">
-        </div>
-          <!--   <div class="navbar">
-            <div class="cnav active" onclick="changeTab(this)">All</div>
-            <div class="cnav" onclick="changeTab(this)">Trending</div>
-            <div class="cnav" onclick="changeTab(this)">New</div>
-            <div class="cnav" onclick="changeTab(this)">Popular</div>
-        </div>-->
-        <div class="coursecontainer">
-            <div class="progress">
-                <div class="upro">
-                 <!--  <div class="streak cpro">
-                        <span class="bd">15 Day Streak 🔥</span><br>
-                        <span class="bd1">Personal Best!</span>
-                    </div>
-                    <div class="xp cpro">
-                        <span class="bd">2,750 XP ⚡</span><br>
-                        <span class="bd1">Level 3 Master</span>
-                    </div>
-                    <div class="achievement cpro">
-                        <span class="bd">5 Achievements 🏆</span><br>
-                        <span class="bd1">2 New Available</span></div>
-                    </div>
-                    <div class="progressrange">
-                        <div class="fill"></div>
-                        <div class="progress_marker">
-                            <div class="pmarker completed"></div>
-                            <div class="pmarker completed"></div>
-                            <div class="pmarker completed"></div>
-                            <div class="pmarker"></div>
-                            <div class="pmarker"></div>
-                            <div class="pmarker"></div>
-                        </div>  --> 
-                    </div>
-                </div>
-                <div class="maincourselevels">
-                    <div id="level1" class="courselevel" onclick="window.location.href='http://localhost:8080/Zignite/level1python.html'">
-                        <div class="coursecontent">
-                            <div class="cimg"><span class="customimage">🌐</span></div>
-                            <div class="content">
-                                <span class="bdc">Basics Of Python</span>
-                                <br><br><span class="grey">Master HTML, CSS, and basic JavaScript</span><br><span class="xp">1000 XP</span>
-                            </div>
-                        </div>
-                         <a id="level1-btn" href="http://localhost:8080/Zignite/level1python.html" class="coursestatus">continue</a>
-                        
-                    </div>
-                    <div id="level2" class="courselevel" onclick="window.location.href='http://localhost:8080/Zignite/level2python.html'">
-                        <div class="coursecontent">
-                            <div class="cimg"><span class="customimage">⚡</span></div>
-                            <div class="content">
-                                <span class="bdc"> Control Flow & Loops  </span>
-                                <br><br><span class="grey">Learn DOM manipulation and events</span><br><span class="xp">1500XP</span>
-                            </div>
-                        </div>
-                        <div class="coursestatus" id="level2-btn">Review</div>
-                    </div>
-                    <div id="level3" class="courselevel" onclick="window.location.href='http://localhost:8080/Zignite/level3python.html'">
-                        <div class="coursecontent">
-                            <div class="cimg"><span class="customimage">🚀</span></div>
-                            <div class="content">
-                                <span class="bdc">Functions & Error Handling </span>
-                                <br><br><span class="grey">Master HTML, CSS, and basic JavaScript</span><br><span class="xp">2000 XP</span>
-                            </div>
-                        </div>
-                        <div class="coursestatus" id="level3-btn">continue</div>
-                    </div>
-                    <div id="level4" class="courselevel"  onclick="window.location.href='http://localhost:8080/Zignite/level4python.html'">
-                        <div class="coursecontent">
-                            <div class="cimg"><span class="customimage">🔌</span></div>
-                            <div class="content">
-                                <span class="bdc"> List, Tuples & Dictionaries </span>
-                                <br><br><span class="grey">Master HTML, CSS, and basic JavaScript</span><br><span class="xp">1000 XP</span>
-                            </div>
-                        </div>
-                        <div class="coursestatus" id="level4-btn">continue</div>
-                    </div>
-                    <div id="level5" class="courselevel" onclick="window.location.href='http://localhost:8080/Zignite/level5python.html'">
-                        <div class="coursecontent">
-                            <div class="cimg"><span class="customimage">⚛️</span></div>
-                            <div class="content">
-                                <span class="bdc"> File Handling & Modules </span>
-                                <br><br><span class="grey">Master HTML, CSS, and basic JavaScript</span><br><span class="xp">1000 XP</span>
-                            </div>
-                        </div>
-                        <div class="coursestatus" id="level5-btn">continue</div>
-                    </div>
-                    <div id="level6" class="courselevel" onclick="window.location.href='http://localhost:8080/Zignite/level6python.html'">
-                        <div class="coursecontent">
-                            <div class="cimg"><span class="customimage">⚛️</span></div>
-                            <div class="content">
-                                <span class="bdc"> OOPs basics</span>
-                                <br><br><span class="grey">Master HTML, CSS, and basic JavaScript</span><br><span class="xp">1000 XP</span>
-                            </div>
-                        </div>
-                        <div class="coursestatus" id="level6-btn">continue</div>
-                    </div>
-                    <div id="level7" class="courselevel"onclick="window.location.href='http://localhost:8080/Zignite/level7python.html'">
-                        <div class="coursecontent">
-                            <div class="cimg"><span class="customimage">🤔</span></div>
-                            <div class="content">
-                                <span class="bdc"> QUIZ ! </span>
-                                <br><br><span class="grey">Master HTML, CSS, and basic JavaScript</span><br><span class="xp">1000 XP</span>
-                            </div>
-                        </div>
-           				<a href="http://localhost:8080/Zignite/quizPython.html" class="coursestatus" id="level7-btn">continue</a>
+    
+        <header class="header">
+            <img src="ProjectLogo.png" onclick="window.location.href='http://localhost:8080/Zignite/userHome.html'" class="logo">
+            <div class="search-container">
+                <input type="text" placeholder="🔍 Search for a course" class="search-input">
+            </div>
+        </header>
 
+        <main class="main-content">
+            <div class="progress-section">
+                <div class="progress-grid">
+                    <div class="progress-card">
+                        <div class="progress-icon">🔥</div>
+                        <div class="progress-details">
+                            <h3>7 Days</h3>
+                            <p>Current Streak</p>
+                        </div>
+                    </div>
+                    <div class="progress-card">
+                        <div class="progress-icon">⚡</div>
+                        <div class="progress-details">
+                            <h3>1000 XP</h3>
+                            <p>Total Experience</p>
+                        </div>
+                    </div>
+                    <div class="progress-card">
+                        <div class="progress-icon">🏆</div>
+                        <div class="progress-details">
+                            <h3>2 Levels</h3>
+                            <p>Completed</p>
+                        </div>
                     </div>
                 </div>
-            </div>    
-        </div>
+            </div>
+
+
+            <div class="course-levels">
+                <div class="level-card">
+                    <div class="level-content">
+                        <div class="level-icon">🌐</div>
+                        <div class="level-details">
+                            <h3>Basics Of Python</h3>
+                            <p>Master Python fundamentals and basic syntax</p>
+                            <span class="xp-tag">1000 XP</span>
+                        </div>
+                    </div>
+                    <a href="#" class="level-button">Continue</a>
+                </div>
+
+                <div class="level-card">
+                    <div class="level-content">
+                        <div class="level-icon">⚡</div>
+                        <div class="level-details">
+                            <h3>Control Flow & Loops</h3>
+                            <p>Learn conditional statements and loop structures</p>
+                            <span class="xp-tag">1500 XP</span>
+                        </div>
+                    </div>
+                    <a href="#" class="level-button">Review</a>
+                </div>
+
+                <div class="level-card">
+                    <div class="level-content">
+                        <div class="level-icon">🚀</div>
+                        <div class="level-details">
+                            <h3>Functions & Error Handling</h3>
+                            <p>Master function definitions and error management</p>
+                            <span class="xp-tag">2000 XP</span>
+                        </div>
+                    </div>
+                    <a href="#" class="level-button">Continue</a>
+                </div>
+
+                <div class="level-card locked">
+                    <div class="level-content">
+                        <div class="level-icon">🔌</div>
+                        <div class="level-details">
+                            <h3>List, Tuples & Dictionaries</h3>
+                            <p>Explore Python's core data structures</p>
+                            <span class="xp-tag">1000 XP</span>
+                        </div>
+                    </div>
+                    <a href="#" class="level-button locked">🔒 Locked</a>
+                </div>
+
+                <div class="level-card locked">
+                    <div class="level-content">
+                        <div class="level-icon">⚛️</div>
+                        <div class="level-details">
+                            <h3>File Handling & Modules</h3>
+                            <p>Learn to work with files and external modules</p>
+                            <span class="xp-tag">1000 XP</span>
+                        </div>
+                    </div>
+                    <a href="#" class="level-button locked">🔒 Locked</a>
+                </div>
+
+                <div class="level-card locked">
+                    <div class="level-content">
+                        <div class="level-icon">⚛️</div>
+                        <div class="level-details">
+                            <h3>OOPs basics</h3>
+                            <p>Introduction to Object-Oriented Programming</p>
+                            <span class="xp-tag">1000 XP</span>
+                        </div>
+                    </div>
+                    <a href="#" class="level-button locked">🔒 Locked</a>
+                </div>
+
+                <div class="level-card locked">
+                    <div class="level-content">
+                        <div class="level-icon">🤔</div>
+                        <div class="level-details">
+                            <h3>QUIZ!</h3>
+                            <p>Test your Python knowledge</p>
+                            <span class="xp-tag">1000 XP</span>
+                        </div>
+                    </div>
+                    <a href="#" class="level-button locked">🔒 Locked</a>
+                </div>
+            </div>
+        </main>
     </div>
     <script src="levels.js"></script>
 </body>

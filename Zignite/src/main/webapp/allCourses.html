@@ -28,53 +28,52 @@
         <div class="side">
             <div class="filter">
                 <p style="margin-left: 20px;margin-bottom: 20px;">Categories</p>
-                <div class="drop">
+                <div class="drop" onclick="changearrow(1,'drop1')" id="drop1">
                     <div class="cfil">
                         <span>All</span>
-                        <span class="arrow">&#9662</span>
+                        <span class="arrow" id="arr1" >&#9654</span>
                     </div>
                     <div class="dropdown">
                         <option>Introduction to Python</option>
-                        <option style="border: 2px solid red">Introduction to LLM</option>
+                        <option style="border-top: 2px solid lightgrey">Introduction to LLM</option>
                     </div>
                 </div>
 
-                <div class="drop">
+                <div class="drop" onclick="changearrow(2,'drop2')" id="drop2">
                     <div class="cfil">
                         <span>Programming</span>
-                        <span class="arrow">&#9662</span>
+                        <span class="arrow" id="arr2">&#9654</span>
                     </div>
                     <div class="dropdown">
                         <option>Introduction to Python</option>
                     </div>
                 </div>
-                <div class="drop">
+                <div class="drop" onclick="changearrow(3,'drop3')" id="drop3">
                     <div class="cfil">
                         <span>Advance</span>
-                        <span class="arrow">&#9662</span>
+                        <span class="arrow" id="arr3">&#9654</span>
                     </div>
                     <div class="dropdown">
                         <option>Introduction to LLM</option>
                     </div>
                 </div>
-                <div class="drop">
+                <div class="drop" onclick="changearrow(4,'drop4')" id="drop4">
                     <div class="cfil" style="border-bottom: 2px solid lightgray;">
                         <span>Business</span>
-                        <span class="arrow">&#9662</span>
+                        <span class="arrow" id="arr4">&#9654</span>
                     </div>
                     <div class="dropdown">
                         <option>No courses available here</option>
                     </div>
                 </div>
 
-                <p style="margin: 30px 20px 20px 20px;">Quick Filters</p>
+                <!-- <p style="margin: 30px 20px 20px 20px;">Quick Filters</p>
                 <div class="cfil">Free Courses</div>
                 <div class="cfil">Most Popular</div>
-                <div class="cfil" style="border-bottom: 2px solid lightgray;">Newly Added</div>
+                <div class="cfil" style="border-bottom: 2px solid lightgray;">Newly Added</div> -->
             </div>
 
             <div class="container" id="container">
-                
             </div>
         </div>
 
@@ -88,7 +87,6 @@
             </div>
         </div>
     </div>
-
 
     <script src="course.js"></script>
 </body>

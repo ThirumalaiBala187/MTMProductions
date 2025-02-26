@@ -8,7 +8,7 @@
         body {
             min-height: 100vh;
             font-family: system-ui, -apple-system, sans-serif;
-            background: linear-gradient(to bottom right, #e6faf8, #e6f9fc);
+            background: #f0f9ff;
         }
 
         header {
@@ -43,13 +43,13 @@
             color: white;
         }
 
-        .brand-name {
-            width: 30%;
-            height:40%;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #1f2937;
-        }
+      .brand-name {
+    width: 90%;
+    height: 40%;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+}
 
         .docs-heading {
             font-size: 1.5rem;
@@ -140,7 +140,6 @@
 
         .main-content {
             flex: 2;
-            max-width: 103rem;
             padding: 2rem;
             overflow: auto;
         }
@@ -217,7 +216,7 @@
         .progress-fill {
             height: 100%;
             border-radius: 9999px;
-            background: linear-gradient(to right, #2dd4bf, #22d3ee);
+            background: #35B8F0;
         }
 
      
@@ -228,7 +227,7 @@
 
         .stat-container {
             padding: 1rem;
-            background: linear-gradient(to bottom right, #f0fdfa, #ecfeff);
+            background: #f0f9ff;
             border-radius: 0.75rem;
             margin-bottom: 1.5rem;
         }
@@ -236,7 +235,7 @@
         .stat-value {
             font-size: 1.875rem;
             font-weight: 700;
-            color: #0d9488;
+            color:#35B8F0;
         }
 
         .stat-label {
@@ -298,7 +297,7 @@
 
         .course-progress-fill {
             height: 100%;
-            background: linear-gradient(to right, #2dd4bf, #22d3ee);
+            background: #35B8F0;
             width: 75%;
         }
 
@@ -696,4 +695,30 @@
   visibility: visible;
   opacity: 1;
 }
-    
+
+#bubble-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(53, 184, 240, 0.1); 
+    animation: float 20s linear infinite;
+}
+
+
+@keyframes float {
+    0% {
+        transform: translate(0, 100vh);
+    }
+    100% {
+        transform: translate(var(--move-x), -100%);
+    }
+}

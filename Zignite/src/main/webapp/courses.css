@@ -4,6 +4,7 @@
     box-sizing: border-box;
     background-color: #EFFDFB;
     overflow-x: hidden;
+    font-family: ;
 }
 
 ::-webkit-scrollbar{
@@ -106,6 +107,7 @@
     left: 0;
     top: 165px;
     border: 2px solid lightgray;
+    overflow-x: visible;
 }
 .drop{
     width: 100%;
@@ -113,6 +115,8 @@
 
 .dropdown{
     position: absolute;
+    z-index: 20;
+    left: 100px;
     width: 285px;
     padding: 8px 10px 6px;
     font-size: 24px;
@@ -120,21 +124,20 @@
     box-shadow: 0px 4px 6px black;
     visibility: hidden;
     opacity: 0;
+    border-radius: 20px;
     transform: translateY(-10px);
     transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
 }
 
 option{
     padding: 7px;
-    border:2px solid red;
-    border-width: 2px 2px 0px 2px;
 }
 
-.drop:hover .dropdown{
+/* .drop:active .dropdown{
     opacity: 1;
     visibility: visible;
-    transform: translateY(0px);
-}
+    transform: translateY(0px); 
+} */
 
 .cfil{
     height: 60px;
@@ -147,11 +150,12 @@ option{
     color: #059789;
     border:2px solid lightgrey;
     border-width: 2px 0px 0px 0px;
+    cursor: pointer;
 }
 
 .container{
     width: 85%;
-    background-color: #85fff5;
+   background: linear-gradient(to bottom right, #e6faf8, #e6f9fc);
     margin-left: 15%;
     height: 100%;
     display: flex;
@@ -306,4 +310,20 @@ option{
     width: 90%;
     border-radius: 20px;
     background-color: white;
+}
+
+.arrow{
+    cursor: pointer;
+}
+
+.filterOutput{
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid lightgrey;
+    border-width: 60%;
+    font-weight: 400;
+    font-size: 25px;
 }
