@@ -658,7 +658,7 @@
                         <label for="q5-option1"> By memorizing text word for word</label>
                     </li>
                     <li class="option">
-                        <input type="radio" name="q5" id="q5-option2" value="01">
+                        <input type="radio" name="q5" id="q5-option2" value="1">
                         <label for="q5-option2">  By predicting the next word in a sentence based on training data</label>
                     </li>
                     <li class="option">
@@ -682,6 +682,7 @@
                 <div class="score-value">0/5</div>
                 <div class="score-message">Great effort! Keep learning to improve your JavaScript skills.</div>
                 <button class="retry-button" onclick="resetQuiz()">Try Again</button>
+                <button class="retry-button" onclick="completeLevel(8)">Finish</button>
             </div>
 
             <div class="quiz-navigation">
@@ -691,7 +692,7 @@
         </div>
     </div>
 
-    <script>
+      <script>
         let currentQuestion = 1;
         let totalQuestions = 5;
         let score = 0;
@@ -887,6 +888,72 @@
             }, 1000);
         }
         window.onload = initQuiz;
+        
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+        	console.log(100);
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) {
+                return parts.pop().split(';').shift();
+            }
+            return null;
+        }
+
+        courseCards={};
+        async function completeLevel(num) {
+            try {
+        		console.log(1);
+        	     	details=getCookie("DETAILS")
+        			
+        			if (details) {
+        				console.log(2);
+        			     const decodedDetails = atob(details);
+        			     const parsedDetails = JSON.parse(decodedDetails); 
+        			 	parsedDetails.courses.forEach(a=>{
+        					console.log(3);
+        			 		console.log(a.course_name);
+        			 		courseCards[a.course_name]=[a.level_name,Math.round((a.levels_completed/7)*100),a.levels_completed,a.xp];
+        			 	});
+        			 }
+        			 let courseName = "Introduction To LLM";
+        			 levelCount = num;
+        		window.location.href="LLMlevels.html";
+        			 if (courseCards[courseName]) {
+        				console.log(4);
+        			     let [levelName, completionPercentage, levelsCompleted, xp] = courseCards[courseName];
+        				 localStorage.setItem("finishedLLM", completionPercentage);
+        				 console.log(5000+": "+levelsCompleted);
+        				 levelCount = num;
+        				
+        									
+        				 if(levelsCompleted < num-1){
+        				        const response = await fetch("controller/pythonLevels", {
+        				            method: "POST",
+        				            headers: {
+        				                'Content-Type': 'application/json',
+        				            },
+        				            body: JSON.stringify({ level: num, courseId:2}) 
+        				        });
+        				        if (!response.ok) {
+        				            throw new Error(`HTTP error! Status: ${response.status}`);
+        				        }
+        						console.log(5);
+        				        const result = await response.text(); 
+        				        console.log("Server response:", result);
+
+        				    } 
+        				 }else {
+        							     console.log("Course not found.");}
+        			 } catch (error) {
+        			 				 				console.log(error);
+        			 				 		        console.error("Error sending level data:", error);
+        			 				 		    }
+        			 }
+        	    
+
+
+
+
     </script>
 </body>
 </html>

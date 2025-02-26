@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
             ];
         });
 
-        let courseName = "Introduction To LLM";
+        let courseName = "Introduction To Python";
         if (!(courseName in courseCards)) return;
 
         let [levelName, completionPercentage, levelsCompleted, xp] = courseCards[courseName];
@@ -59,12 +59,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 levelElement.classList.remove("locked");
                 button.innerText = i === 1 ? "Continue" : "Review";
                 button.classList.remove("locked");
-                button.href = `http://localhost:8080/Zignite/level${i}LLM.html`;
+                button.href = `http://localhost:8080/Zignite/level${i}python.html`;
             } else {
                 levelElement.classList.add("locked");
                 button.innerText = "🔒 Locked";
                 button.classList.add("locked");
-                button.href = "#"; // Disable clicking
+                button.href = "#";
             }
         });
 

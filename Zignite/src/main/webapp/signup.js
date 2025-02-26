@@ -52,7 +52,6 @@ async function signUp() {
             },
             body: JSON.stringify(userData)
         });
-
         if (response.ok) { 
             const responseJSON = await response.json();
 			console.log(responseJSON);  
@@ -60,6 +59,7 @@ async function signUp() {
             console.log("Sign up successful");
         } else {
             console.log("Failed to sign up, status:", response.status);
+			alert("Username already exists");
         }
     } catch (error) {
         console.error("Error during signup:", error);

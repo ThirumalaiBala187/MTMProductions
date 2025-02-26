@@ -39,6 +39,7 @@ public class SignupServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("1");
 		 BufferedReader reader = new BufferedReader(new InputStreamReader(request.getInputStream()));
 	     StringBuilder sb = new StringBuilder();
 	     String line;
@@ -46,17 +47,17 @@ public class SignupServlet extends HttpServlet {
 	            sb.append(line);
 	        }
 	     JSONObject jsonRequest = new JSONObject(sb.toString());
-
+	 	System.out.println("2");
     	  String email = jsonRequest.getString("email");
           String password = jsonRequest.getString("password");
           String firstName = jsonRequest.getString("firstName");
           String lastName = jsonRequest.getString("lastName");
           String dob = jsonRequest.getString("dob");
-
+      	System.out.println("3");
           boolean validation = validateUser(email, password, firstName);
           JSONObject jsonResponse = new JSONObject();
-
           if (validation) {
+        		System.out.println("5");
         	  try {
         	  HttpSession session = request.getSession(true);
         	  String sessionId = session.getId();
@@ -87,7 +88,7 @@ public class SignupServlet extends HttpServlet {
               streakCookie.setMaxAge(60 * 60 * 24);
               detailsCookie.setPath("/");
               detailsCookie.setMaxAge(60 * 60 * 24);
-//              
+              
               response.addCookie(detailsCookie);
               response.addCookie(nameCookie);
               
@@ -108,7 +109,8 @@ public class SignupServlet extends HttpServlet {
               }
           }
         	  else {
-              jsonResponse.put("failed", false);
+             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+              jsonResponse.put("success", false);
               PrintWriter out = response.getWriter();
               out.print(jsonResponse.toString());
               out.flush();
