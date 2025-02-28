@@ -7,84 +7,290 @@
     <link rel="stylesheet" href="level1python.css">
 </head>
 <body>
-    <header>
-        <img src="ProjectLogo.png"onclick="window.location.href='http://localhost:8080/Zignite/userHome.html'" class="logoImg">
-        <div class="progress_description">
-            <h1 style="font-size: 36px;color: #037a6e;">What Are the Limitations of LLMs?</h1>
-            <div class="desc">📚&ensp;Lesson <span id="lessonNumber">5</span>/6</div>
-            <div class="desc" id="com">🎯&ensp;<span id="completion">0%</span>&nbsp; Complete</div>
+    <div class="header">
+        <div class="logo">ArivuPathAI</div>
+        <h1 class="content-title">What are the limitations of LLM?</h1>
+        <div class="progress-container">
+            <div class="lesson-info">Lesson 5/6</div>
+            <div class="progress" id="completion">0% Complete</div>
         </div>
-    </header>
-   
-    <div class="container">
-        <div class="course_content">
-            <div class="progressContainer">
-                <img src="previous.png" class="icons" onclick="prev()">
-                <div id="progress">
-                    <div id="progressBar"></div>
+    </div>
+
+    <div class="main-container">
+        <div class="content-area">
+            <div class="contentInner">
+                <div class="progressContainer">
+                    <img src="previous.png" id="previous" class="icons prev-btn" style="cursor: pointer;">
+                    <div id="progress">
+                        <div id="progressBar"></div>
+                    </div>
+                    <img src="crossmark.png" onclick="window.location.href='http://localhost:8080/Zignite/LLMlevels.html'"
+                        class="icons" style="width: 20px">
                 </div>
-                <img src="crossmark.png" onclick="window.location.href='http://localhost:8080/Zignite/LLMlevels.html'" class="icons" style="width: 20px">
             </div>
 
-            <div class="sectionsBox">
-                <div class="section" id="section1">
-                    <div id="header">1. Incorrect Information</div>
-                    <div class="image"><img src="https://media.licdn.com/dms/image/v2/D5612AQGZz67yPCmN_g/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1712140420743?e=2147483647&v=beta&t=IKhsfmSZqsDEXg-A0eBXdbwzpY5SFhDFZMkj1qvGyI8" alt="Installing python" id="image1" style="border-radius: 10px;"></div>
-                    <div id="content">LLMs can generate misleading or outdated responses because they don’t verify facts like<br> a human expert would.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section2">
-                    <div id="header">2. Lack of True Understanding</div>
-                    <div class="image"><img src="https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1683096240569-download%20%2857%29.png" alt="Running python file" id="image2" style="border-radius: 10px; border: 2px solid black;"></div>
-                    <div id="content">While they generate human-like text, LLMs don’t truly comprehend language—they only<br>apredict words based on probability.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section3">
-                    <div id="header">3. Bias in AI</div>
-                    <div class="image"><img src="https://www.sourcecodester.com/sites/default/files/Python%20Variables_0.jpg" alt="Variable in python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">LLMs may reflect biases present in their training data, which can lead to unfair or<br>discriminatory outputs.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section4">
-                    <div id="header">4. Privacy Concerns</div>
-                    <div class="image"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCB1fiPnxYxVxXbh3It3jjCNUdX5ZK4EstpgSGDgEZ2bvc2ROhraq0Y2ZSKC9B_FO2zIPvBUIpjtigavr9t3mmPuMw3XQwM02seiT2QaC49PhJDL15vK3IA8Lg344-P-XTbBs1sfpg4T1DAjkakwW-EJ_RKOMBCoTCqTDgES57-vQtNngjWqqxFMCM/s711/16.PNG" alt="Print and User input in python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">LLMs can store, misuse, or accidentally leak sensitive data, making privacy and security a <br>major concern.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section5">
-                    <div id="header">5. Ethical Issues</div>
-                    <div class="image"><img src="https://cdn.codechef.com/blogs/images/operators-in-python.png" alt="Operators in Python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">Issues like deepfakes, misinformation, and AI-generated plagiarism raise serious ethical<br>concerns about responsible AI usage.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section6">
-                    <div id="header">6.Energy Consumption</div>
-                    <div class="image"><img src="https://cdn.codechef.com/blogs/images/operators-in-python.png" alt="Operators in Python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">Training and running LLMs require enormous amounts of electricity, impacting the<br>environment and increasing operational costs.</div>
-                    <div class="continue" onclick="completeLevel(6)">Finish Level</div>
-                </div>
-            </div>
-        </div>
+            <div class="sectionsBox" id="allSections">
+                <!-- Section 1: Incorrect Information -->
+                <div class="learning-section" id="section1">
+                    <h2 class="section-title">
+                        <span class="section-title-number">1</span>
+                        Incorrect Information
+                    </h2>
 
-        <div class="bot">
-            <div class="header">
-                <h1>Vid.AI</h1>
-            </div>
-            <div class="chatMessages" id="chatMessages"></div>
-            <div class="chatInputBox">
-                <input type="text" id="userInput" placeholder="Type your message...">
-                <button id="sendBtn">Send</button>
+                    <div class="explanation">
+                        <p>LLMs can generate misleading or fabricated information, known as "hallucinations," because they prioritize patterns over factual accuracy.</p>
+                    </div>
+                    <div class="conceptImageBox">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*JylFbz5UHSKzRVWHnabWKw.png" alt="Incorrect Information" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text">LLMs rely on <span class="highlight">training data</span>, not real-time verification.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text">They may invent <strong>plausible-sounding facts</strong>.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text">Example: Claiming "Einstein invented gravity" instead of discovering its laws.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Did you know?</div>
+                        <p>Hallucinations can trick even experts—always double-check LLM outputs!</p>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <!-- Section 2: Lack of True Understanding -->
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">2</span>
+                        Lack of True Understanding
+                    </h2>
+
+                    <div class="explanation">
+                        <p>LLMs don’t genuinely comprehend concepts; they predict text based on statistical patterns, limiting their reasoning ability.</p>
+                    </div>
+                    <div class="step-by-step" style="width: 100%;">
+                        <div class="step" style="width: 100%;">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <p class="step-text"><strong>Prediction</strong>: LLMs guess the next word, not the meaning.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <p class="step-text"><strong>Limitation</strong>: They can’t reason beyond their training.</p>
+                            </div>
+                        </div>
+                        <div class="step" style="width: 100%;">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <p class="step-text">Example: Asking "Why does time exist?" yields poetic guesses, not physics.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="interactive-element">
+                        <div class="interactive-title">Key Concept</div>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li style="margin-bottom: 8px;">LLMs mimic intelligence, not understanding.</li>
+                            <li style="margin-bottom: 8px;">Complex reasoning remains a human strength.</li>
+                        </ul>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <!-- Section 3: Bias in AI -->
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">3</span>
+                        Bias in AI
+                    </h2>
+
+                    <div class="explanation">
+                        <p>LLMs can perpetuate biases from their training data, leading to unfair or prejudiced outputs.</p>
+                    </div>
+                    <div class="conceptImageBox">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*W3GknKCxHvTqRkKOhh9qAw.png" alt="Bias in AI" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Source</strong>: Biases in historical data (e.g., gender roles).</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Effect</strong>: Outputs reinforce stereotypes.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text">Example: Associating "nurse" with women, "engineer" with men.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Pro Tip</div>
+                        <p>Bias can be subtle—watch for it in LLM responses!</p>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <!-- Section 4: Privacy Concerns -->
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">4</span>
+                        Privacy Concerns
+                    </h2>
+
+                    <div class="explanation">
+                        <p>LLMs may retain and expose sensitive information from their training data or user interactions, raising privacy risks.</p>
+                    </div>
+                    <div class="conceptImageBox">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*Pj_k1t4rF8ZDG2W3oWnHIA.png" alt="Privacy Concerns" class="concept-image" style="border: 2px solid black;">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Risk</strong>: Memorizing personal data (e.g., names).</p>
+                                </div>
+                            </div>
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Exposure</strong>: Leaking info in responses.</p>
+                                </div>
+                            </div>
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text">Example: Accidentally revealing a phone number.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Did you know?</div>
+                        <p>Some LLMs have been caught parroting private data from their training sets!</p>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <!-- Section 5: Ethical Issues -->
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">5</span>
+                        Ethical Issues
+                    </h2>
+
+                    <div class="explanation">
+                        <p>LLMs can be misused for unethical purposes, such as spreading misinformation or creating deceptive content.</p>
+                    </div>
+                    <div class="conceptImageBox">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*5Xjd11g4v_8IILrTVuR9Rw.png" alt="Ethical Issues" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Misuse</strong>: Generating fake news or deepfakes.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Impact</strong>: Eroding trust in information.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text">Example: Crafting a believable scam email.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Pro Tip</div>
+                        <p>Ethical AI design, like Grok’s, aims to minimize harmful misuse!</p>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <!-- Section 6: Energy Consumption -->
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">6</span>
+                        Energy Consumption
+                    </h2>
+
+                    <div class="explanation">
+                        <p>Training and running LLMs require massive energy, contributing to environmental and cost challenges.</p>
+                    </div>
+                    <div class="conceptImageBox">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*8ZNh0Nuzx7A9f2JzzzA0ng.jpeg" alt="Energy Consumption" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Training</strong>: Uses power equivalent to hundreds of homes.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Operation</strong>: High energy for real-time use.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text">Example: Training Grok likely took a huge carbon footprint!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Did you know?</div>
+                        <p>Greener AI is a hot research topic to reduce this energy burden!</p>
+                    </div>
+                    <button class="continue" onclick="completeLevel(6)">Finish Lesson</button>
+                </div>
             </div>
         </div>
     </div>
+
+    <div class="chat-button" id="chatButton">
+        <div class="chat-icon">💬</div>
+    </div>
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <div class="chat-title">
+                <div class="bot-avatar">AI</div>
+                <span>Assistant</span>
+            </div>
+            <button class="close-button" id="closeButton">✕</button>
+        </div>
+        <div class="chat-body" id="chatBody"></div>
+        <div class="chat-footer">
+            <input type="text" class="message-input" id="messageInput" placeholder="Type your message here...">
+            <button class="send-button" id="sendButton">➤</button>
+        </div>
+    </div>
+
     <script src="level1llm.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-

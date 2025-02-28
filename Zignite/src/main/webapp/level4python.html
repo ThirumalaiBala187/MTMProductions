@@ -1,76 +1,343 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Course</title>
-    <link rel="stylesheet" href="level1python.css">
+    <title>Python Basics: Level 4</title>
+    <link rel="stylesheet" href="level1python.css" type="text/css">
 </head>
+
 <body>
-    <header>
-        <img src="ProjectLogo.png"onclick="window.location.href='http://localhost:8080/Zignite/userHome.html'" class="logoImg">
-        <div class="progress_description">
-            <h1 style="font-size: 36px;color: #037a6e;">Functions & Error Handling</h1>
-            <div class="desc">📚&ensp;Lesson <span id="lessonNumber">4</span>/6</div>
-            <div class="desc" id="com">🎯&ensp;<span id="completion">0%</span>&nbsp; Complete</div>
-        </div>
-    </header>
 
-   <div class="container">
-        <div class="course_content">
-            <div class="progressContainer">
-                <img src="previous.png" class="icons" onclick="prev()">
-                <div id="progress">
-                    <div id="progressBar"></div>
-                </div>
- <img src="crossmark.png" onclick="window.location.href='http://localhost:8080/Zignite/levels.html'" class="icons" style="width: 20px">
-            </div>
-
-            <div class="sectionsBox">
-                <div class="section" id="section1">
-                    <div id="header">1. Lists in Python</div>
-                    <div class="image"><img src="https://techvidvan.com/tutorials/wp-content/uploads/2019/12/python-lists.jpg" alt="Conditional Statements images" id="image1"  style="border-radius: 10px; border: 2px solid black;"></div>
-                    <div id="content">1️⃣ Lists store multiple items in a single variable.<br>2️⃣ Elements are accessed using indexing and modified by assigning new values.<br>3️⃣ Loops help iterate over lists efficiently.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section2">
-                    <div id="header">2. Tuples in Python</div>
-                    <div class="image"><img src="https://www.codingal.com/resources/wp-content/uploads/2023/01/Tuples-in-Python.png" alt="Logical Statements image" id="image2" style="border-radius: 10px; border: 2px solid black;width: 450px;"></div>
-                    <div id="content">1️⃣ Tuples are immutable sequences, meaning values cannot be changed.<br>2️⃣ Defined using parentheses (), they store multiple items.<br>3️⃣ Faster and memory-efficient compared to lists.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section3">
-                    <div id="header">3. Dictionaries : Key-value pairs</div>
-                    <div class="image"><img src="https://jeevangupta.com/wp-content/uploads/2021/10/Dictionary-in-Python-1024x742.png" alt="Variable in python" id="image3"  style="border-radius: 10px; width: 500px; border: 2px solid black;"></div>
-                    <div id="content">1️⃣Dictionaries store data in key-value pairs.<br>2️⃣ Keys must be unique and immutable, while values can be of any type.<br>3️⃣ Used for fast lookups and organizing data.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section4">
-                    <div id="header">4. List and Dictionary comprehensions</div>
-                    <div class="image"><img src="https://miro.medium.com/v2/resize:fit:1146/1*5-jD8EV984b0eGUC0gmkfg.png" alt="Print and User input in python" id="image3"  style="border-radius: 10px; border: 2px solid black;"></div>
-                    <div id="content">1️⃣ List and dictionary comprehensions create new lists or dictionaries concisely.<br>2️⃣ Use compact syntax inside [] for lists and {} for dictionaries.<br>3️⃣ They improve readability and performance.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section5">
-                    <div id="header">5. Sets in Python</div>
-                    <div class="image"><img src="https://cdn.educba.com/academy/wp-content/uploads/2019/11/Python-Sets.jpg" alt="Operators in Python" id="image3" style="border-radius: 10px; border: 2px solid black;"></div>
-                    <div id="content">1️⃣ Sets store unique, unordered elements.<br>2️⃣ They are defined using curly braces {} or set().<br>3️⃣ Useful for removing duplicates and performing set operations.</div>
-                    <div class="continue" onclick="completeLevel(5)">Finish Level</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="bot">
-            <div class="header">
-                <h1>Vid.AI</h1>
-            </div>
-            <div class="chatMessages" id="chatMessages"></div>
-            <div class="chatInputBox">
-                <input type="text" id="userInput" placeholder="Type your message...">
-                <button id="sendBtn">Send</button>
-            </div>
+    <div class="header">
+        <div class="logo">ArivuPathAI</div>
+        <h1 class="content-title">Python Basics: Level 4</h1>
+        <div class="progress-container">
+            <div class="lesson-info">Lesson 4/6</div>
+            <div class="progress">50% Complete</div>
         </div>
     </div>
+
+    <div class="main-container">
+        <div class="content-area">
+            <div class="contentInner">
+                <div class="progressContainer">
+                    <img src="previous.png" id="previous" class="icons prev-btn" style="cursor: pointer;">
+                    <div id="progress">
+                        <div id="progressBar"></div>
+                    </div>
+                    <img src="crossmark.png" onclick="window.location.href='http://localhost:8080/Zignite/levels.html'"
+                        class="icons" style="width: 20px">
+                </div>
+            </div>
+            <div class="sectionsBox" id="allSections">
+            <div class="learning-section" id="section1">
+                <h2 class="section-title">
+                    <span class="section-title-number">1</span>
+                    Lists: Creating, Retrieving, and Accessing
+                </h2>
+
+                <div class="explanation">
+                    <p>Lists in Python are ordered, mutable collections of items. They can hold various data types and are one of the most versatile data structures.</p>
+                </div>
+                <div class="conceptImageBox">
+                    <img src="https://hands-on.cloud/wp-content/uploads/2021/07/Working-With-Lists-In-Python-What-is-a-list-in-Python-1024x637.png" style="border: 2px solid black;"
+                        alt="Python Lists" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text">Creating a list:</p>
+                                    <div class="code-block">
+                                        fruits = ["apple", "banana", "cherry"]
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text">Accessing elements (indexing starts at 0):</p>
+                                    <div class="code-block">
+                                        print(fruits[0])  # Output: apple
+                                        print(fruits[-1]) # Output: cherry (negative indexing)
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text">Modifying and retrieving:</p>
+                                    <div class="code-block">
+                                        fruits[1] = "blueberry"  # Modify
+                                        print(fruits)  # Output: ['apple', 'blueberry', 'cherry']
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="did-you-know">
+                    <div class="did-you-know-title">Did you know?</div>
+                    <p>Lists can contain mixed data types, e.g., <span class="highlight">[1, "hello", True]</span>.</p>
+                </div>
+                <button class="continue">Continue Learning</button>
+            </div>
+
+            <div class="learning-section">
+                <h2 class="section-title">
+                    <span class="section-title-number">2</span>
+                    Tuples
+                </h2>
+
+                <div class="explanation">
+                    <p>Tuples are similar to lists but are immutable, meaning their elements cannot be changed after creation. They’re useful for fixed collections of data.</p>
+                </div>
+
+                <div class="step-by-step" style="width: 100%;">
+                    <div class="step" style="width: 100%;">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <p class="step-text">Creating a tuple:</p>
+                            <div class="code-block">
+                                coordinates = (10, 20)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <p class="step-text">Accessing elements:</p>
+                            <div class="code-block">
+                                print(coordinates[0])  # Output: 10
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step" style="width: 100%;">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <p class="step-text">Trying to modify (this will fail):</p>
+                            <div class="code-block">
+                                coordinates[0] = 15  # Raises TypeError
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-element">
+                    <div class="interactive-title">Why Use Tuples?</div>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li style="margin-bottom: 8px;">Faster than lists due to immutability.</li>
+                        <li style="margin-bottom: 8px;">Used for data that shouldn’t change, like constants.</li>
+                    </ul>
+                </div>
+                <button class="continue">Continue Learning</button>
+            </div>
+
+            <div class="learning-section">
+                <h2 class="section-title">
+                    <span class="section-title-number">3</span>
+                    Dictionaries: Key-Value Pairs
+                </h2>
+
+                <div class="explanation">
+                    <p>Dictionaries store data as key-value pairs, allowing you to associate unique keys with values for efficient lookups.</p>
+                </div>
+
+                <div class="conceptImageBox">
+                    <img src="https://pynative.com/wp-content/uploads/2021/02/dictionaries-in-python.jpg"
+                        alt="Python Dictionaries" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text">Creating a dictionary:</p>
+                                    <div class="code-block">
+                                        student = {"name": "Alice", "age": 20, "grade": "A"}
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text">Accessing values:</p>
+                                    <div class="code-block">
+                                        print(student["name"])  # Output: Alice
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text">Modifying and adding pairs:</p>
+                                    <div class="code-block">
+                                        student["age"] = 21  # Modify
+                                        student["id"] = 123  # Add new pair
+                                        print(student)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="did-you-know">
+                    <div class="did-you-know-title">Pro Tip</div>
+                    <p>Use <span class="highlight">dict.get(key, default)</span> to safely retrieve values with a fallback if the key doesn’t exist.</p>
+                </div>
+                <button class="continue">Continue Learning</button>
+            </div>
+
+            <div class="learning-section">
+                <h2 class="section-title">
+                  <span class="section-title-number">4</span>
+                  List and Dictionary Comprehensions
+                </h2>
+            
+                <div class="explanation">
+                  <p>Comprehensions provide a concise way to create lists and dictionaries using loops and conditions in a single line.</p>
+                </div>
+
+                <div class="conceptImageBox">
+                    <img src="https://miro.medium.com/v2/resize:fit:1146/1*5-jD8EV984b0eGUC0gmkfg.png"
+                        alt="Python Comprehensions" class="concept-image" style="border: 2px solid black;">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                              <div class="step-number">1</div>
+                              <div class="step-content">
+                                <p class="step-text">List comprehension:</p>
+                                <div class="code-block">
+                                  squares = [x**2 for x in range(5)]
+                                  print(squares)  # Output: [0, 1, 4, 9, 16]
+                                </div>
+                              </div>
+                            </div>
+                      
+                            <div class="step" style="width: 100%;">
+                              <div class="step-number">2</div>
+                              <div class="step-content">
+                                <p class="step-text">List comprehension with condition:</p>
+                                <div class="code-block">
+                                  even_squares = [x**2 for x in range(5) if x % 2 == 0]
+                                  print(even_squares)  # Output: [0, 4, 16]
+                                </div>
+                              </div>
+                            </div>
+                      
+                            <div class="step" style="width: 100%;">
+                              <div class="step-number">3</div>
+                              <div class="step-content">
+                                <p class="step-text">Dictionary comprehension:</p>
+                                <div class="code-block">
+                                  square_dict = {x: x**2 for x in range(5)}
+                                  print(square_dict)  # Output: {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                </div>
+            
+                <div class="did-you-know">
+                  <div class="did-you-know-title">Did you know?</div>
+                  <p>Comprehensions are not only concise but often faster than traditional loops!</p>
+                </div>
+                <button class="continue">Continue Learning</button>
+            </div>
+            
+            <div class="learning-section">
+                <h2 class="section-title">
+                  <span class="section-title-number">5</span>
+                  Sets in Python
+                </h2>
+            
+                <div class="explanation">
+                  <p>Sets are unordered collections of unique elements, ideal for removing duplicates and performing mathematical operations like unions and intersections.</p>
+                </div>
+
+                <div class="conceptImageBox">
+                    <img src="https://pynative.com/wp-content/uploads/2021/03/python-sets.jpg"
+                        alt="Python Sets" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                              <div class="step-number">1</div>
+                              <div class="step-content">
+                                <p class="step-text">Creating a set:</p>
+                                <div class="code-block">
+                                  numbers = {1, 2, 3, 3, 4}
+                                  print(numbers)  # Output: {1, 2, 3, 4} (duplicates removed)
+                                </div>
+                              </div>
+                            </div>
+                      
+                            <div class="step">
+                              <div class="step-number">2</div>
+                              <div class="step-content">
+                                <p class="step-text">Adding elements:</p>
+                                <div class="code-block">
+                                  numbers.add(5)
+                                  print(numbers)  # Output: {1, 2, 3, 4, 5}
+                                </div>
+                              </div>
+                            </div>
+                      
+                            <div class="step">
+                              <div class="step-number">3</div>
+                              <div class="step-content">
+                                <p class="step-text">Set operations:</p>
+                                <div class="code-block">
+                                  set1 = {1, 2, 3}
+                                  set2 = {2, 3, 4}
+                                  print(set1 & set2)  # Intersection: {2, 3}
+                                  print(set1 | set2)  # Union: {1, 2, 3, 4}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                </div>
+            
+                <div class="did-you-know">
+                  <div class="did-you-know-title">Pro Tip</div>
+                  <p>Use sets to quickly check for membership with <span class="highlight">in</span>, e.g., <span class="highlight">3 in numbers</span>.</p>
+                </div>
+                <button class="continue" onclick="completeLevel(5)">Finish Lesson</button>
+            </div>
+        </div>
+            
+
+        </div>
+
+    </div>
+    <div class="chat-button" id="chatButton">
+        <div class="chat-icon">💬</div>
+    </div>
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <div class="chat-title">
+                <div class="bot-avatar">AI</div>
+                <span>Assistant</span>
+            </div>
+            <button class="close-button" id="closeButton">✕</button>
+        </div>
+        
+        <div class="chat-body" id="chatBody">
+            
+        </div>
+        
+        <div class="chat-footer">
+            <input type="text" class="message-input" id="messageInput" placeholder="Type your message here...">
+            <button class="send-button" id="sendButton">
+                ➤
+            </button>
+        </div>
+    </div>
+
+
     <script src="level1python.js"></script>
 </body>
+
 </html>

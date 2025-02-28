@@ -1,76 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Course</title>
-    <link rel="stylesheet" href="level1python.css">
+    <title>Python Basics: Level 5</title>
+    <link rel="stylesheet" href="level1python.css" type="text/css">
 </head>
+
 <body>
-    <header>
-        <img src="ProjectLogo.png" onclick="window.location.href='http://localhost:8080/Zignite/userHome.html'"class="logoImg">
-        <div class="progress_description">
-            <h1 style="font-size: 36px;color: #037a6e;">File handling and modules</h1>
-            <div class="desc">📚&ensp;Lesson <span id="lessonNumber">5</span>/6</div>
-            <div class="desc" id="com">🎯&ensp;<span id="completion">0%</span>&nbsp; Complete</div>
-        </div>
-    </header>
 
-   <div class="container">
-        <div class="course_content">
-            <div class="progressContainer">
-                <img src="previous.png" class="icons" onclick="prev()">
-                <div id="progress">
-                    <div id="progressBar"></div>
-                </div>
-             <img src="crossmark.png" onclick="window.location.href='http://localhost:8080/Zignite/levels.html'" class="icons" style="width: 20px">
-            </div>
-
-            <div class="sectionsBox">
-                <div class="section" id="section1">
-                    <div id="header">1. Reading and Writing Files</div>
-                    <div class="image"><img src="https://files.realpython.com/media/Reading-and-Writing-Files-in-Python_Watermarked.0d394921fd90.jpg" alt="Reading and writing files in python" id="image1"  style="border-radius: 10px; border: 2px solid black;"></div>
-                    <div id="content">1️⃣ Use open() to read ('r') or write ('w', 'a') files.<br>2️⃣ read(), readline(), and readlines() help retrieve file content.<br>3️⃣ Always close files with close() or use 'with' for automatic handling.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section2">
-                    <div id="header">2. Using Modules</div>
-                    <div class="image"><img src="https://miro.medium.com/v2/resize:fit:1400/1*nK2gnkXvY0vjn-2t5FyJPw.jpeg" alt="Modules" id="image2" style="border-radius: 10px; border: 2px solid black;width: 450px;"></div>
-                    <div id="content">1️⃣ Import built-in modules like math, random, or datetime.<br>2️⃣ Use import module or from module import function for selective imports.<br>3️⃣ Helps organize and reuse code efficiently.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section3">
-                    <div id="header">3. Creating Custom Modules</div>
-                    <div class="image"><img src="https://s3.stackabuse.com/media/articles/372945e6fe29acd8afc0a3fe519b3d09.png" alt="Custom modules" id="image3"  style="border-radius: 10px; width: 500px; border: 2px solid black;"></div>
-                    <div id="content">1️⃣ A module is simply a .py file containing functions and variables.<br>2️⃣ Import it using import module_name in another script.<br>3️⃣ Useful for organizing large programs into reusable parts.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section4">
-                    <div id="header">4. The OS Module</div>
-                    <div class="image"><img src="https://www.boardinfinity.com/blog/content/images/2023/01/Python-OS-Module.png" alt="Print and User input in python" id="image3"  style="border-radius: 10px; border: 2px solid black;"></div>
-                    <div id="content">1️⃣ Provides functions to interact with the operating system.<br>2️⃣ os.listdir() lists files, os.remove() deletes files, and os.mkdir() creates directories.<br>3️⃣ Essential for handling system-level tasks.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section5">
-                    <div id="header">5. The JSON Module</div>
-                    <div class="image"><img src="https://cdn.educba.com/academy/wp-content/uploads/2020/01/JSON-in-Python.jpg" alt="Operators in Python" id="image3" style="border-radius: 10px; border: 2px solid black;"></div>
-                    <div id="content">1️⃣ Used for working with JSON data in Python.<br>2️⃣ json.load() reads JSON from a file, while json.dump() writes to a file.<br>3️⃣ Essential for handling structured data and APIs.</div>
-                    <div class="continue" onclick="completeLevel(6)">Finish Level</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="bot">
-            <div class="header">
-                <h1>Vid.AI</h1>
-            </div>
-            <div class="chatMessages" id="chatMessages"></div>
-            <div class="chatInputBox">
-                <input type="text" id="userInput" placeholder="Type your message...">
-                <button id="sendBtn">Send</button>
-            </div>
+    <div class="header">
+        <div class="logo">ArivuPathAI</div>
+        <h1 class="content-title">Python Basics: Level 5</h1>
+        <div class="progress-container">
+            <div class="lesson-info">Lesson 5/6</div>
+            <div class="progress">0% Complete</div>
         </div>
     </div>
+
+    <div class="main-container">
+        <div class="content-area">
+            <div class="contentInner">
+                <div class="progressContainer">
+                    <img src="previous.png" id="previous" class="icons prev-btn" style="cursor: pointer;">
+                    <div id="progress">
+                        <div id="progressBar"></div>
+                    </div>
+                    <img src="crossmark.png" onclick="window.location.href='http://localhost:8080/Zignite/levels.html'"
+                        class="icons" style="width: 20px">
+                </div>
+            </div>
+            <div class="sectionsBox" id="allSections">
+            <div class="learning-section" id="section1">
+                <h2 class="section-title">
+                    <span class="section-title-number">1</span>
+                    Reading and Writing Files
+                </h2>
+
+                <div class="explanation">
+                    <p>Python provides built-in functions to read from and write to files, making it easy to handle text, data, or configurations.</p>
+                </div>
+                <div class="conceptImageBox">
+                    <img src="https://miro.medium.com/v2/resize:fit:1400/1*wEDTra8GiMVcqir71awvBA.png" style="border: 2px solid black;"
+                        alt="File Handling" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text">Writing to a file:</p>
+                                    <div class="code-block">
+                                        with open("example.txt", "w") as file:
+                                            file.write("Hello, Python!")
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text">Reading from a file:</p>
+                                    <div class="code-block">
+                                        with open("example.txt", "r") as file:
+                                            content = file.read()
+                                            print(content)  # Output: Hello, Python!
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text">Appending to a file:</p>
+                                    <div class="code-block">
+                                        with open("example.txt", "a") as file:
+                                            file.write("\nLearning is fun!")
+                                        # File now contains two lines
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="did-you-know">
+                    <div class="did-you-know-title">Did you know?</div>
+                    <p>The <span class="highlight">with</span> statement automatically closes the file after you’re done, preventing resource leaks.</p>
+                </div>
+                <button class="continue">Continue Learning</button>
+            </div>
+
+            <div class="learning-section">
+                <h2 class="section-title">
+                    <span class="section-title-number">2</span>
+                    Using Modules
+                </h2>
+
+                <div class="explanation">
+                    <p>Modules are pre-written Python files you can import to use their functions, classes, or variables in your code.</p>
+                </div>
+
+                <div class="step-by-step" style="width: 100%;">
+                    <div class="step" style="width: 100%;">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <p class="step-text">Importing a built-in module:</p>
+                            <div class="code-block">
+                                import math
+                                print(math.sqrt(16))  # Output: 4.0
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <p class="step-text">Importing specific functions:</p>
+                            <div class="code-block">
+                                from math import pi
+                                print(pi)  # Output: 3.141592653589793
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step" style="width: 100%;">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <p class="step-text">Using an alias:</p>
+                            <div class="code-block">
+                                import random as rnd
+                                print(rnd.randint(1, 10))  # Output: Random number between 1 and 10
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-element">
+                    <div class="interactive-title">Why Use Modules?</div>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li style="margin-bottom: 8px;">Reuse code without rewriting.</li>
+                        <li style="margin-bottom: 8px;">Keep your code organized and modular.</li>
+                    </ul>
+                </div>
+                <button class="continue">Continue Learning</button>
+            </div>
+
+            <div class="learning-section">
+                <h2 class="section-title">
+                    <span class="section-title-number">3</span>
+                    Creating Custom Modules
+                </h2>
+
+                <div class="explanation">
+                    <p>You can create your own modules by saving Python code in a .py file and importing it into other scripts.</p>
+                </div>
+
+                <div class="conceptImageBox">
+                    <img src="https://techvidvan.com/tutorials/wp-content/uploads/2021/01/Python-Modules-TV.jpg" style="border: 2px solid black;"
+                        alt="Custom Modules" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text">Create a file named <span class="highlight">mymodule.py</span>:</p>
+                                    <div class="code-block">
+                                        # mymodule.py
+                                        def say_hello(name):
+                                            return f"Hello, {name}!"
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text">Import and use it in another file:</p>
+                                    <div class="code-block">
+                                        # main.py
+                                        import mymodule
+                                        print(mymodule.say_hello("Alice"))  # Output: Hello, Alice!
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text">Import specific functions:</p>
+                                    <div class="code-block">
+                                        from mymodule import say_hello
+                                        print(say_hello("Bob"))  # Output: Hello, Bob!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="did-you-know">
+                    <div class="did-you-know-title">Pro Tip</div>
+                    <p>Add <span class="highlight">if __name__ == "__main__":</span> in your module to prevent code from running when imported.</p>
+                </div>
+                <button class="continue">Continue Learning</button>
+            </div>
+
+            <div class="learning-section">
+                <h2 class="section-title">
+                  <span class="section-title-number">4</span>
+                  The OS Module
+                </h2>
+            
+                <div class="explanation">
+                  <p>The <span class="highlight">os</span> module provides functions to interact with the operating system, like file management and directory operations.</p>
+                </div>
+
+                <div class="conceptImageBox">
+                    <img src="https://www.boardinfinity.com/blog/content/images/2023/01/Python-OS-Module.png"
+                        alt="OS Module" class="concept-image" style="border: 2px solid black;">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                              <div class="step-number">1</div>
+                              <div class="step-content">
+                                <p class="step-text">Get current directory:</p>
+                                <div class="code-block">
+                                  import os
+                                  print(os.getcwd())  # Output: Current working directory path
+                                </div>
+                              </div>
+                            </div>
+                      
+                            <div class="step" style="width: 100%;">
+                              <div class="step-number">2</div>
+                              <div class="step-content">
+                                <p class="step-text">List directory contents:</p>
+                                <div class="code-block">
+                                  print(os.listdir())  # Output: List of files and folders
+                                </div>
+                              </div>
+                            </div>
+                      
+                            <div class="step" style="width: 100%;">
+                              <div class="step-number">3</div>
+                              <div class="step-content">
+                                <p class="step-text">Create a directory:</p>
+                                <div class="code-block">
+                                  os.mkdir("new_folder")
+                                  print("Directory created!")
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                </div>
+            
+                <div class="did-you-know">
+                  <div class="did-you-know-title">Did you know?</div>
+                  <p>Use <span class="highlight">os.path.join()</span> to create platform-independent file paths.</p>
+                </div>
+                <button class="continue">Continue Learning</button>
+            </div>
+            
+            <div class="learning-section">
+                <h2 class="section-title">
+                  <span class="section-title-number">5</span>
+                  The JSON Module
+                </h2>
+            
+                <div class="explanation">
+                  <p>The <span class="highlight">json</span> module allows you to work with JSON data, converting Python objects to JSON and vice versa.</p>
+                </div>
+
+                <div class="conceptImageBox">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZxKOt8Mgj9YI5_N2kfmqnmZeKnsgK2zwYUA&s" style="border: 2px solid black;"
+                        alt="JSON Module" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                              <div class="step-number">1</div>
+                              <div class="step-content">
+                                <p class="step-text">Convert Python to JSON (dump):</p>
+                                <div class="code-block">
+                                  import json
+                                  data = {"name": "Alice", "age": 25}
+                                  with open("data.json", "w") as file:
+                                      json.dump(data, file)
+                                </div>
+                              </div>
+                            </div>
+                      
+                            <div class="step">
+                              <div class="step-number">2</div>
+                              <div class="step-content">
+                                <p class="step-text">Read JSON to Python (load):</p>
+                                <div class="code-block">
+                                  with open("data.json", "r") as file:
+                                      loaded_data = json.load(file)
+                                      print(loaded_data)  # Output: {'name': 'Alice', 'age': 25}
+                                </div>
+                              </div>
+                            </div>
+                      
+                            <div class="step">
+                              <div class="step-number">3</div>
+                              <div class="step-content">
+                                <p class="step-text">String conversion:</p>
+                                <div class="code-block">
+                                  json_string = json.dumps(data)
+                                  print(json_string)  # Output: {"name": "Alice", "age": 25}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                </div>
+            
+                <div class="did-you-know">
+                  <div class="did-you-know-title">Pro Tip</div>
+                  <p>Use <span class="highlight">indent=4</span> in <span class="highlight">json.dump()</span> for pretty-printed JSON.</p>
+                </div>
+               <button class="continue" onclick="completeLevel(6)">Finish Lesson</button>
+            </div>
+        </div>
+            
+
+        </div>
+
+    </div>
+    <div class="chat-button" id="chatButton">
+        <div class="chat-icon">💬</div>
+    </div>
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <div class="chat-title">
+                <div class="bot-avatar">AI</div>
+                <span>Assistant</span>
+            </div>
+            <button class="close-button" id="closeButton">✕</button>
+        </div>
+        
+        <div class="chat-body" id="chatBody">
+            
+        </div>
+        
+        <div class="chat-footer">
+            <input type="text" class="message-input" id="messageInput" placeholder="Type your message here...">
+            <button class="send-button" id="sendButton">
+                ➤
+            </button>
+        </div>
+    </div>
+
+
     <script src="level1python.js"></script>
 </body>
+
 </html>

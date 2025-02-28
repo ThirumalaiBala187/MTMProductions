@@ -1,3 +1,5 @@
+
+
 document.querySelectorAll('.level-card').forEach(card => {
     card.addEventListener('mousemove', e => {
         const rect = card.getBoundingClientRect();
@@ -17,7 +19,21 @@ document.querySelectorAll('.level-card').forEach(card => {
     });
 });
 
+document.addEventListener("DOMContentLoaded", async function () {
 
+	const response = await fetch("controller/pythonLevels", {
+	    method: "POST",
+	    headers: {
+	        'Content-Type': 'application/json',
+	    },
+	    body: JSON.stringify({ level: 999, courseId:999}) 
+	});
+	if (!response.ok) {
+	    throw new Error(`HTTP error! Status: ${response.status}`);
+	}else{
+		console.log("good !")
+	}
+	})
 function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
@@ -27,7 +43,24 @@ function getCookie(name) {
     return null;
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
+	setTimeout(() => {
+	  console.log(document.cookie);
+	}, 500);
+
+	const response = await fetch("controller/pythonLevels", {
+	    method: "POST",
+	    headers: {
+	        'Content-Type': 'application/json',
+	    },
+	    body: JSON.stringify({ level: 999, courseId:999}) 
+	});
+	if (!response.ok) {
+	    throw new Error(`HTTP error! Status: ${response.status}`);
+	}else{
+		console.log("good !")
+	}
+	
     function updateLevels() {
         const details = getCookie("DETAILS");
         const streak = atob(getCookie("streak"));
@@ -120,3 +153,5 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+

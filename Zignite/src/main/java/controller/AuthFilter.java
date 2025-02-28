@@ -7,55 +7,52 @@ import javax.servlet.http.*;
 public class AuthFilter implements Filter {
 
     private static final String[] EXCLUDED_PATHS = {
-        "signin.html", "/LoginServlet", "signup.html", "/LogoutServlet","index.html","entrance.html",
-        ".css", ".js", ".png", ".jpg", ".jpeg", ".gif","/SignupServlet"
+        "signin.html", "signup.html", "index.html",
+        "/LoginServlet", "/LogoutServlet", "/SignupServlet"
     };
 
-    public void init(FilterConfig filterConfig) throws ServletException {
-    }
+    public void init(FilterConfig filterConfig) throws ServletException {}
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-        
+
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession(false);
         String requestURI = req.getRequestURI();
 
+        // 🛑 Prevent caching so logout works properly
+        res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        res.setHeader("Pragma", "no-cache");
+        res.setHeader("Expires", "0");
 
-        for (String path : EXCLUDED_PATHS) {
-            if (requestURI.contains(path)) {
-                chain.doFilter(request, response);
-                return;
-            }
+        // ✅ Allow public pages & static resources
+        if (isExcluded(requestURI)) {
+            chain.doFilter(request, response);
+            return;
         }
 
-//        System.out.println(session);
-//
+        // 🚨 Block unauthorized users
         if (session == null || session.getAttribute("user") == null) {
-        	res.setStatus(HttpServletResponse.SC_FORBIDDEN);
-            System.out.println("Redirecting to index.html...");
+            System.out.println("Unauthorized access, redirecting to signin.html...");
             res.sendRedirect("signin.html");
             return;
         }
 
- 
-        /*
-        String role = (String) session.getAttribute("role");
-        if (requestURI.contains("/Admin") && !"Admin".equals(role)) {
-            res.getWriter().write("Access Denied: Admins only");
-            return;
-        }
-        if (requestURI.contains("/Customer") && !"Customer".equals(role) && !"Admin".equals(role)) {
-            res.getWriter().write("Access Denied: Users only");
-            return;
-        }
-        */
-
+        // ✅ Allow request to continue
         chain.doFilter(request, response);
     }
 
-    public void destroy() {
+    public void destroy() {}
+
+    // 📌 Function to check if the request should be excluded from authentication
+    private boolean isExcluded(String requestURI) {
+        for (String path : EXCLUDED_PATHS) {
+            if (requestURI.endsWith(path) || requestURI.contains(path)) {
+                return true;
+            }
+        }
+        // Allow static files (CSS, JS, images)
+        return requestURI.matches(".*\\.(css|js|png|jpg|jpeg|gif)$");
     }
 }
-

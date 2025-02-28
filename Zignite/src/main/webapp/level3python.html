@@ -1,76 +1,361 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Course</title>
-    <link rel="stylesheet" href="level1python.css">
+    <title>Python Basics: Level 3</title>
+    <link rel="stylesheet" href="level1python.css" type="text/css">
 </head>
+
 <body>
-    <header>
-        <img src="ProjectLogo.png" onclick="window.location.href='http://localhost:8080/Zignite/userHome.html'"class="logoImg">
-        <div class="progress_description">
-            <h1 style="font-size: 36px;color: #037a6e;">Functions & Error Handling</h1>
-            <div class="desc">📚&ensp;Lesson <span id="lessonNumber">3</span>/6</div>
-            <div class="desc" id="com">🎯&ensp;<span id="completion">0%</span>&nbsp; Complete</div>
-        </div>
-    </header>
 
-   <div class="container">
-        <div class="course_content">
-            <div class="progressContainer">
-                <img src="previous.png" class="icons" onclick="prev()">
-                <div id="progress">
-                    <div id="progressBar"></div>
-                </div>
-                                 <img src="crossmark.png" onclick="window.location.href='http://localhost:8080/Zignite/levels.html'" class="icons" style="width: 20px">
-            </div>
-
-            <div class="sectionsBox">
-                <div class="section" id="section1">
-                    <div id="header">1. Defining Functions</div>
-                    <div class="image"><img src="https://files.codingninjas.in/article_images/custom-upload-1725510699-f7baa816.webp" alt="Conditional Statements images" id="image1"  style="border-radius: 10px; border: 2px solid black;"></div>
-                    <div id="content">1️⃣ Functions are defined using 'def' and return values with 'return'.<br>2️⃣ They help organize code and avoid repetition.<br>3️⃣ A function runs only when called.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section2">
-                    <div id="header">2. Parameters and arguments</div>
-                    <div class="image"><img src="https://pyseek.com/wp-content/uploads/2024/01/Parameters-vs-Arguments-in-Python.webp" alt="Logical Statements image" id="image2" style="border-radius: 10px; border: 2px solid black;width: 450px;"></div>
-                    <div id="content">1️⃣ Parameters are placeholders in function definitions.<br>2️⃣ Arguments are actual values passed when calling a function.<br>3️⃣ Functions can accept multiple arguments.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section3">
-                    <div id="header">3. Types of arguments</div>
-                    <div class="image"><img src="https://programmingnode.com/programmingnode/uploads/blog/images/argument_type.png" alt="Variable in python" id="image3"  style="border-radius: 10px; width: 500px; border: 2px solid black;"></div>
-                    <div id="content">11️⃣ Default arguments provide a predefined value if not given.<br>2️⃣ Keyword arguments allow specifying values by parameter name.<br>3️⃣ Both improve function flexibility and readability.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section4">
-                    <div id="header">4. Try-Except</div>
-                    <div class="image"><img src="https://www.boardinfinity.com/blog/content/images/2023/01/Try-except.png" alt="Print and User input in python" id="image3"  style="border-radius: 10px; border: 2px solid black;"></div>
-                    <div id="content">1️⃣ try-except handles errors to prevent program crashes.<br>2️⃣ Code in try runs first; if an error occurs, except handles it.<br>3️⃣ Useful for handling unexpected inputs or failures.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section5">
-                    <div id="header">5. Lambda Functions</div>
-                    <div class="image"><img src="https://miro.medium.com/v2/resize:fit:960/1*UcWzl_DI5cXBfm1jl-1vUw.png" alt="Operators in Python" id="image3" style="border-radius: 10px; border: 2px solid black;"></div>
-                    <div id="content">1️⃣ Lambda functions are anonymous one-liners using 'lambda'.<br>2️⃣ They take any number of arguments but have only one expression.<br>3️⃣ Useful for short, simple operations without defining full functions.</div>
-                    <div class="continue" onclick="completeLevel(4)">Finish Level</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="bot">
-            <div class="header">
-                <h1>Vid.AI</h1>
-            </div>
-            <div class="chatMessages" id="chatMessages"></div>
-            <div class="chatInputBox">
-                <input type="text" id="userInput" placeholder="Type your message...">
-                <button id="sendBtn">Send</button>
-            </div>
+    <div class="header">
+        <div class="logo">ArivuPathAI</div>
+        <h1 class="content-title">Python Basics: Level 3</h1>
+        <div class="progress-container">
+            <div class="lesson-info">Lesson 3/6</div>
+            <div class="progress">37% Complete</div>
         </div>
     </div>
+
+    <div class="main-container">
+        <div class="content-area">
+            <div class="contentInner">
+                <div class="progressContainer">
+                    <img src="previous.png" id="previous" class="icons prev-btn" style="cursor: pointer;">
+                    <div id="progress">
+                        <div id="progressBar"></div>
+                    </div>
+                    <img src="crossmark.png" onclick="window.location.href='http://localhost:8080/Zignite/levels.html'"
+                        class="icons" style="width: 20px">
+                </div>
+            </div>
+            <div class="sectionsBox" id="allSections">
+            <div class="learning-section" id="section1">
+                <h2 class="section-title">
+                    <span class="section-title-number">1</span>
+                    Defining Functions: def and return
+                </h2>
+
+                <div class="explanation">
+                    <p>Functions in Python allow you to group code into reusable blocks. You define them using the <span class="highlight">def</span> keyword and can return values with <span class="highlight">return</span>.</p>
+                </div>
+                <div class="conceptImageBox">
+                    <img src="https://www.programiz.com/sites/tutorial2program/files/working-of-function-python.png" style="border: 2px solid black;"
+                        alt="Python Functions" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text">Basic function definition:</p>
+                                    <div class="code-block">
+                                        def greet():
+                                            print("Hello, World!")
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text">Calling the function:</p>
+                                    <div class="code-block">
+                                        greet()  # Output: Hello, World!
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text">Using return:</p>
+                                    <div class="code-block">
+                                        def add(a, b):
+                                            return a + b
+                                        result = add(3, 5)
+                                        print(result)  # Output: 8
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="did-you-know">
+                    <div class="did-you-know-title">Did you know?</div>
+                    <p>If no <span class="highlight">return</span> is specified, a function returns <span class="highlight">None</span> by default.</p>
+                </div>
+                <button class="continue">Continue Learning</button>
+            </div>
+
+            <div class="learning-section">
+                <h2 class="section-title">
+                    <span class="section-title-number">2</span>
+                    Function Parameters and Arguments
+                </h2>
+
+                <div class="explanation">
+                    <p>Parameters are variables defined in a function, while arguments are the values passed to the function when it’s called.</p>
+                </div>
+
+                <div class="step-by-step" style="width: 100%;">
+                    <div class="step" style="width: 100%;">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <p class="step-text">Defining a function with parameters:</p>
+                            <div class="code-block">
+                                def introduce(name, age):
+                                    print(f"Hi, I’m {name} and I’m {age} years old.")
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <p class="step-text">Passing arguments:</p>
+                            <div class="code-block">
+                                introduce("Alice", 25)  # Output: Hi, I’m Alice and I’m 25 years old.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step" style="width: 100%;">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <p class="step-text">Mismatched arguments (this will fail):</p>
+                            <div class="code-block">
+                                introduce("Bob")  # Raises TypeError: missing 1 required argument
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-element">
+                    <div class="interactive-title">Key Difference</div>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li style="margin-bottom: 8px;"><span class="highlight">Parameters</span>: Defined in the function (e.g., name, age).</li>
+                        <li style="margin-bottom: 8px;"><span class="highlight">Arguments</span>: Values provided when calling (e.g., "Alice", 25).</li>
+                    </ul>
+                </div>
+                <button class="continue">Continue Learning</button>
+            </div>
+
+            <div class="learning-section">
+                <h2 class="section-title">
+                    <span class="section-title-number">3</span>
+                    Types of Arguments
+                </h2>
+
+                <div class="explanation">
+                    <p>Python supports different types of arguments: positional, keyword, and variable-length arguments.</p>
+                </div>
+
+                <div class="conceptImageBox">
+                    <img src="https://techvidvan.com/tutorials/wp-content/uploads/sites/2/2020/03/types-of-python-arguments.jpg"
+                        alt="Types of Arguments" class="concept-image" style="border: 2px solid black;">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text">Positional arguments (order matters):</p>
+                                    <div class="code-block">
+                                        def describe(name, color):
+                                            print(f"{name} likes {color}")
+                                        describe("Tom", "blue")  # Output: Tom likes blue
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text">Keyword arguments (order doesn’t matter):</p>
+                                    <div class="code-block">
+                                        describe(color="red", name="Jerry")  # Output: Jerry likes red
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text">Variable-length arguments (*args):</p>
+                                    <div class="code-block">
+                                        def sum_all(*numbers):
+                                            return sum(numbers)
+                                        print(sum_all(1, 2, 3, 4))  # Output: 10
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="did-you-know">
+                    <div class="did-you-know-title">Pro Tip</div>
+                    <p>Use <span class="highlight">**kwargs</span> for variable-length keyword arguments, e.g., <span class="highlight">def func(**kwargs)</span>.</p>
+                </div>
+                <button class="continue">Continue Learning</button>
+            </div>
+
+            <div class="learning-section">
+                <h2 class="section-title">
+                  <span class="section-title-number">4</span>
+                  Default and Keyword Arguments
+                </h2>
+            
+                <div class="explanation">
+                  <p>Default arguments allow parameters to have preset values, while keyword arguments let you specify arguments by name.</p>
+                </div>
+
+                <div class="conceptImageBox">
+                    <img src="https://www.boardinfinity.com/blog/content/images/2023/01/Try-except.png"
+                        alt="Default Arguments" class="concept-image" style="border: 2px solid black;">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                              <div class="step-number">1</div>
+                              <div class="step-content">
+                                <p class="step-text">Function with default argument:</p>
+                                <div class="code-block">
+                                  def greet(name, message="Hello"):
+                                      print(f"{message}, {name}!")
+                                  greet("Alice")  # Output: Hello, Alice!
+                                </div>
+                              </div>
+                            </div>
+                      
+                            <div class="step" style="width: 100%;">
+                              <div class="step-number">2</div>
+                              <div class="step-content">
+                                <p class="step-text">Overriding default argument:</p>
+                                <div class="code-block">
+                                  greet("Bob", "Hi")  # Output: Hi, Bob!
+                                </div>
+                              </div>
+                            </div>
+                      
+                            <div class="step" style="width: 100%;">
+                              <div class="step-number">3</div>
+                              <div class="step-content">
+                                <p class="step-text">Using keyword arguments:</p>
+                                <div class="code-block">
+                                  greet(message="Hey", name="Charlie")  # Output: Hey, Charlie!
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                </div>
+            
+                <div class="did-you-know">
+                  <div class="did-you-know-title">Did you know?</div>
+                  <p>Default arguments must come after non-default arguments in the function definition.</p>
+                </div>
+                <button class="continue">Continue Learning</button>
+            </div>
+            
+            <div class="learning-section">
+                <h2 class="section-title">
+                  <span class="section-title-number">5</span>
+                  Try-Except Handling
+                </h2>
+            
+                <div class="explanation">
+                  <p>Python’s <span class="highlight">try</span> and <span class="highlight">except</span> blocks help manage errors gracefully, preventing your program from crashing.</p>
+                </div>
+
+                <div class="conceptImageBox">
+                    <img src="https://techvidvan.com/tutorials/wp-content/uploads/2020/07/exception-handling-in-python.jpg" style="border: 2px solid black;"
+                        alt="Try-Except" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                              <div class="step-number">1</div>
+                              <div class="step-content">
+                                <p class="step-text">Basic try-except:</p>
+                                <div class="code-block">
+                                  try:
+                                      result = 10 / 0
+                                  except ZeroDivisionError:
+                                      print("Cannot divide by zero!")
+                                  # Output: Cannot divide by zero!
+                                </div>
+                              </div>
+                            </div>
+                      
+                            <div class="step">
+                              <div class="step-number">2</div>
+                              <div class="step-content">
+                                <p class="step-text">Catching multiple exceptions:</p>
+                                <div class="code-block">
+                                  try:
+                                      num = int("abc")
+                                  except ValueError:
+                                      print("Invalid number!")
+                                  except TypeError:
+                                      print("Type error!")
+                                  # Output: Invalid number!
+                                </div>
+                              </div>
+                            </div>
+                      
+                            <div class="step">
+                              <div class="step-number">3</div>
+                              <div class="step-content">
+                                <p class="step-text">Using else and finally:</p>
+                                <div class="code-block">
+                                  try:
+                                      num = int("5")
+                                  except ValueError:
+                                      print("Error!")
+                                  else:
+                                      print("Success:", num)
+                                  finally:
+                                      print("Done!")
+                                  # Output: Success: 5
+                                  #         Done!
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                </div>
+            
+                <div class="did-you-know">
+                  <div class="did-you-know-title">Pro Tip</div>
+                  <p>Use <span class="highlight">except Exception</span> as a catch-all for unexpected errors, but sparingly.</p>
+                </div>
+               <button class="continue" onclick="completeLevel(4)">Finish Lesson</button>
+            </div>
+        </div>
+            
+
+        </div>
+
+    </div>
+    <div class="chat-button" id="chatButton">
+        <div class="chat-icon">💬</div>
+    </div>
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <div class="chat-title">
+                <div class="bot-avatar">AI</div>
+                <span>Assistant</span>
+            </div>
+            <button class="close-button" id="closeButton">✕</button>
+        </div>
+        
+        <div class="chat-body" id="chatBody">
+            
+        </div>
+        
+        <div class="chat-footer">
+            <input type="text" class="message-input" id="messageInput" placeholder="Type your message here...">
+            <button class="send-button" id="sendButton">
+                ➤
+            </button>
+        </div>
+    </div>
+
+
     <script src="level1python.js"></script>
 </body>
+
 </html>

@@ -7,84 +7,290 @@
     <link rel="stylesheet" href="level1python.css">
 </head>
 <body>
-    <header>
-        <img src="ProjectLogo.png"onclick="window.location.href='http://localhost:8080/Zignite/userHome.html'" class="logoImg">
-        <div class="progress_description">
-            <h1 style="font-size: 36px;color: #037a6e;">What is the Future of LLMs?</h1>
-              <div class="desc">📚&ensp;Lesson <span id="lessonNumber">6</span>/6</div>
-            <div class="desc" id="com">🎯&ensp;<span id="completion">0%</span>&nbsp; Complete</div>
+    <div class="header">
+        <div class="logo">ArivuPathAI</div>
+        <h1 class="content-title">What is the future of LLM's</h1>
+        <div class="progress-container">
+            <div class="lesson-info">Lesson 6/6</div>
+            <div class="progress" id="completion">0% Complete</div>
         </div>
-    </header>
-   
-    <div class="container">
-        <div class="course_content">
-            <div class="progressContainer">
-                <img src="previous.png" class="icons" onclick="prev()">
-                <div id="progress">
-                    <div id="progressBar"></div>
+    </div>
+
+    <div class="main-container">
+        <div class="content-area">
+            <div class="contentInner">
+                <div class="progressContainer">
+                    <img src="previous.png" id="previous" class="icons prev-btn" style="cursor: pointer;">
+                    <div id="progress">
+                        <div id="progressBar"></div>
+                    </div>
+                    <img src="crossmark.png" onclick="window.location.href='http://localhost:8080/Zignite/LLMlevels.html'"
+                        class="icons" style="width: 20px">
                 </div>
-                <img src="crossmark.png" onclick="window.location.href='http://localhost:8080/Zignite/LLMlevels.html'" class="icons" style="width: 20px">
             </div>
 
-            <div class="sectionsBox">
-                <div class="section" id="section1">
-                    <div id="header">1. AI Accuracy Improvements</div>
-                    <div class="image"><img src="https://media.licdn.com/dms/image/v2/D5612AQGZz67yPCmN_g/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1712140420743?e=2147483647&v=beta&t=IKhsfmSZqsDEXg-A0eBXdbwzpY5SFhDFZMkj1qvGyI8" alt="Installing python" id="image1" style="border-radius: 10px;"></div>
-                    <div id="content">Future LLMs will become more precise, reduce biases, and improve fact-checking to <br>generate more reliable information.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section2">
-                    <div id="header">2. AI Regulations</div>
-                    <div class="image"><img src="https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1683096240569-download%20%2857%29.png" alt="Running python file" id="image2" style="border-radius: 10px; border: 2px solid black;"></div>
-                    <div id="content">Governments and tech leaders are working on AI regulations to ensure ethical use,<br>prevent misinformation, and protect privacy.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section3">
-                    <div id="header">3. Multimodal AI</div>
-                    <div class="image"><img src="https://www.sourcecodester.com/sites/default/files/Python%20Variables_0.jpg" alt="Variable in python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">Next-generation AI models will combine text, images, video, and voice to create more<br>advanced and interactive applications.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section4">
-                    <div id="header">4. AI in Education & Healthcare</div>
-                    <div class="image"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCB1fiPnxYxVxXbh3It3jjCNUdX5ZK4EstpgSGDgEZ2bvc2ROhraq0Y2ZSKC9B_FO2zIPvBUIpjtigavr9t3mmPuMw3XQwM02seiT2QaC49PhJDL15vK3IA8Lg344-P-XTbBs1sfpg4T1DAjkakwW-EJ_RKOMBCoTCqTDgES57-vQtNngjWqqxFMCM/s711/16.PNG" alt="Print and User input in python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">LLMs will personalize learning experiences, assist teachers, and enhance medical<br>research and patient support systems.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section5">
-                    <div id="header">5. AI and Automation</div>
-                    <div class="image"><img src="https://cdn.codechef.com/blogs/images/operators-in-python.png" alt="Operators in Python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">AI-powered automation will improve industries like customer service, legal processing,<br>and manufacturing, boosting efficiency.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section6">
-                    <div id="header">6.Responsible AI Development</div>
-                    <div class="image"><img src="https://cdn.codechef.com/blogs/images/operators-in-python.png" alt="Operators in Python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">Developers will focus on creating fair, unbiased, and transparent AI systems that<br>prioritize safety and ethical considerations.</div>
-                    <div class="continue" onclick="completeLevel(7)">Finish Level</div>
-                </div>
-            </div>
-        </div>
+            <div class="sectionsBox" id="allSections">
+                <!-- Section 1: AI Accuracy Improvements -->
+                <div class="learning-section" id="section1">
+                    <h2 class="section-title">
+                        <span class="section-title-number">1</span>
+                        AI Accuracy Improvements
+                    </h2>
 
-        <div class="bot">
-            <div class="header">
-                <h1>Vid.AI</h1>
-            </div>
-            <div class="chatMessages" id="chatMessages"></div>
-            <div class="chatInputBox">
-                <input type="text" id="userInput" placeholder="Type your message...">
-                <button id="sendBtn">Send</button>
+                    <div class="explanation">
+                        <p>Advances in AI aim to reduce errors like hallucinations, making LLMs more reliable and trustworthy.</p>
+                    </div>
+                    <div class="conceptImageBox">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*JylFbz5UHSKzRVWHnabWKw.png" alt="AI Accuracy" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text">Better <span class="highlight">training data</span> improves factual accuracy.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Reasoning</strong> enhancements reduce logical errors.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text">Example: Future LLMs verifying facts in real-time.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Did you know?</div>
+                        <p>Accuracy gains could make AI a go-to tool for scientific research!</p>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <!-- Section 2: AI Regulations -->
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">2</span>
+                        AI Regulations
+                    </h2>
+
+                    <div class="explanation">
+                        <p>Governments and organizations are developing rules to ensure AI, including LLMs, is used safely and ethically.</p>
+                    </div>
+                    <div class="step-by-step" style="width: 100%;">
+                        <div class="step" style="width: 100%;">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <p class="step-text"><strong>Purpose</strong>: Protect privacy and prevent misuse.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <p class="step-text"><strong>Scope</strong>: Laws on data use and transparency.</p>
+                            </div>
+                        </div>
+                        <div class="step" style="width: 100%;">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <p class="step-text">Example: EU’s AI Act regulates high-risk AI systems.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="interactive-element">
+                        <div class="interactive-title">Key Concept</div>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li style="margin-bottom: 8px;">Regulations balance innovation and safety.</li>
+                            <li style="margin-bottom: 8px;">Global standards are still evolving.</li>
+                        </ul>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <!-- Section 3: Multimodal AI -->
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">3</span>
+                        Multimodal AI
+                    </h2>
+
+                    <div class="explanation">
+                        <p>Future LLMs will integrate text, images, audio, and more, creating versatile, all-in-one AI systems.</p>
+                    </div>
+                    <div class="conceptImageBox">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*W3GknKCxHvTqRkKOhh9qAw.png" alt="Multimodal AI" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Text + Vision</strong>: Describe or generate images.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Audio</strong>: Understand and produce speech.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text">Example: An AI that chats and sketches simultaneously.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Pro Tip</div>
+                        <p>Multimodal AI could revolutionize how we interact with tech!</p>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <!-- Section 4: AI in Education & Healthcare -->
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">4</span>
+                        AI in Education & Healthcare
+                    </h2>
+
+                    <div class="explanation">
+                        <p>LLMs are transforming learning and medicine with personalized education and advanced diagnostics.</p>
+                    </div>
+                    <div class="conceptImageBox">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*Pj_k1t4rF8ZDG2W3oWnHIA.png" alt="AI in Education & Healthcare" class="concept-image" style="border: 2px solid black;">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Education</strong>: Tailored lessons and tutoring.</p>
+                                </div>
+                            </div>
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Healthcare</strong>: Symptom analysis and research aid.</p>
+                                </div>
+                            </div>
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text">Example: AI tutors or virtual doctors.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Did you know?</div>
+                        <p>AI could make education accessible to millions globally!</p>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <!-- Section 5: AI and Automation -->
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">5</span>
+                        AI and Automation
+                    </h2>
+
+                    <div class="explanation">
+                        <p>LLMs paired with automation streamline tasks, from writing code to managing workflows, boosting efficiency.</p>
+                    </div>
+                    <div class="conceptImageBox">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*5Xjd11g4v_8IILrTVuR9Rw.png" alt="AI and Automation" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Tasks</strong>: Automating repetitive jobs.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Scale</strong>: Handling massive workloads.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text">Example: AI drafting reports instantly.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Pro Tip</div>
+                        <p>Automation with AI could free up time for creative work!</p>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <!-- Section 6: Responsible AI Development -->
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">6</span>
+                        Responsible AI Development
+                    </h2>
+
+                    <div class="explanation">
+                        <p>Building AI responsibly ensures fairness, transparency, and minimal harm to society and the environment.</p>
+                    </div>
+                    <div class="conceptImageBox">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*8ZNh0Nuzx7A9f2JzzzA0ng.jpeg" alt="Responsible AI" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Fairness</strong>: Reducing bias in models.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Transparency</strong>: Explaining AI decisions.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text">Example: xAI’s mission to advance truth-seeking AI.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Did you know?</div>
+                        <p>Responsible AI could help us decode alien languages someday!</p>
+                    </div>
+                    <button class="continue" onclick="completeLevel(7)">Finish Lesson</button>
+                </div>
             </div>
         </div>
     </div>
+
+    <div class="chat-button" id="chatButton">
+        <div class="chat-icon">💬</div>
+    </div>
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <div class="chat-title">
+                <div class="bot-avatar">AI</div>
+                <span>Assistant</span>
+            </div>
+            <button class="close-button" id="closeButton">✕</button>
+        </div>
+        <div class="chat-body" id="chatBody"></div>
+        <div class="chat-footer">
+            <input type="text" class="message-input" id="messageInput" placeholder="Type your message here...">
+            <button class="send-button" id="sendButton">➤</button>
+        </div>
+    </div>
+
     <script src="level1llm.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-

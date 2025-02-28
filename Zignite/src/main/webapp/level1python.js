@@ -1,53 +1,47 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const sections = document.querySelectorAll(".section");
-    let currentIndex = 0;
+function createBubbles() {
+    const count = 15;
+    for (let i = 0; i < count; i++) {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
 
-    function updateSections() {
-        sections.forEach((section, index) => {
-            section.style.transform = `translateY(${(index - currentIndex) * 50}vh)`;
-        });
+        const size = Math.random() * 100 + 40;
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+
+        bubble.style.left = `${Math.random() * 100}vw`;
+        bubble.style.top = `${Math.random() * 100}vh`;
+
+        bubble.style.animationDelay = `${Math.random() * 5}s`;
+        bubble.style.animationDuration = `${5 + Math.random() * 10}s`;
+
+        document.body.appendChild(bubble);
     }
+}
 
-    document.querySelectorAll(".next-btn").forEach((button) => {
-        button.addEventListener("click", function () {
-            if (currentIndex < sections.length - 1) {
-                currentIndex++;
-                updateSections();
-            }
-        });
-    });
-
-    document.querySelectorAll(".prev-btn").forEach((button) => {
-        button.addEventListener("click", function () {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateSections();
-            }
-        });
-    });
-	let finish=(localStorage.getItem("finishedPy")==null)?0:localStorage.getItem("finishedPy");
-		completion=document.getElementById("completion");
-		               completion.innerHTML=finish+"%";
-    updateSections();
-});
-
-
-
-const API_KEY = 'AIzaSyBSXrz7hdoysQVAfy-Ee8VkIEdWxEsP2XoAIzaSyB3wN4V7OEF6ItvcxiFJYbHHHzaKW3bf_U';
-const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent';
+window.onload = () => {
+    createBubbles();
+};
 
 const chatMessages = document.getElementById('chatMessages');
 const userInput = document.getElementById('userInput');
-const sendButton = document.getElementById('sendBtn');
 
 async function generateResponse(prompt) {
-    const response = await fetch(`${API_URL}?key=${API_KEY}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt })
-    });
-    const data = await response.json();
-    return data.candidates[0].content.parts[0].text;
+    try {
+        const response = await fetch('http://localhost:5000/generate', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ text: prompt }),
+        });
+        const data = await response.json();
+
+        if (response.ok) {
+            return data['Generated Output'];
+        }
+    } catch (error) {
+       return error.message;
+    }
 }
 
 
@@ -73,7 +67,6 @@ async function handleUserInput() {
     if (userMessage) {
         addMessage(userMessage, true);
         userInput.value = '';
-        sendButton.disabled = true;
         userInput.disabled = true;
         try {
             const botMessage = await generateResponse(userMessage);
@@ -84,48 +77,137 @@ async function handleUserInput() {
             addMessage('Sorry, I encountered an error. Please try again.', false);
         }
         finally {
-            sendButton.disabled = false;
-            userInput.disabled = false;
             userInput.focus();
         }
     }
 }
-
-sendButton.addEventListener('click', handleUserInput);
-userInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        handleUserInput();
-    }
-});
-
 document.addEventListener("DOMContentLoaded", function () {
-    const sectionsWrapper = document.querySelector(".sectionsBox");
-    const sections = document.querySelectorAll(".section");
+    const sections = document.querySelectorAll(".learning-section");
     let currentIndex = 0;
 
     function updateSections() {
-        sectionsWrapper.style.transform = `translateY(-${currentIndex * 165}%)`;
-        let progress = ((currentIndex + 1)/ 5) * 100;
-        document.getElementById("progressBar").style.width = progress + "%";
+        document.getElementById("allSections").style.transform = `translateY(-${currentIndex * 87}vh)`;
+        document.getElementById("progressBar").style.width=currentIndex*20 + "%";
+    }
+    
+
+    document.querySelectorAll(".continue").forEach((button) => {
+        button.addEventListener("click", function () {
+            if (currentIndex < sections.length - 1) {
+                currentIndex++;
+                updateSections();
+            }
+        });
+    });
+
+    document.querySelectorAll(".prev-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSections();
+            }
+        });
+    });
+	let finish=(localStorage.getItem("finishedPy")==null)?0:localStorage.getItem("finishedPy");
+		 completion=document.getElementById("completion");
+		               completion.innerHTML=finish+"%";
+     updateSections();
+});
+
+ 
+document.addEventListener('DOMContentLoaded', function() {
+    const chatButton = document.getElementById('chatButton');
+    const chatContainer = document.getElementById('chatContainer');
+    const closeButton = document.getElementById('closeButton');
+    const sendButton = document.getElementById('sendButton');
+    const messageInput = document.getElementById('messageInput');
+    const chatBody = document.getElementById('chatBody');
+
+    chatButton.addEventListener('click', function() {
+        chatContainer.classList.add('active');
+    });
+
+    closeButton.addEventListener('click', function() {
+        chatContainer.classList.remove('active');
+    });
+
+    async function sendMessage() {
+        const message = messageInput.value.trim();
+        if (message) {
+            addMessage(message, 'user');
+            messageInput.value = '';
+            showTypingIndicator();
+            
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyD_FLM3dwEA-R27v-V1Z2BEyBzP4-lQ3mM`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        contents: [
+                            {
+                                parts: [{ text: message }]
+                            }
+                        ]
+                    })
+                });
+
+                const data = await response.json();
+                removeTypingIndicator();
+
+                if (data.candidates && data.candidates.length > 0) {
+                    const reply = data.candidates[0].content.parts[0].text;
+                    addMessage(reply, 'bot');
+                } else {
+                    addMessage('No response received from the AI.', 'bot');
+                }
+            } catch (error) {
+                removeTypingIndicator();
+                addMessage('Sorry, something went wrong. Please try again.', 'bot');
+                console.error('Error fetching response:', error);
+            }
+        }
     }
 
-    window.next = function () {
-        if (currentIndex < sections.length - 1) {
-            currentIndex++;
-            updateSections();
+    sendButton.addEventListener('click', sendMessage);
+    messageInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            sendMessage();
         }
-    };
+    });
 
-    window.prev = function () {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updateSections();
+    function addMessage(text, sender) {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message', sender + '-message');
+        messageElement.textContent = text;
+        chatBody.appendChild(messageElement);
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function showTypingIndicator() {
+        const typingIndicator = document.createElement('div');
+        typingIndicator.classList.add('typing-indicator');
+        typingIndicator.id = 'typingIndicator';
+
+        for (let i = 0; i < 3; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('typing-dot');
+            typingIndicator.appendChild(dot);
         }
-    };
 
-    updateSections();
+        chatBody.appendChild(typingIndicator);
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function removeTypingIndicator() {
+        const typingIndicator = document.getElementById('typingIndicator');
+        if (typingIndicator) {
+            typingIndicator.remove();
+        }
+    }
 });
+
 
 function getCookie(name) {
     const value = `; ${document.cookie}`;
@@ -140,10 +222,9 @@ function getCookie(name) {
 courseCards={};
 async function completeLevel(num) {
     try {
-		console.log(1);
 	     	details=getCookie("DETAILS")
-			
 			if (details) {
+				
 				console.log(2);
 			     const decodedDetails = atob(details);
 			     const parsedDetails = JSON.parse(decodedDetails); 
@@ -153,22 +234,21 @@ async function completeLevel(num) {
 			 		courseCards[a.course_name]=[a.level_name,Math.round((a.levels_completed/7)*100),a.levels_completed,a.xp];
 			 	});
 			 }
-			 let courseName = "Introduction To Python";
 			 levelCount = num;
-			 if (levelCount <= 7) {
-				
-		  window.location.href = `level${num}python.html`;
-
-			 			 			        }
+			 			        if (levelCount <= 7) {
+			 			            window.location.href = `level${num}python.html`;
+			 			        }
+			 let courseName = "Introduction To Python";
 			 if (courseCards[courseName]) {
 				console.log(4);
 			     let [levelName, completionPercentage, levelsCompleted, xp] = courseCards[courseName];
-				 localStorage.setItem("finishedPy", completionPercentage);
 				 console.log(5000+": "+levelsCompleted);
-				 levelCount = num;
-				
-									
+				 localStorage.setItem("finishedPy", completionPercentage);
+
+			//	completion=document.getElementById("completion");
+			//	completion.innerText=completionPercentage+"%";
 				 if(levelsCompleted < num-1){
+					console.log("nammadjaan");
 				        const response = await fetch("controller/pythonLevels", {
 				            method: "POST",
 				            headers: {
@@ -178,11 +258,16 @@ async function completeLevel(num) {
 				        });
 				        if (!response.ok) {
 				            throw new Error(`HTTP error! Status: ${response.status}`);
-				        }
+				        }else{
+							console.log("good !")
+						}
 						console.log(5);
 				        const result = await response.text(); 
 				        console.log("Server response:", result);
 
+
+				       
+				 	
 				    } 
 				 }else {
 							     console.log("Course not found.");}
@@ -191,7 +276,3 @@ async function completeLevel(num) {
 			 				 		        console.error("Error sending level data:", error);
 			 				 		    }
 			 }
-	    
-
-
-

@@ -7,84 +7,290 @@
     <link rel="stylesheet" href="level1python.css">
 </head>
 <body>
-    <header>
-        <img src="ProjectLogo.png"onclick="window.location.href='http://localhost:8080/Zignite/userHome.html'" class="logoImg">
-        <div class="progress_description">
-            <h1 style="font-size: 36px;color: #037a6e;">How Do We Train an LLM?</h1>
-            <div class="desc">📚&ensp;Lesson <span id="lessonNumber">3</span>/6</div>
-            <div class="desc" id="com">🎯&ensp;<span id="completion">0%</span>&nbsp; Complete</div>
+    <div class="header">
+        <div class="logo">ArivuPathAI</div>
+        <h1 class="content-title">How do we train an LLM</h1>
+        <div class="progress-container">
+            <div class="lesson-info">Lesson 3/6</div>
+            <div class="progress" id="completion">0% Complete</div>
         </div>
-    </header>
-   
-    <div class="container">
-        <div class="course_content">
-            <div class="progressContainer">
-                <img src="previous.png" class="icons" onclick="prev()">
-                <div id="progress">
-                    <div id="progressBar"></div>
+    </div>
+
+    <div class="main-container">
+        <div class="content-area">
+            <div class="contentInner">
+                <div class="progressContainer">
+                    <img src="previous.png" id="previous" class="icons prev-btn" style="cursor: pointer;">
+                    <div id="progress">
+                        <div id="progressBar"></div>
+                    </div>
+                    <img src="crossmark.png" onclick="window.location.href='http://localhost:8080/Zignite/LLMlevels.html'"
+                        class="icons" style="width: 20px">
                 </div>
-                <img src="crossmark.png" onclick="window.location.href='http://localhost:8080/Zignite/LLMlevels.html'" class="icons" style="width: 20px">
             </div>
 
-            <div class="sectionsBox">
-                <div class="section" id="section1">
-                    <div id="header">1. What Training Means</div>
-                    <div class="image"><img src="https://media.licdn.com/dms/image/v2/D5612AQGZz67yPCmN_g/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1712140420743?e=2147483647&v=beta&t=IKhsfmSZqsDEXg-A0eBXdbwzpY5SFhDFZMkj1qvGyI8" alt="Installing python" id="image1" style="border-radius: 10px;"></div>
-                    <div id="content">Training an LLM involves feeding it massive datasets so it can learn grammar, vocabulary, <br> and contextual relationships in language.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section2">
-                    <div id="header">2.Pretraining vs. Fine-Tuning </div>
-                    <div class="image"><img src="https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1683096240569-download%20%2857%29.png" alt="Running python file" id="image2" style="border-radius: 10px; border: 2px solid black;"></div>
-                    <div id="content">Pretraining teaches LLMs general language knowledge, while fine-tuning adapts them to<br>specific tasks like customer support or legal advice.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section3">
-                    <div id="header">3. Large Datasets</div>
-                    <div class="image"><img src="https://www.sourcecodester.com/sites/default/files/Python%20Variables_0.jpg" alt="Variable in python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">LLMs require billions of words from sources like books, articles, and online content to<br>understand different writing styles and contexts.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section4">
-                    <div id="header">4. Computing Power</div>
-                    <div class="image"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCB1fiPnxYxVxXbh3It3jjCNUdX5ZK4EstpgSGDgEZ2bvc2ROhraq0Y2ZSKC9B_FO2zIPvBUIpjtigavr9t3mmPuMw3XQwM02seiT2QaC49PhJDL15vK3IA8Lg344-P-XTbBs1sfpg4T1DAjkakwW-EJ_RKOMBCoTCqTDgES57-vQtNngjWqqxFMCM/s711/16.PNG" alt="Print and User input in python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">Training LLMs requires powerful GPUs and TPUs, as they perform billions of calculations to<br>analyze and generate human-like text.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section5">
-                    <div id="header">5.  Training Challenges</div>
-                    <div class="image"><img src="https://cdn.codechef.com/blogs/images/operators-in-python.png" alt="Operators in Python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">Challenges include bias in training data, high costs, and the risk of generating<br>misinformation or offensive content.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section6">
-                    <div id="header">6. Training Costs</div>
-                    <div class="image"><img src="https://cdn.codechef.com/blogs/images/operators-in-python.png" alt="Operators in Python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">Developing large LLMs can cost millions of dollars due to the need for high-performance<br>computing and extensive datasets.</div>
-                    <div class="continue" onclick="completeLevel(4)">Finish Level</div>
-                </div>
-            </div>
-        </div>
+            <div class="sectionsBox" id="allSections">
+                <!-- Section 1: What Training Means -->
+                <div class="learning-section" id="section1">
+                    <h2 class="section-title">
+                        <span class="section-title-number">1</span>
+                        What Training Means
+                    </h2>
 
-        <div class="bot">
-            <div class="header">
-                <h1>Vid.AI</h1>
-            </div>
-            <div class="chatMessages" id="chatMessages"></div>
-            <div class="chatInputBox">
-                <input type="text" id="userInput" placeholder="Type your message...">
-                <button id="sendBtn">Send</button>
+                    <div class="explanation">
+                        <p>Training is the process of teaching a Large Language Model (LLM) to understand and generate human-like text by exposing it to vast amounts of data and adjusting its internal parameters.</p>
+                    </div>
+                    <div class="conceptImageBox">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*JylFbz5UHSKzRVWHnabWKw.png" alt="Training basics" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text">Training involves feeding the model <span class="highlight">text data</span> to learn patterns.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text">The model adjusts its <strong>weights</strong> to minimize prediction errors.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text">The goal: Generate coherent and contextually accurate responses.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Did you know?</div>
+                        <p>Training an LLM is like teaching a child to speak—except it learns from billions of sentences!</p>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <!-- Section 2: Pretraining vs. Fine-Tuning -->
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">2</span>
+                        Pretraining vs. Fine-Tuning
+                    </h2>
+
+                    <div class="explanation">
+                        <p>LLM training happens in two phases: pretraining, where the model learns general language patterns, and fine-tuning, where it’s specialized for specific tasks.</p>
+                    </div>
+                    <div class="step-by-step" style="width: 100%;">
+                        <div class="step" style="width: 100%;">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <p class="step-text"><strong>Pretraining</strong>: Learning from a massive, diverse corpus (e.g., books, websites).</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <p class="step-text"><strong>Fine-Tuning</strong>: Adjusting the model with smaller, task-specific datasets.</p>
+                            </div>
+                        </div>
+                        <div class="step" style="width: 100%;">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <p class="step-text">Example: Pretrain on Wikipedia, fine-tune for customer service chats.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="interactive-element">
+                        <div class="interactive-title">Key Concept</div>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li style="margin-bottom: 8px;">Pretraining builds a foundation; fine-tuning adds expertise.</li>
+                            <li style="margin-bottom: 8px;">Both steps are critical for high performance.</li>
+                        </ul>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <!-- Section 3: Large Datasets -->
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">3</span>
+                        Large Datasets
+                    </h2>
+
+                    <div class="explanation">
+                        <p>LLMs rely on enormous datasets to learn language nuances, requiring billions of words from diverse sources to achieve fluency.</p>
+                    </div>
+                    <div class="conceptImageBox">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*Pj_k1t4rF8ZDG2W3oWnHIA.png" alt="Large datasets" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Scale</strong>: Datasets can exceed trillions of tokens.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Sources</strong>: Books, articles, social media, and more.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Impact</strong>: More data = better understanding of context.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Did you know?</div>
+                        <p>Some LLMs are trained on datasets larger than all the text humans have written in history!</p>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <!-- Section 4: Computing Power -->
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">4</span>
+                        Computing Power
+                    </h2>
+
+                    <div class="explanation">
+                        <p>Training LLMs demands immense computational resources, including specialized hardware like GPUs and TPUs, to process data efficiently.</p>
+                    </div>
+                    <div class="conceptImageBox">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*W3GknKCxHvTqRkKOhh9qAw.png" alt="Computing power" class="concept-image" style="border: 2px solid black;">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Hardware</strong>: Thousands of GPUs/TPUs working in parallel.</p>
+                                </div>
+                            </div>
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Time</strong>: Training can take weeks or months.</p>
+                                </div>
+                            </div>
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Scale</strong>: Supercomputers or cloud clusters are often required.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Pro Tip</div>
+                        <p>The energy used to train an LLM could power a small town!</p>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <!-- Section 5: Training Challenges -->
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">5</span>
+                        Training Challenges
+                    </h2>
+
+                    <div class="explanation">
+                        <p>Training LLMs is fraught with difficulties, from data quality issues to overfitting and ethical concerns.</p>
+                    </div>
+                    <div class="conceptImageBox">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*5Xjd11g4v_8IILrTVuR9Rw.png" alt="Training challenges" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Data Bias</strong>: Models can inherit biases from training data.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Overfitting</strong>: Memorizing data instead of generalizing.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Ethics</strong>: Ensuring fair and responsible use.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Did you know?</div>
+                        <p>Fixing bias in LLMs is like trying to unlearn a bad habit—it’s tricky!</p>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <!-- Section 6: Training Costs -->
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">6</span>
+                        Training Costs
+                    </h2>
+
+                    <div class="explanation">
+                        <p>Training an LLM is expensive, with costs driven by hardware, energy, and human expertise, often reaching millions of dollars.</p>
+                    </div>
+                    <div class="conceptImageBox">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*8ZNh0Nuzx7A9f2JzzzA0ng.jpeg" alt="Training costs" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Hardware</strong>: High-end GPUs/TPUs cost thousands each.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Energy</strong>: Powering compute clusters for months.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Expertise</strong>: Teams of engineers and researchers.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Pro Tip</div>
+                        <p>Training Grok likely cost xAI a pretty penny—but the results are worth it!</p>
+                    </div>
+                    <button class="continue" onclick="completeLevel(4)">Finish Lesson</button>
+                </div>
             </div>
         </div>
     </div>
+
+    <div class="chat-button" id="chatButton">
+        <div class="chat-icon">💬</div>
+    </div>
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <div class="chat-title">
+                <div class="bot-avatar">AI</div>
+                <span>Assistant</span>
+            </div>
+            <button class="close-button" id="closeButton">✕</button>
+        </div>
+        <div class="chat-body" id="chatBody"></div>
+        <div class="chat-footer">
+            <input type="text" class="message-input" id="messageInput" placeholder="Type your message here...">
+            <button class="send-button" id="sendButton">➤</button>
+        </div>
+    </div>
+
     <script src="level1llm.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-

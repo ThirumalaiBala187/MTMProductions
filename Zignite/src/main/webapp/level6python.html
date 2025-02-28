@@ -1,75 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Course</title>
-    <link rel="stylesheet" href="level1python.css">
+    <title>Python Basics: Level 6</title>
+    <link rel="stylesheet" href="level1python.css" type="text/css">
 </head>
+
 <body>
-    <header>
-        <img src="ProjectLogo.png" class="logoImg">
-        <div class="progress_description">
-            <h1 style="font-size: 36px;color: #037a6e;">OOP Basics</h1>
-            <div class="desc">📚&ensp;Lesson <span id="lessonNumber">5</span>/6</div>
-            <div class="desc" id="com">🎯&ensp;<span id="completion">0%</span>&nbsp; Complete</div>
-        </div>
-    </header>
 
-   <div class="container">
-        <div class="course_content">
-            <div class="progressContainer">
-                <img src="previous.png" class="icons" onclick="prev()">
-                <div id="progress">
-                    <div id="progressBar"></div>
-                </div>
-              <img src="crossmark.png" onclick="window.location.href='http://localhost:8080/Zignite/levels.html'" class="icons" style="width: 20px">
-            </div>
-
-            <div class="sectionsBox">
-                <div class="section" id="section1">
-                    <div id="header">1. Classes & Objects</div>
-                    <div class="image"><img src="https://intellipaat.com/mediaFiles/2019/03/python10.png" alt="Reading and writing files in python" id="image1"  style="border-radius: 10px; border: 2px solid black;"></div>
-                    <div id="content">1️⃣ A class is a blueprint for creating objects.<br>2️⃣ Objects are instances of classes with their own data and behavior.<br>3️⃣ The __init__ method initializes object attributes.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section2">
-                    <div id="header">2. Methods & Attributes</div>
-                    <div class="image"><img src="https://i.ytimg.com/vi/MEfV5LjNMdI/maxresdefault.jpg" alt="Modules" id="image2" style="border-radius: 10px; border: 2px solid black;width: 450px;"></div>
-                    <div id="content">1️⃣ Methods are functions inside a class that define object behavior.<br>2️⃣ Attributes store object-specific data.<br>3️⃣ self is used to access attributes within methods.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section3">
-                    <div id="header">3. Inheritance & Polymorphism</div>
-                    <div class="image"><img src="https://i.ytimg.com/vi/zw_sWeCIBWg/maxresdefault.jpg" alt="Custom modules" id="image3"  style="border-radius: 10px; width: 500px; border: 2px solid black;"></div>
-                    <div id="content">1️⃣ Inheritance allows a class to derive properties from another.<br>2️⃣ Polymorphism enables different classes to share the same method names.<br>3️⃣ Helps in code reuse and flexibility.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section4">
-                    <div id="header">4. Encapsulation</div>
-                    <div class="image"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnOntCnsmMJQJ8amUtIlDXHlZ8D0nXuvZPlFXgQTMItIBQs8KpI0frit_tEILXY51ypjk&usqp=CAU" alt="Print and User input in python" id="image3"  style="border-radius: 10px; border: 2px solid black;"></div>
-                    <div id="content">1️⃣ Restricts direct access to object data using private (_ or __) attributes.<br>2️⃣ Provides getter and setter methods to control data access.<br>3️⃣ Ensures data security and hides implementation details.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section5">
-                    <div id="header">5. Abstraction</div>
-                    <div class="image"><img src="https://images.theengineeringprojects.com/image/webp/2023/05/data-abstraction-in-oop.jpg.webp?ssl=1" alt="Operators in Python" id="image3" style="border-radius: 10px; border: 2px solid black; width: 550px;"></div>
-                    <div id="content">1️⃣ Hides complex implementation and exposes only necessary details.<br>2️⃣ Achieved using abstract classes and methods.<br>3️⃣ Helps simplify interactions with complex systems.</div>
-                    <div class="continue" onclick="completeLevel(7)">Finish Level</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="bot">
-            <div class="header">
-                <h1>Vid.AI</h1>
-            </div>
-            <div class="chatMessages" id="chatMessages"></div>
-            <div class="chatInputBox">
-                <input type="text" id="userInput" placeholder="Type your message...">
-                <button id="sendBtn">Send</button>
-            </div>
+    <div class="header">
+        <div class="logo">ArivuPathAI</div>
+        <h1 class="content-title">Python Basics: Level 6</h1>
+        <div class="progress-container">
+            <div class="lesson-info">Lesson 6/6</div>
+            <div class="progress">84% Complete</div>
         </div>
     </div>
+
+    <div class="main-container">
+        <div class="content-area">
+            <div class="contentInner">
+                <div class="progressContainer">
+                    <img src="previous.png" id="previous" class="icons prev-btn" style="cursor: pointer;">
+                    <div id="progress">
+                        <div id="progressBar"></div>
+                    </div>
+                    <img src="crossmark.png" onclick="window.location.href='http://localhost:8080/Zignite/levels.html'"
+                        class="icons" style="width: 20px">
+                </div>
+            </div>
+            <div class="sectionsBox" id="allSections">
+            <div class="learning-section" id="section1">
+                <h2 class="section-title">
+                    <span class="section-title-number">1</span>
+                    Classes & Objects
+                </h2>
+
+                <div class="explanation">
+                    <p>Classes are blueprints for creating objects in Python, enabling object-oriented programming (OOP) to model real-world entities.</p>
+                </div>
+                <div class="conceptImageBox">
+                    <img src="https://earthly.dev/blog/assets/images/python-classes-and-objects/wcXVeEw.png"
+                        alt="Classes and Objects" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text">Defining a class:</p>
+                                    <div class="code-block">
+                                        class Dog:
+                                            def __init__(self, name):
+                                                self.name = name
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text">Creating an object:</p>
+                                    <div class="code-block">
+                                        my_dog = Dog("Buddy")
+                                        print(my_dog.name)  # Output: Buddy
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text">Accessing object attributes:</p>
+                                    <div class="code-block">
+                                        my_dog.name = "Max"
+                                        print(my_dog.name)  # Output: Max
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="did-you-know">
+                    <div class="did-you-know-title">Did you know?</div>
+                    <p>The <span class="highlight">__init__</span> method is a constructor, automatically called when an object is created.</p>
+                </div>
+                <button class="continue">Continue Learning</button>
+            </div>
+
+            <div class="learning-section">
+                <h2 class="section-title">
+                    <span class="section-title-number">2</span>
+                    Methods & Attributes
+                </h2>
+
+                <div class="explanation">
+                    <p>Methods are functions defined inside a class, while attributes are variables that belong to an object or class.</p>
+                </div>
+
+                <div class="step-by-step" style="width: 100%;">
+                    <div class="step" style="width: 100%;">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <p class="step-text">Defining a method:</p>
+                            <div class="code-block">
+                                class Dog:
+                                    def __init__(self, name):
+                                        self.name = name
+                                    def bark(self):
+                                        return f"{self.name} says Woof!"
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <p class="step-text">Calling a method:</p>
+                            <div class="code-block">
+                                my_dog = Dog("Buddy")
+                                print(my_dog.bark())  # Output: Buddy says Woof!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step" style="width: 100%;">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <p class="step-text">Class attribute (shared by all objects):</p>
+                            <div class="code-block">
+                                class Dog:
+                                    species = "Canis familiaris"  # Class attribute
+                                    def __init__(self, name):
+                                        self.name = name  # Instance attribute
+                                dog = Dog("Max")
+                                print(dog.species)  # Output: Canis familiaris
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-element">
+                    <div class="interactive-title">Key Difference</div>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li style="margin-bottom: 8px;"><span class="highlight">Attributes</span>: Data (e.g., name).</li>
+                        <li style="margin-bottom: 8px;"><span class="highlight">Methods</span>: Behavior (e.g., bark).</li>
+                    </ul>
+                </div>
+                <button class="continue">Continue Learning</button>
+            </div>
+
+            <div class="learning-section">
+                <h2 class="section-title">
+                    <span class="section-title-number">3</span>
+                    Inheritance & Polymorphism
+                </h2>
+
+                <div class="explanation">
+                    <p>Inheritance allows a class to inherit properties from another, while polymorphism lets methods behave differently based on the object.</p>
+                </div>
+
+                <div class="conceptImageBox">
+                    <img src="https://www.trytoprogram.com/images/python-inheritance.jpg"
+                        alt="Inheritance and Polymorphism" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text">Inheritance (child class):</p>
+                                    <div class="code-block">
+                                        class Animal:
+                                            def speak(self):
+                                                return "Sound"
+                                        class Dog(Animal):
+                                            def speak(self):
+                                                return "Woof!"
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text">Polymorphism (same method, different behavior):</p>
+                                    <div class="code-block">
+                                        dog = Dog()
+                                        animal = Animal()
+                                        print(dog.speak())    # Output: Woof!
+                                        print(animal.speak()) # Output: Sound
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text">Using parent method:</p>
+                                    <div class="code-block">
+                                        class Cat(Animal):
+                                            pass
+                                        cat = Cat()
+                                        print(cat.speak())  # Output: Sound (inherited)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="did-you-know">
+                    <div class="did-you-know-title">Pro Tip</div>
+                    <p>Use <span class="highlight">super()</span> to call a parent class’s method from a child class.</p>
+                </div>
+                <button class="continue">Continue Learning</button>
+            </div>
+
+            <div class="learning-section">
+                <h2 class="section-title">
+                  <span class="section-title-number">4</span>
+                  Encapsulation
+                </h2>
+            
+                <div class="explanation">
+                  <p>Encapsulation hides an object’s internal details and exposes only what’s necessary, often using private attributes.</p>
+                </div>
+
+                <div class="conceptImageBox">
+                    <img src="https://cdn.educba.com/academy/wp-content/uploads/2019/09/Encapsulation-in-Python-1.jpg"
+                        alt="Encapsulation" class="concept-image" style="border: 2px solid black;">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                              <div class="step-number">1</div>
+                              <div class="step-content">
+                                <p class="step-text">Basic encapsulation with private attributes:</p>
+                                <div class="code-block">
+                                  class Car:
+                                      def __init__(self):
+                                          self.__speed = 0  # Private attribute
+                                      def set_speed(self, speed):
+                                          self.__speed = speed
+                                      def get_speed(self):
+                                          return self.__speed
+                                </div>
+                              </div>
+                            </div>
+                      
+                            <div class="step" style="width: 100%;">
+                              <div class="step-number">2</div>
+                              <div class="step-content">
+                                <p class="step-text">Using methods to access private data:</p>
+                                <div class="code-block">
+                                  my_car = Car()
+                                  my_car.set_speed(100)
+                                  print(my_car.get_speed())  # Output: 100
+                                </div>
+                              </div>
+                            </div>
+                      
+                            <div class="step" style="width: 100%;">
+                              <div class="step-number">3</div>
+                              <div class="step-content">
+                                <p class="step-text">Direct access fails:</p>
+                                <div class="code-block">
+                                  # print(my_car.__speed)  # AttributeError
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                </div>
+            
+                <div class="did-you-know">
+                  <div class="did-you-know-title">Did you know?</div>
+                  <p>Double underscores (<span class="highlight">__</span>) trigger name mangling in Python to enforce privacy.</p>
+                </div>
+                <button class="continue">Continue Learning</button>
+            </div>
+            
+            <div class="learning-section">
+                <h2 class="section-title">
+                  <span class="section-title-number">5</span>
+                  Abstraction
+                </h2>
+            
+                <div class="explanation">
+                  <p>Abstraction hides complex implementation details and shows only the essential features, often using abstract base classes.</p>
+                </div>
+
+                <div class="conceptImageBox">
+                    <img src="https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1669189474425-Abstraction%20in%20Python.jpg"
+                        alt="Abstraction" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                              <div class="step-number">1</div>
+                              <div class="step-content">
+                                <p class="step-text">Defining an abstract base class:</p>
+                                <div class="code-block">
+                                  from abc import ABC, abstractmethod
+                                  class Shape(ABC):
+                                      @abstractmethod
+                                      def area(self):
+                                          pass
+                                </div>
+                              </div>
+                            </div>
+                      
+                            <div class="step">
+                              <div class="step-number">2</div>
+                              <div class="step-content">
+                                <p class="step-text">Implementing a concrete class:</p>
+                                <div class="code-block">
+                                  class Circle(Shape):
+                                      def __init__(self, radius):
+                                          self.radius = radius
+                                      def area(self):
+                                          return 3.14 * self.radius ** 2
+                                </div>
+                              </div>
+                            </div>
+                      
+                            <div class="step">
+                              <div class="step-number">3</div>
+                              <div class="step-content">
+                                <p class="step-text">Using the abstraction:</p>
+                                <div class="code-block">
+                                  circle = Circle(5)
+                                  print(circle.area())  # Output: 78.5
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                </div>
+            
+                <div class="did-you-know">
+                  <div class="did-you-know-title">Pro Tip</div>
+                  <p>You can’t instantiate an abstract class directly; it must be subclassed with all abstract methods implemented.</p>
+                </div>
+<button class="continue" onclick="completeLevel(7)">Finish Lesson</button>
+            </div>
+        </div>
+            
+
+        </div>
+
+    </div>
+    <div class="chat-button" id="chatButton">
+        <div class="chat-icon">💬</div>
+    </div>
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <div class="chat-title">
+                <div class="bot-avatar">AI</div>
+                <span>Assistant</span>
+            </div>
+            <button class="close-button" id="closeButton">✕</button>
+        </div>
+        
+        <div class="chat-body" id="chatBody">
+            
+        </div>
+        
+        <div class="chat-footer">
+            <input type="text" class="message-input" id="messageInput" placeholder="Type your message here...">
+            <button class="send-button" id="sendButton">
+                ➤
+            </button>
+        </div>
+    </div>
+
+
     <script src="level1python.js"></script>
 </body>
+
 </html>

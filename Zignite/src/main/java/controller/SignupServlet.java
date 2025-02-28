@@ -73,7 +73,10 @@ public class SignupServlet extends HttpServlet {
               JSONObject details = getUserDetails(email);
               session.setAttribute("details", details);
               String userName;
-              int streak=StreakService.updateStreak(addUserToDB(email, password, firstName, lastName, dob));
+              int userId = addUserToDB(email, password, firstName, lastName, dob);
+              System.out.println("User ID: " + userId); 
+              int streak = StreakService.updateStreak(userId);
+
 //				userName = getUserName(email);
 			              
               Cookie detailsCookie = new Cookie("DETAILS",
@@ -102,7 +105,7 @@ public class SignupServlet extends HttpServlet {
               PrintWriter out = response.getWriter();
               out.write(jsonResponse.toString());
             
-              initializeUserCourse(email);
+            //  initializeUserCourse(email);
         	  }
              catch(Exception e) {
             	  System.out.println(e.getMessage());
@@ -187,7 +190,8 @@ public class SignupServlet extends HttpServlet {
 	}
 
 	private boolean validateUser(String email, String password, String firstName) {
-		boolean isValid = password.length() > 8 && !firstName.isEmpty();
+		System.out.print("inside validation");
+		boolean isValid = password.length() >=8 && !firstName.isEmpty();
 		if (isValid) {
 			try {
 				System.out.println("nammadhan3");
@@ -224,36 +228,46 @@ public class SignupServlet extends HttpServlet {
 	        throw new RuntimeException("Error hashing password", e);
 	    }
 	}
-    private JSONObject getUserDetails(String email) throws SQLException {
-        JSONObject userDetails = new JSONObject();
-        JSONArray coursesArray = new JSONArray();
+	private static JSONObject getUserDetails(String email) throws SQLException {
+	    JSONObject userDetails = new JSONObject();
+	    JSONArray coursesArray = new JSONArray();
 
-        try (Connection cn = Database.getConnection()) {
-            String sql = "SELECT c.Course_Name, cl.LevelName, usp.XP, usp.Levels_Completed " +
-                    "FROM Users us " +
-                    "INNER JOIN User_Progress usp ON us.User_Id = usp.User_Id " +
-                    "INNER JOIN Course c ON c.Course_Id = usp.Course_Id " +
-                    "INNER JOIN Course_Levels cl ON c.Course_Id = cl.Course_Id AND usp.Levels_Completed + 1 = cl.Level_Id " +
-                    "WHERE us.Email = ?";
-            try (PreparedStatement st = cn.prepareStatement(sql)) {
-                st.setString(1, email);
-                try (ResultSet rs = st.executeQuery()) {
-                    while (rs.next()) {
-                        JSONObject courseObj = new JSONObject();
-                        courseObj.put("course_name", rs.getString("Course_Name"));
-                        courseObj.put("level_name", rs.getString("LevelName"));
-                        courseObj.put("xp", rs.getInt("XP"));
-//                        courseObj.put("streakcount", rs.getInt("StreakCount"));
-                        courseObj.put("levels_completed", rs.getInt("Levels_Completed"));
-                        coursesArray.put(courseObj);
-                    }
-                }
-            }
-        }
+	    try (Connection cn = Database.getConnection()) {
+	        String sql = "SELECT c.Course_Name, cl.LevelName, usp.XP, usp.Levels_Completed " +
+	                     "FROM Users us " +
+	                     "INNER JOIN User_Progress usp ON us.User_Id = usp.User_Id " +
+	                     "INNER JOIN Course c ON c.Course_Id = usp.Course_Id " +
+	                     "LEFT JOIN Course_Levels cl ON c.Course_Id = cl.Course_Id AND usp.Levels_Completed + 1 = cl.Level_Id " +
+	                     "WHERE us.Email = ?";
+	        
+	        try (PreparedStatement st = cn.prepareStatement(sql)) {
+	            st.setString(1, email);
+	            try (ResultSet rs = st.executeQuery()) {
+	                while (rs.next()) {
+	                    JSONObject courseObj = new JSONObject();
+	                    courseObj.put("course_name", rs.getString("Course_Name"));
+	                    courseObj.put("xp", rs.getInt("XP"));
+//	                    courseObj.put("streakcount", rs.getInt("StreakCount"));
+	                    courseObj.put("levels_completed", rs.getInt("Levels_Completed"));
+	                    
+	                    String levelName = rs.getString("LevelName");
+	                    if (levelName != null) {
+	                        courseObj.put("level_name", levelName);
+	                    }
+	                    else {
+	                    	 courseObj.put("level_name", "Completed !");
+	                    }
+	                    
+	                    coursesArray.put(courseObj);
+	                }
+	            }
+	        }
+	    }
 
-        userDetails.put("courses", coursesArray);
-        return userDetails;
-    }
+	    userDetails.put("courses", coursesArray);
+	    return userDetails;
+	}
+
     private String getUserName(String email) throws SQLException {
         try (Connection cn = Database.getConnection()) {
             String sql = "SELECT Name FROM Users WHERE Email = ?";

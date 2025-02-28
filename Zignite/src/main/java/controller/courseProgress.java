@@ -45,6 +45,7 @@ try(		BufferedReader reader = new BufferedReader(new InputStreamReader(request.g
 	             }
 	         }
 	     }
+	   
 		 
 //	     int userid = 0;
 //	     if (email != "") {
@@ -59,7 +60,8 @@ try(		BufferedReader reader = new BufferedReader(new InputStreamReader(request.g
 //	 			e.printStackTrace();
 //	 		}
 //	     }
-	     HttpSession session = request.getSession(true);
+	     initializeUserCourse(email,courseId);
+	     HttpSession session = request.getSession(false);
 	     JSONObject jsonResponse = new JSONObject();
 	     response.setContentType("application/json");
 	     JSONObject details = getUserDetails(email);
@@ -70,6 +72,7 @@ try(		BufferedReader reader = new BufferedReader(new InputStreamReader(request.g
          detailsCookie.setMaxAge(60 * 60 * 24);
          response.addCookie(detailsCookie);
          jsonResponse.put("success", true);
+       
          out.print(jsonResponse.toString());
 	}
    catch(Exception e) {
@@ -77,33 +80,77 @@ try(		BufferedReader reader = new BufferedReader(new InputStreamReader(request.g
     }
 	}
 	private static JSONObject getUserDetails(String email) throws SQLException {
-        JSONObject userDetails = new JSONObject();
-        JSONArray coursesArray = new JSONArray();
+	    JSONObject userDetails = new JSONObject();
+	    JSONArray coursesArray = new JSONArray();
 
-        try (Connection cn = Database.getConnection()) {
-            String sql = "SELECT c.Course_Name, cl.LevelName, usp.XP, usp.Levels_Completed " +
-                    "FROM Users us " +
-                    "INNER JOIN User_Progress usp ON us.User_Id = usp.User_Id " +
-                    "INNER JOIN Course c ON c.Course_Id = usp.Course_Id " +
-                    "INNER JOIN Course_Levels cl ON c.Course_Id = cl.Course_Id AND usp.Levels_Completed + 1 = cl.Level_Id " +
-                    "WHERE us.Email = ?";
-            try (PreparedStatement st = cn.prepareStatement(sql)) {
-                st.setString(1, email);
-                try (ResultSet rs = st.executeQuery()) {
-                    while (rs.next()) {
-                        JSONObject courseObj = new JSONObject();
-                        courseObj.put("course_name", rs.getString("Course_Name"));
-                        courseObj.put("level_name", rs.getString("LevelName"));
-                        courseObj.put("xp", rs.getInt("XP"));
-                        courseObj.put("levels_completed", rs.getInt("Levels_Completed"));
-                        coursesArray.put(courseObj);
-                    }
-                }
-            }
-        }
+	    try (Connection cn = Database.getConnection()) {
+	        String sql = "SELECT c.Course_Name, cl.LevelName, usp.XP, usp.Levels_Completed " +
+	                     "FROM Users us " +
+	                     "INNER JOIN User_Progress usp ON us.User_Id = usp.User_Id " +
+	                     "INNER JOIN Course c ON c.Course_Id = usp.Course_Id " +
+	                     "LEFT JOIN Course_Levels cl ON c.Course_Id = cl.Course_Id AND usp.Levels_Completed + 1 = cl.Level_Id " +
+	                     "WHERE us.Email = ?";
+	        
+	        try (PreparedStatement st = cn.prepareStatement(sql)) {
+	            st.setString(1, email);
+	            try (ResultSet rs = st.executeQuery()) {
+	                while (rs.next()) {
+	                    JSONObject courseObj = new JSONObject();
+	                    courseObj.put("course_name", rs.getString("Course_Name"));
+	                    courseObj.put("xp", rs.getInt("XP"));
+//	                    courseObj.put("streakcount", rs.getInt("StreakCount"));
+	                    courseObj.put("levels_completed", rs.getInt("Levels_Completed"));
+	                    
+	                    String levelName = rs.getString("LevelName");
+	                    if (levelName != null) {
+	                        courseObj.put("level_name", levelName);
+	                    }
+	                    else {
+	                    	 courseObj.put("level_name", "Completed !");
+	                    }
+	                    
+	                    coursesArray.put(courseObj);
+	                }
+	            }
+	        }
+	    }
 
-        userDetails.put("courses", coursesArray);
-        return userDetails;
-    }
+	    userDetails.put("courses", coursesArray);
+	    return userDetails;
+	}
+	private static void initializeUserCourse(String email,int courseId) {
+		int user_id = 0;
+		try {
+			System.out.println("namma1");
+			Connection con = Database.getConnection();
+			String query = "SELECT User_Id FROM Users WHERE Email = ?";
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setString(1, email);
+			ResultSet result = stmt.executeQuery();
+			if (result.next()) {
+				user_id = result.getInt(1);
+			}
+		} catch (Exception e) {
+			System.out.println("SQL error in retrieving user ID");
+			e.printStackTrace();
+		}
+		System.out.println(user_id);
+		if (user_id != 0) {
+			try {
+
+				Connection con = Database.getConnection();
+				String query = "INSERT INTO User_Progress (Levels_Completed, XP, User_Id, Course_Id) VALUES (0, 0, ?, ?)";
+				PreparedStatement stmt = con.prepareStatement(query);
+				stmt.setInt(1, user_id);
+				stmt.setInt(2, courseId);
+				stmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}else {
+			System.out.println("Email does not exist");
+		}
+	}
 
 }

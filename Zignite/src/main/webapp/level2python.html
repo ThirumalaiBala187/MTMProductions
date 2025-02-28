@@ -1,82 +1,357 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Course</title>
-    <link rel="stylesheet" href="level1python.css">
+    <title>Python Basics: Level 2</title>
+    <link rel="stylesheet" href="level1python.css" type="text/css">
 </head>
+
 <body>
-    <header>
-        <img src="ProjectLogo.png"onclick="window.location.href='http://localhost:8080/Zignite/userHome.html'" class="logoImg">
-        <div class="progress_description">
-            <h1 style="font-size: 36px;color: #037a6e;">Loops & Control Statements</h1>
-            <div class="desc">📚&ensp;Lesson <span id="lessonNumber">2</span>/6</div>
-            <div class="desc" id="com">🎯&ensp;<span id="completion">0%</span>&nbsp; Complete</div>
+
+    <div class="header">
+        <div class="logo">ArivuPathAI</div>
+        <h1 class="content-title">Python Basics: Level 2</h1>
+        <div class="progress-container">
+            <div class="lesson-info">Lesson 2/6</div>
+            <div class="progress">0% Complete</div>
         </div>
-    </header>
-   
-    <div class="container">
-        <div class="course_content">
-            <div class="progressContainer">
-                <img src="previous.png" class="icons" onclick="prev()">
-                <div id="progress">
-                    <div id="progressBar"></div>
-                </div>
-                                  <img src="crossmark.png" onclick="window.location.href='http://localhost:8080/Zignite/levels.html'" class="icons" style="width: 20px">
+    </div>
 
-            </div>
-
-            <div class="sectionsBox">
-                <div class="section" id="section1">
-                    <div id="header">1. Conditional Statements</div>
-                    <div class="image"><img src="https://files.realpython.com/media/Conditional-Statements-in-Python_Watermarked.b6b7d30ff62b.jpg" alt="Conditional Statements images" id="image1"  style="border-radius: 10px; border: 2px solid green;"></div>
-                    <div id="content">1️⃣ if, elif, and else are used for decision-making.<br>2️⃣ The if block runs if the condition is True; elif checks more conditions, and else runs when all conditions fail.<br>3️⃣ Indentation is crucial in Python’s conditional statements.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section2">
-                    <div id="header">2. Logical Operators</div>
-                    <div class="image"><img src="https://www.scaler.com/topics/images/logical-operators-in-python-thumbnail.webp" alt="Logical Statements image" id="image2" style="border-radius: 10px; border: 2px solid black;width: 450px;"></div>
-                    <div id="content">1️⃣ Logical operators (and, or, not) combine multiple conditions.<br>2️⃣ 'and' returns True if both conditions are True, 'or' returns True if at least one is True.<br>3️⃣ 'not' reverses the boolean value of a condition.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section3">
-                    <div id="header">3. Loops in python</div>
-                    <div class="image"><img src="https://cdn.nerdyelectronics.com/wp-content/uploads/2024/10/loops_in_python-930x620.jpg" alt="Variable in python" id="image3"  style="border-radius: 10px; width: 500px; border: 2px solid black;"></div>
-                    <div id="content">1️⃣ for loops iterate over sequences like lists and ranges.<br>2️⃣ while loops run as long as the condition remains True.<br>3️⃣ Loops help automate repetitive tasks efficiently.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section4">
-                    <div id="header">4. Loop Control</div>
-                    <div class="image"><img src="https://techvidvan.com/tutorials/wp-content/uploads/sites/2/2020/01/loop-control-statement-in-python.jpg" alt="Print and User input in python" id="image3"  style="border-radius: 10px; border: 2px solid black;"></div>
-                    <div id="content">1️⃣ break exits a loop immediately.<br>2️⃣ continue skips the current iteration and moves to the next.<br>3️⃣ pass is a placeholder that does nothing, used to avoid syntax errors.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section5">
-                    <div id="header">5. Nested Loops</div>
-                    <div class="image"><img src="https://cdn.educba.com/academy/wp-content/uploads/2019/09/Python-Nested-Loops.png" alt="Operators in Python" id="image3" style="border-radius: 10px; border: 2px solid black;"></div>
-                    <div id="content">1️⃣ Loops can be nested inside other loops.<br>2️⃣ A break inside a nested loop only exits the inner loop.<br>3️⃣ Using multiple control statements carefully prevents unexpected behavio</div>
-                    <div class="continue" onclick="completeLevel(3)">Finish Level</div>
+    <div class="main-container">
+        <div class="content-area">
+            <div class="contentInner">
+                <div class="progressContainer">
+                    <img src="previous.png" id="previous" class="icons prev-btn" style="cursor: pointer;">
+                    <div id="progress">
+                        <div id="progressBar"></div>
+                    </div>
+                    <img src="crossmark.png" onclick="window.location.href='http://localhost:8080/Zignite/levels.html'"
+                        class="icons" style="width: 20px">
                 </div>
             </div>
-        </div>
+            <div class="sectionsBox" id="allSections">
+                <div class="learning-section" id="section1">
+                    <h2 class="section-title">
+                        <span class="section-title-number">1</span>
+                        Conditional Statements
+                    </h2>
 
-        <div class="bot">
-            <div class="header">
-                <h1>Vid.AI</h1>
-            </div>
-            <div class="chatMessages" id="chatMessages"></div>
-            <div class="chatInputBox">
-                <input type="text" id="userInput" placeholder="Type your message...">
-                <button id="sendBtn">Send</button>
+                    <div class="explanation">
+                        <p>Conditional statements allow your program to make decisions based on certain conditions. Python uses <span class="highlight">if</span>, <span class="highlight">elif</span>, and <span class="highlight">else</span> to control the flow of your program.</p>
+                    </div>
+                    <div class="conceptImageBox">
+                    <div class="step-by-step">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <p class="step-text">Basic <span class="highlight">if</span> statement:</p>
+                                <div class="code-block">
+                                    x = 10
+                                    if x > 5:
+                                        print("x is greater than 5")
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <p class="step-text">Using <span class="highlight">elif</span> and <span class="highlight">else</span>:</p>
+                                <div class="code-block">
+                                    age = 18
+                                    if age < 13:
+                                        print("Child")
+                                    elif age < 18:
+                                        print("Teenager")
+                                    else:
+                                        print("Adult")
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <p class="step-text">Nested conditions:</p>
+                                <div class="code-block">
+                                    num = 15
+                                    if num > 10:
+                                        if num % 2 == 0:
+                                            print("Even and greater than 10")
+                                        else:
+                                            print("Odd and greater than 10")
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="step-by-step" style="background-color: red;"> -->
+                        <img src="https://cdn.educba.com/academy/wp-content/uploads/2019/11/If-Statement-in-Python.png"
+                        alt="Python download page" class="concept-image" style="border: 2px solid black;">
+                    <!-- </div> -->
+                </div>
+
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Did you know?</div>
+                        <p>Python uses indentation to define blocks of code. Always use consistent indentation (4 spaces is the standard) to avoid errors.</p>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">2</span>
+                        Logical Operators
+                    </h2>
+
+                    <div class="explanation">
+                        <p>Logical operators allow you to combine multiple conditions. Python supports <span class="highlight">and</span>, <span class="highlight">or</span>, and <span class="highlight">not</span> operators.</p>
+                    </div>
+
+                    <div class="step-by-step">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <p class="step-text">Using <span class="highlight">and</span>:</p>
+                                <div class="code-block">
+                                    age = 25
+                                    if age >= 18 and age <= 65:
+                                        print("Eligible for work")
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <p class="step-text">Using <span class="highlight">or</span>:</p>
+                                <div class="code-block">
+                                    day = "Sunday"
+                                    if day == "Saturday" or day == "Sunday":
+                                        print("It's the weekend!")
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <p class="step-text">Using <span class="highlight">not</span>:</p>
+                                <div class="code-block">
+                                    is_raining = False
+                                    if not is_raining:
+                                        print("Let's go outside!")
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Pro Tip</div>
+                        <p>You can combine multiple logical operators in a single condition, but use parentheses to make the logic clear.</p>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">3</span>
+                        Loops in Python
+                    </h2>
+
+                    <div class="explanation">
+                        <p>Loops allow you to repeat a block of code multiple times. Python supports <span class="highlight">for</span> loops and <span class="highlight">while</span> loops.</p>
+                    </div>
+
+                    <div class="step-by-step">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <p class="step-text">Using a <span class="highlight">for</span> loop:</p>
+                                <div class="code-block">
+                                    for i in range(2):
+                                        print(i)
+                                </div>
+                                <div class="example-output">
+                                    0<br>1<br>2
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step" style="width: 100%;" style="margin-top: 2%;">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <p class="step-text">Using a <span class="highlight">while</span> loop:</p>
+                                <div class="code-block">
+                                    count = 0
+                                    while count < 5:
+                                        print(count)
+                                        count += 1
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <p class="step-text">Looping through a list:</p>
+                                <div class="code-block">
+                                    fruits = ["apple", "banana", "cherry"]
+                                    for fruit in fruits:
+                                        print(fruit)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Did you know?</div>
+                        <p>The <span class="highlight">range()</span> function generates a sequence of numbers, which is commonly used in <span class="highlight">for</span> loops.</p>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">4</span>
+                        Loop Control
+                    </h2>
+
+                    <div class="explanation">
+                        <p>Loop control statements allow you to change the flow of a loop. Python provides <span class="highlight">break</span>, <span class="highlight">continue</span>, and <span class="highlight">pass</span> for this purpose.</p>
+                    </div>
+
+                    <div class="step-by-step">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <p class="step-text">Using <span class="highlight">break</span>:</p>
+                                <div class="code-block">
+                                    for i in range(10):
+                                        if i == 3:
+                                            break
+                                        print(i)
+                                </div>
+                                <div class="example-output">
+                                    0<br>1<br>2
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <p class="step-text">Using <span class="highlight">continue</span>:</p>
+                                <div class="code-block">
+                                    for i in range(3):
+                                        if i == 2:
+                                            continue
+                                        print(i)
+                                </div>
+                                <div class="example-output">
+                                    1<br>3
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Pro Tip</div>
+                        <p>Use <span class="highlight">break</span> to exit a loop early and <span class="highlight">continue</span> to skip the current iteration.</p>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">5</span>
+                        Nested Loops
+                    </h2>
+
+                    <div class="explanation">
+                        <p>Nested loops are loops inside other loops. They are useful for working with multi-dimensional data or performing repetitive tasks within repetitive tasks.</p>
+                    </div>
+
+                    <div class="step-by-step">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <p class="step-text">Basic nested loop:</p>
+                                <div class="code-block">
+                                    for i in range(1):
+                                        for j in range(2):
+                                            print(f"i={i}, j={j}")
+                                </div>
+                                <div class="example-output">
+                                    i=0, j=0<br>i=0
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <p class="step-text">Nested loop with a list:</p>
+                                <div class="code-block">
+                                    matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+                                    for row in matrix:
+                                        for num in row:
+                                            print(num)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <p class="step-text">Breaking out of nested loops:</p>
+                                <div class="code-block">
+                                    for i in range(3):
+                                        for j in range(3):
+                                            if i == j:
+                                                break
+                                            print(f"i={i}, j={j}")
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Did you know?</div>
+                        <p>Nested loops can be computationally expensive, so use them wisely, especially with large datasets.</p>
+                    </div>
+                     <button class="continue" onclick="completeLevel(3)">Finish Lesson</button>
+                </div>
             </div>
         </div>
     </div>
+
+    <div class="chat-button" id="chatButton">
+        <div class="chat-icon">💬</div>
+    </div>
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <div class="chat-title">
+                <div class="bot-avatar">AI</div>
+                <span>Assistant</span>
+            </div>
+            <button class="close-button" id="closeButton">✕</button>
+        </div>
+        
+        <div class="chat-body" id="chatBody">
+            
+        </div>
+        
+        <div class="chat-footer">
+            <input type="text" class="message-input" id="messageInput" placeholder="Type your message here...">
+            <button class="send-button" id="sendButton">
+                ➤
+            </button>
+        </div>
+    </div>
+
     <script src="level1python.js"></script>
 </body>
+
 </html>
-
-
-
-
-

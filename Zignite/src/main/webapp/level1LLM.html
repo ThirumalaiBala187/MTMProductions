@@ -7,80 +7,306 @@
     <link rel="stylesheet" href="level1python.css">
 </head>
 <body>
-    <header>
-        <img src="ProjectLogo.png"onclick="window.location.href='http://localhost:8080/Zignite/userHome.html'" class="logoImg">
-        <div class="progress_description">
-            <h1 style="font-size: 36px;color: #037a6e;">What is a Large Language Model (LLM)?</h1>
-            <div class="desc">📚&ensp;Lesson <span id="lessonNumber">1</span>/6</div>
-            <div class="desc" id="com">🎯&ensp;<span id="completion">0%</span>&nbsp; Complete</div>
-        </div>
-    </header>
-   
-    <div class="container">
-        <div class="course_content">
-            <div class="progressContainer">
-                <img src="previous.png" class="icons" onclick="prev()">
-                <div id="progress">
-                    <div id="progressBar"></div>
-                </div>
-                <img src="crossmark.png" onclick="window.location.href='http://localhost:8080/Zignite/LLMlevels.html'" class="icons" style="width: 20px">
-            </div>
-
-            <div class="sectionsBox">
-                <div class="section" id="section1">
-                    <div id="header">1. Definition of LLMs</div>
-                    <div class="image"><img src="https://media.licdn.com/dms/image/v2/D5612AQGZz67yPCmN_g/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1712140420743?e=2147483647&v=beta&t=IKhsfmSZqsDEXg-A0eBXdbwzpY5SFhDFZMkj1qvGyI8" alt="Installing python" id="image1" style="border-radius: 10px;"></div>
-                    <div id="content">LLMs are AI models that understand and generate human-like text using vast amounts of <br> training data. They recognize patterns in language to create meaningful responses.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section2">
-                    <div id="header">2. How LLMs Work </div>
-                    <div class="image"><img src="https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1683096240569-download%20%2857%29.png" alt="Running python file" id="image2" style="border-radius: 10px; border: 2px solid black;"></div>
-                    <div id="content">They break down text into small units called tokens and predict the next word using <br> probability. This helps them generate coherent and contextually relevant text. </div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section3">
-                    <div id="header">3. Examples of Popular LLMs</div>
-                    <div class="image"><img src="https://www.sourcecodester.com/sites/default/files/Python%20Variables_0.jpg" alt="Variable in python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">Popular LLMs include ChatGPT (OpenAI), Google Bard (Gemini), Claude (Anthropic), and<br>LLaMA (Meta). They power various AI applications.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section4">
-                    <div id="header">4. AI vs. LLM</div>
-                    <div class="image"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCB1fiPnxYxVxXbh3It3jjCNUdX5ZK4EstpgSGDgEZ2bvc2ROhraq0Y2ZSKC9B_FO2zIPvBUIpjtigavr9t3mmPuMw3XQwM02seiT2QaC49PhJDL15vK3IA8Lg344-P-XTbBs1sfpg4T1DAjkakwW-EJ_RKOMBCoTCqTDgES57-vQtNngjWqqxFMCM/s711/16.PNG" alt="Print and User input in python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">AI includes all machine intelligence, while LLMs specifically focus on understanding and<br>generating human-like language. LLMs are a subset of AI.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section5">
-                    <div id="header">5. Real-life Uses</div>
-                    <div class="image"><img src="https://cdn.codechef.com/blogs/images/operators-in-python.png" alt="Operators in Python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">LLMs assist in chatbots, content creation, coding, customer support, and automation.<br>They improve productivity across industries.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section6">
-                    <div id="header">6. Future Potential</div>
-                    <div class="image"><img src="https://cdn.codechef.com/blogs/images/operators-in-python.png" alt="Operators in Python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">As LLMs evolve, they will enhance fields like education, healthcare, and creative<br>industries while addressing ethical concerns.</div>
-                    <div class="continue" onclick="completeLevel(2)">Finish Level</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="bot">
-            <div class="header">
-                <h1>Vid.AI</h1>
-            </div>
-            <div class="chatMessages" id="chatMessages"></div>
-            <div class="chatInputBox">
-                <input type="text" id="userInput" placeholder="Type your message...">
-                <button id="sendBtn">Send</button>
-            </div>
+    <div class="header">
+        <div class="logo">ArivuPathAI</div>
+        <h1 class="content-title">Introduction To LLM</h1>
+        <div class="progress-container">
+            <div class="lesson-info">Lesson 1/6</div>
+            <div class="progress" id="completion">0% Complete</div>
         </div>
     </div>
-     <script src="level1llm.js"></script>
-</body>
-</html>
 
+    <div class="main-container">
+        <div class="content-area">
+            <div class="contentInner">
+                <div class="progressContainer">
+                    <img src="previous.png" id="previous" class="icons prev-btn" style="cursor: pointer;">
+                    <div id="progress">
+                        <div id="progressBar"></div>
+                    </div>
+                 <img src="crossmark.png" onclick="window.location.href='http://localhost:8080/Zignite/LLMlevels.html'"
+                        class="icons" style="width: 20px">
+                </div>
+            </div>
+
+           <div class="sectionsBox" id="allSections">
+    <!-- Section 1: Definition of LLMs -->
+    <div class="learning-section" id="section1">
+        <h2 class="section-title">
+            <span class="section-title-number">1</span>
+            Definition of LLMs
+        </h2>
+
+        <div class="explanation">
+            <p>Large Language Models (LLMs) are advanced artificial intelligence systems designed to understand and generate human-like text. They are trained on vast amounts of data and can perform tasks like answering questions, writing content, and even holding conversations.</p>
+        </div>
+        <div class="conceptImageBox">
+            <img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2023/06/LLM.png" alt="LLM concept" class="concept-image">
+            <div class="step-by-step">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <p class="step-text">LLMs are a subset of machine learning models focused on <span class="highlight">natural language processing (NLP)</span>.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <p class="step-text">They rely on <strong>neural networks</strong>, specifically transformer architectures, to process and generate text.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <p class="step-text">Their power comes from training on <span class="highlight">massive datasets</span>, often containing billions of words from books, websites, and more.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="did-you-know">
+            <div class="did-you-know-title">Did you know?</div>
+            <p>The term "large" in LLM refers to both the size of the model (millions or billions of parameters) and the scale of the data it’s trained on!</p>
+        </div>
+        <button class="continue">Continue Learning</button>
+    </div>
+
+    <!-- Section 2: How LLMs Work -->
+    <div class="learning-section">
+        <h2 class="section-title">
+            <span class="section-title-number">2</span>
+            How LLMs Work
+        </h2>
+
+        <div class="explanation">
+            <p>LLMs operate by predicting the next word in a sequence based on the context of the words before it. This process involves complex mathematics and layers of computation within a neural network.</p>
+        </div>
+        <div class="step-by-step" style="width: 100%;">
+            <div class="step" style="width: 100%;">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <p class="step-text">Input text is broken into smaller pieces called <span class="highlight">tokens</span>.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <p class="step-text">The model uses <span class="highlight">attention mechanisms</span> to weigh the importance of each token in context:</p>
+                    <div class="code-block">
+                        "The cat sat on the ___" → predicts "mat"
+                    </div>
+                </div>
+            </div>
+            <div class="step" style="width: 100%;">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <p class="step-text">Output is generated token by token, forming coherent sentences.</p>
+                </div>
+            </div>
+        </div>
+        <div class="interactive-element">
+            <div class="interactive-title">Key Concept</div>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li style="margin-bottom: 8px;">Training involves adjusting <span class="highlight">weights</span> in the network based on errors in predictions.</li>
+                <li style="margin-bottom: 8px;">The transformer architecture enables parallel processing, making LLMs efficient.</li>
+            </ul>
+        </div>
+        <button class="continue">Continue Learning</button>
+    </div>
+
+    <!-- Section 3: Examples of Popular LLMs -->
+    <div class="learning-section">
+        <h2 class="section-title">
+            <span class="section-title-number">3</span>
+            Examples of Popular LLMs
+        </h2>
+
+        <div class="explanation">
+            <p>Several LLMs have gained prominence due to their capabilities and widespread use. Here are some notable examples.</p>
+        </div>
+        <div class="conceptImageBox">
+            <img src="https://miro.medium.com/v2/resize:fit:1400/1*G0bM7v5fZ7vbF0oWVacBHg.png" alt="Popular LLMs" class="concept-image">
+            <div class="step-by-step">
+                <div class="step" style="width: 100%;">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <p class="step-text"><strong>GPT-3</strong> by OpenAI: Known for its conversational abilities and use in ChatGPT.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <p class="step-text"><strong>BERT</strong> by Google: Excels in understanding context for search and NLP tasks.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <p class="step-text"><strong>Grok</strong> by xAI: Designed for truth-seeking and answering complex questions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="did-you-know">
+            <div class="did-you-know-title">Pro Tip</div>
+            <p>Each LLM has unique strengths—Grok, for example, emphasizes maximal helpfulness and reasoning!</p>
+        </div>
+        <button class="continue">Continue Learning</button>
+    </div>
+
+    <!-- Section 4: AI vs. LLM -->
+    <div class="learning-section">
+        <h2 class="section-title">
+            <span class="section-title-number">4</span>
+            AI vs. LLM
+        </h2>
+
+        <div class="explanation">
+            <p>Artificial Intelligence (AI) is a broad field, while LLMs are a specific type of AI. Understanding the distinction helps clarify their roles.</p>
+        </div>
+        <div class="conceptImageBox">
+            <img src="https://cdn.differencebetween.net/wp-content/uploads/2024/05/AI-vs-LLM.png" alt="AI vs LLM" class="concept-image" style="border: 2px solid black;">
+            <div class="step-by-step">
+                <div class="step" style="width: 100%;">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <p class="step-text"><strong>AI</strong>: Encompasses all intelligent systems, including robotics, vision, and decision-making.</p>
+                    </div>
+                </div>
+                <div class="step" style="width: 100%;">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <p class="step-text"><strong>LLM</strong>: A specialized AI focused solely on <span class="highlight">language tasks</span>.</p>
+                    </div>
+                </div>
+                <div class="step" style="width: 100%;">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <p class="step-text">Example: AI might drive a car, while an LLM writes the manual.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="did-you-know">
+            <div class="did-you-know-title">Did you know?</div>
+            <p>Not all AI uses language—think of self-driving cars or image recognition systems!</p>
+        </div>
+        <button class="continue">Continue Learning</button>
+    </div>
+
+    <!-- Section 5: Real-life Uses -->
+    <div class="learning-section">
+        <h2 class="section-title">
+            <span class="section-title-number">5</span>
+            Real-life Uses
+        </h2>
+
+        <div class="explanation">
+            <p>LLMs are transforming industries by automating tasks, enhancing communication, and providing insights from data.</p>
+        </div>
+        <div class="conceptImageBox">
+            <img src="https://miro.medium.com/v2/resize:fit:1400/1*W8MxhLGMp6dmeV-_z63oXw.jpeg" alt="LLM uses" class="concept-image">
+            <div class="step-by-step">
+                <div class="step" style="width: 100%;">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <p class="step-text"><strong>Customer Service</strong>: Chatbots powered by LLMs handle inquiries 24/7.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <p class="step-text"><strong>Content Creation</strong>: Writing articles, scripts, or even code.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <p class="step-text"><strong>Education</strong>: Tutoring, summarizing texts, or generating quizzes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="did-you-know">
+            <div class="did-you-know-title">Pro Tip</div>
+            <p>Companies like xAI use LLMs to accelerate scientific discovery—imagine AI helping design experiments!</p>
+        </div>
+        <button class="continue">Continue Learning</button>
+    </div>
+
+    <!-- Section 6: Future Potential -->
+    <div class="learning-section">
+        <h2 class="section-title">
+            <span class="section-title-number">6</span>
+            Future Potential
+        </h2>
+
+        <div class="explanation">
+            <p>The future of LLMs promises even greater integration into daily life, with advancements in reasoning, personalization, and ethical use.</p>
+        </div>
+        <div class="conceptImageBox">
+            <img src="https://miro.medium.com/v2/resize:fit:1400/1*8ZNh0Nuzx7A9f2JzzzA0ng.jpeg" alt="Future of LLMs" class="concept-image">
+            <div class="step-by-step">
+                <div class="step" style="width: 100%;">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <p class="step-text"><strong>Enhanced Reasoning</strong>: Solving complex problems beyond text generation.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <p class="step-text"><strong>Multimodal Abilities</strong>: Combining text, images, and sound for richer interactions.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <p class="step-text"><strong>Ethics & Safety</strong>: Developing frameworks to reduce bias and misinformation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="did-you-know">
+            <div class="did-you-know-title">Did you know?</div>
+            <p>By 2030, LLMs might assist in real-time translation across languages or even help decode alien signals!</p>
+        </div>
+        <button class="continue" onclick="completeLevel(2)">Finish Lesson</button>
+    </div>
+        </div>
+            
+
+        </div>
+
+    </div>
+    <div class="chat-button" id="chatButton">
+        <div class="chat-icon">💬</div>
+    </div>
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <div class="chat-title">
+                <div class="bot-avatar">AI</div>
+                <span>Assistant</span>
+            </div>
+            <button class="close-button" id="closeButton">✕</button>
+        </div>
+        
+        <div class="chat-body" id="chatBody">
+            
+        </div>
+        
+        <div class="chat-footer">
+            <input type="text" class="message-input" id="messageInput" placeholder="Type your message here...">
+            <button class="send-button" id="sendButton">
+                ➤
+            </button>
+        </div>
+    </div>
+
+
+    <script src="level1llm.js"></script>
+</body>
+
+</html>
 
 
 

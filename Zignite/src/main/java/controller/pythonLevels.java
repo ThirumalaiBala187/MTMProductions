@@ -84,10 +84,10 @@ public class pythonLevels extends HttpServlet {
 	            return;
 	        }
 
-	        updateCoursedata(email, courseId);
-
-	   
-	        HttpSession session = request.getSession(true);
+	 if(courseId!=999) {
+	          updateCoursedata(email,courseId);
+	 }
+	        HttpSession session = request.getSession(false);
 	        JSONObject details = getUserDetails(email);
 	        session.setAttribute("details", details);
 
@@ -97,12 +97,11 @@ public class pythonLevels extends HttpServlet {
 	        detailsCookie.setPath("/");
 	        detailsCookie.setMaxAge(60 * 60 * 24);
 	        response.addCookie(detailsCookie);
-
-	  
 	        jsonResponse.put("status", "success");
 	        jsonResponse.put("message", "Level " + levelsCompleted + " recorded successfully.");
 	        out.print(jsonResponse.toString());
 	        out.flush();
+
 	    } catch (Exception e) {
 	        jsonResponse.put("status", "error");
 	        jsonResponse.put("message", "Invalid request: " + e.getMessage());

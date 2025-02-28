@@ -7,84 +7,299 @@
     <link rel="stylesheet" href="level1python.css">
 </head>
 <body>
-    <header>
-        <img src="ProjectLogo.png"onclick="window.location.href='http://localhost:8080/Zignite/userHome.html'" class="logoImg">
-        <div class="progress_description">
-            <h1 style="font-size: 36px;color: #037a6e;">How Do LLMs Understand Language?</h1>
-            <div class="desc">📚&ensp;Lesson <span id="lessonNumber">2</span>/6</div>
-            <div class="desc" id="com">🎯&ensp;<span id="completion">0%</span>&nbsp; Complete</div>
+    <div class="header">
+        <div class="logo">ArivuPathAI</div>
+        <h1 class="content-title">How do LLM's understand language ?</h1>
+        <div class="progress-container">
+            <div class="lesson-info">Lesson 2/6</div>
+            <div class="progress" id="completion">0% Complete</div>
         </div>
-    </header>
-   
-    <div class="container">
-        <div class="course_content">
-            <div class="progressContainer">
-                <img src="previous.png" class="icons" onclick="prev()">
-                <div id="progress">
-                    <div id="progressBar"></div>
+    </div>
+
+    <div class="main-container">
+        <div class="content-area">
+            <div class="contentInner">
+                <div class="progressContainer">
+                    <img src="previous.png" id="previous" class="icons prev-btn" style="cursor: pointer;">
+                    <div id="progress">
+                        <div id="progressBar"></div>
+                    </div>
+                    <img src="crossmark.png" onclick="window.location.href='http://localhost:8080/Zignite/LLMlevels.html'"
+                        class="icons" style="width: 20px">
                 </div>
-                <img src="crossmark.png" onclick="window.location.href='http://localhost:8080/Zignite/LLMlevels.html'" class="icons" style="width: 20px">
             </div>
 
-            <div class="sectionsBox">
-                <div class="section" id="section1">
-                    <div id="header">1. NLP Basics</div>
-                    <div class="image"><img src="https://media.licdn.com/dms/image/v2/D5612AQGZz67yPCmN_g/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1712140420743?e=2147483647&v=beta&t=IKhsfmSZqsDEXg-A0eBXdbwzpY5SFhDFZMkj1qvGyI8" alt="Installing python" id="image1" style="border-radius: 10px;"></div>
-                    <div id="content">Natural Language Processing (NLP) allows LLMs to analyze, interpret, and generate human- <br> like text based on learned patterns.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section2">
-                    <div id="header">2. Tokenization </div>
-                    <div class="image"><img src="https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1683096240569-download%20%2857%29.png" alt="Running python file" id="image2" style="border-radius: 10px; border: 2px solid black;"></div>
-                    <div id="content">Text is divided into smaller pieces (tokens), which can be words, subwords, or even<br>characters. This helps LLMs process information efficiently. </div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section3">
-                    <div id="header">3. Word Prediction</div>
-                    <div class="image"><img src="https://www.sourcecodester.com/sites/default/files/Python%20Variables_0.jpg" alt="Variable in python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">LLMs predict the most probable next word in a sentence using vast amounts of training<br>data, ensuring coherent and contextually accurate responses.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section4">
-                    <div id="header">4. Role of Data</div>
-                    <div class="image"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCB1fiPnxYxVxXbh3It3jjCNUdX5ZK4EstpgSGDgEZ2bvc2ROhraq0Y2ZSKC9B_FO2zIPvBUIpjtigavr9t3mmPuMw3XQwM02seiT2QaC49PhJDL15vK3IA8Lg344-P-XTbBs1sfpg4T1DAjkakwW-EJ_RKOMBCoTCqTDgES57-vQtNngjWqqxFMCM/s711/16.PNG" alt="Print and User input in python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">LLMs learn from books, articles, conversations, and websites to develop a broad<br>understanding of human language and improve response accuracy.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section5">
-                    <div id="header">5. Hallucination Issue</div>
-                    <div class="image"><img src="https://cdn.codechef.com/blogs/images/operators-in-python.png" alt="Operators in Python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">Sometimes, LLMs generate incorrect or misleading information because they rely on<br>patterns rather than factual understanding.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section6">
-                    <div id="header">6. Future Potential</div>
-                    <div class="image"><img src="https://cdn.codechef.com/blogs/images/operators-in-python.png" alt="Operators in Python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">Instead of truly understanding text, LLMs recognize statistical relationships between words<br>to generate responses that appear human-like.</div>
-                    <div class="continue" onclick="completeLevel(3)">Finish Level</div>
-                </div>
-            </div>
-        </div>
+            <div class="sectionsBox" id="allSections">
+                <!-- Section 1: NLP Basics -->
+                <div class="learning-section" id="section1">
+                    <h2 class="section-title">
+                        <span class="section-title-number">1</span>
+                        NLP Basics
+                    </h2>
 
-        <div class="bot">
-            <div class="header">
-                <h1>Vid.AI</h1>
-            </div>
-            <div class="chatMessages" id="chatMessages"></div>
-            <div class="chatInputBox">
-                <input type="text" id="userInput" placeholder="Type your message...">
-                <button id="sendBtn">Send</button>
+                    <div class="explanation">
+                        <p>Natural Language Processing (NLP) is a field of artificial intelligence that enables computers to understand, interpret, and generate human language. It’s the foundation of Large Language Models (LLMs).</p>
+                    </div>
+                    <div class="conceptImageBox">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*JylFbz5UHSKzRVWHnabWKw.png" alt="NLP basics" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text">NLP combines <span class="highlight">linguistics</span> and <span class="highlight">computer science</span> to process text and speech.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text">Key tasks include translation, sentiment analysis, and text generation.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text">LLMs are advanced NLP systems built on <strong>neural networks</strong>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Did you know?</div>
+                        <p>NLP powers everyday tools like voice assistants (e.g., Siri) and spell checkers!</p>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <!-- Section 2: Tokenization -->
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">2</span>
+                        Tokenization
+                    </h2>
+
+                    <div class="explanation">
+                        <p>Tokenization is the process of breaking down text into smaller units called tokens, which LLMs use to understand and generate language.</p>
+                    </div>
+                    <div class="step-by-step" style="width: 100%;">
+                        <div class="step" style="width: 100%;">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <p class="step-text">Text is split into <span class="highlight">tokens</span>—words, punctuation, or even subwords.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <p class="step-text">Example of tokenization:</p>
+                                <div class="code-block">
+                                    "I love NLP!" → ["I", "love", "NLP", "!"]
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step" style="width: 100%;">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <p class="step-text">Tokens are then converted into numbers for the model to process.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="interactive-element">
+                        <div class="interactive-title">Key Concept</div>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li style="margin-bottom: 8px;">Different tokenization methods (e.g., word-based vs. subword) affect model performance.</li>
+                            <li style="margin-bottom: 8px;">Efficient tokenization reduces computational load.</li>
+                        </ul>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <!-- Section 3: Word Prediction -->
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">3</span>
+                        Word Prediction
+                    </h2>
+
+                    <div class="explanation">
+                        <p>Word prediction is the core mechanism of LLMs, enabling them to generate text by guessing the next word based on context.</p>
+                    </div>
+                    <div class="conceptImageBox">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*W3GknKCxHvTqRkKOhh9qAw.png" alt="Word prediction" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text">The model analyzes the <span class="highlight">context</span> of previous words.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text">It assigns probabilities to possible next words:</p>
+                                    <div class="code-block">
+                                        "The sky is ___" → "blue" (80%), "cloudy" (15%)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text">The highest-probability word is selected to continue the sequence.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Pro Tip</div>
+                        <p>Word prediction is why autocomplete on your phone sometimes gets it right!</p>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <!-- Section 4: Role of Data -->
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">4</span>
+                        Role of Data
+                    </h2>
+
+                    <div class="explanation">
+                        <p>Data is the fuel for LLMs. The quality, quantity, and diversity of data determine how well a model performs.</p>
+                    </div>
+                    <div class="conceptImageBox">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*Pj_k1t4rF8ZDG2W3oWnHIA.png" alt="Role of data" class="concept-image" style="border: 2px solid black;">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Volume</strong>: Billions of words from books, websites, and more.</p>
+                                </div>
+                            </div>
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Diversity</strong>: Multiple languages, styles, and domains improve versatility.</p>
+                                </div>
+                            </div>
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Quality</strong>: Clean, accurate data reduces errors in output.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Did you know?</div>
+                        <p>Training datasets for LLMs can be larger than the entire Library of Congress!</p>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <!-- Section 5: Hallucination Issue -->
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">5</span>
+                        Hallucination Issue
+                    </h2>
+
+                    <div class="explanation">
+                        <p>Hallucination occurs when LLMs generate plausible but incorrect or fabricated information, posing a challenge to their reliability.</p>
+                    </div>
+                    <div class="conceptImageBox">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*5Xjd11g4v_8IILrTVuR9Rw.png" alt="Hallucination issue" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Cause</strong>: Over Reliance on patterns rather than facts.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Example</strong>:</p>
+                                    <div class="code-block">
+                                        Q: "Who invented gravity?" → A: "Isaac Newton" (wrong!)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Solution</strong>: Better training data and fact-checking mechanisms.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Pro Tip</div>
+                        <p>Always verify LLM outputs—Grok, for instance, aims to minimize hallucinations with truth-seeking design!</p>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <!-- Section 6: Future Potential -->
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">6</span>
+                        Future Potential
+                    </h2>
+
+                    <div class="explanation">
+                        <p>The future of LLMs holds exciting possibilities, from improved accuracy to groundbreaking applications across industries.</p>
+                    </div>
+                    <div class="conceptImageBox">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*8ZNh0Nuzx7A9f2JzzzA0ng.jpeg" alt="Future of LLMs" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Accuracy</strong>: Reducing hallucinations with better reasoning.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Multimodal</strong>: Integrating text, images, and more.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Applications</strong>: Real-time translation, scientific discovery, and beyond.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Did you know?</div>
+                        <p>Future LLMs might even assist in decoding extraterrestrial languages!</p>
+                    </div>
+                    <button class="continue" onclick="completeLevel(3)">Finish Lesson</button>
+                </div>
             </div>
         </div>
     </div>
+
+    <div class="chat-button" id="chatButton">
+        <div class="chat-icon">💬</div>
+    </div>
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <div class="chat-title">
+                <div class="bot-avatar">AI</div>
+                <span>Assistant</span>
+            </div>
+            <button class="close-button" id="closeButton">✕</button>
+        </div>
+        <div class="chat-body" id="chatBody"></div>
+        <div class="chat-footer">
+            <input type="text" class="message-input" id="messageInput" placeholder="Type your message here...">
+            <button class="send-button" id="sendButton">➤</button>
+        </div>
+    </div>
+
     <script src="level1llm.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-

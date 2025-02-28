@@ -13,5 +13,6 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/home/yuvon-zstk383/Downloads/py4j-0.10.9.9.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

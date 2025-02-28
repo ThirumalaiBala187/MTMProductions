@@ -11,32 +11,70 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Fjalla+One&display=swap"
         rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+        
 </head>
 
 <body>
+    <div class="background">
+        <div class="circuit-pattern"></div>
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        
+        <div class="binary binary-1">01001100 01001100 01001101 00100000 01000001 01001001</div>
+        <div class="binary binary-2">01010000 01111001 01110100 01101000 01101111 01101110</div>
+        
+        <div class="dots-grid" id="dotsGrid"></div>
+        <div class="connect-line" style="width: 150px; top: 30%; left: 20%; transform: rotate(30deg);"></div>
+        <div class="connect-line" style="width: 200px; top: 50%; right: 25%; transform: rotate(-45deg);"></div>
+        <div class="connect-line" style="width: 120px; bottom: 35%; left: 40%; transform: rotate(15deg);"></div>
+    </div>
+
     <div class="whole">
-       <div class="courseheader">
+    <header>
+        <div class="logo-container">
+            <span >
+                <img class="brand-name" onclick="window.location.href='userHome.html' " src="ProjectLogo.png" alt="">
+            </span>
+
+        </div>
+        <nav class="header-nav">
+            <a href="http://localhost:8080/Zignite/userHome.html">Home</a>
+            <a href="http://localhost:8080/Zignite/allCourses.html"  id="courses">Courses</a>
+            <a href="#">About</a>
+             <label class="popup">
+    <input type="checkbox" />
+    <div tabindex="0" class="burger">
+   
+  </div>
+ 
+</label>
+            
+
+        </nav>
+    </header>
+      <!--   <div class="courseheader">
             <img src="ProjectLogo.png" onclick="window.location.href='http://localhost:8080/Zignite/userHome.html'" style="height:100px;width: 300px">
             <input type="text" name="search" placeholder="&#x1F50D;&ensp;Search for a course" class="searchinp">
-        </div>
-        <div class="navbar">
+        </div>-->
+   <!--      <div class="navbar">
             <div class="cnav active" onclick="changeTab(this)">All</div>
             <div class="cnav" onclick="changeTab(this)">Trending</div>
             <div class="cnav" onclick="changeTab(this)">New</div>
             <div class="cnav" onclick="changeTab(this)">Popular</div>
-        </div> 
+        </div> -->
         <div class="side">
-            <div class="filter">
-                <p style="margin-left: 20px;margin-bottom: 20px;">Categories</p>
+    <div class="filter">
+        <p style="margin-left: 20px; margin-bottom: 20px;">Categories</p>
+        
                 <div class="drop" onclick="changearrow(1,'drop1')" id="drop1">
                     <div class="cfil">
                         <span>All</span>
                         <span class="arrow" id="arr1" >&#9654</span>
                     </div>
-                    <div class="dropdown">
-                        <option>Introduction to Python</option>
-                        <option style="border-top: 2px solid lightgrey">Introduction to LLM</option>
-                    </div>
+                   
                 </div>
 
                 <div class="drop" onclick="changearrow(2,'drop2')" id="drop2">
@@ -44,48 +82,27 @@
                         <span>Programming</span>
                         <span class="arrow" id="arr2">&#9654</span>
                     </div>
-                    <div class="dropdown">
-                        <option>Introduction to Python</option>
-                    </div>
+                    
                 </div>
                 <div class="drop" onclick="changearrow(3,'drop3')" id="drop3">
                     <div class="cfil">
                         <span>Advance</span>
                         <span class="arrow" id="arr3">&#9654</span>
                     </div>
-                    <div class="dropdown">
-                        <option>Introduction to LLM</option>
-                    </div>
+                    
                 </div>
-                <div class="drop" onclick="changearrow(4,'drop4')" id="drop4">
-                    <div class="cfil" style="border-bottom: 2px solid lightgray;">
-                        <span>Business</span>
-                        <span class="arrow" id="arr4">&#9654</span>
-                    </div>
-                    <div class="dropdown">
-                        <option>No courses available here</option>
-                    </div>
-                </div>
+                
+    </div>
+                        <div class="container" id="container">
+    
+</div>
 
-                <!-- <p style="margin: 30px 20px 20px 20px;">Quick Filters</p>
-                <div class="cfil">Free Courses</div>
-                <div class="cfil">Most Popular</div>
-                <div class="cfil" style="border-bottom: 2px solid lightgray;">Newly Added</div> -->
-            </div>
-
-            <div class="container" id="container">
+                
             </div>
         </div>
 
 
-        <div class="learningpath">Learning paths
-            <div class="pl">Become a full-stack developer
-                <p class="footer">12 courses&emsp;&emsp;&emsp;6 months</p>
-            </div>
-            <div class="pl">Data Science Career Path
-                <p class="footer">8 courses&emsp;&emsp;&emsp;4 months</p>
-            </div>
-        </div>
+        
     </div>
 
     <script src="course.js"></script>

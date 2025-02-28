@@ -7,84 +7,290 @@
     <link rel="stylesheet" href="level1python.css">
 </head>
 <body>
-    <header>
-        <img src="ProjectLogo.png"onclick="window.location.href='http://localhost:8080/Zignite/userHome.html'" class="logoImg">
-        <div class="progress_description">
-            <h1 style="font-size: 36px;color: #037a6e;">How to Use LLMs in Real Life?</h1>
-            <div class="desc">📚&ensp;Lesson <span id="lessonNumber">4</span>/6</div>
-            <div class="desc" id="com">🎯&ensp;<span id="completion"></span>&nbsp; Complete</div>
+    <div class="header">
+        <div class="logo">ArivuPathAI</div>
+        <h1 class="content-title">How to use LLM's in real life</h1>
+        <div class="progress-container">
+            <div class="lesson-info">Lesson 4/6</div>
+            <div class="progress" id="completion">0% Complete</div>
         </div>
-    </header>
-   
-    <div class="container">
-        <div class="course_content">
-            <div class="progressContainer">
-                <img src="previous.png" class="icons" onclick="prev()">
-                <div id="progress">
-                    <div id="progressBar"></div>
+    </div>
+
+    <div class="main-container">
+        <div class="content-area">
+            <div class="contentInner">
+                <div class="progressContainer">
+                    <img src="previous.png" id="previous" class="icons prev-btn" style="cursor: pointer;">
+                    <div id="progress">
+                        <div id="progressBar"></div>
+                    </div>
+                    <img src="crossmark.png" onclick="window.location.href='http://localhost:8080/Zignite/LLMlevels.html'"
+                        class="icons" style="width: 20px">
                 </div>
-                <img src="crossmark.png" onclick="window.location.href='http://localhost:8080/Zignite/LLMlevels.html'" class="icons" style="width: 20px">
             </div>
 
-            <div class="sectionsBox">
-                <div class="section" id="section1">
-                    <div id="header">1. Chatbots</div>
-                    <div class="image"><img src="https://media.licdn.com/dms/image/v2/D5612AQGZz67yPCmN_g/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1712140420743?e=2147483647&v=beta&t=IKhsfmSZqsDEXg-A0eBXdbwzpY5SFhDFZMkj1qvGyI8" alt="Installing python" id="image1" style="border-radius: 10px;"></div>
-                    <div id="content">AI-powered chatbots provide instant customer support, automate responses, and assist<br> users in various industries like e-commerce and banking.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section2">
-                    <div id="header">2. Content Writing</div>
-                    <div class="image"><img src="https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1683096240569-download%20%2857%29.png" alt="Running python file" id="image2" style="border-radius: 10px; border: 2px solid black;"></div>
-                    <div id="content">LLMs help generate articles, blogs, social media posts, and marketing copy, saving time<br>and improving content quality.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section3">
-                    <div id="header">3. Code Generation</div>
-                    <div class="image"><img src="https://www.sourcecodester.com/sites/default/files/Python%20Variables_0.jpg" alt="Variable in python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">Developers use LLM-powered tools like GitHub Copilot and ChatGPT to write, debug, and<br>optimize code faster.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section4">
-                    <div id="header">4. Language Translation</div>
-                    <div class="image"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCB1fiPnxYxVxXbh3It3jjCNUdX5ZK4EstpgSGDgEZ2bvc2ROhraq0Y2ZSKC9B_FO2zIPvBUIpjtigavr9t3mmPuMw3XQwM02seiT2QaC49PhJDL15vK3IA8Lg344-P-XTbBs1sfpg4T1DAjkakwW-EJ_RKOMBCoTCqTDgES57-vQtNngjWqqxFMCM/s711/16.PNG" alt="Print and User input in python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">AI-driven translation tools like Google Translate and DeepL improve multilingual<br>communication with accurate, context-aware translations.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section5">
-                    <div id="header">5. AI-Powered Search</div>
-                    <div class="image"><img src="https://cdn.codechef.com/blogs/images/operators-in-python.png" alt="Operators in Python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">Search engines use LLMs to provide better search results, summarize information, and<br>enhance voice-based queries.</div>
-                    <div class="continue" onclick="next()">Continue Learning</div>
-                </div>
-                <div class="section" id="section6">
-                    <div id="header">6.Creative AI Uses</div>
-                    <div class="image"><img src="https://cdn.codechef.com/blogs/images/operators-in-python.png" alt="Operators in Python" id="image3" style="border-radius: 10px;"></div>
-                    <div id="content">LLMs generate stories, poetry, music lyrics, and even assist in designing digital artwork<br>and animations.</div>
-                    <div class="continue" onclick="completeLevel(5)">Finish Level</div>
-                </div>
-            </div>
-        </div>
+            <div class="sectionsBox" id="allSections">
+                <!-- Section 1: Chatbot -->
+                <div class="learning-section" id="section1">
+                    <h2 class="section-title">
+                        <span class="section-title-number">1</span>
+                        Chatbot
+                    </h2>
 
-        <div class="bot">
-            <div class="header">
-                <h1>Vid.AI</h1>
-            </div>
-            <div class="chatMessages" id="chatMessages"></div>
-            <div class="chatInputBox">
-                <input type="text" id="userInput" placeholder="Type your message...">
-                <button id="sendBtn">Send</button>
+                    <div class="explanation">
+                        <p>LLMs power chatbots, enabling them to hold natural, human-like conversations for customer support, virtual assistance, and more.</p>
+                    </div>
+                    <div class="conceptImageBox">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*JylFbz5UHSKzRVWHnabWKw.png" alt="Chatbot" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text">Chatbots use <span class="highlight">context</span> to understand user queries.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text">They generate <strong>real-time responses</strong> based on trained patterns.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text">Example: Grok assisting users with helpful answers!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Did you know?</div>
+                        <p>Chatbots can handle millions of conversations daily, saving businesses time and money!</p>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <!-- Section 2: Content Writing -->
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">2</span>
+                        Content Writing
+                    </h2>
+
+                    <div class="explanation">
+                        <p>LLMs assist in content creation, generating articles, blogs, and marketing copy with human-like fluency and creativity.</p>
+                    </div>
+                    <div class="step-by-step" style="width: 100%;">
+                        <div class="step" style="width: 100%;">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <p class="step-text"><strong>Drafting</strong>: LLMs produce initial content based on prompts.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <p class="step-text"><strong>Editing</strong>: They refine text for tone, style, or length.</p>
+                            </div>
+                        </div>
+                        <div class="step" style="width: 100%;">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <p class="step-text">Example: Writing a blog post in minutes instead of hours.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="interactive-element">
+                        <div class="interactive-title">Key Concept</div>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li style="margin-bottom: 8px;">LLMs adapt to specific writing styles with fine-tuning.</li>
+                            <li style="margin-bottom: 8px;">Human oversight ensures quality and accuracy.</li>
+                        </ul>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <!-- Section 3: Code Generation -->
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">3</span>
+                        Code Generation
+                    </h2>
+
+                    <div class="explanation">
+                        <p>LLMs can write code in various programming languages, helping developers with tasks like debugging, prototyping, and automation.</p>
+                    </div>
+                    <div class="conceptImageBox">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*W3GknKCxHvTqRkKOhh9qAw.png" alt="Code generation" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Prompt</strong>: Describe the task (e.g., "Write a Python function").</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Output</strong>: LLM generates syntactically correct code.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text">Example: Generating a sorting algorithm in seconds.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Pro Tip</div>
+                        <p>Always test LLM-generated code—sometimes it’s clever but not perfect!</p>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <!-- Section 4: Language Translation -->
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">4</span>
+                        Language Translation
+                    </h2>
+
+                    <div class="explanation">
+                        <p>LLMs excel at translating text between languages, preserving meaning and context better than traditional tools.</p>
+                    </div>
+                    <div class="conceptImageBox">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*Pj_k1t4rF8ZDG2W3oWnHIA.png" alt="Language translation" class="concept-image" style="border: 2px solid black;">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Input</strong>: Text in one language (e.g., English).</p>
+                                </div>
+                            </div>
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Processing</strong>: LLM understands context and idioms.</p>
+                                </div>
+                            </div>
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Output</strong>: Accurate translation (e.g., Spanish).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Did you know?</div>
+                        <p>LLMs can translate rare dialects that older tools struggle with!</p>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <!-- Section 5: AI-Powered Search -->
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">5</span>
+                        AI-Powered Search
+                    </h2>
+
+                    <div class="explanation">
+                        <p>LLMs enhance search engines by understanding user intent and providing concise, relevant answers instead of just links.</p>
+                    </div>
+                    <div class="conceptImageBox">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*5Xjd11g4v_8IILrTVuR9Rw.png" alt="AI-powered search" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Query</strong>: User asks a complex question.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Analysis</strong>: LLM interprets intent and context.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Result</strong>: Direct answer instead of a link list.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Pro Tip</div>
+                        <p>Grok’s design makes it great for answering questions directly—try it!</p>
+                    </div>
+                    <button class="continue">Continue Learning</button>
+                </div>
+
+                <!-- Section 6: Creative AI-Uses -->
+                <div class="learning-section">
+                    <h2 class="section-title">
+                        <span class="section-title-number">6</span>
+                        Creative AI-Uses
+                    </h2>
+
+                    <div class="explanation">
+                        <p>LLMs unlock creative potential, from writing stories and composing music to generating art ideas and beyond.</p>
+                    </div>
+                    <div class="conceptImageBox">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*8ZNh0Nuzx7A9f2JzzzA0ng.jpeg" alt="Creative AI-uses" class="concept-image">
+                        <div class="step-by-step">
+                            <div class="step" style="width: 100%;">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Storytelling</strong>: Crafting novels or scripts.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Music</strong>: Generating lyrics or melody ideas.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-text"><strong>Art</strong>: Inspiring concepts for visual designs.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="did-you-know">
+                        <div class="did-you-know-title">Did you know?</div>
+                        <p>Some AI-generated stories have fooled readers into thinking they’re human-written!</p>
+                    </div>
+                    <button class="continue" onclick="completeLevel(5)">Finish Lesson</button>
+                </div>
             </div>
         </div>
     </div>
+
+    <div class="chat-button" id="chatButton">
+        <div class="chat-icon">💬</div>
+    </div>
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <div class="chat-title">
+                <div class="bot-avatar">AI</div>
+                <span>Assistant</span>
+            </div>
+            <button class="close-button" id="closeButton">✕</button>
+        </div>
+        <div class="chat-body" id="chatBody"></div>
+        <div class="chat-footer">
+            <input type="text" class="message-input" id="messageInput" placeholder="Type your message here...">
+            <button class="send-button" id="sendButton">➤</button>
+        </div>
+    </div>
+
     <script src="level1llm.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
