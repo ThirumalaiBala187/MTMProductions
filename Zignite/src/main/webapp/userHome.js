@@ -38,8 +38,13 @@ var prog_cont=document.getElementsByClassName('card learning-progress')[0];
  //   "Web Development": 90,
  //   "Artificial Intelligence": 92
 //};
-
-
+if((Object.keys(courses).length)==0){
+	var noCourseDiv=document.createElement("div");
+	console.log("no courses")
+	noCourseDiv.innerHTML=`<div class="noCourse" onclick="window.location.href='allCourses.html'">Select Any Course To See Your Progress</div>`;
+	prog_cont.appendChild(noCourseDiv);
+}
+else{
 for (let course_name in courses) {
     let course_percent = courses[course_name]; 
     var new_learn_prog = document.createElement("div");
@@ -56,12 +61,15 @@ for (let course_name in courses) {
     `;
     prog_cont.appendChild(new_learn_prog);
 }
+}
 
 var course_grid=document.getElementsByClassName('courses-grid')[0];
 var courses_ongoing=document.getElementsByClassName('stat-value')[0];
 var certificates=document.getElementsByClassName('stat-value')[1];
 let cert_count=0;
 let course_count=0;
+
+
 
 for(let course_name in courseCards){
 	console.log(course_name)

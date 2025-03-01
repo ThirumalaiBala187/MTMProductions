@@ -150,6 +150,7 @@ public class LoginServlet extends HttpServlet {
 
 
 	private static JSONObject getUserDetails(String email) throws SQLException {
+		System.out.println("entering sign in details");
 	    JSONObject userDetails = new JSONObject();
 	    JSONArray coursesArray = new JSONArray();
 

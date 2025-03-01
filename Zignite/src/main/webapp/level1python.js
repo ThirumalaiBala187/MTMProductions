@@ -220,11 +220,12 @@ function getCookie(name) {
 }
 
 courseCards={};
-async function completeLevel(num) {
+async function completeLevel(num,course) {
     try {
+		console.log("entering complete level")
+		let courseName="";
 	     	details=getCookie("DETAILS")
 			if (details) {
-				
 				console.log(2);
 			     const decodedDetails = atob(details);
 			     const parsedDetails = JSON.parse(decodedDetails); 
@@ -238,12 +239,20 @@ async function completeLevel(num) {
 			 			        if (levelCount <= 7) {
 			 			            window.location.href = `level${num}python.html`;
 			 			        }
-			 let courseName = "Introduction To Python";
+								let localStoreCourse;
+			if(course==1){
+			     courseName="Introduction To Python";
+				 localStoreCourse="finishedPy";
+			 }
+			 if(course==2){
+				 courseName = "Introduction To LLM";
+				 localStoreCourse="finishedLLM";
+			 }
 			 if (courseCards[courseName]) {
 				console.log(4);
 			     let [levelName, completionPercentage, levelsCompleted, xp] = courseCards[courseName];
 				 console.log(5000+": "+levelsCompleted);
-				 localStorage.setItem("finishedPy", completionPercentage);
+				 localStorage.setItem(localStoreCourse,completionPercentage);
 
 			//	completion=document.getElementById("completion");
 			//	completion.innerText=completionPercentage+"%";
@@ -254,7 +263,7 @@ async function completeLevel(num) {
 				            headers: {
 				                'Content-Type': 'application/json',
 				            },
-				            body: JSON.stringify({ level: num, courseId:1}) 
+				            body: JSON.stringify({ level: num, courseId:course}) 
 				        });
 				        if (!response.ok) {
 				            throw new Error(`HTTP error! Status: ${response.status}`);

@@ -1,897 +1,606 @@
 <DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Quiz</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Interactive Quiz</title>
+       <style>
+       * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            min-height: 100vh;
-            font-family: system-ui, -apple-system, sans-serif;
-            background: linear-gradient(to bottom right, #e6faf8, #e6f9fc);
-        }
+body {
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, sans-serif;
+    background: linear-gradient(to bottom right, #e6faf8, #e6f9fc);
+}
 
-        header {
-            background: white;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-            padding: 1rem 1.5rem;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-        }
+header {
+    background: white;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
 
-        .logo {
-            height: 2.5rem;
-            width: 2.5rem;
-            background: linear-gradient(to right, #2dd4bf, #22d3ee);
-            border-radius: 0.75rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+.logo {
+    height: 2.5rem;
+    width: 2.5rem;
+    background: linear-gradient(to right, #2dd4bf, #22d3ee);
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        .logo svg {
-            height: 1.5rem;
-            width: 1.5rem;
-            color: white;
-        }
+.logo svg {
+    height: 1.5rem;
+    width: 1.5rem;
+    color: white;
+}
 
-        .brand-name {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #1f2937;
-        }
+.brand-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+}
 
-        .header-nav {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            margin-top: 0.5rem;
-        }
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+}
 
-        @media (min-width: 640px) {
-            .header-nav {
-                margin-top: 0;
-            }
-        }
+@media (min-width: 640px) {
+    .header-nav {
+        margin-top: 0;
+    }
+}
 
-        .header-nav a {
-            color: #374151;
-            text-decoration: none;
-            transition: color 0.2s, transform 0.2s;
-        }
+.header-nav a {
+    color: #374151;
+    text-decoration: none;
+    transition: color 0.2s, transform 0.2s;
+}
 
-        .header-nav a:hover {
-            color: #0d9488;
-            transform: scale(1.05);
-        }
+.header-nav a:hover {
+    color: #0d9488;
+    transform: scale(1.05);
+}
 
-        .streak {
-            font-size: 0.875rem;
-            font-weight: 500;
-            padding: 0.75rem 1rem;
-            background-color: #e6f9fb;
-            color: #374151;
-            border-radius: 9999px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        
-        .streak:hover {
-            transform: scale(1.2, 1);
-        }
+.streak {
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.75rem 1rem;
+    background-color: #e6f9fb;
+    color: #374151;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
 
-        .main-layout {
-            display: flex;
-            height: calc(100vh - 4rem);
-        }
+.streak:hover {
+    transform: scale(1.2, 1);
+}
 
-        .main-content {
-            flex: 1;
-            padding: 2rem;
-            overflow: auto;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+.main-layout {
+    display: flex;
+    height: calc(100vh - 4rem);
+}
 
-        .quiz-header {
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(8px);
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    overflow: auto;
+    max-width: 800px;
+    margin: 0 auto;
+}
 
-        .quiz-title {
-            font-size: 1.75rem;
-            font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 1rem;
-        }
+.quiz-header {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-        .quiz-progress {
-            height: 0.5rem;
-            background-color: #f3f4f6;
-            border-radius: 9999px;
-            overflow: hidden;
-            margin-bottom: 0.5rem;
-        }
+.quiz-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
 
-        .quiz-progress-fill {
-            height: 100%;
-            background: linear-gradient(to right, #2dd4bf, #22d3ee);
-            transition: width 0.5s ease;
-        }
+.quiz-progress {
+    height: 0.5rem;
+    background-color: #f3f4f6;
+    border-radius: 9999px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
 
-        .quiz-meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.875rem;
-            color: #4b5563;
-        }
+.quiz-progress-fill {
+    height: 100%;
+    background: linear-gradient(to right, #2dd4bf, #22d3ee);
+    transition: width 0.5s ease;
+}
 
-        .question-card {
-            background-color: rgba(255, 255, 255, 0.8);
-            border: none;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            margin-bottom: 2rem;
-            transition: all 0.3s;
-            display: none;
-        }
+.quiz-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    color: #4b5563;
+}
 
-        .question-card.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
+.question-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+    transition: all 0.3s;
+}
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+/* .question-card.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+} */
 
-        .question-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        }
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
 
-        .question-number {
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: #0d9488;
-            margin-bottom: 1rem;
-        }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-        .question-text {
-            font-size: 1.25rem;
-            font-weight: 500;
-            color: #1f2937;
-            margin-bottom: 1.5rem;
-        }
+.question-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
 
-        .options-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
+.question-number {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #0d9488;
+    margin-bottom: 1rem;
+}
 
-        .option {
-            position: relative;
-        }
+.question-text {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+}
 
-        .option input[type="radio"] {
-            position: absolute;
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
+.options-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
 
-        .option label {
-            display: block;
-            cursor: pointer;
-            padding: 1rem 1.5rem;
-            border: 1px solid #e5e7eb;
-            border-radius: 0.5rem;
-            background-color: white;
-            transition: all 0.2s;
-        }
+.option {
+    position: relative;
+}
 
-        .option input[type="radio"]:checked + label {
-            border-color: #2dd4bf;
-            background: linear-gradient(to right, #f0fdfa, #ecfeff);
-            box-shadow: 0 0 0 2px rgba(45, 212, 191, 0.3);
-        }
+.option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
 
-        .option label:hover {
-            background-color: #f9fafb;
-        }
+.option label {
+    display: block;
+    cursor: pointer;
+    padding: 1rem 1.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    background-color: white;
+    transition: all 0.2s;
+}
 
-        .quiz-navigation {
-            display: flex;
-            justify-content: space-between;
-            padding: 0 0.5rem;
-        }
+.option input[type="radio"]:checked+label {
+    border-color: #2dd4bf;
+    background: linear-gradient(to right, #f0fdfa, #ecfeff);
+    box-shadow: 0 0 0 2px rgba(45, 212, 191, 0.3);
+}
 
-        .nav-button {
-            background: linear-gradient(to right, #2dd4bf, #22d3ee);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
+.option label:hover {
+    background-color: #f9fafb;
+}
 
-        .nav-button:hover {
-            background: linear-gradient(to right, #0d9488, #0891b2);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+.quiz-navigation {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.5rem;
+}
 
-        .nav-button.prev {
-            background: white;
-            color: #1f2937;
-            border: 1px solid #e5e7eb;
-        }
+.nav-button {
+    background: linear-gradient(to right, #2dd4bf, #22d3ee);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
 
-        .nav-button.prev:hover {
-            background: #f9fafb;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+.nav-button:hover {
+    background: linear-gradient(to right, #0d9488, #0891b2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-        .nav-button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
+.nav-button.prev {
+    background: white;
+    color: #1f2937;
+    border: 1px solid #e5e7eb;
+}
 
-        .popup {
-            --burger-line-width: 1.125em;
-            --burger-line-height: 0.125em;
-            --burger-offset: 0.625em;
-            --burger-bg: #00bf63;
-            --burger-color: #333;
-            --burger-line-border-radius: 0.1875em;
-            --burger-diameter: 3.5em;
-            --burger-btn-border-radius: calc(var(--burger-diameter) / 2);
-            --burger-line-transition: 0.3s;
-            --burger-transition: all 0.1s ease-in-out;
-            --burger-hover-scale: 1.1;
-            --burger-active-scale: 0.95;
-            --burger-enable-outline-color: var(--burger-bg);
-            --burger-enable-outline-width: 0.125em;
-            --burger-enable-outline-offset: var(--burger-enable-outline-width);
-            --nav-padding-x: 1em;
-            --nav-padding-y: 0.625em;
-            --nav-border-radius: 0.375em;
-            --nav-border-color: #ccc;
-            --nav-border-width: 0.0625em;
-            --nav-shadow-color: rgba(0, 0, 0, 0.2);
-            --nav-shadow-width: 0 1px 5px;
-            --nav-bg: #eee;
-            --nav-font-family: "Poppins", sans-serif;
-            --nav-default-scale: 0.8;
-            --nav-active-scale: 1;
-            --nav-position-left: 0;
-            --nav-position-right: unset;
-            --nav-title-size: 0.625em;
-            --nav-title-color: #777;
-            --nav-title-padding-x: 1rem;
-            --nav-title-padding-y: 0.25em;
-            --nav-button-padding-x: 1rem;
-            --nav-button-padding-y: 0.375em;
-            --nav-button-border-radius: 0.375em;
-            --nav-button-font-size: 17px;
-            --nav-button-hover-bg: #00bf63;
-            --nav-button-hover-text-color: #fff;
-            --nav-button-distance: 0.875em;
-            --underline-border-width: 0.0625em;
-            --underline-border-color: #ccc;
-            --underline-margin-y: 0.3125em;
-            display: inline-block;
-            text-rendering: optimizeLegibility;
-            position: relative;
-        }
+.nav-button.prev:hover {
+    background: #f9fafb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-        .popup input {
-            display: none;
-        }
+.nav-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
 
-        .burger {
-            display: flex;
-            position: relative;
-            align-items: center;
-            justify-content: center;
-            background: #27D3D5;
-            width: var(--burger-diameter);
-            height: var(--burger-diameter);
-            border-radius: var(--burger-btn-border-radius);
-            border: none;
-            cursor: pointer;
-            overflow: hidden;
-            transition: var(--burger-transition);
-            outline: var(--burger-enable-outline-width) solid transparent;
-            outline-offset: 0;
-        }
+.popup {
+    --burger-line-width: 1.125em;
+    --burger-line-height: 0.125em;
+    --burger-offset: 0.625em;
+    --burger-bg: #00bf63;
+    --burger-color: #333;
+    --burger-line-border-radius: 0.1875em;
+    --burger-diameter: 3.5em;
+    --burger-btn-border-radius: calc(var(--burger-diameter) / 2);
+    --burger-line-transition: 0.3s;
+    --burger-transition: all 0.1s ease-in-out;
+    --burger-hover-scale: 1.1;
+    --burger-active-scale: 0.95;
+    --burger-enable-outline-color: var(--burger-bg);
+    --burger-enable-outline-width: 0.125em;
+    --burger-enable-outline-offset: var(--burger-enable-outline-width);
+    --nav-padding-x: 1em;
+    --nav-padding-y: 0.625em;
+    --nav-border-radius: 0.375em;
+    --nav-border-color: #ccc;
+    --nav-border-width: 0.0625em;
+    --nav-shadow-color: rgba(0, 0, 0, 0.2);
+    --nav-shadow-width: 0 1px 5px;
+    --nav-bg: #eee;
+    --nav-font-family: "Poppins", sans-serif;
+    --nav-default-scale: 0.8;
+    --nav-active-scale: 1;
+    --nav-position-left: 0;
+    --nav-position-right: unset;
+    --nav-title-size: 0.625em;
+    --nav-title-color: #777;
+    --nav-title-padding-x: 1rem;
+    --nav-title-padding-y: 0.25em;
+    --nav-button-padding-x: 1rem;
+    --nav-button-padding-y: 0.375em;
+    --nav-button-border-radius: 0.375em;
+    --nav-button-font-size: 17px;
+    --nav-button-hover-bg: #00bf63;
+    --nav-button-hover-text-color: #fff;
+    --nav-button-distance: 0.875em;
+    --underline-border-width: 0.0625em;
+    --underline-border-color: #ccc;
+    --underline-margin-y: 0.3125em;
+    display: inline-block;
+    text-rendering: optimizeLegibility;
+    position: relative;
+}
 
-        .popup-window {
-            transform: scale(var(--nav-default-scale));
-            visibility: hidden;
-            opacity: 0;
-            position: absolute;
-            padding: var(--nav-padding-y) var(--nav-padding-x);
-            background: var(--nav-bg);
-            font-family: var(--nav-font-family);
-            color: var(--nav-text-color);
-            border-radius: var(--nav-border-radius);
-            box-shadow: var(--nav-shadow-width) var(--nav-shadow-color);
-            border: var(--nav-border-width) solid var(--nav-border-color);
-            top: calc(var(--burger-diameter) + var(--burger-enable-outline-width) + var(--burger-enable-outline-offset));
-            left: var(--nav-position-left);
-            right: var(--nav-position-right);
-            transition: var(--burger-transition);
-            margin-top: 10px;
-            z-index: 1;
-            margin-left: -6em;
-        }
+.popup input {
+    display: none;
+}
 
-        .popup input:checked ~ .popup-window {
-            transform: scale(var(--nav-active-scale));
-            visibility: visible;
-            opacity: 1;
-        }
+.burger {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background: #27D3D5;
+    width: var(--burger-diameter);
+    height: var(--burger-diameter);
+    border-radius: var(--burger-btn-border-radius);
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: var(--burger-transition);
+    outline: var(--burger-enable-outline-width) solid transparent;
+    outline-offset: 0;
+}
 
-        .popup-window ul {
-            margin: 0;
-            padding: 0;
-            list-style-type: none;
-        }
+.popup-window {
+    transform: scale(var(--nav-default-scale));
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    padding: var(--nav-padding-y) var(--nav-padding-x);
+    background: var(--nav-bg);
+    font-family: var(--nav-font-family);
+    color: var(--nav-text-color);
+    border-radius: var(--nav-border-radius);
+    box-shadow: var(--nav-shadow-width) var(--nav-shadow-color);
+    border: var(--nav-border-width) solid var(--nav-border-color);
+    top: calc(var(--burger-diameter) + var(--burger-enable-outline-width) + var(--burger-enable-outline-offset));
+    left: var(--nav-position-left);
+    right: var(--nav-position-right);
+    transition: var(--burger-transition);
+    margin-top: 10px;
+    z-index: 1;
+    margin-left: -6em;
+}
 
-        .popup-window ul button {
-            outline: none;
-            width: 100%;
-            border: none;
-            background: none;
-            display: flex;
-            align-items: center;
-            color: var(--burger-color);
-            font-size: var(--nav-button-font-size);
-            padding: var(--nav-button-padding-y) var(--nav-button-padding-x);
-            white-space: nowrap;
-            border-radius: var(--nav-button-border-radius);
-            cursor: pointer;
-            column-gap: var(--nav-button-distance);
-        }
+.popup input:checked~.popup-window {
+    transform: scale(var(--nav-active-scale));
+    visibility: visible;
+    opacity: 1;
+}
 
-      .popup-window ul button:hover { 
-            color: var(--nav-button-hover-text-color);
-            background: #27D3D5;
-        }
- 
-        .popup-window hr {
-            margin: var(--underline-margin-y) 0;
-            border: none;
-            border-bottom: var(--underline-border-width) solid var(--underline-border-color);
-        }
+.popup-window ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
 
-        .timer-container {
-            display: flex;
-            align-items: center;
-            background: linear-gradient(to right, #f0fdfa, #ecfeff);
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-        }
+.popup-window ul button {
+    outline: none;
+    width: 100%;
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+    color: var(--burger-color);
+    font-size: var(--nav-button-font-size);
+    padding: var(--nav-button-padding-y) var(--nav-button-padding-x);
+    white-space: nowrap;
+    border-radius: var(--nav-button-border-radius);
+    cursor: pointer;
+    column-gap: var(--nav-button-distance);
+}
 
-        .timer-icon {
-            margin-right: 0.5rem;
-            color: #0d9488;
-        }
+.popup-window ul button:hover {
+    color: var(--nav-button-hover-text-color);
+    background: #27D3D5;
+}
 
-        .timer {
-            font-weight: 500;
-            color: #0d9488;
-        }
+.popup-window hr {
+    margin: var(--underline-margin-y) 0;
+    border: none;
+    border-bottom: var(--underline-border-width) solid var(--underline-border-color);
+}
 
-        .correct-answer {
-            border-color: #10b981 !important;
-            background: rgba(16, 185, 129, 0.1) !important;
-        }
+.timer-container {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to right, #f0fdfa, #ecfeff);
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
 
-        .wrong-answer {
-            border-color: #ef4444 !important;
-            background: rgba(239, 68, 68, 0.1) !important;
-        }
+.timer-icon {
+    margin-right: 0.5rem;
+    color: #0d9488;
+}
 
-        .explanation {
-            margin-top: 1rem;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 0.5rem;
-            border-left: 4px solid #0d9488;
-            display: none;
-        }
+.timer {
+    font-weight: 500;
+    color: #0d9488;
+}
 
-        .active .explanation.show {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
+.correct-answer {
+    border-color: #10b981 !important;
+    background: rgba(16, 185, 129, 0.1) !important;
+}
 
-        .score-card {
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(8px);
-            border-radius: 0.5rem;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            display: none;
-        }
+.wrong-answer {
+    border-color: #ef4444 !important;
+    background: rgba(239, 68, 68, 0.1) !important;
+}
 
-        .score-card.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
+.explanation {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 0.5rem;
+    border-left: 4px solid #0d9488;
+    display: none;
+}
 
-        .score-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 1rem;
-        }
+.active .explanation.show {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
 
-        .score-value {
-            font-size: 3rem;
-            font-weight: 700;
-            color: #0d9488;
-            margin-bottom: 1.5rem;
-        }
+.score-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: none;
+}
 
-        .score-message {
-            margin-bottom: 2rem;
-            color: #4b5563;
-        }
+.score-card.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
 
-        .retry-button {
-            background: linear-gradient(to right, #2dd4bf, #22d3ee);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
+.score-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
 
-        .retry-button:hover {
-            background: linear-gradient(to right, #0d9488, #0891b2);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+.score-value {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #0d9488;
+    margin-bottom: 1.5rem;
+}
 
-        .check-button {
-            background: linear-gradient(to right, #2dd4bf, #22d3ee);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 1rem;
-            display: block;
-            width: 100%;
-        }
+.score-message {
+    margin-bottom: 2rem;
+    color: #4b5563;
+}
 
-        .check-button:hover {
-            background: linear-gradient(to right, #0d9488, #0891b2);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-    </style>
-</head>
-<body>
-    <div class="main-layout">
-        <div class="main-content">
-            <div class="quiz-header">
-                <div class="quiz-title">LLM Fundamentals Quiz</div>
-                <div class="quiz-progress">
-                    <div class="quiz-progress-fill" style="width: 0%"></div>
-                </div>
-                <div class="quiz-meta">
-                    <span id="question-counter">Question 1 of 5</span>
-                    <div class="timer-container">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="timer-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <polyline points="12 6 12 12 16 14"></polyline>
-                        </svg>
-                        <span class="timer" id="timer">10:00</span>
+.retry-button {
+    background: linear-gradient(to right, #2dd4bf, #22d3ee);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.retry-button:hover {
+    background: linear-gradient(to right, #0d9488, #0891b2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.check-button {
+    background: linear-gradient(to right, #2dd4bf, #22d3ee);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 1rem;
+    display: block;
+    width: 100%;
+}
+
+.check-button:hover {
+    background: linear-gradient(to right, #0d9488, #0891b2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+ul{
+    list-style: none;
+}
+
+input[type="radio"] {
+    display: inline-block !important;
+    opacity: 1 !important;
+}
+
+.quiz-progress-fill{
+    width: 0%;
+}
+       </style>
+       
+    </head>
+    <body>
+        <div class="main-layout">
+            <div class="main-content">
+                <div class="quiz-header">
+                    <div class="quiz-title">Python Fundamentals Quiz</div>
+                    <div class="quiz-progress">
+                        <div class="quiz-progress-fill" ></div>
+                    </div>
+                    <div class="quiz-meta">
+                        <span id="question-counter">Question 1 of 5</span>
+                        <div class="timer-container">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="timer-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <span class="timer" id="timFalseer">10:00</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Question 1 -->
-            <div class="question-card active" id="question-1">
-                <div class="question-number">Question 1</div>
-                <div class="question-text">What is the primary function of a Large Language Model (LLM)?</div>
-            
-
-
-                <ul class="options-list">
-                    <li class="option">
-                        <input type="radio" name="q1" id="q1-option1" value="0">
-                        <label for="q1-option1">  Store large amounts of structured data</label>
-                    </li>
-                    <li class="option">
-                        <input type="radio" name="q1" id="q1-option2" value="1">
-                        <label for="q1-option2">Generate and understand human-like text</label>
-                    </li>
-                    <li class="option">
-                        <input type="radio" name="q1" id="q1-option3" value="0">
-                        <label for="q1-option3"> Perform complex mathematical calculations faster than a CPU</label>
-                    </li>
-                    <li class="option">
-                        <input type="radio" name="q1" id="q1-option4" value="0">
-                        <label for="q1-option4">Execute low-level programming instructions</label>
-                    </li>
-                </ul>
-                <button class="check-button" onclick="checkAnswer(1)">Check Answer</button>
-                <div class="explanation">
-                    <p><strong>Reason:</strong> LLMs, such as GPT and BERT, are designed to understand, generate, and process natural language by predicting the next word in a sequence based on training data.
-</p>
+    
+                <div class="score-card" id="score-card">
+                    <div class="score-title">Quiz Completed!</div>
+                    <div class="score-value">0/5</div>
+                    <div class="score-message">Great effort! Keep learning to improve your JavaScript skills.</div>
+                    <button class="retry-button" onclick="resetQuiz()">Try Again</button>
+                    <button class="retry-button" onclick="completeLevel(8)">Finish</button>
                 </div>
-            </div>
-            <div class="question-card" id="question-2">
-                <div class="question-number">Question 2</div>
-                <div class="question-text">What does "LLM" stand for in artificial intelligence?</div>
-              
-                <ul class="options-list">
-                    <li class="option">
-                        <input type="radio" name="q2" id="q2-option1" value="0">
-                        <label for="q2-option1">Large Logic Model</label>
-                    </li>
-                    <li class="option">
-                        <input type="radio" name="q2" id="q2-option2" value="1">
-                        <label for="q2-option2">Large Language Model</label>
-                    </li>
-                    <li class="option">
-                        <input type="radio" name="q2" id="q2-option3" value="0">
-                        <label for="q2-option3">Long Learning Machine</label>
-                    </li>
-                    <li class="option">
-                        <input type="radio" name="q2" id="q2-option4" value="0">
-                        <label for="q2-option4">Linguistic Learning Mechanism
-
-</label>
-                    </li>
-                </ul>
-                <button class="check-button" onclick="checkAnswer(2)">Check Answer</button>
-                <div class="explanation">
-                    <p><strong>Reason:</strong> LLM stands for Large Language Model, which refers to AI models trained on massive amounts of text data to understand and generate human-like text.
-</p>
+                
+                <div class="quiz-navigation">
+                    <button class="nav-button prev" id="prev-btn" onclick="prevQuestion()" disabled>Previous</button>
+                    <button class="nav-button next" id="next-btn" onclick="createQuestion(1)">Next</button>
                 </div>
-            </div>
-
-            <div class="question-card" id="question-3">
-                <div class="question-number">Question 3</div>
-                <div class="question-text">Which company developed the GPT (Generative Pre-trained Transformer) series of models?</div>
-
-          <ul class="options-list">
-                    <li class="option">
-                        <input type="radio" name="q3" id="q3-option1" value="0">
-                        <label for="q3-option1">Google</label>
-                    </li>
-                    <li class="option">
-                        <input type="radio" name="q3" id="q3-option2" value="1">
-                        <label for="q3-option2">OpenAI</label>
-                    </li>
-                    <li class="option">
-                        <input type="radio" name="q3" id="q3-option3" value="0">
-                        <label for="q3-option3">Microsoft</label>
-                    </li>
-                    <li class="option">
-                        <input type="radio" name="q3" id="q3-option4" value="0">
-                        <label for="q3-option4">Amazon</label>
-                    </li>
-                </ul>
-                <button class="check-button" onclick="checkAnswer(3)">Check Answer</button>
-                <div class="explanation">
-                    <p><strong>Reason:</strong> OpenAI developed the GPT series, including GPT-3, GPT-4, and ChatGPT, which are some of the most well-known LLMs today.
-</p>
-                </div>
-            </div>
-            <div class="question-card" id="question-4">
-                <div class="question-number">Question 4</div>
-                <div class="question-text">What is the main purpose of a Large Language Model?</div>
-                <ul class="options-list">
-                    <li class="option">
-                        <input type="radio" name="q4" id="q4-option1" value="0">
-                        <label for="q4-option1">To edit videos</label>
-                    </li>
-                    <li class="option">
-                        <input type="radio" name="q4" id="q4-option2" value="0">
-                        <label for="q4-option2">To analyze medical images</label>
-                    </li>
-                    <li class="option">
-                        <input type="radio" name="q4" id="q4-option3" value="1">
-                        <label for="q4-option3">To understand and generate human language</label>
-                    </li>
-                    <li class="option">
-                        <input type="radio" name="q4" id="q4-option4" value="0">
-                        <label for="q4-option4"> To design computer hardware</label>
-                    </li>
-                </ul>
-                <button class="check-button" onclick="checkAnswer(4)">Check Answer</button>
-                <div class="explanation">
-                    <p><strong>Reason:</strong> LLMs are designed to process, understand, and generate text, making them useful for chatbots, translations, content creation, and more.
-</p>
-                </div>
-            </div>
-
-            <div class="question-card" id="question-5">
-                <div class="question-number">Question 5</div>
-                <div class="question-text">Which of the following best describes how LLMs learn?
-</div>
-
-                <ul class="options-list">
-                    <li class="option">
-                        <input type="radio" name="q5" id="q5-option1" value="0">
-                        <label for="q5-option1"> By memorizing text word for word</label>
-                    </li>
-                    <li class="option">
-                        <input type="radio" name="q5" id="q5-option2" value="1">
-                        <label for="q5-option2">  By predicting the next word in a sentence based on training data</label>
-                    </li>
-                    <li class="option">
-                        <input type="radio" name="q5" id="q5-option3" value="0">
-                        <label for="q5-option3">By copying responses from the internet</label>
-                    </li>
-                    <li class="option">
-                        <input type="radio" name="q5" id="q5-option4" value="0">
-                        <label for="q5-option4"> By using only rule-based grammar structures</label>
-                    </li>
-                </ul>
-                <button class="check-button" onclick="checkAnswer(5)">Check Answer</button>
-                <div class="explanation">
-                    <p><strong>Reason:</strong>  LLMs learn by predicting words in a sequence based on patterns in their training data, rather than memorizing or copying text directly.
-</p>
-                </div>
-            </div>
-
-            <div class="score-card" id="score-card">
-                <div class="score-title">Quiz Completed!</div>
-                <div class="score-value">0/5</div>
-                <div class="score-message">Great effort! Keep learning to improve your JavaScript skills.</div>
-                <button class="retry-button" onclick="resetQuiz()">Try Again</button>
-                <button class="retry-button" onclick="completeLevel(8)">Finish</button>
-            </div>
-
-            <div class="quiz-navigation">
-                <button class="nav-button prev" id="prev-btn" onclick="prevQuestion()" disabled>Previous</button>
-                <button class="nav-button next" id="next-btn" onclick="nextQuestion()">Next</button>
             </div>
         </div>
-    </div>
-
-      <script>
+    
+        <script>
         let currentQuestion = 1;
         let totalQuestions = 5;
         let score = 0;
-        let answeredQuestions = {};
         let timerInterval;
-        let timeLeft = 60; 
-
+        let timeLeft = 180;
+        let scorepoint = 0;
 
         function initQuiz() {
             updateTimer();
-            timerInterval = setInterval(function() {
+            timerInterval = setInterval(function () {
                 timeLeft--;
                 updateTimer();
-                
                 if (timeLeft <= 0) {
                     clearInterval(timerInterval);
                     showScore();
                 }
             }, 1000);
-            updateProgress();
-            
 
-            document.querySelectorAll('input[type="radio"]').forEach(radio => {
-                radio.addEventListener('change', function() {
-                    const questionNumber = this.name.substring(1);
-                    answeredQuestions[questionNumber] = true;
-
-                    document.getElementById('next-btn').disabled = false;
-                });
-            });
         }
 
         function updateTimer() {
             const minutes = Math.floor(timeLeft / 60);
             const seconds = timeLeft % 60;
-            document.getElementById('timer').textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            document.getElementById('timFalseer').textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        }
+
+        function showScore(){
+            document.getElementById("score-card").style.display = "block";
+            document.querySelector(".score-value").innerText = scorepoint+"/5"
+            document.querySelector(".question-card").style.display = "none";
         }
 
 
-        function updateProgress() {
-            const progress = ((currentQuestion - 1) / totalQuestions) * 100;
-            document.querySelector('.quiz-progress-fill').style.width = `${progress}%`;
-            document.getElementById('question-counter').textContent = `Question ${currentQuestion} of ${totalQuestions}`;
-            if(currentQuestion==totalQuestions){
-            	document.querySelector('.quiz-progress-fill').style.width = `${100}%`;
-                document.getElementById('question-counter').textContent = `Question ${currentQuestion} of ${totalQuestions}`;
-            }
-        }
-
-        function nextQuestion() {
-            if (currentQuestion < totalQuestions) {
-                document.getElementById(`question-${currentQuestion}`).classList.remove('active');
-                currentQuestion++;
-                document.getElementById(`question-${currentQuestion}`).classList.add('active');
-
-                document.getElementById('prev-btn').disabled = false;
-                document.getElementById('next-btn').disabled = !answeredQuestions[currentQuestion];
-                
-                if (currentQuestion === totalQuestions) {
-                    document.getElementById('next-btn').textContent = 'Finish';
-                }
-                
-                updateProgress();
-            } else {
-                showScore();
-            }
-        }
-
-
-        function prevQuestion() {
-            if (currentQuestion > 1) {
-                document.getElementById(`question-${currentQuestion}`).classList.remove('active');
-                currentQuestion--;
-                document.getElementById(`question-${currentQuestion}`).classList.add('active');
-
-                document.getElementById('prev-btn').disabled = currentQuestion === 1;
-                document.getElementById('next-btn').textContent = 'Next';
-                document.getElementById('next-btn').disabled = false;
-                
-                updateProgress();
-            }
-        }
-
-        function checkAnswer(questionNumber) {
-            const selectedOption = document.querySelector(`input[name="q${questionNumber}"]:checked`);
-            
-            if (!selectedOption) {
-                alert('Please select an answer');
-                return;
-            }
-            
-            const questionCard = document.getElementById(`question-${questionNumber}`);
-            const explanation = questionCard.querySelector('.explanation');
-            
-
-            document.querySelectorAll(`input[name="q${questionNumber}"]`).forEach(option => {
-                const label = option.nextElementSibling;
-                
-                if (option.value === "1") {
-                    label.classList.add('correct-answer');
-                } else if (option === selectedOption) {
-                    label.classList.add('wrong-answer');
-                }
-                
-                option.disabled = true;
-            });
-            
-
-            if (selectedOption.value === "1") {
-                score++;
-            }
-            explanation.classList.add('show');
-            answeredQuestions[questionNumber] = true;
-            document.getElementById('next-btn').disabled = false;
-            questionCard.querySelector('.check-button').disabled = true;
-        }
-
-        function showScore() {
-
-            document.querySelectorAll('.question-card').forEach(card => {
-                card.classList.remove('active');
-            });
-
-            const scoreCard = document.getElementById('score-card');
-            scoreCard.classList.add('active');
-            
-
-            scoreCard.querySelector('.score-value').textContent = `${score}/${totalQuestions}`;
-            
-            const scoreMessage = scoreCard.querySelector('.score-message');
-            if (score === totalQuestions) {
-                scoreMessage.textContent = 'Perfect score! You\'re a LLM master!';
-            } else if (score >= totalQuestions * 0.7) {
-                scoreMessage.textContent = 'Great job! You have a solid understanding of LLM basics.';
-            } else if (score >= totalQuestions * 0.5) {
-                scoreMessage.textContent = 'Good effort! Keep practicing to improve your LLM skills.';
-            } else {
-                scoreMessage.textContent = 'Keep learning! LLM takes practice, don\'t give up!';
-            }
-            document.querySelector('.quiz-navigation').style.display = 'none';
-                        clearInterval(timerInterval);
-        }
-
-
-        function resetQuiz() {
-
-            currentQuestion = 1;
-            score = 0;
-            answeredQuestions = {};
-            timeLeft = 60;
-
-            document.querySelectorAll('.question-card').forEach(card => {
-                card.classList.remove('active');
-            });
-            document.getElementById('question-1').classList.add('active');
-            
- 
-            document.querySelectorAll('input[type="radio"]').forEach(radio => {
-                radio.checked = false;
-                radio.disabled = false;
-                radio.nextElementSibling.classList.remove('correct-answer', 'wrong-answer');
-            });
-            
-
-            document.querySelectorAll('.explanation').forEach(exp => {
-                exp.classList.remove('show');
-            });
-            
-   
-            document.querySelectorAll('.check-button').forEach(btn => {
-                btn.disabled = false;
-            });
-
-            document.querySelector('.quiz-navigation').style.display = 'flex';
-            document.getElementById('prev-btn').disabled = true;
-            document.getElementById('next-btn').disabled = true;
-            document.getElementById('next-btn').textContent = 'Next';
- 
-            document.getElementById('score-card').classList.remove('active');
-
-            updateProgress();
-
-            updateTimer();
-            clearInterval(timerInterval);
-            timerInterval = setInterval(function() {
-                timeLeft--;
-                updateTimer();
-                
-                if (timeLeft <= 0) {
-                    clearInterval(timerInterval);
-                    showScore();
-                }
-            }, 1000);
-        }
-        window.onload = initQuiz;
-        
         function getCookie(name) {
             const value = `; ${document.cookie}`;
-        	console.log(100);
+            console.log(100);
             const parts = value.split(`; ${name}=`);
             if (parts.length === 2) {
                 return parts.pop().split(';').shift();
@@ -899,61 +608,260 @@
             return null;
         }
 
-        courseCards={};
+        courseCards = {};
         async function completeLevel(num) {
             try {
-        		console.log(1);
-        	     	details=getCookie("DETAILS")
-        			
-        			if (details) {
-        				console.log(2);
-        			     const decodedDetails = atob(details);
-        			     const parsedDetails = JSON.parse(decodedDetails); 
-        			 	parsedDetails.courses.forEach(a=>{
-        					console.log(3);
-        			 		console.log(a.course_name);
-        			 		courseCards[a.course_name]=[a.level_name,Math.round((a.levels_completed/7)*100),a.levels_completed,a.xp];
-        			 	});
-        			 }
-        			 let courseName = "Introduction To LLM";
-        			 levelCount = num;
-        		window.location.href="LLMlevels.html";
-        			 if (courseCards[courseName]) {
-        				console.log(4);
-        			     let [levelName, completionPercentage, levelsCompleted, xp] = courseCards[courseName];
-        				 localStorage.setItem("finishedLLM", completionPercentage);
-        				 console.log(5000+": "+levelsCompleted);
-        				 levelCount = num;
-        				
-        									
-        				 if(levelsCompleted < num-1){
-        				        const response = await fetch("controller/pythonLevels", {
-        				            method: "POST",
-        				            headers: {
-        				                'Content-Type': 'application/json',
-        				            },
-        				            body: JSON.stringify({ level: num, courseId:2}) 
-        				        });
-        				        if (!response.ok) {
-        				            throw new Error(`HTTP error! Status: ${response.status}`);
-        				        }
-        						console.log(5);
-        				        const result = await response.text(); 
-        				        console.log("Server response:", result);
+                console.log(1);
+                details = getCookie("DETAILS")
 
-        				    } 
-        				 }else {
-        							     console.log("Course not found.");}
-        			 } catch (error) {
-        			 				 				console.log(error);
-        			 				 		        console.error("Error sending level data:", error);
-        			 				 		    }
-        			 }
-        	    
+                if (details) {
+                    console.log(2);
+                    const decodedDetails = atob(details);
+                    const parsedDetails = JSON.parse(decodedDetails);
+                    parsedDetails.courses.forEach(a => {
+                        console.log(3);
+                        console.log(a.course_name);
+                        courseCards[a.course_name] = [a.level_name, Math.round((a.levels_completed / 7) * 100), a.levels_completed, a.xp];
+                    });
+                }
+                let courseName = "Introduction To LLM";
+                levelCount = num;
+                window.location.href = "LLMlevels.html";
+                if (courseCards[courseName]) {
+                    console.log(4);
+                    let [levelName, completionPercentage, levelsCompleted, xp] = courseCards[courseName];
+                    localStorage.setItem("finishedPy", completionPercentage);
+                    console.log(5000 + ": " + levelsCompleted);
+                    levelCount = num;
 
 
+                    if (levelsCompleted < num - 1) {
+                        const response = await fetch("controller/pythonLevels", {
+                            method: "POST",
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ level: num, courseId: 2 })
+                        });
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! Status: ${response.status}`);
+                        }
+                        console.log(5);
+                        const result = await response.text();
+                        console.log("Server response:", result);
+
+                    }
+                } else {
+                    console.log("Course not found.");
+                }
+            } catch (error) {
+                console.log(error);
+                console.error("Error sending level data:", error);
+            }
+        }
+
+        let progresswidth = 0;
+
+        let setOfQuestions = {
+        	    1: "What is a key focus of AI accuracy improvements for LLMs?",
+        	    2: "What is the primary purpose of AI regulations?",
+        	    3: "What does multimodal AI aim to integrate with text?",
+        	    4: "How can LLMs benefit education?",
+        	    5: "What is an example of AI automation in everyday tasks?",
+        	    6: "What does responsible AI development prioritize?",
+        	    7: "What could improve the factual accuracy of LLMs?",
+        	    8: "Which of the following is an example of an AI regulation framework?",
+        	    9: "What is a potential benefit of multimodal AI?",
+        	    10: "How might AI in healthcare assist professionals?",
+        	    11: "Why is transparency important in responsible AI development?",
+        	    12: "What environmental challenge is associated with LLMs that future improvements might address?"
+        	};
+
+        let setOfAnswers = {
+        	    1: ["Reducing errors like hallucinations", "Increasing processing speed", "Improving hardware efficiency", "Lowering energy costs"],
+        	    2: ["To protect privacy and prevent misuse", "To accelerate AI development", "To standardize programming languages", "To reduce AI model size"],
+        	    3: ["Images, audio, and more", "Only text and code", "Hardware components", "Mathematical equations"],
+        	    4: ["Providing personalized tutoring", "Building school infrastructure", "Replacing all teachers", "Managing school budgets"],
+        	    5: ["Drafting reports instantly", "Cooking meals", "Driving cars manually", "Painting artwork"],
+        	    6: ["Fairness and transparency", "Maximizing profits", "Increasing model complexity", "Reducing user interaction"],
+        	    7: ["Better training data", "Faster internet speeds", "More colorful interfaces", "Smaller datasets"],
+        	    8: ["EU’s AI Act", "Python’s PEP 8", "HTML5 Standards", "TCP/IP Protocol"],
+        	    9: ["Revolutionizing tech interaction", "Reducing AI model size", "Eliminating all biases", "Lowering hardware costs"],
+        	    10: ["Analyzing symptoms", "Performing surgeries independently", "Building hospitals", "Manufacturing medical devices"],
+        	    11: ["Explaining AI decisions", "Hiding AI processes", "Speeding up development", "Reducing energy use"],
+        	    12: ["High energy consumption", "Data storage limits", "Lack of user interest", "Slow internet connectivity"]
+        	};
+
+        	let reasons = {
+        	    1: "AI accuracy improvements focus on reducing errors like hallucinations to make LLMs more reliable.",
+        	    2: "AI regulations aim to protect privacy and prevent misuse, ensuring safe and ethical use.",
+        	    3: "Multimodal AI integrates text with images, audio, and other data types for versatility.",
+        	    4: "LLMs can provide tailored lessons and tutoring, enhancing personalized education.",
+        	    5: "AI automation can streamline tasks like drafting reports instantly, boosting efficiency.",
+        	    6: "Responsible AI development prioritizes fairness and transparency to minimize harm.",
+        	    7: "Better training data improves factual accuracy by giving LLMs more reliable information.",
+        	    8: "The EU’s AI Act is a framework regulating high-risk AI systems, unlike the others which are unrelated to AI governance.",
+        	    9: "Multimodal AI could revolutionize how we interact with technology by combining multiple input types.",
+        	    10: "AI in healthcare can assist by analyzing symptoms and aiding research, not replacing professionals entirely.",
+        	    11: "Transparency in responsible AI development ensures users understand how decisions are made.",
+        	    12: "High energy consumption is a major environmental challenge for LLMs, spurring greener AI research."
+        	};
+        let answeredQuestions = [];
+        let remainingQuestions = Object.keys(setOfQuestions).map(Number);
+        let currentIndex = -1;
+
+        function createQuestion(isNext = true) {
+            document.getElementById("question-counter").innerText = "Question " + (currentIndex + 2) + " of 5";
+            if (isNext && remainingQuestions.length === 0 && currentIndex === answeredQuestions.length - 1) {
+                alert("No more questions!");
+                return;
+            }
+
+            // Remove the current question before showing the new one
+            document.querySelector(".question-card")?.remove();
+
+            if (isNext) {
+                currentIndex++;
+                let randomIndex = Math.floor(Math.random() * remainingQuestions.length);
+                let questionNumber = remainingQuestions.splice(randomIndex, 1)[0];
+
+                answeredQuestions.push({ questionNumber, answered: false });
+            } else {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                }
+            }
+
+            let { questionNumber, answered } = answeredQuestions[currentIndex];
+
+            let questionCard = document.createElement("div");
+            questionCard.className = "question-card active";
+            questionCard.id = "question-" + (currentIndex + 1);
+
+            let questionNumberDiv = document.createElement("div");
+            questionNumberDiv.className = "question-number";
+            questionNumberDiv.innerText = "Question " + (currentIndex + 1);
+
+            let questionTextDiv = document.createElement("div");
+            questionTextDiv.className = "question-text";
+            questionTextDiv.innerText = setOfQuestions[questionNumber];
+
+            let optionList = document.createElement("ul");
+            optionList.className = "options-list";
+
+            let options = [...setOfAnswers[questionNumber]];
+            let correctAnswer = options[0];
+            options.sort(() => Math.random() - 0.5);
+
+            options.forEach((option, i) => {
+                let optionItem = document.createElement("li");
+                optionItem.className = "option";
+
+                let input = document.createElement("input");
+                input.type = "radio";
+                input.name = "q" + (currentIndex + 1);
+                input.id = `q${currentIndex + 1}-option${i}`;
+                input.value = option === correctAnswer ? "1" : "0";
+                if (answered) input.disabled = true;
+
+                let label = document.createElement("label");
+                label.setAttribute("for", input.id);
+                label.innerText = option;
+                if (answered && input.value === "1") {
+                    label.classList.add("correct-answer");
+                }
+
+                optionItem.appendChild(input);
+                optionItem.appendChild(label);
+                optionList.appendChild(optionItem);
+            });
+
+            let checkButton = document.createElement("button");
+            checkButton.className = "check-button";
+            checkButton.innerText = "Check Answer";
+            checkButton.onclick = () => checkAnswer(currentIndex + 1, questionNumber);
+            checkButton.disabled = answered;
+
+            let explanationDiv = document.createElement("div");
+            explanationDiv.className = "explanation";
+            explanationDiv.innerText = reasons[questionNumber];
+            explanationDiv.style.display = answered ? "block" : "none";
+
+            questionCard.appendChild(questionNumberDiv);
+            questionCard.appendChild(questionTextDiv);
+            questionCard.appendChild(optionList);
+            questionCard.appendChild(checkButton);
+            questionCard.appendChild(explanationDiv);
+
+            document.querySelector(".main-content").appendChild(questionCard);
+
+            document.querySelector(".quiz-navigation")?.remove();
+            let navDiv = document.createElement("div");
+            navDiv.className = "quiz-navigation";
+
+            let prevBtn = document.createElement("button");
+            prevBtn.className = "nav-button prev";
+            prevBtn.innerText = "Previous";
+            prevBtn.onclick = () => createQuestion(false);
+            prevBtn.style.visibility = currentIndex === 0 ? "hidden" : "visible";
+
+            let nextBtn = document.createElement("button");
+            nextBtn.className = "nav-button next";
+            nextBtn.innerText = "Next";
+            nextBtn.onclick = () => createQuestion(true);
+            nextBtn.disabled = !answered;
+
+            navDiv.appendChild(prevBtn);
+            navDiv.appendChild(nextBtn);
+            document.querySelector(".main-content").appendChild(navDiv);
+
+            checkButton.nextElementSibling = nextBtn;
+        }
+
+        function checkAnswer(qCount) {
+            let selectedOption = document.querySelector(`input[name="q${qCount}"]:checked`);
+
+            if (!selectedOption) {
+                alert("Please select an answer.");
+                return;
+            }
+
+            if (selectedOption.value == 1) {
+                scorepoint++
+            }
+
+            let questionCard = document.getElementById("question-" + qCount);
+            let explanationDiv = questionCard.querySelector(".explanation");
+
+            document.querySelectorAll(`input[name="q${qCount}"]`).forEach(option => {
+                let label = option.nextElementSibling;
+                if (option.value == "1") {
+                    label.classList.add("correct-answer");
+                } else if (option == selectedOption) {
+                    label.classList.add("wrong-answer");
+                }
+                option.disabled = true;
+            });
+
+            explanationDiv.style.display = "block";
+            questionCard.querySelector(".check-button").disabled = true;
+
+            document.querySelector(".quiz-navigation .next").disabled = false;
+
+            answeredQuestions[currentIndex].answered = true;
+            progresswidth += 20
+            document.querySelector(".quiz-progress-fill").style.width = (progresswidth + "%");
+            if (currentIndex+2 == 6){
+                showScore();
+            }
+        }
 
 
-    </script>
-</body>
-</html>
+        initQuiz()
+        createQuestion();
+        </script>
+        
+        
+        
+    </body>
+    </html>

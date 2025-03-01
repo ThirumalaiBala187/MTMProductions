@@ -155,7 +155,7 @@
 
         .card {
             background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(8px);
+            
             border: none;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 1.5rem;
@@ -803,4 +803,13 @@ background: linear-gradient(45deg, rgba(6, 182, 212, 0.3), rgba(125, 211, 252, 0
 #home{
 	border-bottom:5px solid #35B8F0;
 	padding:5px;
+}
+.noCourse{
+	color:black;
+	font-weight:500;
+}
+
+.noCourse:hover{
+	color:#35B8F0;
+	cursor:pointer;
 }

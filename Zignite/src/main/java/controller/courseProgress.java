@@ -118,39 +118,41 @@ try(		BufferedReader reader = new BufferedReader(new InputStreamReader(request.g
 	    userDetails.put("courses", coursesArray);
 	    return userDetails;
 	}
-	private static void initializeUserCourse(String email,int courseId) {
-		int user_id = 0;
-		try {
-			System.out.println("namma1");
-			Connection con = Database.getConnection();
-			String query = "SELECT User_Id FROM Users WHERE Email = ?";
-			PreparedStatement stmt = con.prepareStatement(query);
-			stmt.setString(1, email);
-			ResultSet result = stmt.executeQuery();
-			if (result.next()) {
-				user_id = result.getInt(1);
-			}
-		} catch (Exception e) {
-			System.out.println("SQL error in retrieving user ID");
-			e.printStackTrace();
-		}
-		System.out.println(user_id);
-		if (user_id != 0) {
-			try {
+	private static void initializeUserCourse(String email, int courseId) {
+	    int userId = 0;
+      System.out.println("initializing!!");
+	    String selectQuery = "SELECT User_Id FROM Users WHERE Email = ?";
+	    String insertQuery = "INSERT INTO User_Progress (Levels_Completed, XP, User_Id, Course_Id) VALUES (0, 0, ?, ?)";
 
-				Connection con = Database.getConnection();
-				String query = "INSERT INTO User_Progress (Levels_Completed, XP, User_Id, Course_Id) VALUES (0, 0, ?, ?)";
-				PreparedStatement stmt = con.prepareStatement(query);
-				stmt.setInt(1, user_id);
-				stmt.setInt(2, courseId);
-				stmt.executeUpdate();
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}else {
-			System.out.println("Email does not exist");
-		}
+	    try (Connection con = Database.getConnection();
+	         PreparedStatement selectStmt = con.prepareStatement(selectQuery)) {
+
+	        selectStmt.setString(1, email);
+	        try (ResultSet result = selectStmt.executeQuery()) {
+	            if (result.next()) {
+	                userId = result.getInt(1);
+	            }
+	        }
+
+	        System.out.println("User ID: " + userId);
+
+	        if (userId != 0) {
+	        	System.out.println("userID Check validates");
+	            try (PreparedStatement insertStmt = con.prepareStatement(insertQuery)) {
+	                insertStmt.setInt(1, userId);
+	                insertStmt.setInt(2, courseId);
+	                insertStmt.executeUpdate();
+	                System.out.println("User course initialized successfully.");
+	            }
+	        } else {
+	            System.out.println("Email does not exist.");
+	        }
+
+	    } catch (SQLException e) {
+	        System.err.println("SQL Error: " + e.getMessage());
+	        e.printStackTrace();
+	    }
 	}
+
 
 }
